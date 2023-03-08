@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--****************************************************************************
+* \file pin.cypersonality
+* \version 1.0
+*
+* \brief
+* Pin personality description file.
+*
+********************************************************************************
+* \copyright
+* Copyright (c) (2023), Cypress Semiconductor Corporation (an Infineon company) or
+* an affiliate of Cypress Semiconductor Corporation.
+* SPDX-License-Identifier: Apache-2.0
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*****************************************************************************-->
+<Personality id="pin" name="Pin" version="1.0" xmlns="http://cypress.com/xsd/cyhwpersonality_v7">
+  <Dependencies>
+    <IpBlock name="55500A0_ioss" />
+    <Resource name="ioss\[0\]\.port\[[0|2|3]\]\.pin\[[0-9]+\]"/>
+  </Dependencies>
+  <ExposedMembers />
+
+  <Parameters>
+
+    <!-- General -->
+    <ParamChoice id="direction" name="Direction" group="General" default="1" visible="true" editable="true" desc="This parameter determines the direction for the GPIO." >
+      <Entry name="Output (1)" value="1" visible="true" />
+      <Entry name="Input (0)"  value="0" visible="true" />
+    </ParamChoice>
+    <ParamChoice id="initialState" name="Initial Drive State" group="General" default="1" visible="true" editable="true" desc="This parameter specifies the pin-specific initial value written to the pin." >
+      <Entry name="High (1)" value="1" visible="true" />
+      <Entry name="Low (0)"  value="0" visible="true" />
+    </ParamChoice>
+    <ParamChoice id="triggerType" name="Interrupt Trigger Type" group="General" default="BTSS_GPIO_TRIGGER_EDGE_RISING" visible="true" editable="true" desc="This parameter selects the interrupt trigger type." >
+      <Entry name="Rising Edge"  value="BTSS_GPIO_TRIGGER_EDGE_RISING"  visible="true" />
+      <Entry name="Falling Edge"  value="BTSS_GPIO_TRIGGER_EDGE_FALLING"  visible="true" />
+      <Entry name="Both Edge"  value="BTSS_GPIO_TRIGGER_EDGES_BOTH"  visible="true" />
+      <Entry name="Low Level"   value="BTSS_GPIO_TRIGGER_LEVEL_LOW"  visible="true" />
+      <Entry name="High Level"   value="BTSS_GPIO_TRIGGER_LEVEL_HIGH"  visible="true" />
+    </ParamChoice>
+
+    <!-- Config -->
+    <ParamBool id="outputEnable" name="Output Enable" group="Config" default="false" visible="true" editable="true" desc="This parameter controls Output Enable/Disable." />
+    <ParamBool id="pullUpEnable" name="Pull-Up Enable" group="Config" default="false" visible="true" editable="true" desc="This parameter controls Pull-Up Enable/Disable." />
+    <ParamBool id="pullDownEnable" name="Pull-Down Enable" group="Config" default="false" visible="true" editable="true" desc="This parameter controls Pull-Down Enable/Disable." />
+    <ParamBool id="hysteresisEnable" name="Hysteresis Enable" group="Config" default="false" visible="true" editable="true" desc="This parameter controls Hysteresis Enable/Disable." />
+    <ParamBool id="inputDisable" name="Disable Input" group="Config" default="false" visible="true" editable="true" desc="This parameter controls Input Enable/Disable." />
+    <ParamChoice id="driveCurrentSel" name="Drive Current" group="Config" default="BTSS_PAD_CONFIG_DRIVE_SEL_02MA_MASK" visible="true" editable="true" desc="This parameter controls Driving Current configuration." >
+      <Entry name="2mA" value="BTSS_PAD_CONFIG_DRIVE_SEL_02MA_MASK" visible="true" />
+      <Entry name="4mA" value="BTSS_PAD_CONFIG_DRIVE_SEL_04MA_MASK" visible="true" />
+      <Entry name="6mA" value="BTSS_PAD_CONFIG_DRIVE_SEL_06MA_MASK" visible="true" />
+      <Entry name="8mA" value="BTSS_PAD_CONFIG_DRIVE_SEL_08MA_MASK" visible="true" />
+      <Entry name="10mA" value="BTSS_PAD_CONFIG_DRIVE_SEL_10MA_MASK" visible="true" />
+      <Entry name="12mA" value="BTSS_PAD_CONFIG_DRIVE_SEL_12MA_MASK" visible="true" />
+      <Entry name="14mA" value="BTSS_PAD_CONFIG_DRIVE_SEL_14A_MASK" visible="true" />
+      <Entry name="16mA" value="BTSS_PAD_CONFIG_DRIVE_SEL_16MA_MASK" visible="true" />
+    </ParamChoice>
+
+    <!-- Misc -->
+    <ParamString id="outputEnableMsk" name="Output Enable Mask" group="Internal" default="`${outputEnable ? &quot;BTSS_PAD_CONFIG_OUTPUT_ENABLE_MASK&quot; : &quot;0U&quot;}`" visible="false" editable="false" desc="" />
+    <ParamString id="pullUpEnableMsk" name="Pull-Up Enable Mask" group="Internal" default="`${pullUpEnable ? &quot;BTSS_PAD_CONFIG_PULL_UP_ENABLE_MASK&quot; : &quot;0U&quot;}`" visible="false" editable="false" desc="" />
+    <ParamString id="pullDownEnableMsk" name="Pull-Down Enable Mask" group="Internal" default="`${pullDownEnable ? &quot;BTSS_PAD_CONFIG_PULL_DOWN_ENABLE_MASK&quot; : &quot;0U&quot;}`" visible="false" editable="false" desc="" />
+    <ParamString id="hysteresisEnableMsk" name="Hysteresis Enable Mask" group="Internal" default="`${hysteresisEnable ? &quot;BTSS_PAD_CONFIG_HYSTERESIS_ENABLE_MASK&quot; : &quot;0U&quot;}`" visible="false" editable="false" desc="" />
+    <ParamString id="inputDisableMsk" name="Input Disable Mask" group="Internal" default="`${inputDisable ? &quot;BTSS_PAD_CONFIG_INPUT_DISABLE_MASK&quot; : &quot;0U&quot;}`" visible="false" editable="false" desc="" />
+    <ParamString id="inputDisableMsk" name="Input Disable Mask" group="Internal" default="`${inputDisable ? &quot;BTSS_PAD_CONFIG_INPUT_DISABLE_MASK&quot; : &quot;0U&quot;}`" visible="false" editable="false" desc="" />
+
+    <!-- Internal Connection -->
+    <ParamSignal port="aux[0]" name="AUX" group="Internal Connection" visible="`${hasVisibleOption(&quot;aux[0]&quot;)}`" desc="A fixed function signal to connect to" canBeEmpty="true" />
+    <ParamBool id="hasConnection" name="Has aux connection" group="Internal" default="`${hasConnection(&quot;aux&quot;, 0)}`" visible="false" editable="false" desc="" />
+    <ParamBool id="gpioFunc" name="GPIO Functionality" group="Internal Connection" default="false" visible="true" editable="true" desc="GPIO/A_GPIO/B_GPIO functionality" />
+
+    <ParamString id="IOSS" name="IOSS" group="Internal" default="`${getInstNumber(&quot;ioss&quot;)}`" editable="false" visible="false" desc=""/>
+    <ParamString id="PORT" name="PORT" group="Internal" default="`${getInstNumber(&quot;port&quot;)}`" editable="false" visible="false" desc=""/>
+    <ParamString id="PIN" name="PIN" group="Internal" default="`${getInstNumber(&quot;pin&quot;)}`" editable="false" visible="false" desc=""/>
+    <ParamString id="btssPeripheralPinMuxFuncDefine" name="BTSS_PINMUX_FUNC_DEFINE_NAME" group="Internal" default="`${&quot;ioss_&quot; . IOSS .&quot;_port_&quot; . PORT . &quot;_pin_&quot; . PIN  . &quot;_AUX&quot;}`" editable="false" visible="false" desc=""/>
+
+    <ParamString id="location" name="Location" group="Internal" default="`${&quot;ioss[&quot; . IOSS .&quot;].port[&quot; . PORT . &quot;].pin[&quot; . PIN . &quot;]&quot;}`" editable="false" visible="false" desc=""/>
+    <ParamString id="locationName" name="LOCATION_NAME" group="Internal" default="`${getBlockDisplayName(location, false)}`" editable="false" visible="false" desc=""/>
+
+    <!-- BT_GPIO_0 -->
+    <ParamChoice id="PIN_0" name="GPI0 Functionality Selection" group="Internal Connection" default="19" visible="`${(PIN eq 0) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_GPIO_0" value="19" visible="true" />
+    </ParamChoice>
+    <!-- BT_GPIO_2 -->
+    <ParamChoice id="PIN_1" name="GPIO Functionality Selection" group="Internal Connection" default="21" visible="`${(PIN eq 1) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_GPIO_2" value="21" visible="true" />
+    </ParamChoice>
+    <!-- BT_GPIO_3 -->
+    <ParamChoice id="PIN_2" name="GPIO Functionality Selection" group="Internal Connection" default="22" visible="`${(PIN eq 2) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_GPIO_3" value="22" visible="true" />
+    </ParamChoice>
+    <!-- BT_GPIO_4-->
+    <ParamChoice id="PIN_3" name="GPIO Functionality Selection" group="Internal Connection" default="23" visible="`${(PIN eq 3) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_GPIO_4" value="23" visible="true" />
+    </ParamChoice>
+    <!-- BT_GPIO_5 -->
+    <ParamChoice id="PIN_4" name="GPIO Functionality Selection" group="Internal Connection" default="24" visible="`${(PIN eq 4) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_GPIO_5" value="24" visible="true" />
+    </ParamChoice>
+    <!-- BT_GPIO_6 -->
+    <ParamChoice id="PIN_5" name="GPIO Functionality Selection" group="Internal Connection" default="25" visible="`${(PIN eq 5) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_GPIO_6" value="25" visible="true" />
+    </ParamChoice>
+    <!-- BT_GPIO_7 -->
+    <ParamChoice id="PIN_6" name="GPIO Functionality Selection" group="Internal Connection" default="26" visible="`${(PIN eq 6) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_GPIO_7" value="26" visible="true" />
+    </ParamChoice>
+    <!-- BT_GPIO_16 -->
+    <ParamChoice id="PIN_15" name="GPIO Functionality Selection" group="Internal Connection" default="1" visible="`${(PIN eq 15) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_A_GPIO_0" value="1" visible="true" />
+      <Entry name="FUNC_GPIO_7" value="26" visible="true" />
+    </ParamChoice>
+    <!-- BT_GPIO_17 -->
+    <ParamChoice id="PIN_16" name="GPIO Functionality Selection" group="Internal Connection" default="2" visible="`${(PIN eq 16) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_A_GPIO_0" value="2" visible="true" />
+      <Entry name="FUNC_GPIO_7" value="26" visible="true" />
+    </ParamChoice>
+    <!-- BT_UART_CTS_N -->
+    <ParamChoice id="PIN_18" name="GPIO Functionality Selection" group="Internal Connection" default="2" visible="`${(PIN eq 18) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_A_GPIO_1" value="2" visible="true" />
+    </ParamChoice>
+    <!-- BT_UART_RTS_N -->
+    <ParamChoice id="PIN_19" name="GPIO Functionality Selection" group="Internal Connection" default="1" visible="`${(PIN eq 19) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_A_GPIO_0" value="1" visible="true" />
+    </ParamChoice>
+    <!-- BT_UART_RXD_N -->
+    <ParamChoice id="PIN_20" name="GPIO Functionality Selection" group="Internal Connection" default="24" visible="`${(PIN eq 20) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_GPIO_5" value="24" visible="true" />
+    </ParamChoice>
+    <!-- BT_UART_TXD_N -->
+    <ParamChoice id="PIN_21" name="GPIO Functionality Selection" group="Internal Connection" default="23" visible="`${(PIN eq 21) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_GPIO_4" value="23" visible="true" />
+    </ParamChoice>
+    <!-- DMIC_CK -->
+    <ParamChoice id="PIN_22" name="GPIO Functionality Selection" group="Internal Connection" default="19" visible="`${(PIN eq 22) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_GPIO_0" value="19" visible="true" />
+    </ParamChoice>
+    <!-- DMIC_DQ -->
+    <ParamChoice id="PIN_23" name="GPIO Functionality Selection" group="Internal Connection" default="20" visible="`${(PIN eq 23) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_GPIO_1" value="20" visible="true" />
+    </ParamChoice>
+    <!-- LHL_GPIO_2 -->
+    <ParamChoice id="PIN_24" name="GPIO Functionality Selection" group="Internal Connection" default="9" visible="`${(PIN eq 24) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_B_GPIO_0" value="9" visible="true" />
+    </ParamChoice>
+    <!-- LHL_GPIO_3 -->
+    <ParamChoice id="PIN_25" name="GPIO Functionality Selection" group="Internal Connection" default="10" visible="`${(PIN eq 25) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_B_GPIO_1" value="10" visible="true" />
+    </ParamChoice>
+    <!-- LHL_GPIO_4 -->
+    <ParamChoice id="PIN_26" name="GPIO Functionality Selection" group="Internal Connection" default="11" visible="`${(PIN eq 26) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_B_GPIO_2" value="11" visible="true" />
+    </ParamChoice>
+    <!-- LHL_GPIO_5 -->
+    <ParamChoice id="PIN_27" name="GPIO Functionality Selection" group="Internal Connection" default="12" visible="`${(PIN eq 27) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_B_GPIO_3" value="12" visible="true" />
+    </ParamChoice>
+    <!-- LHL_GPIO_6 -->
+    <ParamChoice id="PIN_28" name="GPIO Functionality Selection" group="Internal Connection" default="13" visible="`${(PIN eq 28) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_B_GPIO_4" value="13" visible="true" />
+    </ParamChoice>
+    <!-- LHL_GPIO_7 -->
+    <ParamChoice id="PIN_29" name="GPIO Functionality Selection" group="Internal Connection" default="14" visible="`${(PIN eq 29) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_B_GPIO_5" value="14" visible="true" />
+    </ParamChoice>
+    <!-- LHL_GPIO_8 -->
+    <ParamChoice id="PIN_30" name="GPIO Functionality Selection" group="Internal Connection" default="15" visible="`${(PIN eq 30) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_B_GPIO_6" value="15" visible="true" />
+    </ParamChoice>
+    <!-- LHL_GPIO_9 -->
+    <ParamChoice id="PIN_31" name="GPIO Functionality Selection" group="Internal Connection" default="16" visible="`${(PIN eq 31) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_B_GPIO_7" value="16" visible="true" />
+    </ParamChoice>
+    <!-- TDM1_D1 -->
+    <ParamChoice id="PIN_32" name="GPIO Functionality Selection" group="Internal Connection" default="6" visible="`${(PIN eq 32) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_A_GPIO_5" value="6" visible="true" />
+    </ParamChoice>
+    <!-- TDM1_DO -->
+    <ParamChoice id="PIN_33" name="GPIO Functionality Selection" group="Internal Connection" default="7" visible="`${(PIN eq 33) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_A_GPIO_6" value="7" visible="true" />
+    </ParamChoice>
+    <!-- TDM1_MCK -->
+    <ParamChoice id="PIN_34" name="GPIO Functionality Selection" group="Internal Connection" default="5" visible="`${(PIN eq 34) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_A_GPIO_4" value="5" visible="true" />
+    </ParamChoice>
+    <!-- TDM1_SCK -->
+    <ParamChoice id="PIN_35" name="GPIO Functionality Selection" group="Internal Connection" default="4" visible="`${(PIN eq 35) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_A_GPIO_3" value="4" visible="true" />
+    </ParamChoice>
+    <!-- TDM1_WS -->
+    <ParamChoice id="PIN_36" name="GPIO Functionality Selection" group="Internal Connection" default="3" visible="`${(PIN eq 36) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_A_GPIO_2" value="3" visible="true" />
+    </ParamChoice>
+    <!-- TDM2_SCK -->
+    <ParamChoice id="PIN_37" name="GPIO Functionality Selection" group="Internal Connection" default="1" visible="`${(PIN eq 37) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_A_GPIO_0" value="1" visible="true" />
+    </ParamChoice>
+    <!-- TDM2_D1 -->
+    <ParamChoice id="PIN_38" name="GPIO Functionality Selection" group="Internal Connection" default="25" visible="`${(PIN eq 38) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_GPIO_6" value="25" visible="true" />
+    </ParamChoice>
+    <!-- TDM2_MCK -->
+    <ParamChoice id="PIN_39" name="GPIO Functionality Selection" group="Internal Connection" default="2" visible="`${(PIN eq 39) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_A_GPIO_1" value="2" visible="true" />
+      <Entry name="FUNC_A_GPIO_7" value="8" visible="true" />
+    </ParamChoice>
+    <!-- TDM2_DO -->
+    <ParamChoice id="PIN_40" name="GPIO Functionality Selection" group="Internal Connection" default="26" visible="`${(PIN eq 40) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_GPIO_7" value="26" visible="true" />
+    </ParamChoice>
+    <!-- TDM2_WS -->
+    <ParamChoice id="PIN_41" name="GPIO Functionality Selection" group="Internal Connection" default="8" visible="`${(PIN eq 41) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
+      <Entry name="FUNC_A_GPIO_7" value="8" visible="true" />
+    </ParamChoice>
+
+    <ParamString id="btssGpioFunctionality" name="btssGpioFunctionality" group="Internal Connection" default="`${getParamValue(&quot;PIN_&quot; . PIN)}`" editable="false" visible="false" desc="GPIO/A_GPIO/B_GPIO functionality value"/>
+    <ParamString id="pin_solver" name="pin_solver" group="Internal Connection" default="`${runTcl(&quot;pin_solver-1.0.tcl&quot;, btssGpioFunctionality )}`" visible="false" editable="false" desc="GPIO Pin number configurator" />
+    <ParamRange id="btssGPIO" name="GPIO Pin Number" group="Internal Connection" default="`${getTclVar(&quot;btssValuePersonality&quot;, pin_solver)}`" min="0" max="23" resolution="1" visible="`${gpioFunc}`" editable="false" desc="This paramter provides the GPIO Pin number." />
+
+  </Parameters>
+
+  <DRCs>
+    <DRC type="ERROR" text="A pin can have either AUX Functionality or GPIO/A_GPIO/B_GPIO Functionality." condition="`${hasConnection &amp;&amp; gpioFunc}`" />
+  </DRCs>
+
+  <ConfigFirmware>
+      <ConfigInclude value="btss_pinmux.h" include="true" />
+      <ConfigInclude value="btss_gpio.h" include="true" />
+      <ConfigInclude value="cycfg_routing.h" include="`${hasConnection}`" />
+      <ConfigInclude value="cyhal_hwmgr.h" include="true" guard="defined (CY_USING_HAL)" />
+
+      <ConfigDefine name="`${INST_NAME}`_PORT_NUM" value="`${PORT}`U" public="true" include="true" />
+      <ConfigDefine name="`${INST_NAME}`_PIN_NUM" value="`${PIN}`U" public="true" include="true" />
+      <ConfigDefine name="`${INST_NAME}`" value="(cyhal_gpio_t)`${PIN}`U" public="true" include="true" guard="defined (CY_USING_HAL)"/>
+      <ConfigDefine name="`${INST_NAME}`_HAL_DIR" value="`${(direction eq 1) ? &quot;CYHAL_GPIO_DIR_OUTPUT &quot; : &quot;CYHAL_GPIO_DIR_INPUT &quot;}`" public="true" include="true" guard="defined (CY_USING_HAL)" />
+
+      <ConfigVariable name="`${INST_NAME}`_outputDir" type="uint8_t" const="false" value="`${direction}`" public="true" include="true"  />
+      <ConfigVariable name="`${INST_NAME}`_outValue" type="uint32_t" const="false" value="`${initialState}`" public="true" include="true"  />
+      <ConfigVariable name="`${INST_NAME}`_triggerType" type="BTSS_GPIO_INT_TRIGGER_TYPE_t" const="false" value="`${triggerType}`" public="true" include="true"  />
+      <ConfigVariable name="`${INST_NAME}`_config" type="uint8_t" const="false" value="`${outputEnableMsk}` | `${pullUpEnableMsk}` | `${pullDownEnableMsk}` | `${hysteresisEnableMsk}` | `${inputDisableMsk}` | `${driveCurrentSel}`" public="true" include="true"  />
+      <ConfigVariable name="`${INST_NAME}`_pad_num" type="BTSS_PAD_LIST_t" const="true" value="(BTSS_PAD_LIST_t)`${PIN}`U" public="true" include="true"  />
+      <ConfigVariable name="`${INST_NAME}`_func_value" type="BTSS_PINMUX_FUNC_LIST_t" const="true" value="(BTSS_PINMUX_FUNC_LIST_t)`${hasConnection ? btssPeripheralPinMuxFuncDefine : ( gpioFunc ? getParamValue(&quot;PIN_&quot; . PIN) : 0 )}`" public="true" include="true"  />
+      <ConfigVariable name="`${INST_NAME}`_btss_gpio_num" type="BTSS_GPIO_t" const="true" value="(BTSS_GPIO_t)`${btssGPIO}`U" public="true" include="`${gpioFunc}`"  />
+
+      <ConfigStruct name="`${INST_NAME}`_obj" type="cyhal_resource_inst_t" const="true" public="true" include="true" guard="defined (CY_USING_HAL)">
+        <Member name="type" value="CYHAL_RSC_GPIO" />
+        <Member name="block_num" value="`${INST_NAME}`_PORT_NUM" />
+        <Member name="channel_num" value="`${INST_NAME}`_PIN_NUM" />
+      </ConfigStruct>
+
+      <ConfigInstruction value="btss_pad_configure(`${INST_NAME}`_pad_num, `${INST_NAME}`_func_value, `${INST_NAME}`_config);" include="true" />
+      <ConfigInstruction value="btss_gpio_setDirection(`${INST_NAME}`_btss_gpio_num, `${INST_NAME}`_outputDir);" include="`${gpioFunc}`" />
+      <ConfigInstruction value="cyhal_hwmgr_reserve(&amp;`${INST_NAME}`_obj);" include="true" guard="defined (CY_USING_HAL)" />
+  </ConfigFirmware>
+</Personality>

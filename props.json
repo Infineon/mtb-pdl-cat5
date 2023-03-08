@@ -1,0 +1,9 @@
+{
+    "configurator_support": true,
+    "core": {
+        "id": "6b31d604-6fe6-4fa6-8137-191bca81d75b",
+        "name": "mtb-pdl-cat5"
+    },
+    "opt":{
+    }
+}
