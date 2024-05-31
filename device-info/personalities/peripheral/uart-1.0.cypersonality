@@ -123,15 +123,18 @@
 
     <!--Flow Control-->
     <ParamBool id="FlowControl" name="Enable Flow Control" group="Flow Control" default="false" visible="`${!SmartCard}`" editable="true" desc="This parameter enables the cts input." />
-    <ParamChoice id="CtsPolarity" name="CTS Polarity" group="Flow Control" default="CY_SCB_UART_ACTIVE_LOW" visible="`${!SmartCard}`" editable="true" desc="This parameter defines the active polarity of the CTS output signal as Active Low or Active High.">
+	<ParamChoice id="CtsPolarity" name="CTS Polarity" group="Flow Control" default="CY_SCB_UART_ACTIVE_LOW" visible="`${SmartCard?false:FlowControl?true:false}`" editable="`${FlowControl}`" desc="This parameter defines the active polarity of the CTS output signal as Active Low or Active High.">
       <Entry name="Active Low" value="CY_SCB_UART_ACTIVE_LOW" visible="true" />
       <Entry name="Active High" value="CY_SCB_UART_ACTIVE_HIGH" visible="true" />
     </ParamChoice>
-    <ParamChoice id="RtsPolarity" name="RTS Polarity" group="Flow Control" default="CY_SCB_UART_ACTIVE_LOW" visible="`${!SmartCard}`" editable="true" desc="This parameter defines the active polarity of the RTS output signal as Active Low or Active High.">
+	<ParamChoice id="RtsPolarity" name="RTS Polarity" group="Flow Control" default="CY_SCB_UART_ACTIVE_LOW" visible="`${SmartCard?false:FlowControl?true:false}`" editable="`${FlowControl}`" desc="This parameter defines the active polarity of the RTS output signal as Active Low or Active High.">
       <Entry name="Active Low" value="CY_SCB_UART_ACTIVE_LOW" visible="true" />
       <Entry name="Active High" value="CY_SCB_UART_ACTIVE_HIGH" visible="true" />
-    </ParamChoice>
-    <ParamRange id="RtsTriggerLevel" name="RTS Activation Level" group="Flow Control" default="63" min="0" max="`${FifoLevelMax}`" resolution="1" visible="`${!SmartCard}`" editable="true" desc="This parameter determines the behavior of the RTS signal as follows: while the RX FIFO has fewer entries than the RTS Active When, the signal remains active; otherwise, the signal becomes inactive. The range: 0 – `${FifoLevelByte}` (when Data Width is less than or equal 8), and 0 - `${FifoLevelHalfword}` otherwise." />
+	</ParamChoice>
+
+	<ParamString id="rtsTriggerVal" visible="false" editable="false" desc="" group="" name="" default="`${FlowControl?&quot;63&quot;:&quot;0&quot;}`" />
+
+	<ParamRange id="RtsTriggerLevel" name="RTS Activation Level" group="Flow Control" default="63" min="0" max="`${FifoLevelMax}`" resolution="1" visible="`${SmartCard?false:FlowControl?true:false}`" editable="`${FlowControl}`" desc="This parameter determines the behavior of the RTS signal as follows: while the RX FIFO has fewer entries than the RTS Active When, the signal remains active; otherwise, the signal becomes inactive. The range: 0 – `${FifoLevelByte}` (when Data Width is less than or equal 8), and 0 - `${FifoLevelHalfword}` otherwise." />
 
     <ParamString id="Tx_out_descr" name="tx_out description" group="Internal" default="The transmitter output drives the output serial data to another device on the serial bus." visible="false" editable="false" desc="tx_out description" />
     <ParamString id="Rx_tx_out_descr" name="rx_tx_out description" group="Internal" default="The receive and transmit output receives and transmits data from/to another device on the bus. This pin presents if the Com Mode parameter is SmartCard. Note that Drive Mode of the connected pin must be Open Drain Drives Low." visible="false" editable="false" desc="rx_tx_out description" />
@@ -193,15 +196,16 @@
 
     <!--Multi Processor Mode-->
     <ParamBool id="MultiProc" name="Enable Multi Processor Mode" group="Multi Processor Mode" default="false" visible="`${!SmartCard}`" editable="true" desc="This parameter enables the UART multi-processor mode. Only applicable when Com Mode is Standard." />
-    <ParamRange id="MpRxAddress" name="Address" group="Multi Processor Mode" default="0" min="0" max="255" resolution="1" visible="`${!SmartCard}`" editable="true" desc="This parameter specifies the UART address. Only applicable when the Enable Multi Processor Mode parameter is true." />
-    <ParamRange id="MpRxAddressMask" name="Mask" group="Multi Processor Mode" default="255" min="0" max="255" resolution="1" visible="`${!SmartCard}`" editable="true" desc="This parameter specifies the UART address mask. Only applicable when the Enable Multi Processor Mode parameter is true.
+	<ParamRange id="MpRxAddress" name="Address" group="Multi Processor Mode" default="0" min="0" max="255" resolution="1" visible="`${(SmartCard)?false:(MultiProc)?true:false}`" editable="true" desc="This parameter specifies the UART address. Only applicable when the Enable Multi Processor Mode parameter is true." />
+ <!-- <ParamString id="DbgString" name="Dbg" default="`${(SmartCard)?false:(MultiProc)?true:false}`" editable="false" visible="true" desc="" group="Multi Processor Mode"/> -->
+ <ParamRange id="MpRxAddressMask" name="Mask" group="Multi Processor Mode" default="255" min="0" max="255" resolution="1" visible="`${(SmartCard)?false:(MultiProc)?true:false}`" editable="true" desc="This parameter specifies the UART address mask. Only applicable when the Enable Multi Processor Mode parameter is true.
     - Bit value 0 – excludes a bit from the address comparison.
     - Bit value 1 – the bit needs to match with the corresponding bit of the UART address." />
-    <ParamBool id="MpRxAcceptAddress" name="Accept Matching Address in RX FIFO" group="Multi Processor Mode" default="false" visible="`${!SmartCard}`" editable="true" desc="This parameter determines whether to put the matched UART address into the RX FIFO. Only applicable when the Enable Multi Processor Mode parameter is true." />
+ <ParamBool id="MpRxAcceptAddress" name="Accept Matching Address in RX FIFO" group="Multi Processor Mode" default="false" visible="`${SmartCard?false:(MultiProc)?true:false}`" editable="true" desc="This parameter determines whether to put the matched UART address into the RX FIFO. Only applicable when the Enable Multi Processor Mode parameter is true." />
 
     <!-- Drop options -->
     <ParamBool id="DropOnFrameErr" name="Drop on Frame Error" group="Advanced" default="false" visible="true" editable="true" desc="This parameter determines if the data is dropped from the RX FIFO on a frame error event." />
-    <ParamBool id="DropOnParityErr" name="Drop on Parity Error" group="Advanced" default="false" visible="true" editable="true" desc="This parameter determines if the data is dropped from the RX FIFO on a parity error event." />
+	<ParamBool id="DropOnParityErr" name="Drop on Parity Error" group="Advanced" default="false" visible="`${(ParityType ne CY_SCB_UART_PARITY_NONE)}`" editable="true" desc="This parameter determines if the data is dropped from the RX FIFO on a parity error event." />
 
     <!--Break Width-->
     <ParamRange id="BreakSignalBits" name="Break Signal Bits" group="Advanced" default="11" min="7" max="16" resolution="1" visible="`${Standard}`" editable="true" desc="This parameter specifies the break width in bits. The range: 7-16." />
@@ -314,7 +318,8 @@
       <Member name="enableMsbFirst" value="`${(BitsOrder eq CY_SCB_UART_MSB_FIRST) ? &quot;true&quot; : &quot;false&quot;}`" />
       <Member name="dataWidth" value="`${DataWidth}`UL" />
       <Member name="parity" value="`${(Standard &amp;&amp; (DataWidth ne 9)) ? ParityType : (SmartCard) ? &quot;CY_SCB_UART_PARITY_EVEN&quot; : &quot;CY_SCB_UART_PARITY_NONE&quot;}`" />
-      <Member name="stopBits" value="`${StopBits}`" />
+			<!-- <Member name="stopBits" value="`${StopBits}`" /> -->
+      <Member name="stopBits" value="`${(SmartCard) ? &quot;CY_SCB_UART_STOP_BITS_2&quot; : (StopBits)}`" />
       <Member name="enableInputFilter" value="`${((IrDA) ? &quot;true&quot; : EnableInputFilter) ? &quot;true&quot; : &quot;false&quot;}`" />
       <Member name="breakWidth" value="`${BreakSignalBits}`UL" />
       <Member name="dropOnFrameError" value="`${DropOnFrameErr}`" />

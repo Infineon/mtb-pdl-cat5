@@ -7,32 +7,13 @@ var NAVTREE =
     [ "AIROC™ Website", "index.html#wiced_web", null ],
     [ "Bluetooth® References", "index.html#bt_smart_ref", null ],
     [ "AIROC™ Community", "index.html#wiced_forum", null ],
-    [ "AIROC™ BTSDK Licensing Information", "index.html#wiced_license", null ],
-    [ "Components", "modules.html", "modules" ]
+    [ "AIROC™ BTSDK Licensing Information", "index.html#wiced_license", null ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"group___adc_driver.html",
-"group___transport.html#gac18db9b6503a1f1fd4ff237c5d4fccca",
-"group__btm__ble__api__functions.html#ga6784dc351a127f7cd9b3fbf9f1d5c49c",
-"group__btm__ble__sec__api__functions.html#gafe787b26f36db46a31a4ee55c0e4375d",
-"group__l2cap__common__api__functions.html#ga2cd224a6bc467d85d853540f8abdec5e",
-"group__sdp.html#gga93c6f8c9d0b76ab42e67a9f2d0dec328afca7615cbd8494de228cfb3307beb0aa",
-"group__wicedbt___device_management.html#gab00d2714f122f0590dbafc270f0004f9",
-"group__wicedbt__a2dp__mpeg__1__2.html#ga523ad1f323a2490d5d79953e490f6928",
-"group__wicedbt__avdt.html#ga5f38d826865843cbc0618c5d166bfb1c",
-"group__wicedbt__avrc.html#ga42ea643a601d4b6cf0a849fc865dac0f",
-"group__wicedbt__avrc.html#gaade4761878089cdacbc2f7ddb6521ab9",
-"group__wicedbt__gatt.html#ga20bd3f2b04d68644e09d61a327857f5b",
-"group__wicedbt__gatt.html#gga972f2437538363989cee28019cb06652ad9d5a5ab20c8f9dbdcadc5f817cb490f",
-"structwiced__bt__avdt__setconfig__t.html",
-"structwiced__bt__avrc__pass__thru__hdr__t.html",
-"structwiced__bt__cfg__avdt__t.html",
-"structwiced__bt__gatt__char__descr__info__t.html",
-"structwiced__bt__l2cap__cfg__information__t.html#abfd24350fd0f519cf2cc67a7827ab6fa",
-"unionwiced__bt__ble__adv__ext__event__data__t.html#ae29c4f63303b86bfa62bfa2d9025a309"
+"index.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--****************************************************************************
+* \file uart.cypersonality
+* \version 1.0
+*
+* \brief
+* UART personality description file.
+*
+********************************************************************************
+* \copyright
+* Copyright 2022 Cypress Semiconductor Corporation
+* SPDX-License-Identifier: Apache-2.0
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*****************************************************************************-->
+
+<Personality id="power_mcu" name="Power MCU" version="1.0" xmlns="http://cypress.com/xsd/cyhwpersonality_v7">
+  <Dependencies>
+    <IpBlock name="55500A0_power">
+    </IpBlock>
+    <Resource name="power\.mcu" />
+  </Dependencies>
+  <ExposedMembers />
+
+  <Parameters>
+	  <ParamBool id="enableLPA" name="Enable MCU Low Power" group="Power" default="false" visible="true" editable="true" desc="If checked Low Power Mode will be enabled for the MCU" />
+	  <!--	  <ParamChoice id="callbackState"
+			  name="SysPM Callback State"
+			  group="Power"
+			  visible="`${enableLPA}`"
+			  default="CYHAL_SYSPM_CB_CPU_DEEPSLEEP"
+			  editable="true"
+			  multiSelect="true"
+			  desc="SysPM Callback State"
+			  >
+		<Entry name="Sleep" value="CYHAL_SYSPM_CB_CPU_SLEEP" visible="true" />
+		<Entry name="Deep Sleep" value="CYHAL_SYSPM_CB_CPU_DEEPSLEEP" visible="true" />
+		<Entry name="Deep Sleep Ram" value="CYHAL_SYSPM_CB_CPU_DEEPSLEEP_RAM" visible="true"/>
+		<Entry name="Hibernate" value="CYHAL_SYSPM_CB_SYSTEM_HIBERNATE" visible="true" />
+		<Entry name="Normal" value="CYHAL_SYSPM_CB_SYSTEM_NORMAL" visible="true" />
+		<Entry name="Low" value="CYHAL_SYSPM_CB_SYSTEM_LOW" visible="true" />
+	  </ParamChoice> -->
+	  <!--    <ParamBool id="ch1" group="Power/SysPM Callback State" editable="true" desc="" default="false" name="Sleep"  visible="`${enableLPA}`" />
+	<ParamBool id="ch2" group="Power/SysPM Callback State" editable="true" desc="" default="true" name="Deep Sleep"  visible="`${enableLPA}`" />
+	<ParamBool id="ch3" group="Power/SysPM Callback State" editable="true" desc="" default="false" name="Deep Sleep Ram"  visible="`${enableLPA}`"/>
+	<ParamBool id="ch4" group="Power/SysPM Callback State" editable="true" desc="" default="false" name="Hibernate"  visible="`${enableLPA}`" />
+	<ParamBool id="ch5" group="Power/SysPM Callback State" editable="true" desc="" default="false" name="Normal"  visible="`${enableLPA}`" />
+	<ParamBool id="ch6" group="Power/SysPM Callback State" editable="true" desc="" default="false" name="Low"  visible="`${enableLPA}`" /> -->
+
+	<!--	<ParamChoice id="callbackMode"
+			name="SysPM Callback Mode"
+			group="Power"
+			visible="`${enableLPA}`"
+			editable="true"
+			desc="SysPM Callback State"
+			default="CYHAL_SYSPM_CHECK_FAIL" multiSelect="true">
+		<Entry name="Check Ready" value="CYHAL_SYSPM_CHECK_READY" visible="true" />
+		<Entry name="Check Fail" value="CYHAL_SYSPM_CHECK_FAIL" visible="true" />
+		<Entry name="Before Transition" value="CYHAL_SYSPM_BEFORE_TRANSITION" visible="true" />
+		<Entry name="After Transition" value="CYHAL_SYSPM_AFTER_TRANSITION" visible="true" />
+		<Entry name="After WFI Transition" value="CYHAL_SYSPM_AFTER_DS_WFI_TRANSITION" visible="true" />
+	</ParamChoice> -->
+
+    <ParamBool id="cbm1" group="Power/SysPM Callback Ignore Mode" editable="true" desc="" default="false" name="Check Fail"  visible="`${enableLPA}`" />
+	<ParamBool id="cbm2" group="Power/SysPM Callback Ignore Mode" editable="true" desc="" default="true" name="Check Ready"  visible="`${enableLPA}`" />
+	<ParamBool id="cbm3" group="Power/SysPM Callback Ignore Mode" editable="true" desc="" default="false" name="Before Transition"  visible="`${enableLPA}`"/>
+	<ParamBool id="cbm4" group="Power/SysPM Callback Ignore Mode" editable="true" desc="" default="false" name="After Transition"  visible="`${enableLPA}`" />
+	<ParamBool id="cbm5" group="Power/SysPM Callback Ignore Mode" editable="true" desc="" default="false" name="After WFI Transition"  visible="`${enableLPA}`" />
+
+	<ParamChoice id="pmuSleepMode"
+			name="PMU Sleep Mode"
+			group="Power"
+			visible="false"
+			editable="false"
+			desc="PMU Sleep Mode"
+			default="BTSS_SYSTEM_PMU_SLEEP_PDS"
+			multiSelect="true">
+		<Entry name="PMU Sleep Not Allowed" value="BTSS_SYSTEM_PMU_SLEEP_NOT_ALLOWED" visible="true" />
+		<Entry name="PMU Sleep with XTAL ON" value="BTSS_SYSTEM_PMU_SLEEP_WITH_XTAL_ON" visible="true" />
+		<Entry name="PMU Sleep with XTAL OFF" value="BTSS_SYSTEM_PMU_SLEEP_WITH_XTAL_OFF" visible="true" />
+		<Entry name="PMU Sleep PDS" value="BTSS_SYSTEM_PMU_SLEEP_PDS" visible="true" />
+		<Entry name="PMU Sleep EPDS" value="BTSS_SYSTEM_PMU_SLEEP_EPDS" visible="true" />
+    </ParamChoice>
+
+	<ParamChoice id="sysPwrConfig"
+			name="Idle Power Mode Config"
+			group="Power"
+			visible="`${enableLPA}`"
+			editable="true"
+			desc="Idle Power Config"
+			default="CY_CFG_PWR_MODE_ACTIVE"
+			multiSelect="false">
+		<Entry name="Active" value="CY_CFG_PWR_MODE_ACTIVE" visible="true" />
+		<Entry name="Deep Sleep" value="CY_CFG_PWR_MODE_DEEPSLEEP" visible="true"/>
+	</ParamChoice>
+
+    <!-- PDL documentation -->
+	<ParamDoc id="pdlDoc" name="Configuration Help" group="Overview" default="file:///`${cy_libs_path()}`/docs/pdl_api_reference_manual/html/group__group__scb__uart.html" linkText="Open Documentation" visible="true" desc="Opens the Peripheral Driver Library Documentation" />
+
+  </Parameters>
+
+  <!-- <DRCs>
+		  <DRC type="ERROR" text="Atleast one callback state should be enabled" condition="`${!(ch1|ch2|ch3|ch4|ch5|ch6)}`">
+				  <FixIt action="SET_PARAM" target="ch1" value="true" valid="true" />
+				  <FixIt action="SET_PARAM" target="ch2" value="true" valid="true" />
+				  <FixIt action="SET_PARAM" target="ch3" value="true" valid="true" />
+				  <FixIt action="SET_PARAM" target="ch4" value="true" valid="true" />
+				  <FixIt action="SET_PARAM" target="ch5" value="true" valid="true" />
+				  <FixIt action="SET_PARAM" target="ch6" value="true" valid="true" />
+		  </DRC>
+  </DRCs> -->
+
+  <DRCs>
+		  <DRC type="ERROR" text="Atleast one callback state should be enabled" condition="`${!(cbm1|cbm2|cbm3|cbm4|cbm5)}`">
+				  <FixIt action="SET_PARAM" target="cbm1" value="true" valid="true" />
+				  <FixIt action="SET_PARAM" target="cbm2" value="true" valid="true" />
+				  <FixIt action="SET_PARAM" target="cbm3" value="true" valid="true" />
+				  <FixIt action="SET_PARAM" target="cbm4" value="true" valid="true" />
+				  <FixIt action="SET_PARAM" target="cbm5" value="true" valid="true" />
+		  </DRC>
+  </DRCs>
+
+  <ConfigFirmware>
+    <ConfigInclude value="cyhal.h" include="true" guard="defined (CY_USING_HAL)"/>
+	<ConfigInclude value="cybsp.h" include="true" />
+	<ConfigInclude value="whd_hw.h" include="`${(enableLPA)}`"/>
+
+	<ConfigDefine name="CY_CFG_PWR_SYS_IDLE_MODE" value="`${sysPwrConfig}`" public="true" include="`${enableLPA}`" preventOverride="true" />
+
+	<ConfigStruct name="`${INST_NAME . &quot;_syspm_callback_config&quot;}`"
+			type="cyhal_syspm_callback_data_t"
+			public="true"
+			include="`${(enableLPA)}`"
+			const="false"
+			guard="defined (CY_USING_HAL)">
+			<Member name="callback" value="`${INST_NAME}`_syspm_handler" />
+			<!-- <Member name="states" value="`${(callbackState)}`" /> -->
+			<!-- <Member name="ignore_modes" value="`${(callbackMode)}`" /> -->
+			<Member name="args" value="NULL" />
+			<Member name="next" value="NULL" />
+			<Member name="states" value="`${&quot;CYHAL_SYSPM_CB_SLEEP_DEEPSLEEP&quot;}`" />
+			<!--			<Member name="states"
+					value="`${(ch1?((ch2||ch3||ch4||ch5||ch6) ? &quot;CYHAL_SYSPM_CB_CPU_SLEEP|&quot; : &quot;CYHAL_SYSPM_CB_CPU_SLEEP&quot;):&quot;&quot;).
+					(ch2 ? ((ch3||ch4||ch5||ch5||ch6) ? &quot;CYHAL_SYSPM_CB_CPU_DEEPSLEEP|&quot; : &quot;CYHAL_SYSPM_CB_CPU_DEEPSLEEP &quot;) : &quot;&quot;).
+					(ch3 ? ((ch4||ch5||ch5||ch6) ? &quot;CYHAL_SYSPM_CB_CPU_DEEPSLEEP_RAM|&quot; : &quot;CYHAL_SYSPM_CB_CPU_DEEPSLEEP_RAM &quot;) : &quot;&quot;).
+					(ch4 ? ((ch5||ch6) ? &quot;CYHAL_SYSPM_CB_SYSTEM_HIBERNATE|&quot; : &quot;CYHAL_SYSPM_CB_CPU_HIBERNATE&quot;) : &quot;&quot;).
+					(ch5 ? ((ch6) ? &quot;CYHAL_SYSPM_CB_SYSTEM_NORMAL|&quot; : &quot;CYHAL_SYSPM_CB_CPU_NORMAL&quot;) : &quot;&quot;).
+					(ch6 ? &quot;CYHAL_SYSPM_CB_CPU_LOW&quot; : &quot;&quot;)
+			}`" /> -->
+			<Member name="ignore_modes"
+						value="`${(cbm1?((cbm2||cbm3||cbm4||cbm5) ? &quot;CYHAL_SYSPM_CHECK_FAIL|&quot; : &quot;CYHAL_SYSPM_CHECK_FAIL&quot;):&quot;&quot;).
+					(cbm2 ? ((cbm3||cbm4||cbm5) ? &quot;CYHAL_SYSPM_CHECK_READY|&quot; : &quot;CYHAL_SYSPM_CHECK_READY &quot;) : &quot;&quot;).
+					(cbm3 ? ((cbm4||cbm5) ? &quot;CYHAL_SYSPM_BEFORE_TRANSITION|&quot; : &quot;CYHAL_SYSPM_BEFORE_TRANSITION &quot;) : &quot;&quot;).
+					(cbm4 ? ((cbm5) ? &quot;CYHAL_SYSPM_AFTER_TRANSITION|&quot; : &quot;CYHAL_SYSPM_AFTER_TRANSITION&quot;) : &quot;&quot;).
+					(cbm5 ? &quot;CYHAL_SYSPM_AFTER_DS_WFI_TRANSITION&quot; : &quot;&quot;)
+			}`" />
+	</ConfigStruct>
+
+	<ConfigFunction signature="bool `${INST_NAME}`_syspm_handler(cyhal_syspm_callback_t state, cyhal_syspm_callback_mode_t mode, void *callback_arg)"
+			include="`${(enableLPA)}`"
+			public="false"
+			body="return true;"/>
+	<!-- <ConfigInstruction purpose="INITIALIZE" value="btss_system_sleepAllowMode(`${pmuSleepMode}`);" include="`${enableLPA}`" /> -->
+
+
+	<!-- <ConfigFunction
+		signature="void `${INST_NAME}`_pm_callback(void)"
+		body="return true;"
+		public="false"
+	include="`${enableLPA}`"/> -->
+
+	<!-- signature="bool `${INST_NAME}`_pm_callback(cyhal_syspm_callback_t state, cyhal_sypm_callback_mode_t mode, void *callback_arg)"-->
+  </ConfigFirmware>
+</Personality>

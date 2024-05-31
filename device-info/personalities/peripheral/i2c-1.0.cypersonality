@@ -61,7 +61,7 @@
     <ParamRange id="ManualLowPhaseDutyCycle" name="SCL Low Phase (SCB Clocks)" group="Manual DataRate Control" default="16" min="1" max="16" resolution="1" visible="`${ManualDataRate}`" editable="true" desc="This parameter defines how many SCB clocks are used to generate the SCL low phase (only applicable for the master modes)." />
     <ParamRange id="ManualHighPhaseDutyCycle" name="SCL High Phase (SCB Clocks)" group="Manual DataRate Control" default="9" min="1" max="16" resolution="1" visible="`${ManualDataRate}`" editable="true" desc="This parameter defines how many SCB clocks are used to generate the SCL high phase (only applicable for the master modes)." />
 
-    <ParamRange id="DataRate" name="Data Rate (kbps)" group="General" default="100" min="1" max="1000" resolution="1" visible="`${!ManualDataRate}`" editable="true" desc="Data rate that I2C operates. Maximum data rate is 1000 kbps." />
+	<ParamRange id="DataRate" name="Data Rate (kbps)" group="General" default="100" min="1" max="1000" resolution="1" visible="`${(ModeUser eq CY_SCB_I2C_SLAVE) || (ModeUser eq CY_SCB_I2C_MASTER_SLAVE) || (ModeUser eq CY_SCB_I2C_MASTER)}`" editable="true" desc="Data rate that I2C operates. Maximum data rate is 1000 kbps." />
 
     <ParamBool id="EnableTxFifo" name="Use TX FIFO" group="General" default="true" visible="true" editable="true" desc="This parameter defines if the TX FIFO capabilities are used. Usage of the TX FIFO reduces the possibility of clock stretching and interrupt overhead." />
 

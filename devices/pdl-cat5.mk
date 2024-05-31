@@ -33,29 +33,84 @@ endif
 #
 CY_PDL_ROOT=$(SEARCH_mtb-pdl-cat5)
 
-CY_CORE_PATCH_DIR=$(CY_PDL_ROOT)/devices/patches/wlbga_iPA_dLNA_ANT0/$(LIFE_CYCLE_STATE)
+$(info DEVICE_COMPONENTS are $(DEVICE_COMPONENTS))
 
-CY_CORE_PATCH=$(CY_CORE_PATCH_DIR)/patch.elf
-CY_CORE_PATCH_CERT=$(CY_CORE_PATCH_DIR)/patch_cert.hex
-CY_CORE_PATCH_SEC_XIP_MDH=$(CY_CORE_PATCH_DIR)/patch_sec_xip.mdh
-CY_CORE_PATCH_SEC=$(CY_CORE_PATCH_DIR)/patch_sec.bin
-CY_CORE_PATCH_SEC_HEX=$(CY_CORE_PATCH_DIR)/patch_sec.hex
-CY_CORE_PATCH_FW=$(CY_CORE_PATCH_DIR)/patch_fw.bin
-CY_CORE_PATCH_DEFS=$(CY_PDL_ROOT)/devices/source/platforms/$(CY_TARGET_DEVICE).cflag
-CY_CORE_PATCH_LIB_PATH=$(CY_PDL_ROOT)/libraries/prebuilt
-
-#
-# Variables for pre-build and post-build processing
-#
-CY_CORE_PLATFORM_PATH=$(CY_PDL_ROOT)/devices/source/platforms
-CY_CORE_HDF=$(CY_CORE_PLATFORM_PATH)/configdef$(CY_TARGET_DEVICE).hdf
-CY_CORE_HCI_ID=$(CY_CORE_PLATFORM_PATH)/IDFILE.txt
-CY_CORE_CGSLIST+=$(CY_CORE_PLATFORM_PATH)/platform.cgs
-CY_CORE_BTP=$(CY_CORE_PLATFORM_PATH)/ram.btp
-ifneq ($(LIFE_CYCLE_STATE),DM)
-  CY_CORE_MINIDRIVER=$(CY_CORE_PATCH_DIR)/minidriver.hex
+# Derive Chip-Name from Device Components
+ifeq ($(filter 55900A0,$(DEVICE_COMPONENTS)), 55900A0)
+    CHIP_NAME=55900A0
+else ifeq ($(filter 55500,$(DEVICE_COMPONENTS)), 55500)
+    CHIP_NAME=55500A1
 else
-  CY_CORE_MINIDRIVER=$(CY_CORE_PATCH_DIR)/secure_loader_dm.hcd
+    $(error Unknown Device Component reference: $(DEVICE_COMPONENTS))
+endif
+
+CHIP_PATCH_DIR_ANT=wlbga_iPA_dLNA_ANT0
+ifeq ($(CHIP_NAME), $(filter $(CHIP_NAME), 55500A1 55900A0))
+    ifeq ($(CHIP_ANT_SEL),SLNA_ANT0)
+        CHIP_PATCH_DIR_ANT=wlbga_iPA_sLNA_ANT0
+    else ifeq ($(CHIP_ANT_SEL),DLNA_BTANT)
+        CHIP_PATCH_DIR_ANT=wlbga_iPA_dLNA_BTANT
+    else
+        CHIP_ANT_SEL=DLNA_ANT0
+    endif
+else
+    CHIP_ANT_SEL=DLNA_ANT0
+endif
+
+ifeq ($(DIRECT_LOAD),0)
+    $(info Build $(CHIP_NAME) for flash patch using $(CHIP_ANT_SEL))
+    CY_CORE_PATCH_DIR=$(CY_PDL_ROOT)/devices/COMPONENT_$(CHIP_NAME)/flash_patches/$(CHIP_PATCH_DIR_ANT)/$(LIFE_CYCLE_STATE)
+    CY_CORE_PATCH=$(CY_CORE_PATCH_DIR)/patch.elf
+    ifeq ($(CHIP_NAME),55900A0)
+        ifeq (,$(filter NETXSECURE_WPA3,$(COMPONENTS)))
+            CY_CORE_PATCH_SYMBOLS=$(CY_CORE_PATCH_DIR)/COMPONENT_NETXSECURE_ROM/patch.sym
+        else
+            CY_CORE_PATCH_SYMBOLS=$(CY_CORE_PATCH_DIR)/COMPONENT_NETXSECURE_WPA3/patch.sym
+        endif
+    endif
+    CY_CORE_PATCH_CERT=$(CY_CORE_PATCH_DIR)/patch_cert.hex
+    CY_CORE_PATCH_SEC=$(CY_CORE_PATCH_DIR)/patch_sec.bin
+    CY_CORE_PATCH_SEC_XIP_MDH=$(CY_CORE_PATCH_DIR)/patch_full_mdh.bin
+    CY_CORE_PATCH_FW=$(CY_CORE_PATCH_DIR)/patch_fw.bin
+    CY_CORE_PATCH_DEFS=$(CY_PDL_ROOT)/devices/COMPONENT_$(CHIP_NAME)/source/platforms/$(CHIP_NAME).cflag
+    #
+    # Variables for pre-build and post-build processing
+    #
+    CY_CORE_PLATFORM_PATH=$(CY_PDL_ROOT)/devices/COMPONENT_$(CHIP_NAME)/source/platforms
+    CY_CORE_HDF=$(CY_CORE_PLATFORM_PATH)/configdef$(CHIP_NAME).hdf
+    CY_CORE_HCI_ID=$(CY_CORE_PLATFORM_PATH)/IDFILE.txt
+    CY_CORE_CGSLIST+=$(CY_CORE_PLATFORM_PATH)/platform.cgs
+    CY_CORE_BTP=$(CY_CORE_PLATFORM_PATH)/flash.btp
+    #  CY_CORE_MINIDRIVER=$(CY_CORE_PLATFORM_PATH)/$(LIFE_CYCLE_STATE)_chiperase_flashpatch_loader.hex
+    CY_CORE_MINIDRIVER=$(CY_CORE_PLATFORM_PATH)/$(LIFE_CYCLE_STATE)_sectorerase_flashpatch_loader.hex
+
+else
+
+    $(info Build $(CHIP_NAME) for RAM patch using $(CHIP_ANT_SEL))
+    CY_CORE_PATCH_DIR=$(CY_PDL_ROOT)/devices/COMPONENT_$(CHIP_NAME)/patches/$(CHIP_PATCH_DIR_ANT)/$(LIFE_CYCLE_STATE)
+    CY_CORE_PATCH=$(CY_CORE_PATCH_DIR)/patch.elf
+    ifeq ($(CHIP_NAME),55900A0)
+        ifeq (,$(filter NETXSECURE_WPA3,$(COMPONENTS)))
+            CY_CORE_PATCH_SYMBOLS=$(CY_CORE_PATCH_DIR)/COMPONENT_NETXSECURE_ROM/patch.sym
+        else
+            CY_CORE_PATCH_SYMBOLS=$(CY_CORE_PATCH_DIR)/COMPONENT_NETXSECURE_WPA3/patch.sym
+        endif
+    endif
+    CY_CORE_PATCH_CERT=$(CY_CORE_PATCH_DIR)/patch_cert.hex
+    CY_CORE_PATCH_SEC=$(CY_CORE_PATCH_DIR)/patch_sec.bin
+    CY_CORE_PATCH_SEC_HEX=$(CY_CORE_PATCH_DIR)/patch_sec.hex
+    CY_CORE_PATCH_SEC_XIP_MDH=$(CY_CORE_PATCH_DIR)/patch_sec_xip.mdh
+    CY_CORE_PATCH_FW=$(CY_CORE_PATCH_DIR)/patch_fw.bin
+    CY_CORE_PATCH_DEFS=$(CY_PDL_ROOT)/devices/COMPONENT_$(CHIP_NAME)/source/platforms/$(CHIP_NAME).cflag
+    #
+    # Variables for pre-build and post-build processing
+    #
+    CY_CORE_PLATFORM_PATH=$(CY_PDL_ROOT)/devices/COMPONENT_$(CHIP_NAME)/source/platforms
+    CY_CORE_HDF=$(CY_CORE_PLATFORM_PATH)/configdef$(CHIP_NAME).hdf
+    CY_CORE_HCI_ID=$(CY_CORE_PLATFORM_PATH)/IDFILE.txt
+    CY_CORE_CGSLIST+=$(CY_CORE_PLATFORM_PATH)/platform.cgs
+    CY_CORE_BTP=$(CY_CORE_PLATFORM_PATH)/ram.btp
+
 endif
 
 CY_CORE_LD_DEFS+=NUM_PATCH_ENTRIES=0

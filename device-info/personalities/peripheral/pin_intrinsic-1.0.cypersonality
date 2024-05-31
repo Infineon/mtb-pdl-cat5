@@ -35,7 +35,7 @@
   <Parameters>
     <ParamRange id="ioss" name="" group="" default="`${getInstNumber(&quot;ioss&quot;)}`" min="0" max="9999" resolution="1" visible="false" editable="false" desc="The ioss number this personality is instantiated on." />
     <ParamRange id="port" name="" group="" default="`${getInstNumber(&quot;port&quot;)}`" min="0" max="127" resolution="1" visible="false" editable="false" desc="The port number this personality is instantiated on." />
-    <ParamRange id="pin" name="" group="" default="`${getInstNumber(&quot;pin&quot;)}`" min="0" max="41" resolution="1" visible="false" editable="false" desc="The pin number this personality is instantiated on." />
+    <ParamRange id="pin" name="" group="" default="`${getInstNumber(&quot;pin&quot;)}`" min="0" max="200" resolution="1" visible="false" editable="false" desc="The pin number this personality is instantiated on." />
     <ParamString id="blockName" name="" group="" default="`${&quot;ioss_&quot; . ioss . &quot;_port_&quot; . port . &quot;_pin_&quot; . pin}`" visible="false" editable="false" desc="The default identifier name." />
     <ParamBool id="hasAlias" name="" group="" default="`${INST_NAME ne blockName}`" visible="false" editable="false" desc="Whether or not the location this personality is instantiated at has at least one alias set." />
     <ParamBool id="pinUsed" name="pinUsed" group="" default="`${isBlockUsed(&quot;ioss[0].port[&quot; . port . &quot;].pin[&quot; . pin . &quot;]&quot;)}`" visible="false" editable="false" desc="" />

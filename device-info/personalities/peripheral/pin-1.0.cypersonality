@@ -126,7 +126,11 @@
     <ParamChoice id="PIN_16" name="GPIO Functionality Selection" group="Internal Connection" default="2" visible="`${(PIN eq 16) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
       <Entry name="FUNC_A_GPIO_0" value="2" visible="true" />
       <Entry name="FUNC_GPIO_7" value="26" visible="true" />
-    </ParamChoice>
+	</ParamChoice>
+	<!-- BT_HOST_WAKE -->
+	<ParamChoice id="PIN_17" name="GPIO Functionality Selection" group="Internal Connection" default="1" visible="`${(PIN eq 17) &amp;&amp; gpioFunc}`" editable="true" desc=" ">
+	  <Entry name="FUNC_GPIO_1" value="1" visible="true" />
+	</ParamChoice>
     <!-- BT_UART_CTS_N -->
     <ParamChoice id="PIN_18" name="GPIO Functionality Selection" group="Internal Connection" default="2" visible="`${(PIN eq 18) &amp;&amp; gpioFunc}`" editable="true" desc=" " >
       <Entry name="FUNC_A_GPIO_1" value="2" visible="true" />
