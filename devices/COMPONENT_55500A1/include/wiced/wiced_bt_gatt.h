@@ -1998,6 +1998,18 @@ uint16_t wiced_bt_gattdb_getAttrUUID16(const wiced_gattdb_entry_t *p_db_entry);
 */
 uint8_t *wiced_bt_gattdb_getAttrValue(const wiced_gattdb_entry_t *p_db_entry);
 
+/**
+ * API to get the ACL handle of the connected gatt conn_id
+ * @note : The API cannot be used to get the ACL handle in case
+ *  the device is disconnected
+ *
+ *  @param[in]  conn_id    : Connection handle of the gatt bearer
+ *
+ *  @returns #0xffff in case of error
+ *
+ *  @ingroup gatt_common_api
+ */
+uint16_t wiced_bt_gatt_get_acl_conn_handle(uint16_t conn_id);
 #ifdef __cplusplus
 }
 #endif

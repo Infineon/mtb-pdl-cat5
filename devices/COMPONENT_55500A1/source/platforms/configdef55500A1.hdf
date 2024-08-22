@@ -1,5 +1,5 @@
 # DO NOT EDIT MANUALLY! FW2 VERSION
-# Automatically generated on Thu Mar 14 03:33:45 2024 from firmware 1.2.32
+# Automatically generated on Mon Jul 15 09:38:46 2024 from firmware 1.2.32
 SECTION "Config Data Entries" 0
 {
      COMMAND "Config layout" 0x0100

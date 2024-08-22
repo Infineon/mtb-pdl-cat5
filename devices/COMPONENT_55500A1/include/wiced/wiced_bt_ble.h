@@ -572,7 +572,7 @@ enum
     /** The Host requires that S=8 coding be used when transmitting on the LE Coded PHY */
     WICED_BT_BLE_PHY_ADV_OPTIONS_REQUIRE_S8 = 4,
 };
-/** Phy adv options to be set in \ref wiced_bt_ble_set_ext_adv_params_v2 */
+/** Phy adv options to be set in \ref wiced_bt_ble_set_ext_adv_parameters_v2 */
 typedef uint8_t wiced_bt_ble_phy_adv_options_t;
 
 /** Parameters for extended adv */
@@ -964,7 +964,7 @@ typedef struct
     uint8_t     rsp_slot_start;             /**< Response slot start */
     uint8_t     rsp_slot_count;             /**< Response slot count */
     uint8_t     ind_data_length;            /**< Length of the subevent indication data  */
-    uint8_t     ind_data[WICED_BT_MAX_PAWR_SUBEVENT_DATA_LEN]; /**< Subevent data  */
+    uint8_t     ind_data[1];                /**< Start of the subevent data of \p ind_data_length  */
 } wiced_bt_ble_pawr_subevent_ind_data_t;
 /* @endcond */
 
