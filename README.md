@@ -1,12 +1,10 @@
-!!! This file needs to be updated.
-
 # MTB CAT5 Peripheral Driver Library
 
 ### Overview
 The Cypress PDL simplifies software development for CAT5 family of devices.
 The PDL integrates device header files, startup code, and
 peripheral drivers into a single package. The drivers abstract the hardware functions into a set of
-easy-to-use APIs. These are fully documented in the [PDL API Reference Manual](https://infineon.github.io/mtb-pdl-cat1/pdl_api_reference_manual/html/index.html).
+easy-to-use APIs. These are fully documented in the [PDL API Reference Manual](https://infineon.github.io/mtb-pdl-cat5/pdl_api_reference_manual/html/index.html).
 
 This version of the PDL is compatible with ModusToolbox. It is not compatible
 with PSoC Creator. The most recent PSoC Creator-compatible version of the PDL
@@ -21,13 +19,13 @@ is [available here](https://www.infineon.com/cms/en/design-support/software/devi
 The PDL reduces the need to understand register usage and bit structures,
 thus easing software development for the extensive set of peripherals in the
 CAT5 series.
-See the [PDL API Reference Manual](https://infineon.github.io/mtb-pdl-cat1/pdl_api_reference_manual/html/index.html) for more detailed information.
+See the [PDL API Reference Manual](https://infineon.github.io/mtb-pdl-cat5/pdl_api_reference_manual/html/index.html) for more detailed information.
 See the [PDL Release Notes](./RELEASE.md) for release-specific information.
 
 ### Peripheral Drivers
 The PDL provides a high-level API to configure, initialize, and use a peripheral driver.
 The drivers are designed for peripheral IP blocks.
-See [PDL API Reference](https://infineon.github.io/mtb-pdl-cat1/pdl_api_reference_manual/html/modules.html) for the list of drivers.
+See [PDL API Reference](https://infineon.github.io/mtb-pdl-cat5/pdl_api_reference_manual/html/modules.html) for the list of drivers.
 
 ### Quick Start
 See the [PDL API Reference Manual Getting Started section](https://infineon.github.io/mtb-pdl-cat5/pdl_api_reference_manual/html/page_getting_started.html) for quick start instructions.
@@ -44,4 +42,4 @@ See the [PDL API Reference Manual Getting Started section](https://infineon.gith
 New versions of PDL from 2.0 onwards are now be available in [mtb-pdl-cat5](https://infineon.github.io/mtb-pdl-cat5/pdl_api_reference_manual/html/index.html).
 
 ---
-© Cypress Semiconductor Corporation (an Infineon company), 2022.
+© Infineon Technologies AG, 2024.

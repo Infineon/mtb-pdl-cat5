@@ -20,6 +20,9 @@
 #include <wiced_platform.h>
 #include "sparcommon.h"
 
+#define BT_BLE_ISOC_HOST_ACTUAL_HOST_TO_DEVICE_DEFAULT_SIZE 332
+#define BT_BLE_ISOC_DEVICE_ACTUAL_DEVICE_TO_HOST_DEFAULT_SIZE 332
+
 #if defined (__ARMCC_VERSION)
 
 extern char Image$$BSS$$ZI$$Base[];
@@ -120,9 +123,9 @@ wiced_pre_init_cfg_t pre_init_cfg = {
     /* LE ISO Buffer Configuration - Default Value */
     .iso_buf_cfg = {
         .host_claim_host_to_device_size = BT_BLE_ISOC_HOST_CLAIM_HOST_TO_DEVICE_DEFAULT_SIZE,
-        .host_to_device_size = BT_BLE_ISOC_HOST_CLAIM_HOST_TO_DEVICE_DEFAULT_SIZE,
+        .host_to_device_size = BT_BLE_ISOC_HOST_ACTUAL_HOST_TO_DEVICE_DEFAULT_SIZE,
         .device_claim_device_to_host_size = BT_BLE_ISOC_DEVICE_CLAIM_DEVICE_TO_HOST_DEFAULT_SIZE,
-        .device_to_host_size = BT_BLE_ISOC_DEVICE_CLAIM_DEVICE_TO_HOST_DEFAULT_SIZE,
+        .device_to_host_size = BT_BLE_ISOC_DEVICE_ACTUAL_DEVICE_TO_HOST_DEFAULT_SIZE,
         .host_to_device_count = APP_CFG_BT_BLE_ISOC_HOST_TO_DEVICE_COUNT,
         .device_to_host_count = APP_CFG_BT_BLE_ISOC_DEVICE_TO_HOST_COUNT,
         .device_iso_pdu_size = (BT_BLE_ISOC_DEVICE_PDU_DEFAULT_SIZE + 3) & ~0x3,

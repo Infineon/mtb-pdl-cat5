@@ -2010,6 +2010,18 @@ uint8_t *wiced_bt_gattdb_getAttrValue(const wiced_gattdb_entry_t *p_db_entry);
  *  @ingroup gatt_common_api
  */
 uint16_t wiced_bt_gatt_get_acl_conn_handle(uint16_t conn_id);
+
+/**
+ * API to set the maximum queue size for GATT packets
+ *
+ *  @param[in]  count    :  set the number of packets to queue for tx
+ *
+ *  @returns #wiced_result_t
+ *
+ *  @ingroup gatt_common_api
+ */
+wiced_result_t wiced_bt_gatt_set_tx_packets_queue_size(uint8_t count);
+
 #ifdef __cplusplus
 }
 #endif

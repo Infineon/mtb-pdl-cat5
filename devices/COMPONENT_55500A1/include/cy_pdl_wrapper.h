@@ -25,7 +25,9 @@
 extern "C" {
 #endif
 
-#define __STATIC_INLINE         static inline
+#ifndef   __STATIC_INLINE
+  #define __STATIC_INLINE         static inline
+#endif
 
 //! Unsigned 8-bit integer.
 typedef uint8_t                 UINT8;
