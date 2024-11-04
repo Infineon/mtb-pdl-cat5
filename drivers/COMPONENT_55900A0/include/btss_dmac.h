@@ -31,22 +31,52 @@
 extern "C" {
 #endif
 
+/**
+* \addtogroup group_dmac
+* \{
+* Direct Memory Access Controller
+
+* \defgroup group_dmac_macros Macros
+* \defgroup group_dmac_function Functions
+* \defgroup group_dmac_data_structures Data Structures
+* \} */
+/** \} group_dmac */
+
+/**
+* \addtogroup group_dmac_function
+* \{
+*/
 /** Callback func is called when a DMA transfer has completed. */
 typedef void (*BTSS_DMAC_CALLBACK_t)(void* arg);
+/** \} group_dmac_function */
 
+/**
+* \addtogroup group_dmac_data_structures
+* \{
+*/
 /** DMAC Control register configuration */
 typedef union
 {
     struct {
+        //! Transfer size
         UINT32 length      : 12;
+        //! Source burst size
         UINT32 srcBurstSize: 3;
+        //! Destination burst size
         UINT32 dstBurstSize: 3;
+        //! Source transfer width
         UINT32 srcDataWidth: 3;
+        //! Destination transfer width
         UINT32 dstDataWidth: 3;
+        //! Reserved bits
         UINT32 reserved_1  : 2;
+        //! Indicates incrementing addressing for source
         UINT32 srcIncrement: 1;
+        //! Indicates incrementing addressing for destination
         UINT32 dstIncrement: 1;
+        //! Reserved bits
         UINT32 reserved    : 3;
+        //! Enable for terminal count interrupt
         UINT32 intEnable   : 1;
     } bitfields;
     UINT32 u32;
@@ -107,14 +137,23 @@ BTSS_DMAC_CONTROL_LINE_DST_HCI_UART  = 0,
 typedef union
 {
     struct {
+        //! Channel enable bit
         UINT32 channelEn   : 1;
+        //! Source-peripheral mapped to the channel
         UINT32 srcDmaLine  : 4;
+        //! Reserved bit
         UINT32 reserved_1  : 1;
+        //! Destination-peripheral mapped to the channel
         UINT32 dstDmaLine  : 4;
+        //! Reserved bit
         UINT32 reserved_2  : 1;
+        //! Flow control information
         UINT32 flowcontrol : 3;
-        UINT32 tcIntMask   : 1;
+        //! Error interrupt mask
         UINT32 errIntMask  : 1;
+        //! Terminal count interrupt mask
+        UINT32 tcIntMask   : 1;
+        //! Reserved bit
         UINT32 reserved_3  : 16;
     } bitfields;
     UINT32 u32;
@@ -238,7 +277,12 @@ typedef enum
     BTSS_DMA_REQ_STATUS_NOT_IN_QUEUE      = 3, /* DMA request is not in queue - could be completed. */
 } BTSS_DMAC_REQ_STATUS_t;
 
+/** \} group_dmac_data_structures */
 
+/**
+* \addtogroup group_dmac_function
+* \{
+*/
 /**
  * Function btss_dmac_init
  *
@@ -406,6 +450,8 @@ void btss_dmac_dmaReqSetCallback(BTSS_DMAC_APP_REQUEST_t* dmaReq, BTSS_DMAC_CALL
  * \return       none
  */
 BTSS_DMAC_REQ_STATUS_t btss_dmac_dmaReqGetStatus(BTSS_DMAC_APP_REQUEST_t* dmaReq);
+
+/** \} group_dmac_function */
 
 #if defined(__cplusplus)
 }

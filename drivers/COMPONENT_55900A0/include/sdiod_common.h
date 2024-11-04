@@ -1,5 +1,21 @@
+//==================================================================================================
+//                        THIS INFORMATION IS PROPRIETARY TO INFINEON
+//--------------------------------------------------------------------------------------------------
+//                               Copyright (c) 2022 Infineon Technologies.
+//                                      ALL RIGHTS RESERVED
+//==================================================================================================
+//! \file
+//!
+//! SDIO CTSS Device Driver API
+//
+//==================================================================================================
+
 #ifndef _SDIOD_COMMON_H_
 #define _SDIOD_COMMON_H_
+
+#ifdef CY_USING_HAL
+#include <stdint.h>
+#endif
 
 //==================================================================================================
 // Public Types
@@ -24,12 +40,14 @@ typedef enum
 //! SDIOD event code
 typedef enum
 {
-    SDIOD_EVENT_CODE_HOST_INFO,
+    SDIOD_EVENT_CODE_FIRST,
+    SDIOD_EVENT_CODE_HOST_INFO = SDIOD_EVENT_CODE_FIRST,
     SDIOD_EVENT_CODE_RX_DONE,
     SDIOD_EVENT_CODE_TX_DONE,
     SDIOD_EVENT_CODE_RX_ERROR,
     SDIOD_EVENT_CODE_TX_ERROR,
     SDIOD_EVENT_CODE_BUS_ERROR,
+    SDIOD_EVENT_CODE_MAX,
 } sdiod_event_code_t;
 
 //--------------------------------------------------

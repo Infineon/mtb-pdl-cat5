@@ -8,6 +8,7 @@
 #include <wiced_app_pre_init_cfg.h>
 #include <wiced_platform.h>
 #include "sparcommon.h"
+#include "cy_tx_thread.h"
 
 #if defined (__ARMCC_VERSION)
 
@@ -28,6 +29,7 @@ extern void* app_irom_data_begin;
 
 void SPAR_CRT_SETUP(void);
 int main(void);
+void cy_smif_psram_config(void);
 
 wiced_pre_init_cfg_t pre_init_cfg = {
     /* ACL Configuration - Default value */
@@ -144,19 +146,34 @@ void _platform_post_stackheap_init(void);
 
 void cy_toolchain_init();
 
+// The special functions _init and _fini are some historic left-overs
+// to control constructors and destructors. Adding empty stubs for the same
+// as the linker tries to find these if linker option -nostartfiles is not used.
+__attribute__ ((weak)) void _init(void) {;}
+__attribute__ ((weak)) void _fini(void) {;}
+
+void __libc_init_array();
+
 #endif
 #endif
 
 __attribute__((section(".app_entry")))
 void SPAR_CRT_SETUP(void)
 {
+    /* memory configuration and setup required for psram */
+    cy_smif_psram_config();
+
     /* set up c library support */
 #if defined(COMPONENT_MW_CLIB_SUPPORT)
 #if defined (__ARMCC_VERSION)
     _platform_post_stackheap_init();
 #elif defined(__GNUC__)
     cy_toolchain_init();
+    __libc_init_array();
 #endif
 #endif
+#if !defined(COMPONENT_CM) && defined(COMPONENT_55900)
+    thread_ap_watchdog_ConfigureTime(DEFAULT_WATCHDOG_TIMEOUT_IN_SEC);
+#endif // !defined(COMPONENT_CM) && defined(COMPONENT_55900)
     main();
 }

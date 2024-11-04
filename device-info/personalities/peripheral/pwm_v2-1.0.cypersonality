@@ -29,7 +29,7 @@
 <Personality id="mxs40pwm_ver2" name="PWM" version="1.0" xmlns="http://cypress.com/xsd/cyhwpersonality_v7">
   <Dependencies>
     <IpBlock name="mxtcpwm_ver2,mxs40tcpwm" />
-    <Resource name="tcpwm_disabled\.group\.cnt" />
+    <Resource name="tcpwm\.group\.cnt" />
   <!--    <OperatingMode value="MCU"/> -->
   </Dependencies>
   <ExposedMembers />
@@ -59,6 +59,7 @@
 	  <!-- <Entry name="PWM Pseudo random" value="CY_TCPWM_PWM_MODE_PSEUDORANDOM" visible="`${(&quot;mxs40tcpwm&quot; ne getIpBlockName())}`" /> -->
     </ParamChoice>
 	<ParamBool id="pPwmNePrs" name="pPwmNePrs" desc="pPwmNePrs" group="Internal" default="`${PwmMode ne CY_TCPWM_PWM_MODE_PSEUDORANDOM}`" visible="false" editable="false" />
+    <ParamBool id="pPwmEqPrs" name="pPwmEqPrs" desc="pPwmEqPrs" group="Internal" default="`${PwmMode eq CY_TCPWM_PWM_MODE_PSEUDORANDOM}`" visible="false" editable="false" />
 
     <ParamChoice id="ClockPrescaler" name="Clock Prescaler" group="General" default="CY_TCPWM_PWM_PRESCALER_DIVBY_1" visible="`${(PwmMode ne CY_TCPWM_PWM_MODE_DEADTIME) &amp;&amp; (&quot;mxs40tcpwm&quot; ne getIpBlockName())}`" editable="true" desc="Divides down the input clock." >
       <Entry name="Divide by 1" value="CY_TCPWM_PWM_PRESCALER_DIVBY_1" visible="true" />
@@ -201,16 +202,6 @@
       <Entry name="Disabled" value="CY_TCPWM_INPUT_DISABLED" visible="true" />
     </ParamChoice>
     <ParamSignal port="count[0]" name="Count Signal" group="Inputs" visible="`${((pPwmNePrs) &amp;&amp; (CountInput ne CY_TCPWM_INPUT_DISABLED))}`" desc="This digital input causes the PWM to count depending on how the it is configured." canBeEmpty="`${CountInput eq CY_TCPWM_INPUT_DISABLED}`" >
-      <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true" >
-        <Parameter id="DriveModes" severity="DEFAULT" reason="">
-          <Fixed value="CY_GPIO_DM_HIGHZ" />
-        </Parameter>
-      </Constraint>
-      <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true" >
-        <Parameter id="DriveModes" severity="INFO" reason="The pin Drive Mode parameter does not match expected.">
-          <Fixed value="CY_GPIO_DM_HIGHZ" />
-        </Parameter>
-      </Constraint>
       <Constraint type="ACCEPT" targetLocation=".*" valid="true" />
     </ParamSignal>
     <ParamChoice id="Kill0Input" name="Kill Input" group="Inputs" default="CY_TCPWM_INPUT_DISABLED" visible="true" editable="true" desc="Determines how the kill 0 input behaves." >
@@ -221,16 +212,6 @@
       <Entry name="Disabled" value="CY_TCPWM_INPUT_DISABLED" visible="true" />
     </ParamChoice>
     <ParamSignal port="stop[0]" name="Kill Signal" group="Inputs" visible="`${Kill0Input ne CY_TCPWM_INPUT_DISABLED}`" desc="This digital input kills the PWM, based on the Kill0 Input selection." canBeEmpty="`${Kill0Input eq CY_TCPWM_INPUT_DISABLED}`" >
-      <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true" >
-        <Parameter id="DriveModes" severity="DEFAULT" reason="">
-          <Fixed value="CY_GPIO_DM_HIGHZ" />
-        </Parameter>
-      </Constraint>
-      <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true" >
-        <Parameter id="DriveModes" severity="INFO" reason="The pin Drive Mode parameter does not match expected.">
-          <Fixed value="CY_GPIO_DM_HIGHZ" />
-        </Parameter>
-      </Constraint>
       <Constraint type="ACCEPT" targetLocation=".*" valid="true" />
     </ParamSignal>
     <ParamChoice id="ReloadInput" name="Reload Input" group="Inputs" default="CY_TCPWM_INPUT_DISABLED" visible="true" editable="true" desc="Determines if a reload input is needed and how the reload signal input is registered." >
@@ -241,16 +222,6 @@
       <Entry name="Disabled" value="CY_TCPWM_INPUT_DISABLED" visible="true" />
     </ParamChoice>
     <ParamSignal port="reload[0]" name="Reload Signal" group="Inputs" visible="`${ReloadInput ne CY_TCPWM_INPUT_DISABLED}`" desc="This digital input triggers a reload of the PWM, and starts the PWM." canBeEmpty="`${ReloadInput eq CY_TCPWM_INPUT_DISABLED}`" >
-      <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true" >
-        <Parameter id="DriveModes" severity="DEFAULT" reason="">
-          <Fixed value="CY_GPIO_DM_HIGHZ" />
-        </Parameter>
-      </Constraint>
-      <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true" >
-        <Parameter id="DriveModes" severity="INFO" reason="The pin Drive Mode parameter does not match expected.">
-          <Fixed value="CY_GPIO_DM_HIGHZ" />
-        </Parameter>
-      </Constraint>
       <Constraint type="ACCEPT" targetLocation=".*" valid="true" />
     </ParamSignal>
     <ParamChoice id="StartInput" name="Start Input" group="Inputs" default="CY_TCPWM_INPUT_DISABLED" visible="true" editable="true" desc="Determines if a start input is needed and how that input is registered." >
@@ -260,16 +231,6 @@
       <Entry name="Disabled" value="CY_TCPWM_INPUT_DISABLED" visible="true" />
     </ParamChoice>
     <ParamSignal port="start[0]" name="Start Signal" group="Inputs" visible="`${StartInput ne CY_TCPWM_INPUT_DISABLED}`" desc="This digital input triggers a Start of the PWM." canBeEmpty="`${StartInput eq CY_TCPWM_INPUT_DISABLED}`" >
-      <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true" >
-        <Parameter id="DriveModes" severity="DEFAULT" reason="">
-          <Fixed value="CY_GPIO_DM_HIGHZ" />
-        </Parameter>
-      </Constraint>
-      <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true" >
-        <Parameter id="DriveModes" severity="INFO" reason="The pin Drive Mode parameter does not match expected.">
-          <Fixed value="CY_GPIO_DM_HIGHZ" />
-        </Parameter>
-      </Constraint>
       <Constraint type="ACCEPT" targetLocation=".*" valid="true" />
     </ParamSignal>
     <ParamChoice id="SwapInput" name="Swap Input" group="Inputs" default="CY_TCPWM_INPUT_DISABLED" visible="true" editable="true" desc="This input controls when compare and period swaps occur." >
@@ -279,16 +240,6 @@
       <Entry name="Disabled" value="CY_TCPWM_INPUT_DISABLED" visible="true" />
     </ParamChoice>
     <ParamSignal port="capture0[0]" name="Swap Signal" group="Inputs" visible="`${SwapInput ne CY_TCPWM_INPUT_DISABLED}`" desc="This input latches a SWAP command. The swap doesn’t occur until the next Overflow/Underflow event." canBeEmpty="`${SwapInput eq CY_TCPWM_INPUT_DISABLED}`" >
-      <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true" >
-        <Parameter id="DriveModes" severity="DEFAULT" reason="">
-          <Fixed value="CY_GPIO_DM_HIGHZ" />
-        </Parameter>
-      </Constraint>
-      <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true" >
-        <Parameter id="DriveModes" severity="INFO" reason="The pin Drive Mode parameter does not match expected.">
-          <Fixed value="CY_GPIO_DM_HIGHZ" />
-        </Parameter>
-      </Constraint>
       <Constraint type="ACCEPT" targetLocation=".*" valid="true" />
     </ParamSignal>
 	 <ParamChoice id="Kill1Input" name="Kill 1 Input" group="Inputs" default="CY_TCPWM_INPUT_DISABLED" visible="`${pCntCC1}`" editable="true" desc="Determines how the kill 1 input behaves." >
@@ -299,16 +250,6 @@
       <Entry name="Disabled" value="CY_TCPWM_INPUT_DISABLED" visible="true" />
     </ParamChoice>
     <ParamSignal port="capture1[0]" name="Kill 1 Signal" group="Inputs" visible="`${Kill1Input ne CY_TCPWM_INPUT_DISABLED}`" desc="This digital input kills the PWM, based on the Kill1 Input selection." canBeEmpty="`${Kill1Input eq CY_TCPWM_INPUT_DISABLED}`" >
-      <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true" >
-        <Parameter id="DriveModes" severity="DEFAULT" reason="">
-          <Fixed value="CY_GPIO_DM_HIGHZ" />
-        </Parameter>
-      </Constraint>
-      <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true" >
-        <Parameter id="DriveModes" severity="INFO" reason="The pin Drive Mode parameter does not match expected.">
-          <Fixed value="CY_GPIO_DM_HIGHZ" />
-        </Parameter>
-      </Constraint>
       <Constraint type="ACCEPT" targetLocation=".*" valid="true" />
 	</ParamSignal>
 
@@ -333,29 +274,9 @@
 
     <!--Outputs-->
     <ParamSignal port="line[0]" name="PWM (line)" group="Outputs" visible="true" desc="PWM output" canBeEmpty="true" >
-      <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true" >
-        <Parameter id="DriveModes" severity="DEFAULT" reason="">
-          <Fixed value="CY_GPIO_DM_STRONG_IN_OFF" />
-        </Parameter>
-      </Constraint>
-      <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true" >
-        <Parameter id="DriveModes" severity="INFO" reason="The pin Drive Mode parameter does not match expected.">
-          <Fixed value="CY_GPIO_DM_STRONG_IN_OFF" />
-        </Parameter>
-      </Constraint>
       <Constraint type="ACCEPT" targetLocation=".*" valid="true" />
     </ParamSignal>
     <ParamSignal port="line_compl[0]" name="PWM_n (line_compl)" group="Outputs" visible="true" desc="Complimentary PWM output." canBeEmpty="true" >
-      <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true" >
-        <Parameter id="DriveModes" severity="DEFAULT" reason="">
-          <Fixed value="CY_GPIO_DM_STRONG_IN_OFF" />
-        </Parameter>
-      </Constraint>
-      <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true" >
-        <Parameter id="DriveModes" severity="INFO" reason="The pin Drive Mode parameter does not match expected.">
-          <Fixed value="CY_GPIO_DM_STRONG_IN_OFF" />
-        </Parameter>
-      </Constraint>
       <Constraint type="ACCEPT" targetLocation=".*" valid="true" />
     </ParamSignal>
 
@@ -370,16 +291,6 @@
       <Entry name="Disabled" value="CY_TCPWM_CNT_TRIGGER_ON_DISABLED" visible="true" />
     </ParamChoice>
     <ParamSignal port="tr_out0[0]" name="Trigger 0 Signal" group="Trigger Outputs" visible="`${trigger0Event ne CY_TCPWM_CNT_TRIGGER_ON_DISABLED}`" desc="Signals to connect on Trigger 0 Event" canBeEmpty="`${trigger0Event eq CY_TCPWM_CNT_TRIGGER_ON_DISABLED}`" >
-      <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true" >
-        <Parameter id="DriveModes" severity="DEFAULT" reason="">
-          <Fixed value="CY_GPIO_DM_STRONG_IN_OFF" />
-        </Parameter>
-      </Constraint>
-      <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true" >
-        <Parameter id="DriveModes" severity="INFO" reason="The pin Drive Mode parameter does not match expected.">
-          <Fixed value="CY_GPIO_DM_STRONG_IN_OFF" />
-        </Parameter>
-      </Constraint>
       <Constraint type="ACCEPT" targetLocation=".*" valid="true" />
     </ParamSignal>
     <ParamChoice id="trigger1Event" name="Trigger 1 Event" group="Trigger Outputs" default="CY_TCPWM_CNT_TRIGGER_ON_DISABLED" visible="true" editable="true" desc="This output used to connect TCPWM event signals to other peripherals." >
@@ -392,16 +303,6 @@
       <Entry name="Disabled" value="CY_TCPWM_CNT_TRIGGER_ON_DISABLED" visible="true" />
     </ParamChoice>
     <ParamSignal port="tr_out1[0]" name="Trigger 1 Signal" group="Trigger Outputs" visible="`${trigger1Event ne CY_TCPWM_CNT_TRIGGER_ON_DISABLED}`" desc="Signals to connect on Trigger 1 Event " canBeEmpty="`${trigger1Event eq CY_TCPWM_CNT_TRIGGER_ON_DISABLED}`" >
-      <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true" >
-        <Parameter id="DriveModes" severity="DEFAULT" reason="">
-          <Fixed value="CY_GPIO_DM_STRONG_IN_OFF" />
-        </Parameter>
-      </Constraint>
-      <Constraint type="ACCEPT" targetLocation="ioss\[\d+\]\.port\[\d+\]\.pin.*" valid="true" >
-        <Parameter id="DriveModes" severity="INFO" reason="The pin Drive Mode parameter does not match expected.">
-          <Fixed value="CY_GPIO_DM_STRONG_IN_OFF" />
-        </Parameter>
-      </Constraint>
       <Constraint type="ACCEPT" targetLocation=".*" valid="true" />
     </ParamSignal>
 
@@ -430,11 +331,14 @@
     <ParamBool id="pAlignAsymmOrCenter" name="pAlignAsymmOrCenter" desc="pAlignAsymmOrCenter" group="Internal" default="`${pAlignAsymm || pAlignCenter}`" visible="false" editable="false" />
     <ParamBool id="pPwmNePrsAndC0GtP0" name="pPwmNePrsAndC0GtP0" desc="pPwmNePrsAndC0GtP0" group="Internal" default="`${pPwmNePrs &amp;&amp; pC0GtP0}`" visible="false" editable="false" />
     <ParamBool id="pPwmNePrsAndC0GtP1" name="pPwmNePrsAndC0GtP1" desc="pPwmNePrsAndC0GtP1" group="Internal" default="`${pPwmNePrs &amp;&amp; pC0GtP1}`" visible="false" editable="false" />
+    <ParamBool id="pPwmEqPrsAndC0GtP0" name="pPwmEqPrsAndC0GtP0" desc="pPwmEqPrsAndC0GtP0" group="Internal" default="`${pPwmEqPrs &amp;&amp; pC0GtP0}`" visible="false" editable="false" />
+    <ParamBool id="pPwmEqPrsAndC0GtP1" name="pPwmEqPrsAndC0GtP1" desc="pPwmEqPrsAndC0GtP1" group="Internal" default="`${pPwmEqPrs &amp;&amp; pC0GtP1}`" visible="false" editable="false" />
     <ParamBool id="pKillEqSynch" name="pKillEqSynch" desc="pKillEqSynch" group="Internal" default="`${KillMode eq CY_TCPWM_PWM_SYNCH_KILL}`" visible="false" editable="false" />
     <ParamBool id="pEnCAndNEnP" name="pEnCAndNEnP" desc="pEnCAndNEnP" group="Internal" default="`${EnableCompare0Swap &amp;&amp; (!EnablePeriodSwap)}`" visible="false" editable="false" />
     <ParamBool id="pEnCAndEnP" name="pEnCAndEnP" desc="pEnCAndEnP" group="Internal" default="`${EnableCompare0Swap &amp;&amp; EnablePeriodSwap}`" visible="false" editable="false" />
     <ParamBool id="pNEnCOrAssymAndC0GtP1" name="pNEnCOrAssymAndC0GtP1" desc="pNEnCOrAssymAndC0GtP1" group="Internal" default="`${((!EnableCompare0Swap) || pAlignAsymm)&amp;&amp; pC0GtP1}`" visible="false" editable="false" />
     <ParamBool id="pNePrsAndEnCAndEnP" name="pNePrsAndEnCAndEnP" desc="pNePrsAndEnCAndEnP" group="Internal" default="`${pPwmNePrs &amp;&amp; pEnCAndEnP}`" visible="false" editable="false" />
+    <ParamBool id="pEqPrsAndEnCAndEnP" name="pEqPrsAndEnCAndEnP" desc="pEqPrsAndEnCAndEnP" group="Internal" default="`${pPwmEqPrs &amp;&amp; pEnCAndEnP}`" visible="false" editable="false" />
 
     <!-- Clock Frequency -->
     <ParamString id="sourceClock" name="sourceClock" group="General" default="`${(hasVisibleOption(&quot;clock[0]&quot;)) ? (getBlockFromSignal(&quot;clock[0]&quot;)) : (getBlockFromSignal(&quot;clock_counter_en[0]&quot;))}`" visible="false" editable="false" desc="Source Clock Resource" />
@@ -447,32 +351,32 @@
     <DRC type="ERROR" paramId="clock_counter_en[0]" text="Maximum input clock signal frequency supported is 100 Mhz. Please fix input clock setting." condition="`${(hasVisibleOption(&quot;clock_counter_en[0]&quot;)) &amp;&amp; (tcpwmClkHz &gt; 100000000)}`" />
 
     <!--Compare0 DRCs-->
-    <DRC type="INFO" text="Compare 0 value have to be less or equal to Period 0 (Period). A value larger than period is uses to get 100% duty cycle (Left Aligned alignment) or 0% duty cycle (Right Aligned alignment)." condition="`${pPwmNePrsAndC0GtP0}`" />
-    <DRC type="INFO" text="Compare 0 value have to be less or equal to Period 1. A value larger than period is uses to get 100% duty cycle (Left Aligned alignment) or 0% duty cycle (Right Aligned alignment)." condition="`${pPwmNePrs &amp;&amp; EnablePeriodSwap &amp;&amp; pNEnCOrAssymAndC0GtP1}`" />
+    <DRC type="INFO" text="Compare 0 value have to be less or equal to Period 0 (Period). A value larger than period is uses to get 100% duty cycle (Left Aligned alignment) or 0% duty cycle (Right Aligned alignment)." condition="`${pPwmNePrsAndC0GtP0 || pPwmEqPrsAndC0GtP0}`" />
+    <DRC type="INFO" text="Compare 0 value have to be less or equal to Period 1. A value larger than period is uses to get 100% duty cycle (Left Aligned alignment) or 0% duty cycle (Right Aligned alignment)." condition="`${(pPwmNePrs &amp;&amp; EnablePeriodSwap &amp;&amp; pNEnCOrAssymAndC0GtP1) || (pPwmEqPrs &amp;&amp; EnablePeriodSwap &amp;&amp; pC0GtP1)}`" />
 
-    <DRC type="ERROR" text="Compare 0 value must be less or equal to Period 0 (Period)." condition="`${pPwmNePrs &amp;&amp;pAlignAsymmOrCenter &amp;&amp; pC0GtP0}`" paramId="Compare0" />
-    <DRC type="ERROR" text="Compare 0 value must be less or equal to Period 1." condition="`${pPwmNePrs &amp;&amp; pAlignAsymmOrCenter &amp;&amp; EnablePeriodSwap &amp;&amp; pNEnCOrAssymAndC0GtP1}`" paramId="Compare0" />
+    <DRC type="ERROR" text="Compare 0 value must be less or equal to Period 0 (Period)." condition="`${(pPwmNePrs &amp;&amp;pAlignAsymmOrCenter &amp;&amp; pC0GtP0) || (pPwmEqPrs &amp;&amp; pC0GtP0)}`" paramId="Compare0" />
+    <DRC type="ERROR" text="Compare 0 value must be less or equal to Period 1." condition="`${(pPwmNePrs &amp;&amp; pAlignAsymmOrCenter &amp;&amp; EnablePeriodSwap &amp;&amp; pNEnCOrAssymAndC0GtP1) || (pPwmEqPrs &amp;&amp; EnablePeriodSwap &amp;&amp; pC0GtP1)}`" paramId="Compare0" />
 
     <!--Compare0Buff DRCs-->
-    <DRC type="INFO" text="Compare 0 Buff value have to be less or equal to Period 0 (Period). A value larger than period is uses to get 100% duty cycle (Left Aligned alignment) or 0% duty cycle (Right Aligned alignment)." condition="`${pPwmNePrs &amp;&amp; pEnCAndNEnP &amp;&amp; pC1GtP0}`" />
-    <DRC type="INFO" text="Compare 0 Buff value have to be less or equal to Period 1. A value larger than period is uses to get 100% duty cycle (Left Aligned alignment) or 0% duty cycle (Right Aligned alignment)." condition="`${pNePrsAndEnCAndEnP &amp;&amp; pC1GtP1}`" />
-    <DRC type="INFO" text="Compare 0 Buff value have to be less or equal to Period 0 (Period). A value larger than period is uses to get 100% duty cycle (Left Aligned alignment) or 0% duty cycle (Right Aligned alignment)." condition="`${pNePrsAndEnCAndEnP &amp;&amp; pAlignAsymm &amp;&amp; pC1GtP0}`" />
+    <DRC type="INFO" text="Compare 0 Buff value have to be less or equal to Period 0 (Period). A value larger than period is uses to get 100% duty cycle (Left Aligned alignment) or 0% duty cycle (Right Aligned alignment)." condition="`${(pPwmNePrs || pPwmEqPrs) &amp;&amp; pEnCAndNEnP &amp;&amp; pC1GtP0}`" />
+    <DRC type="INFO" text="Compare 0 Buff value have to be less or equal to Period 1. A value larger than period is uses to get 100% duty cycle (Left Aligned alignment) or 0% duty cycle (Right Aligned alignment)." condition="`${(pNePrsAndEnCAndEnP || pEqPrsAndEnCAndEnP) &amp;&amp; pC1GtP1}`" />
+    <DRC type="INFO" text="Compare 0 Buff value have to be less or equal to Period 0 (Period). A value larger than period is uses to get 100% duty cycle (Left Aligned alignment) or 0% duty cycle (Right Aligned alignment)." condition="`${((pNePrsAndEnCAndEnP &amp;&amp; pAlignAsymm) || pEqPrsAndEnCAndEnP) &amp;&amp; pC1GtP0}`" />
 
-    <DRC type="ERROR" text="Compare 0 Buff value must be less or equal to Period 0 (Period)." condition="`${pAlignAsymmOrCenter &amp;&amp; pEnCAndNEnP &amp;&amp; pC1GtP0}`" paramId="Compare1" />
-    <DRC type="ERROR" text="Compare 0 Buff value must be less or equal to Period 1." condition="`${pNePrsAndEnCAndEnP &amp;&amp; pAlignAsymmOrCenter &amp;&amp; pC1GtP1}`" paramId="Compare1" />
-    <DRC type="ERROR" text="Compare 0 Buff value must be less or equal to Period 0 (Period)." condition="`${pNePrsAndEnCAndEnP &amp;&amp; pAlignAsymmOrCenter &amp;&amp; pC1GtP0}`" paramId="Compare1" />
+    <DRC type="ERROR" text="Compare 0 Buff value must be less or equal to Period 0 (Period)." condition="`${((pAlignAsymmOrCenter &amp;&amp; pEnCAndNEnP) || (pPwmEqPrs &amp;&amp; pEnCAndNEnP)) &amp;&amp; pC1GtP0}`" paramId="Compare1" />
+    <DRC type="ERROR" text="Compare 0 Buff value must be less or equal to Period 1." condition="`${((pNePrsAndEnCAndEnP &amp;&amp; pAlignAsymmOrCenter) || pEqPrsAndEnCAndEnP) &amp;&amp; pC1GtP1}`" paramId="Compare1" />
+    <DRC type="ERROR" text="Compare 0 Buff value must be less or equal to Period 0 (Period)." condition="`${((pNePrsAndEnCAndEnP &amp;&amp; pAlignAsymmOrCenter) || pEqPrsAndEnCAndEnP) &amp;&amp; pC1GtP0}`" paramId="Compare1" />
 
     <!--Compare1 DRCs-->
-    <DRC type="INFO" text="Compare 1 value have to be less or equal to Period 0 (Period). A value larger than period is uses to get 100% duty cycle (Left Aligned alignment) or 0% duty cycle (Right Aligned alignment)." condition="`${pCntCC1 &amp;&amp; pPwmNePrs &amp;&amp; pC2GtP0}`" />
-    <DRC type="INFO" text="Compare 1 value have to be less or equal to Period 1. A value larger than period is uses to get 100% duty cycle (Left Aligned alignment) or 0% duty cycle (Right Aligned alignment)." condition="`${pCntCC1 &amp;&amp; pPwmNePrs &amp;&amp; EnablePeriodSwap &amp;&amp; ((!EnableCompare1Swap) || pAlignAsymm) &amp;&amp; pC2GtP1}`" />
+    <DRC type="INFO" text="Compare 1 value have to be less or equal to Period 0 (Period). A value larger than period is uses to get 100% duty cycle (Left Aligned alignment) or 0% duty cycle (Right Aligned alignment)." condition="`${pCntCC1 &amp;&amp; (pPwmNePrs || pPwmEqPrs) &amp;&amp; pC2GtP0}`" />
+    <DRC type="INFO" text="Compare 1 value have to be less or equal to Period 1. A value larger than period is uses to get 100% duty cycle (Left Aligned alignment) or 0% duty cycle (Right Aligned alignment)." condition="`${pCntCC1 &amp;&amp; (pPwmNePrs || pPwmEqPrs) &amp;&amp; EnablePeriodSwap &amp;&amp; ((!EnableCompare1Swap) || pAlignAsymm || pPwmEqPrs) &amp;&amp; pC2GtP1}`" />
 
-    <DRC type="ERROR" text="Compare 1 value must be less or equal to Period 0 (Period)." condition="`${pAlignAsymmOrCenter &amp;&amp; pCntCC1 &amp;&amp; pPwmNePrs &amp;&amp; pC2GtP0}`" paramId="Compare2" />
-    <DRC type="ERROR" text="Compare 1 value must be less or equal to Period 1." condition="`${pAlignAsymmOrCenter &amp;&amp; pCntCC1 &amp;&amp; pPwmNePrs &amp;&amp; EnablePeriodSwap &amp;&amp; ((!EnableCompare1Swap) || pAlignAsymm) &amp;&amp; pC2GtP1}`" paramId="Compare2" />
+    <DRC type="ERROR" text="Compare 1 value must be less or equal to Period 0 (Period)." condition="`${((pAlignAsymmOrCenter &amp;&amp; pPwmNePrs) || pPwmEqPrs) &amp;&amp; pCntCC1  &amp;&amp; pC2GtP0}`" paramId="Compare2" />
+    <DRC type="ERROR" text="Compare 1 value must be less or equal to Period 1." condition="`${((pAlignAsymmOrCenter &amp;&amp; pPwmNePrs) || pPwmEqPrs) &amp;&amp; pCntCC1  &amp;&amp; EnablePeriodSwap &amp;&amp; ((!EnableCompare1Swap) || pAlignAsymm || pPwmEqPrs) &amp;&amp; pC2GtP1}`" paramId="Compare2" />
     <!--Compare1Buff DRCs-->
-    <DRC type="INFO" text="Compare 1 Buff value have to be less or equal to Period 0 (Period). A value larger than period is uses to get 100% duty cycle (Left Aligned alignment) or 0% duty cycle (Right Aligned alignment)." condition="`${pCntCC1 &amp;&amp; pPwmNePrs &amp;&amp; EnableCompare1Swap &amp;&amp; ((!EnablePeriodSwap) || (EnablePeriodSwap &amp;&amp; pAlignAsymm)) &amp;&amp; pC3GtP0}`" />
-    <DRC type="INFO" text="Compare 1 Buff value have to be less or equal to Period 1. A value larger than period is uses to get 100% duty cycle (Left Aligned alignment) or 0% duty cycle (Right Aligned alignment)." condition="`${pCntCC1 &amp;&amp; pPwmNePrs &amp;&amp; EnablePeriodSwap &amp;&amp; pC3GtP1}`" />
-    <DRC type="ERROR" text="Compare 1 Buff value must be less or equal to Period 0 (Period)." condition="`${pAlignAsymmOrCenter &amp;&amp; pCntCC1 &amp;&amp; pPwmNePrs &amp;&amp; EnableCompare1Swap &amp;&amp; ((!EnablePeriodSwap) || (EnablePeriodSwap &amp;&amp; pAlignAsymm)) &amp;&amp; pC3GtP0}`" paramId="Compare3" />
-    <DRC type="ERROR" text="Compare 1 Buff value must be less or equal to Period 1." condition="`${pAlignAsymmOrCenter &amp;&amp; pCntCC1 &amp;&amp; pPwmNePrs &amp;&amp; EnablePeriodSwap &amp;&amp; pC3GtP1}`" paramId="Compare3" />
+    <DRC type="INFO" text="Compare 1 Buff value have to be less or equal to Period 0 (Period). A value larger than period is uses to get 100% duty cycle (Left Aligned alignment) or 0% duty cycle (Right Aligned alignment)." condition="`${pCntCC1 &amp;&amp; (pPwmNePrs || pPwmEqPrs) &amp;&amp; EnableCompare1Swap &amp;&amp; ((!EnablePeriodSwap) || (EnablePeriodSwap &amp;&amp; (pAlignAsymm || pPwmEqPrs))) &amp;&amp; pC3GtP0}`" />
+    <DRC type="INFO" text="Compare 1 Buff value have to be less or equal to Period 1. A value larger than period is uses to get 100% duty cycle (Left Aligned alignment) or 0% duty cycle (Right Aligned alignment)." condition="`${pCntCC1 &amp;&amp; (pPwmNePrs || pPwmEqPrs) &amp;&amp; EnablePeriodSwap &amp;&amp; pC3GtP1}`" />
+    <DRC type="ERROR" text="Compare 1 Buff value must be less or equal to Period 0 (Period)." condition="`${((pAlignAsymmOrCenter &amp;&amp; pPwmNePrs) || pPwmEqPrs) &amp;&amp; pCntCC1 &amp;&amp; EnableCompare1Swap &amp;&amp; ((!EnablePeriodSwap) || (EnablePeriodSwap &amp;&amp; (pAlignAsymm || pPwmEqPrs))) &amp;&amp; pC3GtP0}`" paramId="Compare3" />
+    <DRC type="ERROR" text="Compare 1 Buff value must be less or equal to Period 1." condition="`${((pAlignAsymmOrCenter &amp;&amp; pPwmNePrs) || pPwmEqPrs) &amp;&amp; pCntCC1 &amp;&amp; EnablePeriodSwap &amp;&amp; pC3GtP1}`" paramId="Compare3" />
     <!--CountInput DRCs-->
     <DRC type="ERROR" text="Count Event has to be enabled to use Count Signal." condition="`${hasConnection(&quot;count&quot;, 0) &amp;&amp; (CountInput eq CY_TCPWM_INPUT_DISABLED)}`" paramId="CountInput">
 	    <FixIt action="SET_PARAM" target="CountInput" value="CY_TCPWM_INPUT_RISINGEDGE" valid="true" />
@@ -486,7 +390,7 @@
 	    <FixIt action="SET_PARAM" target="ReloadInput" value="CY_TCPWM_INPUT_RISINGEDGE" valid="true" />
 	    <FixIt action="SET_PARAM" target="ReloadInput" value="CY_TCPWM_INPUT_FALLINGEDGE" valid="true" />
 	    <FixIt action="SET_PARAM" target="ReloadInput" value="CY_TCPWM_INPUT_EITHEREDGE" valid="true" />
-	    <FixIt action="SET_PARAM" target="ReloadInput" value="CY_TCPWM_INPUT_LEVEL" valid="true" />
+	    <FixIt action="SET_PARAM" target="ReloadInput" value="CY_TCPWM_INPUT_LEVEL" valid="`${pPwmEqPrs}`" />
 	</DRC>
 
     <!--StartInput DRCs-->
@@ -501,7 +405,7 @@
 	    <FixIt action="SET_PARAM" target="SwapInput" value="CY_TCPWM_INPUT_RISINGEDGE" valid="true" />
 	    <FixIt action="SET_PARAM" target="SwapInput" value="CY_TCPWM_INPUT_FALLINGEDGE" valid="true" />
 	    <FixIt action="SET_PARAM" target="SwapInput" value="CY_TCPWM_INPUT_EITHEREDGE" valid="true" />
-	    <FixIt action="SET_PARAM" target="SwapInput" value="CY_TCPWM_INPUT_LEVEL" valid="true" />
+	    <!-- <FixIt action="SET_PARAM" target="SwapInput" value="CY_TCPWM_INPUT_LEVEL" valid="true" /> -->
 	</DRC>
 
     <!--Kill0Input DRCs-->
@@ -623,9 +527,10 @@
       <Member name="block" value="`${getExposedMember(pclk, &quot;type&quot;)}`" />
       <Member name="channel" value="`${getExposedMember(pclk, &quot;number&quot;)}`" />
 	</ConfigStruct> -->
-	<!--
+
     <ConfigStruct name="`${INST_NAME}`_clock" type="cyhal_clock_t" const="false" public="true" include="true" guard="defined (CY_USING_HAL)"> </ConfigStruct>
-    <ConfigStruct name="`${INST_NAME}`_clk_rsrc" type="cyhal_resource_inst_t" const="true" public="true" include="true" guard="defined (CY_USING_HAL)">
+    <!--
+    <ConfigStruct name="`${INST_NAME}`_clk_rsrc" type="cyhal_resource_inst_t" const="true" public="true" include="true" guard="defined (CY_USING_HAL) ">
       <Member name="type" value="CYHAL_RSC_CLOCK" />
       <Member name="block_num" value="`${getExposedMember(pclk, &quot;type&quot;)}`" />
       <Member name="channel_num" value="`${getExposedMember(pclk, &quot;number&quot;)}`" />
@@ -635,9 +540,9 @@
     <ConfigStruct name="`${INST_NAME}`_hal_config" type="cyhal_pwm_configurator_t" const="`${inFlash}`" public="true" include="true" guard="defined (CY_USING_HAL) || defined(CY_USING_HAL_LITE)">
       <Member name="resource" value="&amp;`${INST_NAME}`_obj" />
       <Member name="config" value="&amp;`${INST_NAME}`_config" />
-	<!--  <Member name="clock" value="&amp;`${INST_NAME}`_clock" /> -->
+      <Member name="clock" value="&amp;`${INST_NAME}`_clock" />
     </ConfigStruct>
-    <ConfigInstruction purpose="INITIALIZE" value="cyhal_clock_get(&amp;`${INST_NAME}`_clock, &amp;`${INST_NAME}`_clk_rsrc);" include="true" guard="defined (CY_USING_HAL)" />
+    <ConfigInstruction purpose="INITIALIZE" value="cyhal_clock_get(&amp;`${INST_NAME}`_clock, &amp;`${INST_NAME}`_obj);" include="true" guard="defined (CY_USING_HAL)" />
     <ConfigInstruction purpose="INITIALIZE" value="Cy_SysClk_PeriGroupSlaveInit(CY_MMIO_TCPWM`${tcpwmInst}`_PERI_NR, CY_MMIO_TCPWM`${tcpwmInst}`_GROUP_NR, CY_MMIO_TCPWM`${tcpwmInst}`_SLAVE_NR, CY_MMIO_TCPWM`${tcpwmInst}`_CLK_HF_NR);" include="true" guard="defined (CY_DEVICE_CONFIGURATOR_IP_ENABLE_FEATURE)" />
 			<!-- <ConfigInstruction purpose="INITIALIZE" value="Cy_SysClk_PeriphAssignDivider(`${pclkDst}`, `${getExposedMember(pclk, &quot;clockSel&quot;)}`);" include="`${pclkOk}`"  /> -->
     <ConfigInstruction purpose="RESERVE" value="cyhal_hwmgr_reserve(&amp;`${INST_NAME}`_obj);" include="true" guard="defined (CY_USING_HAL)" />

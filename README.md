@@ -38,8 +38,5 @@ See the [PDL API Reference Manual Getting Started section](https://infineon.gith
 * [Infineon](http://www.infineon.com)
 
 
-### Note
-New versions of PDL from 2.0 onwards are now be available in [mtb-pdl-cat5](https://infineon.github.io/mtb-pdl-cat5/pdl_api_reference_manual/html/index.html).
-
 ---
 © Infineon Technologies AG, 2024.

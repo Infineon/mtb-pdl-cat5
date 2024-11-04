@@ -56,5 +56,17 @@ typedef struct
     cy_smif_psram_cfg_params_t smifParams;
 } cy_smif_psram_device_cfg_t;
 
+/**
+*
+* This structure specifies boundaries text and data section of PSRAM device
+* Note: The addresses as well as lenghts must be 32 byte aligned.
+*/
+typedef struct
+{
+    UINT32 startCode;           /* Start of code section */
+    UINT32 lenCode;             /* Length of code section */
+    UINT32 startData;           /* Start of data section */
+    UINT32 lenData;             /* Length of data section */
+} cy_smif_psram_mem_params_t;
 
 #endif //_CY_SMIF_PSRAM_H_

@@ -1,5 +1,18 @@
 var searchData=
 [
+  ['cy_5fsmif_5fpsram_5fcfg_5fparams_5ft',['cy_smif_psram_cfg_params_t',['../structcy__smif__psram__cfg__params__t.html',1,'']]],
+  ['cy_5fsmif_5fpsram_5fdevice_5fcfg_5ft',['cy_smif_psram_device_cfg_t',['../structcy__smif__psram__device__cfg__t.html',1,'']]],
+  ['cy_5fsmif_5fpsram_5fmem_5fparams_5ft',['cy_smif_psram_mem_params_t',['../structcy__smif__psram__mem__params__t.html',1,'']]],
+  ['cy_5fstc_5fadccomp_5fadc_5fconfig_5ft',['cy_stc_adccomp_adc_config_t',['../structcy__stc__adccomp__adc__config__t.html',1,'']]],
+  ['cy_5fstc_5fadccomp_5fadc_5fcontext_5ft',['cy_stc_adccomp_adc_context_t',['../structcy__stc__adccomp__adc__context__t.html',1,'']]],
+  ['cy_5fstc_5fadccomp_5fadc_5fdc_5fconfig_5ft',['cy_stc_adccomp_adc_dc_config_t',['../structcy__stc__adccomp__adc__dc__config__t.html',1,'']]],
+  ['cy_5fstc_5fadccomp_5fadc_5fmic_5fconfig_5ft',['cy_stc_adccomp_adc_mic_config_t',['../structcy__stc__adccomp__adc__mic__config__t.html',1,'']]],
+  ['cy_5fstc_5fadccomp_5flpcomp_5fconfig_5ft',['cy_stc_adccomp_lpcomp_config_t',['../structcy__stc__adccomp__lpcomp__config__t.html',1,'']]],
+  ['cy_5fstc_5fadccomp_5flpcomp_5fdc_5fconfig_5ft',['cy_stc_adccomp_lpcomp_dc_config_t',['../structcy__stc__adccomp__lpcomp__dc__config__t.html',1,'']]],
+  ['cy_5fstc_5fadccomp_5flpcomp_5fntd_5fconfig_5ft',['cy_stc_adccomp_lpcomp_ntd_config_t',['../structcy__stc__adccomp__lpcomp__ntd__config__t.html',1,'']]],
+  ['cy_5fstc_5fpdm_5fpcm_5fbq_5ffir_5fcoeff_5ft',['cy_stc_pdm_pcm_bq_fir_coeff_t',['../structcy__stc__pdm__pcm__bq__fir__coeff__t.html',1,'']]],
+  ['cy_5fstc_5fpdm_5fpcm_5fconfig_5ft',['cy_stc_pdm_pcm_config_t',['../structcy__stc__pdm__pcm__config__t.html',1,'']]],
+  ['cy_5fstc_5fpdm_5fpcm_5finf_5fctrl_5fsel_5ft',['cy_stc_pdm_pcm_inf_ctrl_sel_t',['../structcy__stc__pdm__pcm__inf__ctrl__sel__t.html',1,'']]],
   ['cy_5fstc_5fscb_5fezi2c_5fconfig_5ft',['cy_stc_scb_ezi2c_config_t',['../structcy__stc__scb__ezi2c__config__t.html',1,'']]],
   ['cy_5fstc_5fscb_5fezi2c_5fcontext_5ft',['cy_stc_scb_ezi2c_context_t',['../structcy__stc__scb__ezi2c__context__t.html',1,'']]],
   ['cy_5fstc_5fscb_5fi2c_5fconfig_5ft',['cy_stc_scb_i2c_config_t',['../structcy__stc__scb__i2c__config__t.html',1,'']]],

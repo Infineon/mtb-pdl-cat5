@@ -1,13 +1,23 @@
 var searchData=
 [
-  ['ezi2c_20_28scb_29',['EZI2C (SCB)',['../group__group__scb__ezi2c.html',1,'']]],
-  ['enumerated_20types',['Enumerated Types',['../group__group__scb__ezi2c__enums.html',1,'']]],
-  ['ezi2c_20activity_20status',['EZI2C Activity Status',['../group__group__scb__ezi2c__macros__get__activity.html',1,'']]],
-  ['enumerated_20types',['Enumerated Types',['../group__group__scb__i2c__enums.html',1,'']]],
-  ['enumerated_20types',['Enumerated Types',['../group__group__scb__spi__enums.html',1,'']]],
-  ['enumerated_20types',['Enumerated Types',['../group__group__scb__uart__enums.html',1,'']]],
-  ['enumerated_20types',['Enumerated Types',['../group__group__smif__enums.html',1,'']]],
-  ['external_20memory_20flags',['External Memory Flags',['../group__group__smif__macros__flags.html',1,'']]],
-  ['enumerated_20types',['Enumerated Types',['../group__group__tcpwm__enums.html',1,'']]],
-  ['enumerated_20types',['Enumerated Types',['../group__group__tdm__enums.html',1,'']]]
+  ['data_20structures',['Data Structures',['../group__group__adccomp__data__structures.html',1,'']]],
+  ['dmac_20_20_20_20_20_20_20_20_20_28direct_20memory_20access_20controller_29',['DMAC         (Direct Memory Access Controller)',['../group__group__dmac.html',1,'']]],
+  ['data_20structures',['Data Structures',['../group__group__dmac__data__structures.html',1,'']]],
+  ['data_20structures',['Data Structures',['../group__group__scb__common__data__structures.html',1,'']]],
+  ['data_20structures',['Data Structures',['../group__group__scb__ezi2c__data__structures.html',1,'']]],
+  ['data_20structures',['Data Structures',['../group__group__scb__i2c__data__structures.html',1,'']]],
+  ['data_20structures',['Data Structures',['../group__group__scb__spi__data__structures.html',1,'']]],
+  ['data_20structures',['Data Structures',['../group__group__scb__uart__data__structures.html',1,'']]],
+  ['data_20structures',['Data Structures',['../group__group__smif__data__structures.html',1,'']]],
+  ['data_20structures',['Data Structures',['../group__group__sysclk__data__structures.html',1,'']]],
+  ['data_20structures',['Data Structures',['../group__group__sysint__data__structures.html',1,'']]],
+  ['data_20structures',['Data Structures',['../group__group__syspm__data__structures.html',1,'']]],
+  ['data_20structures',['Data Structures',['../group__group__tcpwm__data__structures__common.html',1,'']]],
+  ['data_20structures',['Data Structures',['../group__group__tcpwm__data__structures__counter.html',1,'']]],
+  ['data_20structures',['Data Structures',['../group__group__tcpwm__data__structures__pwm.html',1,'']]],
+  ['data_20structures',['Data Structures',['../group__group__tcpwm__data__structures__quaddec.html',1,'']]],
+  ['data_20structures',['Data Structures',['../group__group__tcpwm__data__structures__shiftreg.html',1,'']]],
+  ['default_20registers_20constants',['Default registers constants',['../group__group__tcpwm__reg__const.html',1,'']]],
+  ['data_20structures',['Data Structures',['../group__group__tdm__data__structures.html',1,'']]],
+  ['data_20structures',['Data Structures',['../group__group__wdt__data__structures.html',1,'']]]
 ];

@@ -35,13 +35,13 @@
 
   <Parameters>
     <!-- PDL documentation -->
-    <ParamDoc id="pdlDoc" name="Configuration Help" group="Overview" default="file:///`${cy_libs_path()}`/docs/pdl_api_reference_manual/html/group__group__scb__uart.html" linkText="Open Documentation" visible="true" desc="Opens the Peripheral Driver Library Documentation" />
+    <ParamDoc id="pdlDoc" name="Configuration Help" group="Overview" default="https://infineon.github.io/lpa/api_reference_manual/html/index.html" linkText="Open Low Power Assistant Documentation" visible="true" desc="Opens the Low Power Assistant Documentation" />
   </Parameters>
 
   <DRCs>
   </DRCs>
 
   <ConfigFirmware>
-    <ConfigInclude value="cy_power.h" include="true" />
+    <!--<ConfigInclude value="cy_power.h" include="true" />-->
   </ConfigFirmware>
 </Personality>

@@ -32,6 +32,21 @@
 extern "C" {
 #endif
 
+/**
+* \addtogroup group_sysclk
+* \{
+* System Clock
+
+* \defgroup group_sysclk_macros Macros
+* \defgroup group_sysclk_function Functions
+* \defgroup group_sysclk_data_structures Data Structures
+* \} */
+/** \} group_sysclk */
+
+/**
+* \addtogroup group_sysclk_data_structures
+* \{
+*/
 /** \brief BTSS Sytem CPU clock request types */
  typedef enum
 {
@@ -59,7 +74,23 @@ typedef enum {
     BTSS_SYSTEM_AUDIO_PLL_FREQ_44_1KHZ_MCLK = 67737600u, /* PLL frequency for 44.1KHz sampling rate */
     BTSS_SYSTEM_AUDIO_PLL_FREQ_GENERIC_MCLK = 73728000u, /* PLL frequency for 48/32/16/8KHz sampling rate */
 } BTSS_SYSTEM_AUDIO_PLL_FREQ_t;
+/** \} group_sysclk_data_structures */
 
+/**
+* \addtogroup group_sysint
+* \{
+* System Interrupt(s)
+
+* \defgroup group_sysint_macros Macros
+* \defgroup group_sysint_function Functions
+* \defgroup group_sysint_data_structures Data Structures
+* \} */
+/** \} group_sysint */
+
+/**
+* \addtogroup group_sysint_data_structures
+* \{
+*/
 /** \brief BTSS Sytem Interrupt sources for Applications */
 typedef enum {
     BTSS_SYSTEM_INTERRUPT_GPIO,
@@ -84,6 +115,7 @@ typedef enum {
     BTSS_SYSTEM_INTERRUPT_TCPWM_G1_C5,
     BTSS_SYSTEM_INTERRUPT_TCPWM_G1_C6,
 } BTSS_SYSTEM_INTERRUPT_t;
+/** \} group_sysint_data_structures */
 
 /** \brief BTSS Sytem - Random number request type */
 typedef enum
@@ -92,7 +124,21 @@ typedef enum
     BTSS_SYSTEM_RANDOM_NUM_REQ_TRNG,   /* True random number */
 } BTSS_SYSTEM_RANDOM_NUM_REQ_t;
 
+/**
+* \addtogroup group_syspm
+* \{
+* System Power Management
 
+* \defgroup group_syspm_macros Macros
+* \defgroup group_syspm_function Functions
+* \defgroup group_syspm_data_structures Data Structures
+* \} */
+/** \} group_syspm */
+
+/**
+* \addtogroup group_syspm_data_structures
+* \{
+*/
 /** \brief BTSS Sytem - Sleep Configurations */
 typedef enum
 {
@@ -171,6 +217,13 @@ typedef enum
 
 typedef enum
 {
+    CTSS_SYSTEM_PMU_WAKE_SRC_LHL_IO = 1024,
+    CTSS_SYSTEM_PMU_WAKE_SRC_ADCCOMP_LPCOMP_1 = 1027,
+    CTSS_SYSTEM_PMU_WAKE_SRC_ADCCOMP_LPCOMP_2 = 1028,
+} CTSS_SYSTEM_SLEEP_PMU_WAKE_SRC_t;
+
+typedef enum
+{
     BTSS_SYSTEM_NVRAM_OTA_ERR_NONE                          = 0x00,
     BTSS_SYSTEM_NVRAM_OTA_ERR_ADDR_OUT_OF_RANGE             = 0x01,
     BTSS_SYSTEM_NVRAM_OTA_ERR_CRYPTO_FAILED                 = 0x02,
@@ -207,7 +260,12 @@ typedef struct
 typedef BTSS_SYSTEM_PMU_SLEEP_MODE_t(*BTSS_SYSTEM_PRE_SLEEP_CB_t)(BTSS_SYSTEM_PMU_SLEEP_MODE_t sleep_mode, UINT32 sleep_time_in_lpo_cycles);
 /** \brief Post-Sleep Callback from PMU thread */
 typedef void(*BTSS_SYSTEM_POST_SLEEP_CB_t)(BTSS_SYSTEM_PMU_SLEEP_MODE_t sleep_mode);
+/** \} group_syspm_data_structures */
 
+/**
+* \addtogroup group_sysclk_function
+* \{
+*/
 
 /**
  * Function btss_system_cpuclockRequest
@@ -270,6 +328,8 @@ UINT32 btss_system_clockGetAudioPllFreq(void);
  */
 UINT64 btss_system_getSystemTimeMicroseconds(void);
 
+/** \} group_sysclk_function */
+
 /**
  * Function btss_system_getRandomNumber
  *
@@ -282,6 +342,10 @@ UINT64 btss_system_getSystemTimeMicroseconds(void);
 UINT32 btss_system_getRandomNumber( BTSS_SYSTEM_RANDOM_NUM_REQ_t req );
 
 /**
+* \addtogroup group_syspm_function
+* \{
+*/
+/**
  * Function btss_system_forceSystemReset
  *
  * Forces system reset
@@ -289,7 +353,12 @@ UINT32 btss_system_getRandomNumber( BTSS_SYSTEM_RANDOM_NUM_REQ_t req );
  * \return       none
  */
 void btss_system_forceSystemReset(void);
+/** \} group_syspm_function */
 
+/**
+* \addtogroup group_sysint_function
+* \{
+*/
 /**
  * Function btss_system_intEnable
  *
@@ -343,7 +412,12 @@ UINT32 btss_system_enterCriticalSection(void);
  * \return       None
  */
 void btss_system_exitCriticalSection(UINT32 interrupt_state);
+/** \} group_sysint_function */
 
+/**
+* \addtogroup group_syspm_function
+* \{
+*/
 
 /**
  * Function btss_system_sleepInit
@@ -401,6 +475,63 @@ BOOL32 btss_system_sleepEnableWakeSource(BTSS_SYSTEM_SLEEP_PMU_WAKE_SRC_t wakeSo
  * \return       TRUE/FALSE as Status
  */
 BOOL32 btss_system_sleepDisableWakeSource(BTSS_SYSTEM_SLEEP_PMU_WAKE_SRC_t wakeSource);
+
+/**
+ * Function ctss_system_sleepEnableWakeSource
+ *
+ * Enables wake source for sleep.
+ *
+ * \param[in]    wakeSource       : Wake source
+ *
+ * \return       TRUE/FALSE as Status
+ */
+BOOL32 ctss_system_sleepEnableWakeSource(CTSS_SYSTEM_SLEEP_PMU_WAKE_SRC_t wakeSource);
+
+/**
+ * Function ctss_system_sleepDisableWakeSource
+ *
+ * Disables wake source for sleep.
+ *
+ * \param[in]    wakeSource       : Wake source
+ *
+ * \return       TRUE/FALSE as Status
+ */
+BOOL32 ctss_system_sleepDisableWakeSource(CTSS_SYSTEM_SLEEP_PMU_WAKE_SRC_t wakeSource);
+
+/**
+ * Function btss_system_disableSleepAndPause
+ *
+ * Disables LPM sleep and ARM pause modes
+ *
+ * \param[in]    none
+ *
+ * \return       disable request count : UINT32
+ */
+UINT32 btss_system_disableSleepAndPause(void);
+
+/**
+ * Function btss_system_enableSleepAndPause
+ *
+ * Enables LPM sleep and ARM pause modes
+ *
+ * \param[in]    none
+ *
+ * \return       disable request count : UINT32
+ */
+UINT32 btss_system_enableSleepAndPause(void);
+
+/**
+ * Function btss_system_getSleepAndPauseDisabledCount
+ *
+ * Returns the pause disabled count, could be useful for adding diagnostics.
+ *
+ * \param[in]    none
+ *
+ * \return       disable request count : UINT32
+ */
+UINT32 btss_system_getSleepAndPauseDisabledCount(void);
+
+/** \} group_syspm_function */
 
 #include "bt_types.h"
 

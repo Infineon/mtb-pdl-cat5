@@ -1,8 +1,28 @@
 var searchData=
 [
-  ['tx_20interrupt_20statuses',['TX Interrupt Statuses',['../group__group__scb__common__macros__tx__intr.html',1,'']]],
-  ['tcpwm_20_20_20_20_20_20_20_20_28timer_20counter_20pwm_29',['TCPWM        (Timer Counter PWM)',['../group__group__tcpwm.html',1,'']]],
-  ['timer_2fcounter_20_28tcpwm_29',['Timer/Counter (TCPWM)',['../group__group__tcpwm__counter.html',1,'']]],
-  ['tcpwm_20input_20selection',['TCPWM Input Selection',['../group__group__tcpwm__input__selection.html',1,'']]],
-  ['tdm_2fi2s_20_20_20_20_20_20_28time_20division_20multiplexing_2finter_2dic_20sound_29',['TDM/I2S      (Time Division Multiplexing/Inter-IC Sound)',['../group__group__tdm.html',1,'']]]
+  ['scb_20_20_20_20_20_20_20_20_20_20_28serial_20communication_20block_29',['SCB          (Serial Communication Block)',['../group__group__scb.html',1,'']]],
+  ['scb_20interrupt_20causes',['SCB Interrupt Causes',['../group__group__scb__common__macros__intr__cause.html',1,'']]],
+  ['slave_20interrupt_20statuses',['Slave Interrupt Statuses',['../group__group__scb__common__macros__slave__intr.html',1,'']]],
+  ['spi_20interrupt_20statuses',['SPI Interrupt Statuses',['../group__group__scb__common__macros___spi_intr_statuses.html',1,'']]],
+  ['slave',['Slave',['../group__group__scb__ezi2c__slave__functions.html',1,'']]],
+  ['slave',['Slave',['../group__group__scb__i2c__slave__functions.html',1,'']]],
+  ['spi_20_28scb_29',['SPI (SCB)',['../group__group__scb__spi.html',1,'']]],
+  ['spi_20callback_20events',['SPI Callback Events',['../group__group__scb__spi__macros__callback__events.html',1,'']]],
+  ['spi_20master_20and_20slave_20statuses',['SPI Master and Slave Statuses',['../group__group__scb__spi__macros__master__slave__status.html',1,'']]],
+  ['spi_20rx_20fifo_20statuses',['SPI RX FIFO Statuses',['../group__group__scb__spi__macros__rx__fifo__status.html',1,'']]],
+  ['spi_20tx_20fifo_20statuses',['SPI TX FIFO Statuses',['../group__group__scb__spi__macros__tx__fifo__status.html',1,'']]],
+  ['spi_20transfer_20status',['SPI Transfer Status',['../group__group__scb__spi__macros__xfer__status.html',1,'']]],
+  ['smif_20_20_20_20_20_20_20_20_20_28serial_20memory_20interface_29',['SMIF         (Serial Memory Interface)',['../group__group__smif.html',1,'']]],
+  ['smif_20memory_20description_20structures',['SMIF Memory Description Structures',['../group__group__smif__data__structures__memslot.html',1,'']]],
+  ['sfdp_20macros',['SFDP Macros',['../group__group__smif__macros__sfdp.html',1,'']]],
+  ['status_20macros',['Status Macros',['../group__group__smif__macros__status.html',1,'']]],
+  ['sysclk_20_20_20_20_20_20_20_28system_20clock_29',['SysClk       (System Clock)',['../group__group__sysclk.html',1,'']]],
+  ['sysint_20_20_20_20_20_20_20_28system_20interrupt_29',['SysInt       (System Interrupt)',['../group__group__sysint.html',1,'']]],
+  ['syspm_20_20_20_20_20_20_20_20_28system_20power_20management_29',['SysPm        (System Power Management)',['../group__group__syspm.html',1,'']]],
+  ['shift_20register_20_28tcpwm_29',['Shift Register (TCPWM)',['../group__group__tcpwm__shiftreg.html',1,'']]],
+  ['shift_20register_20clk_20prescaler_20values',['Shift Register CLK Prescaler values',['../group__group__tcpwm__shiftreg__clk__prescalers.html',1,'']]],
+  ['shift_20register_20output_20invert',['Shift Register output invert',['../group__group__tcpwm__shiftreg__output__invert.html',1,'']]],
+  ['shift_20register_20output_20lines',['Shift Register Output Lines',['../group__group__tcpwm__shiftreg__output__line.html',1,'']]],
+  ['shift_20register_20disabled_20output',['Shift Register Disabled Output',['../group__group__tcpwm__shiftreg__output__on__disable.html',1,'']]],
+  ['shift_20register_20status',['Shift Register Status',['../group__group__tcpwm__shiftreg__status.html',1,'']]]
 ];

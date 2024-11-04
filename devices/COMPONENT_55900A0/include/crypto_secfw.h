@@ -20,7 +20,10 @@
 #if !defined(_CRYPTO_SEC_FW_H_)
 #define _CRYPTO_SEC_FW_H_
 
+#if !defined(COMPONENT_CAT5)
+/* not to be pulled in MTB/PDL */
 #include "brcm_fw_types.h"
+#endif /* COMPONENT_CAT5 */
 
 typedef struct tag_t_secure_sockets_params
 {

@@ -1,19 +1,38 @@
 var NAVTREE =
 [
-  [ "AIROC™ CYW55513", "index.html", [
+  [ "AIROC™ CYW55913", "index.html", [
     [ "AIROC™ API Reference", "index.html#wiced_api", null ],
     [ "AIROC™ User Guides", "index.html#wiced_pdf_docs", null ],
     [ "AIROC™ Hardware Reference", "index.html#wiced_hw_docs", null ],
     [ "AIROC™ Website", "index.html#wiced_web", null ],
     [ "Bluetooth® References", "index.html#bt_smart_ref", null ],
     [ "AIROC™ Community", "index.html#wiced_forum", null ],
-    [ "AIROC™ BTSDK Licensing Information", "index.html#wiced_license", null ]
+    [ "AIROC™ BTSDK Licensing Information", "index.html#wiced_license", null ],
+    [ "Components", "modules.html", "modules" ]
   ] ]
 ];
 
 var NAVTREEINDEX =
 [
-"index.html"
+"group___adc_driver.html",
+"group__ble__common__sec__api__functions.html#gaec31decb7680a981a8a0d96e03ae004a",
+"group__btm__ble__api__functions.html#ga88764a9b8a101e7f363460d84853b47f",
+"group__eventflags.html#ga308a518efb15c5b6935986f1ce5dbbcc",
+"group__l2cap__common__api__functions.html#ga1ca1d8190c10328fb06b68573fb88ac3",
+"group__sdp.html#gga93c6f8c9d0b76ab42e67a9f2d0dec328af6a1304636c94964b376a41ef8e45f4b",
+"group__wicedbt___device_management.html#gaa60fe446ece8ef8847c1dc84e6485ccc",
+"group__wicedbt__a2dp__mpeg__1__2.html#ga34575dd585fde70f534cba73cf9ffa10",
+"group__wicedbt__avdt.html#ga58329be377eaab19355373cbd7f6fcdc",
+"group__wicedbt__avrc.html#ga42146c9ce5a3b800b60e32d929f0219e",
+"group__wicedbt__avrc.html#gaabd9d3e82e5846f1a50155678c7a9951",
+"group__wicedbt__gatt.html#ga11fdc81533d409bc77fdaffe038d06fc",
+"group__wicedbt__gatt.html#gga972f2437538363989cee28019cb06652ac3c64147f016a2d28fa71c7ba82a531f",
+"structwiced__bt__avdt__sender__info__t.html#ac2bef8622c14a084f2bed757327f183a",
+"structwiced__bt__avrc__msg__t.html#ac1cd2d07d79760e661617c6f3c2e2e47",
+"structwiced__bt__ble__phy__update__t.html#ab771cbb17ebafbde4821929245c30261",
+"structwiced__bt__device__sec__keys__s.html#a3f904f9f4ccd74da1f8e64cd425a11b8",
+"structwiced__bt__isoc__sca__t.html#ade818037fd6c985038ff29656089758d",
+"unionwiced__bt__avdt__ctrl__t.html#aef9ab9f1beb1bcb7b0e109dfb1338499"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

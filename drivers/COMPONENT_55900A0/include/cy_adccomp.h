@@ -36,15 +36,56 @@
 extern "C" {
 #endif
 
+/**
+* \addtogroup group_adccomp
+* \{
+* ADCCOMP, LPCOMP / NTD - Noise Threshold Detector
+
+* \defgroup group_adccomp_macros Macros
+* \defgroup group_adccomp_function Functions
+* \defgroup group_adccomp_data_structures Data Structures
+* \} */
+/** \} group_adccomp */
+
+/**
+* \addtogroup group_adccomp_macros
+* \{
+*/
 #define CY_ADCCOMP_MV  (1000L)      /**< 1 Volt in millivolts */
 #define CY_ADCCOMP_UV  (1000000L)   /**< 1 Volt in microvolts */
 
+/** Bit 0: comparator1 fires,
+    NTD mode:- when the peak-peak mic input level is larger than the selected hysterisis limit.
+    DC sense:- V(+) - V(-) > 0.5* hysterisis limit */
+#define CY_ADCCOMP_INTR_LPCOMP1         (ADCCOMP_INTR_MASK_INTR_LPCOMP1_Msk)
+/** Bit 1: comparator2 fires,
+    NTD mode:- when the peak-peak mic input level is larger than the selected hysterisis limit.
+    DC sense:- V(+) - V(-) > 0.5* hysterisis limit */
+#define CY_ADCCOMP_INTR_LPCOMP2         (ADCCOMP_INTR_MASK_INTR_LPCOMP2_Msk)
+/** Bit 2: When CIC block completes DC conversion */
+#define CY_ADCCOMP_INTR_CIC             (ADCCOMP_INTR_MASK_INTR_CIC_Msk)
+/** Bit 3: Interrupt generates when ADC LDO is stable (or) ADC timer expires(applicable only in case of DC calibration) */
+#define CY_ADCCOMP_INTR_ADC_READY       (ADCCOMP_INTR_MASK_INTR_TIMER_Msk)
+#define CY_ADCCOMP_INTR                 (ADCCOMP_INTR_MASK_INTR_LPCOMP1_Msk | \
+                                         ADCCOMP_INTR_MASK_INTR_LPCOMP2_Msk | \
+                                         ADCCOMP_INTR_MASK_INTR_CIC_Msk | \
+                                         ADCCOMP_INTR_MASK_INTR_TIMER_Msk)
+/** \} group_adccomp_macros */
+
+/**
+* \addtogroup group_adccomp_data_structures
+* \{
+*/
+/**< ADCCOMP register configuration */
+
+/**< LPCOMP instances */
 typedef enum
 {
-    CY_ADCCOMP_LPCOMP_1 = 1,
-    CY_ADCCOMP_LPCOMP_2 = 2
+    CY_ADCCOMP_LPCOMP_1 = 1, /**< LPCOMP instance 0 */
+    CY_ADCCOMP_LPCOMP_2 = 2  /**< LPCOMP instance 1 */
 }cy_en_adccomp_lpcomp_id_t;
 
+/**< LPCOMP operational mode */
 typedef enum
 {
     CY_ADCCOMP_LPCOMP_DC,   /**< DC mode: comparator  assert when the V(+) - V(-) > 0.5*hysterisis limit */
@@ -52,6 +93,7 @@ typedef enum
                                  the selected hysterisis limit */
 }cy_en_adccomp_lpcomp_mode_t;
 
+/**< ADCCOMP input channel associations */
 typedef enum
 {
     /**< ADC input channel for DC conversion */
@@ -130,7 +172,6 @@ typedef enum
     CY_ADCCOMP_LPCOMP_HYST_LIMIT_60MV_101_5DB
 }cy_en_adccomp_lpcomp_hyst_t;
 
-
 // Hachet 1 default ADC input clock is 4 MHz.
 typedef enum
 {
@@ -148,28 +189,6 @@ typedef enum
     CY_ADCCOMP_CLOCK_REQ_FAIL,
     CY_ADCCOMP_NOT_SUPPORTED
 } cy_en_adccomp_status_t;
-
-/**
-* \addtogroup group_adccomp_macros_interrupt
-* \{
-*/
-/** Bit 0: comparator1 fires,
-    NTD mode:- when the peak-peak mic input level is larger than the selected hysterisis limit.
-    DC sense:- V(+) - V(-) > 0.5* hysterisis limit */
-#define CY_ADCCOMP_INTR_LPCOMP1         (ADCCOMP_INTR_MASK_INTR_LPCOMP1_Msk)
-/** Bit 1: comparator2 fires,
-    NTD mode:- when the peak-peak mic input level is larger than the selected hysterisis limit.
-    DC sense:- V(+) - V(-) > 0.5* hysterisis limit */
-#define CY_ADCCOMP_INTR_LPCOMP2         (ADCCOMP_INTR_MASK_INTR_LPCOMP2_Msk)
-/** Bit 2: When CIC block completes DC conversion */
-#define CY_ADCCOMP_INTR_CIC             (ADCCOMP_INTR_MASK_INTR_CIC_Msk)
-/** Bit 3: Interrupt generates when ADC LDO is stable (or) ADC timer expires(applicable only in case of DC calibration) */
-#define CY_ADCCOMP_INTR_ADC_READY       (ADCCOMP_INTR_MASK_INTR_TIMER_Msk)
-#define CY_ADCCOMP_INTR                 (ADCCOMP_INTR_MASK_INTR_LPCOMP1_Msk | \
-                                         ADCCOMP_INTR_MASK_INTR_LPCOMP2_Msk | \
-                                         ADCCOMP_INTR_MASK_INTR_CIC_Msk | \
-                                         ADCCOMP_INTR_MASK_INTR_TIMER_Msk)
-/** \} group_adccomp_macros_interrupt */
 
 typedef enum
 {
@@ -248,7 +267,14 @@ typedef struct
     cy_stc_adccomp_adc_mic_config_t     * micConfig;    /**< The pointer to the audio MIC configuration structure */
 }cy_stc_adccomp_adc_config_t;
 
+/** \brief ADCCOMP - Interrupt Callback from IRQ Thread */
+typedef void(*CY_ADCCOMP_IRQ_THREAD_CB_t)(void);
+/** \} group_adccomp_data_structures */
 
+/**
+* \addtogroup group_adccomp_function
+* \{
+*/
 /*******************************************************************************
 * Function Name: Cy_ADCCOMP_LPCOMP_Init
 ****************************************************************************//**
@@ -372,23 +398,6 @@ void Cy_ADCCOMP_LPCOMP_EnableWakeConfig(cy_en_adccomp_lpcomp_id_t lpcompId);
 *
 *******************************************************************************/
 void Cy_ADCCOMP_LPCOMP_DisableWakeConfig(cy_en_adccomp_lpcomp_id_t lpcompId);
-
-/*******************************************************************************
-* Function Name: Cy_ADCCOMP_LPCOMP_isWakeSource
-****************************************************************************//**
-*
-* Return TRUE/FALSE depending on comparator is the reason for device wake from low power mode or not.
-* Applicable to use in NTD mode only.
-*
-* \param lpcompId
-* Low power comparator Id \ref cy_en_adccomp_lpcomp_id_t.
-*
-* \return
-* TRUE :- device wake from low power mode because of comparator latch
-* FALSE:- device wake from low power mode is not because of comparator latch
-*
-*******************************************************************************/
-BOOL32 Cy_ADCCOMP_LPCOMP_isWakeSource(cy_en_adccomp_lpcomp_id_t lpcompId);
 
 /*******************************************************************************
 * Function Name: Cy_ADCCOMP_LPCOMP_ClearLatch
@@ -957,7 +966,7 @@ __STATIC_INLINE void Cy_ADCCOMP_SetInterrupt(CyADCCOMP_Type * base, uint32_t int
 * Write interrupt mask value into interrupt mask register.
 *
 * \param base
-* The pointer to the hardware ADCCOMP block.
+* The pointer to the hardware ADCCOMP block. \ref CyADCCOMP_Type
 *
 * \param intrMask
 * The mask of interrupts.
@@ -981,7 +990,7 @@ __STATIC_INLINE void Cy_ADCCOMP_SetInterruptMask(CyADCCOMP_Type * base, uint32_t
 * in a single-load operation.
 *
 * \param base
-* The pointer to the hardware ADCCOMP block.
+* The pointer to the hardware ADCCOMP block. \ref CyADCCOMP_Type
 *
 * \return
 * The masked interrupt status.
@@ -992,10 +1001,18 @@ __STATIC_INLINE uint32_t Cy_ADCCOMP_GetInterruptStatusMasked(CyADCCOMP_Type cons
     return (base->INTR_MASKED);
 }
 
-
-/** \brief ADCCOMP - Interrupt Callback from IRQ Thread */
-typedef void(*CY_ADCCOMP_IRQ_THREAD_CB_t)(void);
+/*******************************************************************************
+* Function Name: Cy_ADCCOMP_RegisterIntrCallback
+****************************************************************************//**
+*
+* Returns the status of registration of callback for ADCCOMP IRQ \ref cy_en_adccomp_status_t
+*
+* \param pCb
+* Callback for ADCCOMP IRQ to application \ref CY_ADCCOMP_IRQ_THREAD_CB_t
+*
+*******************************************************************************/
 cy_en_adccomp_status_t Cy_ADCCOMP_RegisterIntrCallback ( CY_ADCCOMP_IRQ_THREAD_CB_t pCb);
+/** \} group_adccomp_function */
 
 #if defined(__cplusplus)
 }

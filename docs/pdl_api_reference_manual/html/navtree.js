@@ -20,12 +20,13 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "\ref device_catalog_cat1a",
-"group__group__scb__spi__enums.html#gga1410916a9c76b0d86eb196b8e9ed547fabfa2d99c3ac1ee80fee0f8efabb4f41a",
-"group__group__smif__data__structures__memslot.html",
-"group__group__smif__macros__sfdp.html#ga806651ccb9533f763f95660f71c1632a",
-"group__group__tcpwm__functions__shiftreg.html#ga852928eca1da173c466edbf694ae0c7f",
-"group__group__tdm__functions.html#gaea7ceac23d053568c01bfed18c5c2a94",
-"structcy__stc__tcpwm__pwm__config__t.html#a6e07285f605e430e0e0237a45fc44111"
+"group__group__scb__common__macros__rx__intr.html#ga1cb2d0a7d0b1cc8d61047f6e18ea8253",
+"group__group__scb__spi__macros__rx__fifo__status.html#ga635fed2d6204ec644ad4ce4c8122350c",
+"group__group__smif__enums.html#ggab71e4b1f4c80b3e8c82dd85570415e44ac48f37951c6286f3ab3d227f80b2b3f2",
+"group__group__smif__macros__sfdp.html#gaf4b7ccd5f4cc2072dc86e156636711f6",
+"group__group__tcpwm__input__selection.html#gae36951351e06e1002c3cffa96a52f2a4",
+"group__group__wdt__macros.html",
+"structcy__stc__smif__mem__device__cfg__t.html#acbffaff900e449871089a11dea0ad752"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -74,6 +74,27 @@ typedef enum
     BTSS_GPIO_LAST = BTSS_B_GPIO_7,
 } BTSS_GPIO_t;
 
+/** \brief List of LHL IOs */
+typedef enum
+{
+    CTSS_LHL_IO_0    = 0u,
+    CTSS_LHL_IO_1    = 1u,
+    CTSS_LHL_IO_10   = 10u,
+} CTSS_LHL_IO_t;
+
+/** \brief GPIO interrupt trigger */
+typedef enum
+{// de, ne, et
+    CTSS_LHL_IO_TRIGGER_LEVEL_HIGH = 0x0,
+    CTSS_LHL_IO_TRIGGER_EDGE_RISING = 0x1,
+    CTSS_LHL_IO_TRIGGER_LEVEL_LOW = 0x2,
+    CTSS_LHL_IO_TRIGGER_EDGE_FALLING = 0x3,
+    CTSS_LHL_IO_TRIGGER_EDGES_BOTH = 0x5,
+} CTSS_LHL_IO_INT_TRIGGER_TYPE_t;
+
+/** \brief CTSS LHL IO interrupt callback */
+typedef void CTSS_LHL_IO_ISR_CALLBACK_t (UINT8 ioPort);
+
 /** \brief List of GPIO Ports */
 typedef enum
 {
@@ -188,6 +209,113 @@ void btss_gpio_configInterrupt( BTSS_GPIO_t gpio, BTSS_GPIO_INT_TRIGGER_TYPE_t t
  * \return       none
  */
 void btss_gpio_registerInterruptCallback( BTSS_GPIO_t gpio, BTSS_GPIO_ISR_CALLBACK_t* callback );
+
+
+/**
+ * Function ctss_lhl_ioSetDirection
+ *
+ * Set IO direction for specified pad
+ *
+ * \param[in]    pad               : pad to be configured
+ * \param[in]    outputEnable      : TRUE : OutputEnabled
+ *
+ * \return       none
+ */
+void ctss_lhl_ioSetDirection(CTSS_LHL_IO_t ioPPort, BOOL32 outputEnable);
+
+/**
+ * Function ctss_lhl_ioSet
+ *
+ * Set output state to specified pad
+ *
+ * \param[in]    pad               : pad to be set
+ * \param[in]    state             : TRUE : High
+ *
+ * \return       none
+ */
+void ctss_lhl_ioSet(CTSS_LHL_IO_t ioPPort, BOOL32 ioState);
+
+/**
+ * Function ctss_lhl_ioGet
+ *
+ * Get input status of specified pad
+ *
+ * \param[in]    pad               : pad to be get
+ *
+ * \return       TRUE : High, FALSE : Low
+ */
+BOOL32 ctss_lhl_ioGet(CTSS_LHL_IO_t ioPort);
+
+/**
+ * Function ctss_lhl_io_getOutState
+ *
+ * Get output status of specified pad
+ *
+ * \param[in]    ioPort               : pad to be get
+ *
+ * \return       TRUE : High, FALSE : Low
+ */
+BOOL32 ctss_lhl_io_getOutState(CTSS_LHL_IO_t ioPort);
+
+/**
+ * Function ctss_lhl_io_toggle
+ *
+ * Toggles status of specified pad
+ *
+ * \param[in]    ioPort               : pad to be get
+ *
+ * \return       none
+ */
+void ctss_lhl_io_toggle(CTSS_LHL_IO_t ioPort);
+
+/**
+ * Function ctss_lhl_io_configInterrupt
+ *
+ * Configure interrupt trigger of specified pad
+ *
+ * \param[in]    ioPort               : pad to be get
+ * \param[in]    trigger
+ *
+ * \return       none
+ */
+void ctss_lhl_io_configInterrupt(CTSS_LHL_IO_t ioPort, CTSS_LHL_IO_INT_TRIGGER_TYPE_t trigger);
+
+/**
+ * Function ctss_lhl_io_registerInterruptCallback
+ *
+ * Configure interrupt trigger of specified pad
+ *
+ * \param[in]    ioPort               : pad to be get
+ * \param[in]    cbk
+ *
+ * \return       none
+ */
+void ctss_lhl_io_registerInterruptCallback(CTSS_LHL_IO_t lhl_io, CTSS_LHL_IO_ISR_CALLBACK_t* cbk);
+
+/**
+ * Function ctss_lhl_io_enableInterrupt
+ *
+ * Configure interrupt trigger of specified pad
+ *
+ * \param[in]    ioPort               : pad to be get
+ * \param[in]    enable
+ *
+ * \return       none
+ */
+void ctss_lhl_io_enableInterrupt(CTSS_LHL_IO_t ioPort, BOOL32 enable);
+
+/**
+ * Function ctss_lhl_io_enable_lhlInterrupt
+ *
+ * Configure interrupt trigger of specified pad
+ *
+ * \param[in]    ioPort               : pad to be get
+ * \param[in]    enable
+ *
+ * \return       none
+ */
+void ctss_lhl_io_enable_lhlInterrupt(BOOL32 enable);
+
 
 #if defined(__cplusplus)
 }

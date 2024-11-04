@@ -59,7 +59,16 @@ endif
 
 ifeq ($(DIRECT_LOAD),0)
     $(info Build $(CHIP_NAME) for flash patch using $(CHIP_ANT_SEL))
-    CY_CORE_PATCH_DIR=$(CY_PDL_ROOT)/devices/COMPONENT_$(CHIP_NAME)/flash_patches/$(CHIP_PATCH_DIR_ANT)/$(LIFE_CYCLE_STATE)
+    ifeq ($(CHIP_NAME),55900A0)
+        ifeq ($(MEMORY_LAYOUT_SEL), f8_p2)
+            FLASH_PATCH=flash_f8_p2
+        else
+            FLASH_PATCH=flash
+        endif
+    else
+        FLASH_PATCH=flash
+    endif
+    CY_CORE_PATCH_DIR=$(CY_PDL_ROOT)/devices/COMPONENT_$(CHIP_NAME)/$(FLASH_PATCH)_patches/$(CHIP_PATCH_DIR_ANT)/$(LIFE_CYCLE_STATE)
     CY_CORE_PATCH=$(CY_CORE_PATCH_DIR)/patch.elf
     ifeq ($(CHIP_NAME),55900A0)
         ifeq (,$(filter NETXSECURE_WPA3,$(COMPONENTS)))

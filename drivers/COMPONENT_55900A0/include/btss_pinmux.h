@@ -220,10 +220,65 @@ typedef enum
     FUNC_TCPWM_OUT_25  = 107u,
     FUNC_TCPWM_OUT_26  = 108u,
     FUNC_TCPWM_OUT_27  = 109u,
-
     FUNC_BTSS_LAST = FUNC_TCPWM_OUT_27,
     FUNC_UNAVAILABLE = 255u,
 } BTSS_PINMUX_FUNC_LIST_t;
+
+typedef enum
+{
+    PAD_LHL_IO_0 = PAD_MAX_NUM, //WL_DEV_WAKEKE
+    PAD_LHL_IO_1, //BT_DEV_WA
+    PAD_LHL_IO_10, //LPO_IN_OUT
+    PAD_CTSS_MAX_NUM,
+} CTSS_PAD_LIST_t;
+typedef enum
+{
+    FUNC_LHL_IO_0 = FUNC_BTSS_LAST + 1,
+    FUNC_LHL_IO_1,
+    FUNC_LHL_IO_10,
+    FUNC_LPO_OUT_ON_LHL_IO_10,
+    FUNC_CTSS_LAST = FUNC_LPO_OUT_ON_LHL_IO_10,
+} CTSS_PINMUX_FUNC_LIST_t;
+
+typedef enum
+{
+    PAD_INPUT_PDN = 0x200,
+    PAD_INPUT_PUP = 0x400,
+    PAD_INPUT_MASK = 0x600,
+    PAD_INPUT_DISABLED = 0x600,
+} CTSS_PAD_INCONFIG_t;
+
+typedef enum
+{
+    PAD_OUTPUT_DISABLED = 0x00,
+    PAD_OUTPUT_ENABLED = 0x20,
+    PAD_OUTPUT_MASK = 0x20,
+} CTSS_PAD_OUTCONFIG_t;
+
+/**
+ * Function ctss_pad_configParamInit
+ *
+ * Get the integrated pad configuration value for a ctss pad
+ *
+ * \param[in]    inConfig               : input configuration
+ * \param[in]    outConfig              : output configuration
+ *
+ * \return       integrated configuration value
+ */
+UINT16 ctss_pad_configParamInit(CTSS_PAD_INCONFIG_t inConfig, CTSS_PAD_OUTCONFIG_t outConfig);
+
+/**
+ * Function ctss_pad_configure
+ *
+ * Configure a ctss pad for required functionality
+ *
+ * \param[in]    pad               : pad to be configured
+ * \param[in]    func              : function to be assigned
+ * \param[in]    config            : pad configuration value
+ *
+ * \return       TRUE : Success, FALSE : Failed
+ */
+BOOL32 ctss_pad_configure(CTSS_PAD_LIST_t pad, CTSS_PINMUX_FUNC_LIST_t func, UINT16 config);
 
 /**
  * Function btss_pad_configure

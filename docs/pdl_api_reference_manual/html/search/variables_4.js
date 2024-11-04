@@ -17,5 +17,6 @@ var searchData=
   ['erasecmd',['eraseCmd',['../structcy__stc__smif__hybrid__region__info__t.html#ab85285e79db802a1d10a3c057d5bbc68',1,'cy_stc_smif_hybrid_region_info_t::eraseCmd()'],['../structcy__stc__smif__mem__device__cfg__t.html#a4347b12d2f61a36f2ee4c62bbd756cb5',1,'cy_stc_smif_mem_device_cfg_t::eraseCmd()']]],
   ['erasesize',['eraseSize',['../structcy__stc__smif__hybrid__region__info__t.html#adfc0f4f12e086a45f53008ac2158c62a',1,'cy_stc_smif_hybrid_region_info_t::eraseSize()'],['../structcy__stc__smif__mem__device__cfg__t.html#ad70fca359cefe58ae57c88e70f01d97f',1,'cy_stc_smif_mem_device_cfg_t::eraseSize()']]],
   ['erasetime',['eraseTime',['../structcy__stc__smif__hybrid__region__info__t.html#a09282d5a0e7c8b9e1614b9a8cc547a37',1,'cy_stc_smif_hybrid_region_info_t::eraseTime()'],['../structcy__stc__smif__mem__device__cfg__t.html#a04a86cf0c364f59439d81470051f216e',1,'cy_stc_smif_mem_device_cfg_t::eraseTime()']]],
+  ['errintmask',['errIntMask',['../union_b_t_s_s___d_m_a_c___c_o_n_f_i_g___r_e_g__t.html#adc4d137f287d17ff41a671c239240d60',1,'BTSS_DMAC_CONFIG_REG_t']]],
   ['errstatus',['errStatus',['../struct_b_t_s_s___d_m_a_c___a_p_p___r_e_q_u_e_s_t__t.html#ad3ab76447a06828f935050cd1d201acf',1,'BTSS_DMAC_APP_REQUEST_t']]]
 ];
