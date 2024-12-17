@@ -1,5 +1,10 @@
 var NAVTREEINDEX7 =
 {
+"structcy__stc__smif__mem__device__cfg__t.html#a5156e88b285cfe78f4ff4e42194a70c0":[1,3,2,0,2,18],
+"structcy__stc__smif__mem__device__cfg__t.html#a6dabae268837d0cffde9c25b4efe455d":[1,3,2,0,2,1],
+"structcy__stc__smif__mem__device__cfg__t.html#a8666d1b28383b0e87d4efecd3ac69885":[1,3,2,0,2,9],
+"structcy__stc__smif__mem__device__cfg__t.html#a94531399701237a6c42b7ae8098f9c83":[1,3,2,0,2,15],
+"structcy__stc__smif__mem__device__cfg__t.html#a989bd3b0d57035f44bd936d185afb7bf":[1,3,2,0,2,20],
 "structcy__stc__smif__mem__device__cfg__t.html#acbffaff900e449871089a11dea0ad752":[1,3,2,0,2,2],
 "structcy__stc__smif__mem__device__cfg__t.html#ad185b6e5751a2536c004fca1f2325d2c":[1,3,2,0,2,10],
 "structcy__stc__smif__mem__device__cfg__t.html#ad4c73ef9b9a7932c2832347c4c268ffa":[1,3,2,0,2,12],

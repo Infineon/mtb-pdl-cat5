@@ -242,18 +242,103 @@ typedef enum
 
 typedef enum
 {
-    PAD_INPUT_PDN = 0x200,
-    PAD_INPUT_PUP = 0x400,
-    PAD_INPUT_MASK = 0x600,
-    PAD_INPUT_DISABLED = 0x600,
+    CTSS_PAD_INPUT_PDN = 0x200,
+    CTSS_PAD_INPUT_PUP = 0x400,
+    CTSS_PAD_INPUT_MASK = 0x600,
+    CTSS_PAD_INPUT_DISABLED = 0x600,
 } CTSS_PAD_INCONFIG_t;
 
 typedef enum
 {
-    PAD_OUTPUT_DISABLED = 0x00,
-    PAD_OUTPUT_ENABLED = 0x20,
-    PAD_OUTPUT_MASK = 0x20,
+    CTSS_PAD_OUTPUT_DISABLED = 0x00,
+    CTSS_PAD_OUTPUT_ENABLED = 0x20,
+    CTSS_PAD_OUTPUT_MASK = 0x20,
 } CTSS_PAD_OUTCONFIG_t;
+
+typedef enum
+{
+    WLSS_PAD_INPUT_PDN = 0x10,
+    WLSS_PAD_INPUT_PUP = 0x08,
+    WLSS_PAD_INPUT_MASK = 0x19,
+    WLSS_PAD_INPUT_DISABLED = 0x00,
+    WLSS_PAD_INPUT_ENABLED = 0x01,
+}WLSS_PAD_INCONFIG_t;
+
+typedef enum
+{
+    WLSS_PAD_OUTPUT_DISABLED = 0x00,
+    WLSS_PAD_OUTPUT_ENABLED = 0x02,
+    WLSS_PAD_OUTPUT_MASK = 0x02
+}WLSS_PAD_OUTCONFIG_t;
+
+typedef enum{
+    PAD_WL_GPIO_0 = PAD_CTSS_MAX_NUM,
+    PAD_WL_GPIO_2,
+    PAD_WL_GPIO_3,
+    PAD_WL_GPIO_4,
+    PAD_WL_GPIO_5,
+    PAD_WL_GPIO_6,
+    PAD_SDIO_CLK,
+    PAD_SDIO_CMD,
+    PAD_SDIO_DATA_0,
+    PAD_SDIO_DATA_1,
+    PAD_SDIO_DATA_2,
+    PAD_SDIO_DATA_3,
+    PAD_RFSW_CTRL_0,
+    PAD_RFSW_CTRL_1,
+    PAD_RFSW_CTRL_2,
+    PAD_RFSW_CTRL_3,
+    PAD_RFSW_CTRL_4,
+    PAD_RFSW_CTRL_5,
+    PAD_RFSW_CTRL_6,
+    PAD_RFSW_CTRL_7,
+    PAD_WLSS_MAX_NUM,
+}WLSS_PAD_LIST_t;
+
+typedef enum
+{
+    FUNC_WL_GPIO_0_GCI_GPIO_11 = FUNC_CTSS_LAST + 1,
+    FUNC_WL_GPIO_0_GPIO = FUNC_WL_GPIO_0_GCI_GPIO_11,
+    FUNC_WL_GPIO_2_GCI_GPIO_13,
+    FUNC_WL_GPIO_2_GPIO = FUNC_WL_GPIO_2_GCI_GPIO_13,
+    FUNC_WL_GPIO_3_GCI_GPIO_14,
+    FUNC_WL_GPIO_3_GPIO = FUNC_WL_GPIO_3_GCI_GPIO_14,
+    FUNC_WL_GPIO_4_GCI_GPIO_15,
+    FUNC_WL_GPIO_4_GPIO = FUNC_WL_GPIO_4_GCI_GPIO_15,
+    FUNC_WL_GPIO_5_GCI_GPIO_5,
+    FUNC_WL_GPIO_5_GPIO = FUNC_WL_GPIO_5_GCI_GPIO_5,
+    FUNC_WL_GPIO_6_GCI_GPIO_6,
+    FUNC_WL_GPIO_6_GPIO = FUNC_WL_GPIO_6_GCI_GPIO_6,
+    FUNC_SDIO_CLK,
+    FUNC_SDIO_CMD,
+    FUNC_SDIO_CMD_GCI_GPIO_0,
+    FUNC_SDIO_CMD_GPIO = FUNC_SDIO_CMD_GCI_GPIO_0,
+    FUNC_SDIO_DATA_0,
+    FUNC_SDIO_DATA_0_GCI_GPIO_1,
+    FUNC_SDIO_DATA_0_GPIO = FUNC_SDIO_DATA_0_GCI_GPIO_1,
+    FUNC_SDIO_DATA_1,
+    FUNC_SDIO_DATA_1_GCI_GPIO_2,
+    FUNC_SDIO_DATA_1_GPIO = FUNC_SDIO_DATA_1_GCI_GPIO_2,
+    FUNC_SDIO_DATA_2,
+    FUNC_SDIO_DATA_2_GCI_GPIO_3,
+    FUNC_SDIO_DATA_2_GPIO = FUNC_SDIO_DATA_2_GCI_GPIO_3,
+    FUNC_SDIO_DATA_3,
+    FUNC_SDIO_DATA_3_GCI_GPIO_4,
+    FUNC_SDIO_DATA_3_GPIO = FUNC_SDIO_DATA_3_GCI_GPIO_4,
+    FUNC_RFSW_CTRL_0,
+    FUNC_RFSW_CTRL_1,
+    FUNC_RFSW_CTRL_2,
+    FUNC_RFSW_CTRL_3,
+    FUNC_RFSW_CTRL_4,
+    FUNC_RFSW_CTRL_5,
+    FUNC_RFSW_CTRL_6,
+    FUNC_RFSW_CTRL_6_GCI_GPIO_7,
+    FUNC_RFSW_CTRL_6_GPIO = FUNC_RFSW_CTRL_6_GCI_GPIO_7,
+    FUNC_RFSW_CTRL_7,
+    FUNC_RFSW_CTRL_7_GCI_GPIO_8,
+    FUNC_RFSW_CTRL_7_GPIO = FUNC_RFSW_CTRL_7_GCI_GPIO_8,
+    FUNC_WLSS_LAST = FUNC_RFSW_CTRL_7_GPIO,
+}WLSS_PINMUX_FUNC_LIST_t;
 
 /**
  * Function ctss_pad_configParamInit
@@ -305,6 +390,30 @@ BOOL32 btss_pad_configure(BTSS_PAD_LIST_t pad, BTSS_PINMUX_FUNC_LIST_t func, UIN
  */
 BOOL32 btss_pad_assignFunction (BTSS_PAD_LIST_t pad, BTSS_PINMUX_FUNC_LIST_t func);
 
+/**
+ * Function wlss_pad_configParamInit
+ *
+ * Get the integrated pad configuration value for a wlss pad
+ *
+ * \param[in]    inConfig               : input configuration
+ * \param[in]    outConfig              : output configuration
+ *
+ * \return       integrated configuration value
+ */
+UINT16 wlss_pad_configParamInit(WLSS_PAD_INCONFIG_t inConfig, WLSS_PAD_OUTCONFIG_t outConfig);
+
+/**
+ * Function wlss_pad_configure
+ *
+ * Configure a wlss pad for required functionality
+ *
+ * \param[in]    pad               : pad to be configured
+ * \param[in]    func              : function to be assigned
+ * \param[in]    config            : pad configuration value
+ *
+ * \return       TRUE : Success, FALSE : Failed
+ */
+BOOL32 wlss_pad_configure(WLSS_PAD_LIST_t pad, WLSS_PINMUX_FUNC_LIST_t func, UINT16 config);
 
 /**
  * Function btss_pad_getFunction

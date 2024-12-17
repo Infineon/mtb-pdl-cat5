@@ -80,13 +80,13 @@
     </ParamChoice>
 
 	<ParamBool id="HWEnable" name="Input/Output Config Enable" group="Config" default="true" visible="`${PIN eq 42 || PIN eq 43}`" editable="false" desc="This parameter controls Output Enable/Disable." />
-    <ParamChoice id="outputEnable_ctss" name="Output Enable" group="Config" default="PAD_OUTPUT_DISABLED" visible="`${(PIN eq 42 || PIN eq 43) &amp;&amp; HWEnable}`" editable="true" desc="This parameter controls Driving Current configuration." >
-      <Entry name="pad_output_enabled" value="PAD_OUTPUT_ENABLED" visible="`${PIN eq 42 || PIN eq 43}`" />
-      <Entry name="pad_output_disabled" value="PAD_OUTPUT_DISABLED" visible="`${PIN eq 42 || PIN eq 43}`" />
+    <ParamChoice id="outputEnable_ctss" name="Output Enable" group="Config" default="CTSS_PAD_OUTPUT_DISABLED" visible="`${(PIN eq 42 || PIN eq 43) &amp;&amp; HWEnable}`" editable="true" desc="This parameter controls Driving Current configuration." >
+      <Entry name="pad_output_enabled" value="CTSS_PAD_OUTPUT_ENABLED" visible="`${PIN eq 42 || PIN eq 43}`" />
+      <Entry name="pad_output_disabled" value="CTSS_PAD_OUTPUT_DISABLED" visible="`${PIN eq 42 || PIN eq 43}`" />
     </ParamChoice>
-	<ParamChoice id="inputconfig_ctss" name="Input Config" group="Config" default="PAD_INPUT_PDN" visible="`${(PIN eq 42 || PIN eq 43) &amp;&amp; (outputEnable_ctss ne PAD_OUTPUT_ENABLED) &amp;&amp; HWEnable}`" editable="true" desc="This parameter controls Driving Current configuration." >
-      <Entry name="Input_pullDownEnable" value="PAD_INPUT_PDN" visible="`${(PIN eq 42 || PIN eq 43)}`" />
-      <Entry name="Input_pullUpEnable" value="PAD_INPUT_PUP" visible="`${PIN eq 42 || PIN eq 43}`" />
+	<ParamChoice id="inputconfig_ctss" name="Input Config" group="Config" default="CTSS_PAD_INPUT_PDN" visible="`${(PIN eq 42 || PIN eq 43) &amp;&amp; (outputEnable_ctss ne CTSS_PAD_OUTPUT_ENABLED) &amp;&amp; HWEnable}`" editable="true" desc="This parameter controls Driving Current configuration." >
+      <Entry name="Input_pullDownEnable" value="CTSS_PAD_INPUT_PDN" visible="`${(PIN eq 42 || PIN eq 43)}`" />
+      <Entry name="Input_pullUpEnable" value="CTSS_PAD_INPUT_PUP" visible="`${PIN eq 42 || PIN eq 43}`" />
     </ParamChoice>
 
     <!-- Misc -->
@@ -99,7 +99,7 @@
 
     <ParamString id="IO_config_btss" name="IO Config BTSS" group="Internal" default="`${outputEnableMsk}` | `${pullUpEnableMsk}` | `${pullDownEnableMsk}` | `${hysteresisEnableMsk}` | `${inputDisableMsk}` | `${driveCurrentSel}`" visible="false" editable="false" desc="" />
 
-    <ParamString id="IO_config_ctss" name="IO_Config_CTSS" group="Internal" default="(`${(outputEnable_ctss ne PAD_OUTPUT_ENABLED) &amp;&amp; HWEnable ? inputconfig_ctss : &quot;PAD_INPUT_DISABLED &quot;}` &amp; `${&quot;PAD_INPUT_MASK &quot;}`) | (`${outputEnable_ctss}` &amp; `${&quot;PAD_OUTPUT_MASK &quot;}`)" visible="false" editable="false" desc="" />
+    <ParamString id="IO_config_ctss" name="IO_Config_CTSS" group="Internal" default="(`${(outputEnable_ctss ne CTSS_PAD_OUTPUT_ENABLED) &amp;&amp; HWEnable ? inputconfig_ctss : &quot;CTSS_PAD_INPUT_DISABLED &quot;}` &amp; `${&quot;CTSS_PAD_INPUT_MASK &quot;}`) | (`${outputEnable_ctss}` &amp; `${&quot;CTSS_PAD_OUTPUT_MASK &quot;}`)" visible="false" editable="false" desc="" />
 
     <!-- Internal Connection -->
     <ParamSignal port="aux[0]" name="AUX" group="Internal Connection" visible="`${hasVisibleOption(&quot;aux[0]&quot;)}`" desc="A fixed function signal to connect to" canBeEmpty="true" />
@@ -285,7 +285,7 @@
 
       <ConfigVariable name="`${INST_NAME}`_outputDir" type="uint8_t" const="false" value="`${direction}`" public="true" include="true"  />
       <ConfigVariable name="`${INST_NAME}`_outValue" type="uint32_t" const="false" value="`${initialState}`" public="true" include="true"  />
-      <ConfigVariable name="`${INST_NAME}`_triggerType" type="`${(PIN eq 42 || PIN eq 43) ? &quot;CTSS_GPIO_INT_TRIGGER_TYPE_t &quot; : &quot;BTSS_GPIO_INT_TRIGGER_TYPE_t &quot;}`" const="false" value="`${(PIN eq 42 || PIN eq 43) ? ctss_triggerType : btss_triggerType}`" public="true" include="true"  />
+      <ConfigVariable name="`${INST_NAME}`_triggerType" type="`${(PIN eq 42 || PIN eq 43) ? &quot;CTSS_LHL_IO_INT_TRIGGER_TYPE_t &quot; : &quot;BTSS_GPIO_INT_TRIGGER_TYPE_t &quot;}`" const="false" value="`${(PIN eq 42 || PIN eq 43) ? ctss_triggerType : btss_triggerType}`" public="true" include="true"  />
       <ConfigVariable name="`${INST_NAME}`_config" type="`${(PIN eq 42 || PIN eq 43) ? &quot;uint16_t &quot; : &quot;uint8_t &quot;}`" const="false" value="`${(PIN eq 42 || PIN eq 43) ? IO_config_ctss : IO_config_btss}`" public="true" include="true"  />
 	  <ConfigVariable name="`${INST_NAME}`_pad_num" type="`${(PIN eq 42 || PIN eq 43) ? &quot;CTSS_PAD_LIST_t &quot; : &quot;BTSS_PAD_LIST_t &quot;}`" const="true" value="`${(PIN eq 42 || PIN eq 43) ? &quot;(CTSS_PAD_LIST_t)&quot; : &quot;(BTSS_PAD_LIST_t) &quot;}``${PIN}`U" public="true" include="true"  />
 	  <ConfigVariable name="`${INST_NAME}`_func_value" type="`${(PIN eq 42 || PIN eq 43) ? &quot;CTSS_PINMUX_FUNC_LIST_t &quot; : &quot;BTSS_PINMUX_FUNC_LIST_t &quot;}`" const="true" value="`${(PIN eq 42 || PIN eq 43) ? &quot;(CTSS_PINMUX_FUNC_LIST_t)&quot; : &quot;(BTSS_PINMUX_FUNC_LIST_t) &quot;}``${hasConnection ? btssPeripheralPinMuxFuncDefine : ( gpioFunc ? getParamValue(&quot;PIN_&quot; . PIN) : 0 )}`" public="true" include="true"  />

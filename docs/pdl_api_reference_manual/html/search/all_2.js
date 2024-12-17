@@ -38,6 +38,7 @@ var searchData=
   ['countinput',['countInput',['../structcy__stc__tcpwm__counter__config__t.html#a0f9abee99b3079bec330a6afdcb2bfe4',1,'cy_stc_tcpwm_counter_config_t::countInput()'],['../structcy__stc__tcpwm__pwm__config__t.html#aadbc0571c713e50e3e5842b95917d18d',1,'cy_stc_tcpwm_pwm_config_t::countInput()']]],
   ['countinputmode',['countInputMode',['../structcy__stc__tcpwm__counter__config__t.html#a256aff38a9bbeecabd9f7dde713600e8',1,'cy_stc_tcpwm_counter_config_t::countInputMode()'],['../structcy__stc__tcpwm__pwm__config__t.html#a6e07285f605e430e0e0237a45fc44111',1,'cy_stc_tcpwm_pwm_config_t::countInputMode()']]],
   ['ctspolarity',['ctsPolarity',['../structcy__stc__scb__uart__config__t.html#a9e3b74f87a756eec81dbbba110214619',1,'cy_stc_scb_uart_config_t']]],
+  ['ctss_5fsystem_5fsleep_5fpmu_5fwake_5fsrc_5ft',['CTSS_SYSTEM_SLEEP_PMU_WAKE_SRC_t',['../group__group__syspm__data__structures.html#ga5ebcf714de2d93e18eff5aca6508b58e',1,'btss_system.h']]],
   ['ctss_5fsystem_5fsleepdisablewakesource',['ctss_system_sleepDisableWakeSource',['../group__group__syspm__function.html#ga411308c7b6628c0a514888c9d9ffead1',1,'btss_system.h']]],
   ['ctss_5fsystem_5fsleepenablewakesource',['ctss_system_sleepEnableWakeSource',['../group__group__syspm__function.html#ga399b3ce8214be86d74b38f9803fac795',1,'btss_system.h']]],
   ['cy_5fadccomp_5fadc_5fclk_5fin_5f1mhz_5fpdm_5fout_5f1mhz',['CY_ADCCOMP_ADC_CLK_IN_1MHZ_PDM_OUT_1MHZ',['../group__group__adccomp__data__structures.html#gga6087a5787dc547e1c86f61d09cb95bc6a73096913751e94eee115d2e06b49827e',1,'cy_adccomp.h']]],

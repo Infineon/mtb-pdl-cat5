@@ -29,5 +29,8 @@ var group__group__syspm__data__structures =
       [ "BTSS_SYSTEM_PMU_SLEEP_PDS", "group__group__syspm__data__structures.html#ggabb2782f2c08fb2b5dff40b4d67eb47b6a31407ff11406c83d734f3e0cacafd120", null ],
       [ "BTSS_SYSTEM_PMU_SLEEP_EPDS", "group__group__syspm__data__structures.html#ggabb2782f2c08fb2b5dff40b4d67eb47b6ae501572dda41c2501bc7564d2fc25b70", null ],
       [ "BTSS_SYSTEM_PMU_SLEEP_MAX", "group__group__syspm__data__structures.html#ggabb2782f2c08fb2b5dff40b4d67eb47b6a5bce31208e79bf3bc025cd4ede6e4a25", null ]
-    ] ]
+    ] ],
+    [ "BTSS_SYSTEM_SLEEP_PMU_WAKE_SRC_t", "group__group__syspm__data__structures.html#ga39462a6ae39f68f0a4cd968cc767635a", null ],
+    [ "CTSS_SYSTEM_SLEEP_PMU_WAKE_SRC_t", "group__group__syspm__data__structures.html#ga5ebcf714de2d93e18eff5aca6508b58e", null ],
+    [ "WLSS_SYSTEM_SLEEP_PMU_WAKE_SRC_t", "group__group__syspm__data__structures.html#ga7033ac1a569429a414ff93d73f913400", null ]
 ];

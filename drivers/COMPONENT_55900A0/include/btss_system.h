@@ -139,7 +139,7 @@ typedef enum
 * \addtogroup group_syspm_data_structures
 * \{
 */
-/** \brief BTSS Sytem - Sleep Configurations */
+/** \brief BTSS System - Sleep configurations */
 typedef enum
 {
     BTSS_SYSTEM_SLEEP_MODE_DISABLE,         /**< Disable sleep mode */
@@ -147,13 +147,14 @@ typedef enum
     BTSS_SYSTEM_SLEEP_MODE_WITH_TRANSPORT   /**< This mode allows sleep when HCI UART transport is connected to host and uses device wake line to wake up*/
 } BTSS_SYSTEM_SLEEP_CONFIG_t;
 
-/** \brief BTSS Sytem -  Active level for Wake through GPIO */
+/** \brief BTSS System -  Active level for Wake through GPIO */
 typedef enum
 {
     BTSS_SYSTEM_SLEEP_WAKE_ACTIVE_LOW, /**< Active low interrupt wakes the chip/host */
     BTSS_SYSTEM_SLEEP_WAKE_ACTIVE_HIGH /**< Active high interrupt wakes the chip/host */
 } BTSS_SYSTEM_SLEEP_ACTIVE_CONFIG_t;
 
+/** \brief BTSS System - Sleep modes */
 typedef enum
 {
     //! sleep is not allowed
@@ -172,6 +173,8 @@ typedef enum
     BTSS_SYSTEM_PMU_SLEEP_MAX = BTSS_SYSTEM_PMU_SLEEP_EPDS
 } BTSS_SYSTEM_PMU_SLEEP_MODE_t;
 
+
+/** \brief BTSS System - wake sources */
 typedef enum
 {
     BTSS_SYSTEM_PMU_WAKE_SRC_BT_UART_RTS_N = 1,
@@ -215,12 +218,19 @@ typedef enum
     BTSS_SYSTEM_PMU_WAKE_SRC_LHL_GPIO_9 = 110,
 } BTSS_SYSTEM_SLEEP_PMU_WAKE_SRC_t;
 
+/** \brief CTSS System - Wake sources */
 typedef enum
 {
     CTSS_SYSTEM_PMU_WAKE_SRC_LHL_IO = 1024,
     CTSS_SYSTEM_PMU_WAKE_SRC_ADCCOMP_LPCOMP_1 = 1027,
     CTSS_SYSTEM_PMU_WAKE_SRC_ADCCOMP_LPCOMP_2 = 1028,
 } CTSS_SYSTEM_SLEEP_PMU_WAKE_SRC_t;
+
+/** \brief WLSS System - Wake sources */
+typedef enum
+{
+    WLSS_SYSTEM_PMU_WAKE_SRC_GCI2BT = 4096,
+} WLSS_SYSTEM_SLEEP_PMU_WAKE_SRC_t;
 
 typedef enum
 {
@@ -497,6 +507,28 @@ BOOL32 ctss_system_sleepEnableWakeSource(CTSS_SYSTEM_SLEEP_PMU_WAKE_SRC_t wakeSo
  * \return       TRUE/FALSE as Status
  */
 BOOL32 ctss_system_sleepDisableWakeSource(CTSS_SYSTEM_SLEEP_PMU_WAKE_SRC_t wakeSource);
+
+/**
+ * Function wlss_system_sleepEnableWakeSource
+ *
+ * Enables wake source for sleep.
+ *
+ * \param[in]    wakeSource       : Wake source
+ *
+ * \return       TRUE/FALSE as Status
+ */
+BOOL32 wlss_system_sleepEnableWakeSource(WLSS_SYSTEM_SLEEP_PMU_WAKE_SRC_t wakeSource);
+
+/**
+ * Function wlss_system_sleepDisableWakeSource
+ *
+ * Disables wake source for sleep.
+ *
+ * \param[in]    wakeSource       : Wake source
+ *
+ * \return       TRUE/FALSE as Status
+ */
+BOOL32 wlss_system_sleepDisableWakeSource(WLSS_SYSTEM_SLEEP_PMU_WAKE_SRC_t wakeSource);
 
 /**
  * Function btss_system_disableSleepAndPause

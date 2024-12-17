@@ -95,6 +95,7 @@ var searchData=
   ['btss_5fsystem_5fsleep_5fmode_5fno_5ftransport',['BTSS_SYSTEM_SLEEP_MODE_NO_TRANSPORT',['../group__group__syspm__data__structures.html#gga037a0a66d38cf168be9bd0bcc0cb86f7a7476dd032e7935a200e99d9245d749f8',1,'btss_system.h']]],
   ['btss_5fsystem_5fsleep_5fmode_5fwith_5ftransport',['BTSS_SYSTEM_SLEEP_MODE_WITH_TRANSPORT',['../group__group__syspm__data__structures.html#gga037a0a66d38cf168be9bd0bcc0cb86f7a2b38f1592215be873f7247993283d706',1,'btss_system.h']]],
   ['btss_5fsystem_5fsleep_5fparams_5ft',['BTSS_SYSTEM_SLEEP_PARAMS_t',['../struct_b_t_s_s___s_y_s_t_e_m___s_l_e_e_p___p_a_r_a_m_s__t.html',1,'']]],
+  ['btss_5fsystem_5fsleep_5fpmu_5fwake_5fsrc_5ft',['BTSS_SYSTEM_SLEEP_PMU_WAKE_SRC_t',['../group__group__syspm__data__structures.html#ga39462a6ae39f68f0a4cd968cc767635a',1,'btss_system.h']]],
   ['btss_5fsystem_5fsleep_5fwake_5factive_5fhigh',['BTSS_SYSTEM_SLEEP_WAKE_ACTIVE_HIGH',['../group__group__syspm__data__structures.html#ggaa4fde7e070895bb7563db4c6e96e7a53a02d60d117998967d368c4763a296abd1',1,'btss_system.h']]],
   ['btss_5fsystem_5fsleep_5fwake_5factive_5flow',['BTSS_SYSTEM_SLEEP_WAKE_ACTIVE_LOW',['../group__group__syspm__data__structures.html#ggaa4fde7e070895bb7563db4c6e96e7a53acbcd42a25e1d192ab4acba7e56121672',1,'btss_system.h']]],
   ['btss_5fsystem_5fsleepallowmode',['btss_system_sleepAllowMode',['../group__group__syspm__function.html#ga0e4bdc6593afe1a986ac21c7e619d5b0',1,'btss_system.h']]],

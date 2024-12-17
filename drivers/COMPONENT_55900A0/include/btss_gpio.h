@@ -95,6 +95,46 @@ typedef enum
 /** \brief CTSS LHL IO interrupt callback */
 typedef void CTSS_LHL_IO_ISR_CALLBACK_t (UINT8 ioPort);
 
+/** \brief List of WLSS IOs */
+typedef enum
+{
+    WLSS_IO_GPIO_0 = 11,
+    WLSS_IO_GPIO_2 = 13,
+    WLSS_IO_GPIO_3 = 14,
+    WLSS_IO_GPIO_4 = 15,
+    WLSS_IO_GPIO_5 = 5,
+    WLSS_IO_GPIO_6 = 6,
+    WLSS_IO_SDIO_CMD = 0,
+    WLSS_IO_SDIO_DATA_0 = 1,
+    WLSS_IO_SDIO_DATA_1 = 2,
+    WLSS_IO_SDIO_DATA_2 = 3,
+    WLSS_IO_SDIO_DATA_3 = 4,
+    WLSS_IO_RFSW_CTRL_6 = 8,
+    WLSS_IO_RFSW_CTRL_7 = 9,
+} WLSS_IO_t;
+
+/** \brief WLSS IO interrupt trigger */
+typedef enum
+{
+    WLSS_IO_INT_TRIGGER_EDGE_RISING = 0x2,
+    WLSS_IO_INT_TRIGGER_EDGE_FALLING = 0x4,
+    WLSS_IO_INT_TRIGGER_EDGE_BOTH = 0x6,
+    WLSS_IO_INT_TRIGGER_EDGE_NONE = 0x0,
+} WLSS_IO_INT_TRIGGER_TYPE_t;
+
+
+/** \brief WLSS IO wake trigger */
+typedef enum
+{
+    WLSS_IO_WAKE_TRIGGER_EDGE_RISING = 0x2,
+    WLSS_IO_WAKE_TRIGGER_EDGE_FALLING = 0x4,
+    WLSS_IO_WAKE_TRIGGER_EDGE_BOTH = 0x6,
+    WLSS_IO_WAKE_TRIGGER_EDGE_NONE = 0x0,
+} WLSS_IO_WAKE_TRIGGER_TYPE_t;
+
+/** \brief WLSS IO interrupt callback */
+typedef void WLSS_IO_ISR_CALLBACK_t (UINT8 io);
+
 /** \brief List of GPIO Ports */
 typedef enum
 {
@@ -316,6 +356,134 @@ void ctss_lhl_io_enableInterrupt(CTSS_LHL_IO_t ioPort, BOOL32 enable);
  */
 void ctss_lhl_io_enable_lhlInterrupt(BOOL32 enable);
 
+
+/**
+ * Function wlss_io_setDirection
+ *
+ * Set IO direction for specified io
+ *
+ * \param[in]    io                : io to be configured
+ * \param[in]    outputEnable      : TRUE : OutputEnabled
+ *
+ * \return       none
+ */
+void wlss_io_setDirection(WLSS_IO_t io, BOOL32 outputEnable);
+
+/**
+ * Function wlss_io_set
+ *
+ * Set output state to specified io
+ *
+ * \param[in]    io                : io to be set
+ * \param[in]    state             : TRUE : High
+ *
+ * \return       none
+ */
+void wlss_io_set(WLSS_IO_t io, BOOL32 ioState);
+
+/**
+ * Function wlss_io_get
+ *
+ * Get input status of specified io
+ *
+ * \param[in]    io                : io to be get
+ *
+ * \return       TRUE : High, FALSE : Low
+ */
+BOOL32 wlss_io_get(WLSS_IO_t io);
+
+/**
+ * Function wlss_io_getOutState
+ *
+ * Get output status of specified io
+ *
+ * \param[in]    io                 : io to be get
+ *
+ * \return       TRUE : High, FALSE : Low
+ */
+BOOL32 wlss_io_getOutState(WLSS_IO_t io);
+
+/**
+ * Function wlss_io_toggle
+ *
+ * Toggles status of specified io
+ *
+ * \param[in]    io               : io to be toggled
+ *
+ * \return       none
+ */
+void wlss_io_toggle(WLSS_IO_t io);
+
+/**
+ * Function wlss_io_configInterrupt
+ *
+ * Configure interrupt trigger of specified pad
+ *
+ * \param[in]    io               : pad to be configured for interrupt
+ * \param[in]    trigger          : Interrupt trigger selection
+ *
+ * \return       none
+ */
+void wlss_io_configInterrupt(WLSS_IO_t io, WLSS_IO_INT_TRIGGER_TYPE_t trigger);
+
+/**
+ * Function wlss_io_registerInterruptCallback
+ *
+ * Register the interrupt handler/callback for an io
+ *
+ * \param[in]    io               : io to be associated
+ * \param[in]    cbk              : the callback function
+ *
+ * \return       none
+ */
+void wlss_io_registerInterruptCallback(WLSS_IO_t io, WLSS_IO_ISR_CALLBACK_t* cbk);
+
+/**
+ * Function wlss_io_enableInterrupt
+ *
+ * Enable interrupt from configured IOs
+ *
+ * \param[in]    io               : io to be associated
+ * \param[in]    enable
+ *
+ * \return       none
+ */
+void wlss_io_enableInterrupt(WLSS_IO_t io, BOOL32 enable);
+
+/**
+ * Function wlss_io_enableGCIInterrupt
+ *
+ * Enable global/GCI interrupt
+ *
+ * \param[in]    enable
+ *
+ * \return       none
+ */
+void wlss_io_enableGCIInterrupt(BOOL32 enable);
+
+/**
+ * Function wlss_io_configWake
+ *
+ * Configure wake trigger for an io
+ *
+ * \param[in]    io               : io to be configured for wake
+ * \param[in]    trigger          : wake trigger selection
+ *
+ * \return       none
+ */
+void wlss_io_configWake(WLSS_IO_t io, WLSS_IO_WAKE_TRIGGER_TYPE_t trigger);
+
+/**
+ * Function wlss_io_enableWake
+ *
+ * Enable wake from configured IOs
+ *
+ * \param[in]    io               : io to be configured for wake
+ * \param[in]    enable
+ *
+ * \return       none
+ */
+void wlss_io_enableWake(WLSS_IO_t io, BOOL32 enable);
 
 #if defined(__cplusplus)
 }

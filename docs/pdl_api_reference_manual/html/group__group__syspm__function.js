@@ -8,6 +8,8 @@ var group__group__syspm__function =
     [ "btss_system_sleepDisableWakeSource", "group__group__syspm__function.html#ga77b116274f0f258042a2449d2e1dd9ec", null ],
     [ "ctss_system_sleepEnableWakeSource", "group__group__syspm__function.html#ga399b3ce8214be86d74b38f9803fac795", null ],
     [ "ctss_system_sleepDisableWakeSource", "group__group__syspm__function.html#ga411308c7b6628c0a514888c9d9ffead1", null ],
+    [ "wlss_system_sleepEnableWakeSource", "group__group__syspm__function.html#ga5a76b845c17461bceeb57e06c0c514cb", null ],
+    [ "wlss_system_sleepDisableWakeSource", "group__group__syspm__function.html#ga897aba1b71fdacc977819f4a6ee55e4c", null ],
     [ "btss_system_disableSleepAndPause", "group__group__syspm__function.html#ga3049e34f5ffde19a2bc371f46bf244d6", null ],
     [ "btss_system_enableSleepAndPause", "group__group__syspm__function.html#gada155cf659fa4c2676025dbb340c8af8", null ],
     [ "btss_system_getSleepAndPauseDisabledCount", "group__group__syspm__function.html#gadf8b8759b2b6246022fc1875713387da", null ]
