@@ -950,7 +950,7 @@ typedef struct
 {
     wiced_bt_device_address_t  bdaddr;                 /**< Bluetooth address of remote device */
     wiced_bt_transport_t       transport;              /**< Transport type of the connection */
-    wiced_bt_ecrb_cid_list_t    lcids;                  /**< List of the l2cap cids (channel ids) */
+    wiced_bt_ecrb_cid_list_t   lcids;                  /**< List of the l2cap cids (channel ids) */
     uint16_t                   mtu;                    /**< Peer MTU */
     uint8_t                    trans_id;               /**< Transaction id for the connection */
 } wiced_bt_gatt_eatt_connection_indication_event_t;
@@ -1828,6 +1828,19 @@ wiced_bt_gatt_status_t wiced_bt_gatt_get_device_address(uint16_t conn_id,
     wiced_bt_transport_t* p_transport, wiced_bt_ble_address_type_t* p_addr_type);
 
 /**
+ * API to get the ACL handle of the connected gatt conn_id
+ * @note : The API cannot be used to get the ACL handle in case
+ *  the device is disconnected
+ *
+ *  @param[in]  conn_id    : Connection handle of the gatt bearer
+ *
+ *  @returns #0xffff in case of error
+ *
+ *  @ingroup gatt_common_api
+ */
+uint16_t wiced_bt_gatt_get_acl_conn_handle(uint16_t conn_id);
+
+/**
  * API to validate connected gatt conn_id
  *
  *  @param[in]  conn_id    : Connection handle of the gatt bearer
@@ -1837,7 +1850,6 @@ wiced_bt_gatt_status_t wiced_bt_gatt_get_device_address(uint16_t conn_id,
  *  @ingroup gatt_common_api
  */
 wiced_bt_gatt_status_t wiced_bt_gatt_validate_conn_id(uint16_t conn_id);
-
 
 /**
  * @brief Utility function to compare UUIDs
@@ -1997,19 +2009,6 @@ uint16_t wiced_bt_gattdb_getAttrUUID16(const wiced_gattdb_entry_t *p_db_entry);
  * @return data of the database entry
 */
 uint8_t *wiced_bt_gattdb_getAttrValue(const wiced_gattdb_entry_t *p_db_entry);
-
-/**
- * API to get the ACL handle of the connected gatt conn_id
- * @note : The API cannot be used to get the ACL handle in case
- *  the device is disconnected
- *
- *  @param[in]  conn_id    : Connection handle of the gatt bearer
- *
- *  @returns #0xffff in case of error
- *
- *  @ingroup gatt_common_api
- */
-uint16_t wiced_bt_gatt_get_acl_conn_handle(uint16_t conn_id);
 
 /**
  * API to set the maximum queue size for GATT packets

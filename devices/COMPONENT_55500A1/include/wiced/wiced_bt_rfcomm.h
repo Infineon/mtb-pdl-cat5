@@ -7,8 +7,9 @@
  * Bluetooth RFCOMM Application Programming Interface
  *
  */
- #ifndef __WICED_BT_RFCOMM_H__
+#ifndef __WICED_BT_RFCOMM_H__
 #define __WICED_BT_RFCOMM_H__
+
  /**
   * @cond DUAL_MODE
   * @addtogroup  rfcomm_api_functions       RFCOMM
@@ -21,6 +22,7 @@
   *
   *  @{
   */
+
 #include "wiced_bt_dev.h"
 
 /******************************************************

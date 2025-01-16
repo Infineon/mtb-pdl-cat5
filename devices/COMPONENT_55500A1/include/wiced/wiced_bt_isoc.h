@@ -21,6 +21,7 @@
 #include "wiced_bt_types.h"
 #include "wiced_result.h"
 #include "wiced_bt_cfg.h"
+#include "wiced_bt_adv_scan_common.h"
 
 /**
  * @defgroup  wicedbt_isoc        Isochronous (ISOC)
@@ -48,7 +49,7 @@ typedef enum
     WICED_BLE_ISOC_DPD_INPUT = 0,     // ISO driver is source (Input data path (Host to Controller))
     WICED_BLE_ISOC_DPD_OUTPUT,        // ISO driver is sink (Output data path (Controller to Host))
     WICED_BLE_ISOC_DPD_MAX_DIRECTIONS // must be last
-} wiced_bt_isoc_data_path_direction_t;
+} wiced_ble_isoc_data_path_direction_t;
 
 /**< Data path direction bits */
 typedef enum
@@ -58,7 +59,7 @@ typedef enum
     WICED_BLE_ISOC_DPD_OUTPUT_BIT = 2, /**< Output bit enabled */
     WICED_BLE_ISOC_DPD_INPUT_OUTPUT_BIT = WICED_BLE_ISOC_DPD_INPUT_BIT | WICED_BLE_ISOC_DPD_OUTPUT_BIT, /**< both input and output enabled */
     WICED_BLE_ISOC_DPD_RESERVED                                       /**< reserved */
-} wiced_bt_isoc_data_path_bit_t;
+} wiced_ble_isoc_data_path_bit_t;
 
 #define ISOC_SET_DATA_PATH_DIR(var, dir) (var |= (1 << dir)) /**< Macro to set direction bits */
 #define ISOC_GET_DATA_PATH_DIR(var, dir) (var & (1 << dir))  /**< Macro to get direction bits */
@@ -69,57 +70,33 @@ typedef enum
 {
     WICED_BLE_ISOC_DPID_HCI = 0, /**< Data path HCI */
     WICED_BLE_ISOC_DPID_DIABLED = 0xFF /**< Data path disabled */
-} wiced_bt_isoc_data_path_id_t;
+} wiced_ble_isoc_data_path_id_t;
 
 /** ISOC packing methods */
-enum wiced_bt_isoc_packing_e
+enum wiced_ble_isoc_packing_e
 {
     WICED_BLE_ISOC_SEQUENTIAL_PACKING = 0, /**< Sequential packing */
     WICED_BLE_ISOC_INTERLEAVED_PACKING = 1 /**< Interleaved packing */
 };
-typedef uint8_t wiced_bt_isoc_packing_t; /**< ISOC packing methods (see #wiced_bt_isoc_packing_e) */
+typedef uint8_t wiced_ble_isoc_packing_t; /**< ISOC packing methods (see #wiced_ble_isoc_packing_e) */
 
-/** ISOC Framing types */
-enum wiced_bt_isoc_framing_e
-{
-    WICED_BLE_ISOC_UNFRAMED = 0, /**< Unframed */
-    WICED_BLE_ISOC_FRAMED = 1    /**< Framed */
-};
-typedef uint8_t wiced_bt_isoc_framing_t; /**< ISOC Framing types (see #wiced_bt_isoc_framing_e) */
-
-/** ISOC LE PHY */
-enum wiced_bt_isoc_phy_e
-{
-    WICED_BLE_ISOC_LE_1M_PHY = 1, /**< ISOC Phy set to 1M */
-    WICED_BLE_ISOC_LE_2M_PHY = 2, /**< ISOC Phy set to 2M */
-    WICED_BLE_ISOC_LE_CODED  = 4, /**< ISOC Phy set to coded */
-};
-typedef uint8_t wiced_bt_isoc_phy_t; /**< ISOC LE PHY (see #wiced_bt_isoc_phy_e) */
-
-/** Broadcast ISOC Encryption */
-enum wiced_bt_isoc_encryption_e
-{
-    WICED_BLE_ISOC_UNENCRYPTED = 0, /**< ISOC unencrypted */
-    WICED_BLE_ISOC_ENCRYPTED = 1,   /**< ISOC encrypted */
-};
-typedef uint8_t wiced_bt_isoc_encryption_t; /**< ISOC Encryption (see #wiced_bt_isoc_encryption_e) */
 
 /** ISOC Events */
-enum wiced_bt_isoc_event_e
+enum wiced_ble_isoc_event_e
 {
-    WICED_BLE_ISOC_SET_CIG_CMD_COMPLETE_EVT,  /**< SET CIG Command Response, \ref wiced_bt_isoc_set_cig_cmd_status_evt_t */
-    WICED_BLE_ISOC_CIS_REQUEST_EVT,           /**< CIS connection Requested, \ref wiced_bt_isoc_cis_request_evt_t */
-    WICED_BLE_ISOC_CIS_ESTABLISHED_EVT,       /**< CIS connection established, \ref wiced_bt_isoc_cis_established_evt_t */
-    WICED_BLE_ISOC_SCA_EVT,                   /**< Sleep Clock Accuracy, \ref wiced_bt_isoc_sca_event_evt_t */
-    WICED_BLE_ISOC_CIS_DISCONNECTED_EVT,      /**< CIS disconnected, \ref wiced_bt_isoc_cis_disconnect_evt_t */
-    WICED_BLE_ISOC_DATA_PATH_SETUP_EVT,       /**< CIS Data path status, \ref wiced_bt_isoc_setup_data_path_evt_t */
-    WICED_BLE_ISOC_DATA_PATH_REMOVED_EVT,     /**< CIS Data path status, \ref wiced_bt_isoc_removed_data_path_evt_t */
-    WICED_BLE_ISOC_BIG_CREATED_EVT,           /**< BIG Connected, \ref wiced_bt_isoc_create_big_cmpl_evt_t */
-    WICED_BLE_ISOC_BIG_SYNC_ESTABLISHED_EVT,  /**< BIG Sync Established, \ref wiced_bt_isoc_big_sync_established_evt_t */
-    WICED_BLE_ISOC_BIG_TERMINATED_EVT,        /**< BIG Terminated, \ref wiced_bt_isoc_terminated_evt_t */
-    WICED_BLE_ISOC_BIG_SYNC_LOST_EVT,         /**< BIG Sync Lost, \ref wiced_bt_isoc_terminated_evt_t */
+    WICED_BLE_ISOC_SET_CIG_CMD_COMPLETE_EVT,  /**< SET CIG Command Response, \ref wiced_ble_isoc_set_cig_cmd_status_evt_t */
+    WICED_BLE_ISOC_CIS_REQUEST_EVT,           /**< CIS connection Requested, \ref wiced_ble_isoc_cis_request_evt_t */
+    WICED_BLE_ISOC_CIS_ESTABLISHED_EVT,       /**< CIS connection established, \ref wiced_ble_isoc_cis_established_evt_t */
+    WICED_BLE_ISOC_SCA_EVT,                   /**< Sleep Clock Accuracy, \ref wiced_ble_isoc_sca_event_evt_t */
+    WICED_BLE_ISOC_CIS_DISCONNECTED_EVT,      /**< CIS disconnected, \ref wiced_ble_isoc_cis_disconnect_evt_t */
+    WICED_BLE_ISOC_DATA_PATH_SETUP_EVT,       /**< CIS Data path status, \ref wiced_ble_isoc_setup_data_path_evt_t */
+    WICED_BLE_ISOC_DATA_PATH_REMOVED_EVT,     /**< CIS Data path status, \ref wiced_ble_isoc_removed_data_path_evt_t */
+    WICED_BLE_ISOC_BIG_CREATED_EVT,           /**< BIG Connected, \ref wiced_ble_isoc_create_big_cmpl_evt_t */
+    WICED_BLE_ISOC_BIG_SYNC_ESTABLISHED_EVT,  /**< BIG Sync Established, \ref wiced_ble_isoc_big_sync_established_evt_t */
+    WICED_BLE_ISOC_BIG_TERMINATED_EVT,        /**< BIG Terminated, \ref wiced_ble_isoc_terminated_evt_t */
+    WICED_BLE_ISOC_BIG_SYNC_LOST_EVT,         /**< BIG Sync Lost, \ref wiced_ble_isoc_terminated_evt_t */
 };
-typedef uint8_t wiced_bt_isoc_event_t; /**< ISOC Events (see #wiced_bt_isoc_event_e) */
+typedef uint8_t wiced_ble_isoc_event_t; /**< ISOC Events (see #wiced_ble_isoc_event_e) */
 
 /**
  * ISOC stream configuration
@@ -128,7 +105,7 @@ typedef struct
 {
     uint8_t max_cis; /**< Max number of simultaneous CIS(Connected Isochronous Streams) across all CIGs(Connected Isochronous Group)s */
     uint8_t max_bis; /**< Max number of simultaneous BIS(Broadcast Isochronous Streams) across all BIGs(Broadcast Isochronous Group)s */
-} wiced_bt_isoc_cfg_t;
+} wiced_ble_isoc_cfg_t;
 
 /** ISOC Set CIG Command Status data
 *  Returned with \ref WICED_BLE_ISOC_SET_CIG_CMD_COMPLETE_EVT event
@@ -140,7 +117,7 @@ typedef struct
     uint8_t cig_id;                       /**< CIG ID */
     uint8_t cis_count;                    /**< CIS Count */
     uint16_t *cis_connection_handle_list; /**< CIS Connection Handle List */
-} wiced_bt_isoc_set_cig_cmd_status_evt_t;
+} wiced_ble_isoc_set_cig_cmd_status_evt_t;
 
 
 /** ISOC CIS Request event data
@@ -152,7 +129,7 @@ typedef struct
     uint16_t    acl_conn_handle;        /**< ACL Connection Handle */
     uint8_t     cig_id;                 /**< CIG ID */
     uint8_t     cis_id;                 /**< CIS ID */
-}wiced_bt_isoc_cis_t;
+}wiced_ble_isoc_cis_t;
 
 
 /** ISOC CIS Established event data
@@ -161,13 +138,13 @@ typedef struct
 typedef struct
 {
     uint8_t              status;           /**< CIG Establishment Status  (0 = Success). Refer Core Spec v5.2 [Vol 1] Part F, Controller Error Codes */
-    wiced_bt_isoc_cis_t  cis;               /**< CIS information */
+    wiced_ble_isoc_cis_t  cis;               /**< CIS information */
     uint32_t             cig_sync_delay;   /**< CIG Sync Delay in microseconds */
     uint32_t             cis_sync_delay;   /**< CIS Sync Delay in microseconds */
     uint32_t             latency_c_to_p;   /**< Maximum time, in microseconds, for an SDU to be transported from the central Controller to peripheral Controller */
     uint32_t             latency_p_to_c;   /**< Maximum time, in microseconds, for an SDU to be transported from the peripheral Controller to central Controller */
-    wiced_bt_isoc_phy_t  phy_c_to_p;       /**< The transmitter PHY of packets from the central */
-    wiced_bt_isoc_phy_t  phy_p_to_c;       /**< The transmitter PHY of packets from the peripheral */
+    wiced_ble_isoc_phy_t  phy_c_to_p;       /**< The transmitter PHY of packets from the central */
+    wiced_ble_isoc_phy_t  phy_p_to_c;       /**< The transmitter PHY of packets from the peripheral */
     uint8_t              nse;              /**< Maximum Number of Subevent in each isochronous event */
     uint8_t              bn_c_to_p;        /**< Burst number for central to peripheral transmission */
     uint8_t              bn_p_to_c;        /**< Burst number for peripheral to central transmission */
@@ -176,7 +153,7 @@ typedef struct
     uint16_t             max_pdu_c_to_p;   /**< Maximum size, in bytes, of an SDU from the central’s Host */
     uint16_t             max_pdu_p_to_c;   /**< Maximum size, in octets, of an SDU from the peripheral’s Host */
     uint16_t             iso_interval;     /**< Time between two consecutive CIS anchor points */
-}wiced_bt_isoc_cis_established_evt_t;
+} wiced_ble_isoc_cis_established_evt_t;
 
 
 /** ISOC Peer SCA data
@@ -188,16 +165,16 @@ typedef struct
     uint16_t acl_conn_handle;           /**< ACL Connection Handle */
     wiced_bt_device_address_t peer_bda; /**< Peer Bluetooth Address */
     uint8_t sca;                        /**< Sleep Clock Accuracy value */
-} wiced_bt_isoc_sca_event_evt_t;
+} wiced_ble_isoc_sca_event_evt_t;
 
 /** ISOC CIS disconnect event data
 * Returned with \ref WICED_BLE_ISOC_CIS_DISCONNECTED_EVT event
 */
 typedef struct
 {
-    wiced_bt_isoc_cis_t cis;  /**< CIS Info */
+    wiced_ble_isoc_cis_t cis;  /**< CIS Info */
     uint8_t reason;           /**< Disconnection Reason */
-} wiced_bt_isoc_cis_disconnect_evt_t;
+} wiced_ble_isoc_cis_disconnect_evt_t;
 
 /** ISOC setup data path event data
 * Returned with \ref WICED_BLE_ISOC_DATA_PATH_SETUP_EVT event
@@ -207,7 +184,7 @@ typedef struct
     uint8_t status;     /**< Data path Status  (0 = Success). Refer Core Spec v5.2 [Vol 1] Part F, Controller Error Codes */
     uint16_t conn_hdl;  /**< CIS/BIS Connection Handle  */
     void *p_app_ctx;    /**< Application callback context */
-} wiced_bt_isoc_setup_data_path_evt_t;
+} wiced_ble_isoc_setup_data_path_evt_t;
 
 /** ISOC remove data path event data
 * Returned with \ref WICED_BLE_ISOC_DATA_PATH_REMOVED_EVT event
@@ -216,7 +193,7 @@ typedef struct
 {
     uint8_t status; /**< Data path Status  (0 = Success). Refer Core Spec v5.2 [Vol 1] Part F, Controller Error Codes */
     uint16_t conn_hdl; /**< CIS/BIS Connection Handle  */
-} wiced_bt_isoc_removed_data_path_evt_t;
+} wiced_ble_isoc_removed_data_path_evt_t;
 
 /** ISOC BIG Sync Establishment data */
 typedef struct
@@ -232,17 +209,17 @@ typedef struct
     uint16_t       iso_interval;                 /**< The time between two consecutive BIG anchor points. Time = N * 1.25 ms */
     uint8_t        num_bis;                      /**< Total number of BISes in the BIG */
     uint16_t       *bis_conn_hdl_list;           /**< The connection handles of the BISes */
-}wiced_bt_isoc_big_sync_established_evt_t;
+}wiced_ble_isoc_big_sync_established_evt_t;
 
 /** ISOC BIG Command Status data
 * Returned with \ref WICED_BLE_ISOC_BIG_CREATED_EVT event
 */
 typedef struct
 {
-    wiced_bt_isoc_big_sync_established_evt_t sync_data; /**< BIG Sync Data */
+    wiced_ble_isoc_big_sync_established_evt_t sync_data; /**< BIG Sync Data */
     uint32_t sync_delay;                                /**< BIG Sync Delay in microseconds */
-    wiced_bt_isoc_phy_t phy;                            /**< The transmitter PHY of packets */
-} wiced_bt_isoc_create_big_cmpl_evt_t;
+    wiced_ble_isoc_phy_t phy;                            /**< The transmitter PHY of packets */
+} wiced_ble_isoc_create_big_cmpl_evt_t;
 
 
 /** ISOC BIG Terminate/Sync_Lost event data
@@ -253,90 +230,112 @@ typedef struct
 {
     uint8_t big_handle; /**< BIG Handle */
     uint8_t reason;     /**< Reason for termination. Refer Core Spec v5.2 [Vol 1] Part F, Controller Error Codes */
-} wiced_bt_isoc_terminated_evt_t;
+} wiced_ble_isoc_terminated_evt_t;
 
 
 /** ISOC event data */
 typedef union
 {
-    wiced_bt_isoc_set_cig_cmd_status_evt_t cig_status_data;        /**< CIG Command Status */
-    wiced_bt_isoc_cis_established_evt_t cis_established_data;      /**< CIS Established */
-    wiced_bt_isoc_cis_t cis_request;                               /**< CIS Request     */
-    wiced_bt_isoc_sca_event_evt_t sca_data;                        /**< Sleep Clock Accuracy */
-    wiced_bt_isoc_cis_disconnect_evt_t cis_disconnect;             /**< CIS Disconnect  */
-    wiced_bt_isoc_setup_data_path_evt_t datapath;                  /**< Data Path Status (setup/remove) */
-    wiced_bt_isoc_create_big_cmpl_evt_t create_big;                /**< Create BIG Command Status */
-    wiced_bt_isoc_terminated_evt_t terminate_big;                  /**< Terminate BIG Command Status */
-    wiced_bt_isoc_big_sync_established_evt_t big_sync_established; /**< BIG Sync Established data */
-    wiced_bt_isoc_terminated_evt_t big_sync_lost;                  /**< BIG Sync Lost Data */
-} wiced_bt_isoc_event_data_t;
+    wiced_ble_isoc_set_cig_cmd_status_evt_t cig_status_data;        /**< CIG Command Status */
+    wiced_ble_isoc_cis_established_evt_t cis_established_data;      /**< CIS Established */
+    wiced_ble_isoc_cis_t cis_request;                               /**< CIS Request     */
+    wiced_ble_isoc_sca_event_evt_t sca_data;                        /**< Sleep Clock Accuracy */
+    wiced_ble_isoc_cis_disconnect_evt_t cis_disconnect;             /**< CIS Disconnect  */
+    wiced_ble_isoc_setup_data_path_evt_t datapath;                  /**< Data Path Status (setup/remove) */
+    wiced_ble_isoc_create_big_cmpl_evt_t create_big;                /**< Create BIG Command Status */
+    wiced_ble_isoc_terminated_evt_t terminate_big;                  /**< Terminate BIG Command Status */
+    wiced_ble_isoc_big_sync_established_evt_t big_sync_established; /**< BIG Sync Established data */
+    wiced_ble_isoc_terminated_evt_t big_sync_lost;                  /**< BIG Sync Lost Data */
+} wiced_ble_isoc_event_data_t;
 
 /** ISOC CIS Configuration */
 typedef struct
 {
-    uint8_t             cis_id;           /**< CIS Id : ZERO if not created*/
-    uint16_t            max_sdu_c_to_p;   /**< Maximum size, in bytes, of an SDU from the central’s Host
-                                                       Valid Range 0x000 to 0xFFF*/
-    uint16_t            max_sdu_p_to_c;   /**< Maximum size, in octets, of an SDU from the peripheral’s Host
-                                                       Valid Range 0x000 to 0xFFF*/
-    wiced_bt_isoc_phy_t phy_c_to_p;       /**< The transmitter PHY of packets from the central */
-    wiced_bt_isoc_phy_t phy_p_to_c;       /**< The transmitter PHY of packets from the peripheral */
-    uint8_t             rtn_c_to_p;       /**< Maximum number of times every CIS Data PDU should be retransmitted from the central to peripheral */
-    uint8_t             rtn_p_to_c;       /**< Maximum number of times every CIS Data PDU should be retransmitted from the peripheral to central */
-}wiced_bt_ble_cis_config_t;
+    /** CIS Id : ZERO if not created*/
+    uint8_t             cis_id;
+    /** Maximum size, in bytes, of an SDU from the central’s Host, Valid Range 0x000 to 0xFFF */
+    uint16_t            max_sdu_c_to_p;
+    /** Maximum size, in octets, of an SDU from the peripheral’s Host Valid Range 0x000 to 0xFFF*/
+    uint16_t            max_sdu_p_to_c;
+    /** The transmitter PHY of packets from the central */
+    wiced_ble_isoc_phy_t phy_c_to_p;
+    /** The transmitter PHY of packets from the peripheral */
+    wiced_ble_isoc_phy_t phy_p_to_c;
+    /** Maximum number of times every CIS Data PDU should be retransmitted from the central to peripheral */
+    uint8_t             rtn_c_to_p;
+    /** Maximum number of times every CIS Data PDU should be retransmitted from the peripheral to central */
+    uint8_t             rtn_p_to_c;
+} wiced_ble_isoc_cis_config_t;
 
 /** ISOC CIG Configuration for setting the CIG parameters */
 typedef struct
 {
-    uint8_t                 cig_id;                     /**< CIG ID */
-    uint32_t                sdu_interval_c_to_p;        /**< Time interval in microseconds between the start of consecutive SDUs from the central’s Host for all the CISes in the CIG */
-    uint32_t                sdu_interval_p_to_c;        /**< Time interval in microseconds between the start of consecutive SDUs from the peripheral’s Host for all the CISes in the CIG. */
-    uint8_t                 sleep_clock_accuracy;       /**< Sleep Clock Accuracy */
-    uint16_t                max_trans_latency_c_to_p;   /**< Maximum time, in microseconds, for an SDU to be transported from the central Controller to peripheral Controller */
-    uint16_t                max_trans_latency_p_to_c;   /**< Maximum time, in microseconds, for an SDU to be transported from the peripheral Controller to central Controller */
-    wiced_bt_isoc_packing_t packing;                    /**< Packing method  */
-    wiced_bt_isoc_framing_t framing;                    /**< Framing parameter */
-    uint8_t                 cis_count;                  /**< Total number of CISes in the CIG being added or modified Valid Range 0x00 to 0x10 */
-    wiced_bt_ble_cis_config_t   *p_cis_config_list;     /**< CIS configurations */
-}wiced_bt_ble_cig_param_t;
+    /** CIG ID */
+    uint8_t cig_id;
+    /**
+     * Time interval in microseconds between the start of consecutive SDUs from the central’s Host
+     * for all the CISes in the CIG
+     */
+    uint32_t sdu_interval_c_to_p;
+    /**
+     * Time interval in microseconds between the start of consecutive SDUs from the peripheral’s
+     * Host for all the CISes in the CIG.
+     */
+    uint32_t sdu_interval_p_to_c;
+    /** Sleep Clock Accuracy */
+    uint8_t sleep_clock_accuracy;
+    /** Maximum time, in microseconds, for an SDU to be transported from the central Controller
+     * to peripheral Controller
+     */
+    uint16_t max_trans_latency_c_to_p;
+    /**
+     * Maximum time, in microseconds, for an SDU to be transported from the peripheral Controller
+     * to central Controller
+     */
+    uint16_t max_trans_latency_p_to_c;
+    /** Packing method  */
+    wiced_ble_isoc_packing_t packing;
+    /** Framing parameter */
+    wiced_ble_isoc_framing_t framing;
+    /**
+     * Total number of CISes in the CIG being added or modified Valid Range 0x00 to 0x10
+     */
+    uint8_t cis_count;
+    /** CIS configurations */
+    wiced_ble_isoc_cis_config_t *p_cis_config_list;
+} wiced_ble_isoc_cig_param_t;
 
 /** ISOC CIS Configuration for setting the CIG parameters */
 typedef struct
 {
-    uint8_t cis_id;                     /**< CIS Id */
-    uint8_t nse;                        /**< Maximum number of subevents in each CIS event */
-    uint16_t max_sdu_c_to_p;            /**< Maximum size, in bytes, of an SDU from the central’s Host Valid Range 0x000 to 0xFFF*/
-    uint16_t max_sdu_p_to_c;            /**< Maximum size, in octets, of an SDU from the peripheral’s Host Valid Range 0x000 to 0xFFF*/
-    uint16_t max_pdu_c_to_p;            /**< Maximum size, in bytes, of an SDU from the central’s Host Valid Range 0x000 to 0xFFF*/
-    uint16_t max_pdu_p_to_c;            /**< Maximum size, in octets, of an SDU from the peripheral’s Host Valid Range 0x000 to 0xFFF*/
-    wiced_bt_isoc_phy_t phy_c_to_p; /**< The transmitter PHY of packets from the central */
-    wiced_bt_isoc_phy_t phy_p_to_c; /**< The transmitter PHY of packets from the peripheral */
-    uint8_t bn_c_to_p;                  /**< Maximum number of times every CIS Data PDU should be retransmitted from the central to peripheral */
-    uint8_t bn_p_to_c;                  /**< Maximum number of times every CIS Data PDU should be retransmitted from the peripheral to central */
-} wiced_bt_ble_cis_config_test_t;
-
-/** ISOC CIG Configuration for setting test CIG parameters */
-typedef struct
-{
-    uint8_t cig_id;               /**< CIG ID */
-    uint32_t sdu_interval_c_to_p; /**< Time interval in microseconds between the start of consecutive SDUs from the central’s Host for all the CISes in the CIG */
-    uint32_t sdu_interval_p_to_c; /**< Time interval in microseconds between the start of consecutive SDUs from the peripheral’s Host for all the CISes in the CIG. */
-    uint8_t ft_c_to_p;            /**< The flush timeout in multiples of ISO_Interval for each payload sent from the central to peripheral. */
-    uint8_t ft_p_to_c;            /**< The flush timeout in multiples of ISO_Interval for each payload sent from the peripheral to central. */
-    uint16_t iso_interval;        /**< Time between consecutive CIS anchor points */
-    uint8_t sleep_clock_accuracy; /**< Sleep Clock Accuracy */
-    wiced_bt_isoc_packing_t packing;   /**< Packing method  */
-    wiced_bt_isoc_framing_t framing;   /**< Framing parameter */
-    uint8_t cis_count;                 /**< Total number of CISes in the CIG being added or modified Valid Range 0x00 to 0x10 */
-    wiced_bt_ble_cis_config_test_t *p_cis_config_list; /**< CIS configurations */
-} wiced_bt_ble_cig_param_test_t;
+    /** CIS Id */
+    uint8_t cis_id;
+    /** Maximum number of subevents in each CIS event */
+    uint8_t nse;
+    /** Maximum size, in bytes, of an SDU from the central’s Host Valid Range 0x000 to 0xFFF*/
+    uint16_t max_sdu_c_to_p;
+    /** Maximum size, in octets, of an SDU from the peripheral’s Host Valid Range 0x000 to 0xFFF*/
+    uint16_t max_sdu_p_to_c;
+    /** Maximum size, in bytes, of an SDU from the central’s Host Valid Range 0x000 to 0xFFF*/
+    uint16_t max_pdu_c_to_p;
+    /** Maximum size, in octets, of an SDU from the peripheral’s Host Valid Range 0x000 to 0xFFF*/
+    uint16_t max_pdu_p_to_c;
+    /** The transmitter PHY of packets from the central */
+    wiced_ble_isoc_phy_t phy_c_to_p;
+    /** The transmitter PHY of packets from the peripheral */
+    wiced_ble_isoc_phy_t phy_p_to_c;
+    /** Maximum number of times every CIS Data PDU should be retransmitted from the central to peripheral */
+    uint8_t bn_c_to_p;
+    /** Maximum number of times every CIS Data PDU should be retransmitted from the peripheral to central */
+    uint8_t bn_p_to_c;
+} wiced_ble_isoc_cis_config_test_t;
 
 /** Parameters for CIS creation */
 typedef struct
 {
     uint16_t cis_conn_handle; /**< CIS connection handle */
     uint16_t acl_conn_handle; /**< ACL connection handle */
-} wiced_bt_isoc_cis_acl_t;
+} wiced_ble_isoc_cis_acl_t;
 
 /** ISOC BIG Configuration for setting BIG parameters */
 typedef struct
@@ -348,49 +347,62 @@ typedef struct
     uint16_t max_sdu;                   /**< Max size of SDU in octets */
     uint16_t max_trans_latency;         /**< Max transport latency */
     uint8_t rtn;                        /**< Retransmission number */
-    wiced_bt_isoc_phy_t phy;            /**< Phy used for ISOC */
-    wiced_bt_isoc_packing_t packing;    /**< Packing method */
-    wiced_bt_isoc_framing_t framing;    /**< Framing method */
-    wiced_bt_isoc_encryption_t encrypt; /**< Encryption used */
+    wiced_ble_isoc_phy_t phy;            /**< Phy used for ISOC */
+    wiced_ble_isoc_packing_t packing;    /**< Packing method */
+    wiced_ble_isoc_framing_t framing;    /**< Framing method */
+    wiced_ble_isoc_encryption_t encrypt; /**< Encryption used */
     uint8_t broadcast_code[16];         /**< Broadcast code if encryption enabled */
-} wiced_bt_isoc_create_big_param_t;
+} wiced_ble_isoc_create_big_param_t;
 
 /** ISOC BIG Configuration for setting BIG test parameters */
 typedef struct
 {
     uint8_t big_handle;                 /**< BIG handle to identify BIG */
     uint16_t sync_handle;               /**< Periodic train identifier */
-    wiced_bt_isoc_encryption_t encrypt; /**< Identifies if Broadcast code status, 0 = invalid, 1 = valid */
+    wiced_ble_isoc_encryption_t encrypt; /**< Identifies if Broadcast code status, 0 = invalid, 1 = valid */
     uint8_t broadcast_code[16];         /**< Broadcast code */
     uint8_t max_sub_events;             /**< Max sub events */
     uint16_t big_sync_timeout;          /**< BIG Sync timeout */
     uint8_t num_bis;                    /**< Num BIS in the \p bis_idx_list */
     uint8_t *bis_idx_list;              /**< BIS list of size \p num_bis */
-} wiced_bt_isoc_big_create_sync_t;
+} wiced_ble_isoc_big_create_sync_t;
 
 
 /**< Structure received for tx broadcast sync complete */
 typedef struct
 {
-    uint8_t status;        /**< status of Read Tx Sync command, Refer Core Spec v5.4 [Vol 1] Part F, Controller Error Codes */
-    uint16_t conn_hdl;     /**< CIS/BIS Connection Handle  */
-    uint16_t psn;          /**< Packet sequence number of an SDU  */
-    uint32_t tx_timestamp; /**< The CIG reference point or BIG anchor point of a transmitted SDU (in microseconds) */
-    uint32_t time_offset;  /**< Time offset that is associated with a transmitted SDU (in microseconds) */
-} wiced_bt_isoc_read_tx_sync_complete_t;
+    /** status of Read Tx Sync command, Refer Core Spec v5.4 [Vol 1] Part F, Controller Error Codes */
+    uint8_t status;
+    /** CIS/BIS Connection Handle  */
+    uint16_t isoc_conn_hdl;
+    /** Packet sequence number of an SDU  */
+    uint16_t psn;
+    /** The CIG reference point or BIG anchor point of a transmitted SDU (in microseconds) */
+    uint32_t tx_timestamp;
+    /** Time offset that is associated with a transmitted SDU (in microseconds) */
+    uint32_t time_offset;
+} wiced_ble_isoc_read_tx_sync_complete_t;
 
-/**< Command parameters for \ref wiced_bt_isoc_setup_data_path */
+/**< Command parameters for \ref wiced_ble_isoc_setup_data_path */
 typedef struct
 {
-    uint16_t isoc_conn_hdl;                            /**< CIS/BIS  Connection handle */
-    wiced_bt_isoc_data_path_direction_t data_path_dir; /**< Data path to the setup */
-    wiced_bt_isoc_data_path_id_t data_path_id;         /**< Data path identifier */
-    uint32_t controller_delay;                         /**< Controller delay in microseconds, Range: 0x000000 to 0x3D0900 */
-    uint8_t codec_id[5];                               /**< Set the Codec for the data path */
-    uint8_t csc_length;                                /**< Length of the Codec Specific Configuration pointed by \p p_csc*/
-    uint8_t *p_csc;                                    /**< Codec Specific Configuration */
-    void *p_app_ctx;                                   /**< Application provided context, returned to the application */
-} wiced_bt_isoc_setup_data_path_info_t;
+    /** CIS/BIS  Connection handle */
+    uint16_t isoc_conn_hdl;
+    /** Data path to the setup */
+    wiced_ble_isoc_data_path_direction_t data_path_dir;
+    /** Data path identifier */
+    wiced_ble_isoc_data_path_id_t data_path_id;
+    /** Controller delay in microseconds, Range: 0x000000 to 0x3D0900 */
+    uint32_t controller_delay;
+    /** Set the Codec for the data path */
+    uint8_t codec_id[5];
+    /** Length of the Codec Specific Configuration pointed by \p p_csc*/
+    uint8_t csc_length;
+    /** Codec Specific Configuration */
+    uint8_t *p_csc;
+    /** Application provided context, returned to the application */
+    void *p_app_ctx;
+} wiced_ble_isoc_setup_data_path_info_t;
 
 /** ISOC Data callbacks */
 /**
@@ -399,7 +411,7 @@ typedef struct
 * @param[in] p_data : incoming ISOC data
 * @param[in] length : length of the data
 */
-typedef void (*wiced_bt_iso_rx_cb_t)(uint8_t *p_data, uint32_t length);
+typedef void (*wiced_ble_isoc_rx_cb_t)(uint8_t *p_data, uint32_t length);
 
 /**
 * Callback for receiving number of completed packets
@@ -409,7 +421,7 @@ typedef void (*wiced_bt_iso_rx_cb_t)(uint8_t *p_data, uint32_t length);
 * @return wiced_bool_t, return FALSE in case any of the connection handles
 * in the event are not handled/(ISOC)
 */
-typedef wiced_bool_t (*wiced_bt_iso_num_complete_cb_t)(uint8_t *p_buf);
+typedef wiced_bool_t (*wiced_ble_isoc_num_complete_cb_t)(uint8_t *p_buf);
 
 
 /******************************************************
@@ -422,13 +434,13 @@ extern "C" {
 
 
 /**
- * @brief Event callback for ISOC event notifications. Registered using #wiced_bt_isoc_init
+ * @brief Event callback for ISOC event notifications. Registered using #wiced_ble_isoc_init
  *
  * @param event_id     : ISOC event ID
  * @param p_event_data : ISOC event data
  *
 */
-typedef void wiced_bt_isoc_cback_t(wiced_bt_isoc_event_t event_id, wiced_bt_isoc_event_data_t *p_event_data);
+typedef void wiced_ble_isoc_cback_t(wiced_ble_isoc_event_t event_id, wiced_ble_isoc_event_data_t *p_event_data);
 
 /**
  * @brief Event callback to return the read TX Sync information
@@ -436,7 +448,7 @@ typedef void wiced_bt_isoc_cback_t(wiced_bt_isoc_event_t event_id, wiced_bt_isoc
  * @param p_sync : Sync information
  *
 */
-typedef void (wiced_bt_isoc_read_tx_sync_complete_cback_t)(wiced_bt_isoc_read_tx_sync_complete_t *p_sync);
+typedef void (wiced_ble_isoc_read_tx_sync_complete_cback_t)(wiced_ble_isoc_read_tx_sync_complete_t *p_sync);
 
 /** @} wicedbt_isoc_defs         */
 
@@ -455,7 +467,7 @@ typedef void (wiced_bt_isoc_read_tx_sync_complete_cback_t)(wiced_bt_isoc_read_tx
  * @param[in] p_cfg : ISOC stream configuration
  * @param[in] isoc_cb  : ISOC event callback
  */
-void wiced_bt_isoc_init(wiced_bt_isoc_cfg_t *p_cfg, wiced_bt_isoc_cback_t isoc_cb);
+void wiced_ble_isoc_init(wiced_ble_isoc_cfg_t *p_cfg, wiced_ble_isoc_cback_t isoc_cb);
 
 /**
  * @brief Register ISO data event callbacks
@@ -464,7 +476,7 @@ void wiced_bt_isoc_init(wiced_bt_isoc_cfg_t *p_cfg, wiced_bt_isoc_cback_t isoc_c
  * @param[in] rx_data_cb Callback upon receiving ISO data
  * @param[in] num_complete_cb Callback after transmitting ISO data
  */
-void wiced_bt_isoc_register_data_cb(wiced_bt_iso_rx_cb_t rx_data_cb, wiced_bt_iso_num_complete_cb_t num_complete_cb);
+void wiced_ble_isoc_register_data_cb(wiced_ble_isoc_rx_cb_t rx_data_cb, wiced_ble_isoc_num_complete_cb_t num_complete_cb);
 
 /**
  * @brief Called by Central's host to set the parameters of one or more CISes that are associated with a CIG in the
@@ -472,22 +484,11 @@ void wiced_bt_isoc_register_data_cb(wiced_bt_iso_rx_cb_t rx_data_cb, wiced_bt_is
  * CIS(s) to that CIG.
  * The \ref WICED_BLE_ISOC_SET_CIG_CMD_COMPLETE_EVT event is generated to return the status of the API
  *
- * @param[in] p_cig_params: CIG parameter (@ref wiced_bt_ble_cig_param_t)
+ * @param[in] p_cig_params: CIG parameter (@ref wiced_ble_isoc_cig_param_t)
  *
  * @return wiced_result_t
  */
-wiced_result_t wiced_bt_isoc_central_set_cig_param(wiced_bt_ble_cig_param_t *p_cig_params);
-
-/**
- * @brief Called by Central's host to set the parameters of one or more CISes that are associated with a CIG in the
- * Controller. If none of the CISes in that CIG have been created, this command may also be used to modify or add
- * CIS(s) to that CIG.
- * The \ref WICED_BLE_ISOC_SET_CIG_CMD_COMPLETE_EVT event is generated to return the status of the API
- * @note Command should only be used for testing purposes only.
- *
- * @return wiced_result_t
- */
-wiced_result_t wiced_bt_isoc_central_set_cig_param_test(wiced_bt_ble_cig_param_test_t *cig_params);
+wiced_result_t wiced_ble_isoc_central_set_cig_param(wiced_ble_isoc_cig_param_t *p_cig_params);
 
 /**
  * @brief Called by Central's host to create one or more CIS channels. The \ref WICED_BLE_ISOC_CIS_ESTABLISHED_EVT event
@@ -498,7 +499,7 @@ wiced_result_t wiced_bt_isoc_central_set_cig_param_test(wiced_bt_ble_cig_param_t
  *
  * @return wiced_result_t
  */
-wiced_result_t wiced_bt_isoc_central_create_cis(int cis_count, wiced_bt_isoc_cis_acl_t *p_ca);
+wiced_result_t wiced_ble_isoc_central_create_cis(int cis_count, wiced_ble_isoc_cis_acl_t *p_ca);
 
 /**
  * @brief Called by the Peripheral to accept the CIS (Connected Isochronous Stream) connection request received in the
@@ -509,7 +510,7 @@ wiced_result_t wiced_bt_isoc_central_create_cis(int cis_count, wiced_bt_isoc_cis
  * return wiced_result_t
  *
  */
-wiced_result_t wiced_bt_isoc_peripheral_accept_cis(wiced_bt_isoc_cis_t *p_req);
+wiced_result_t wiced_ble_isoc_peripheral_accept_cis(wiced_ble_isoc_cis_t *p_req);
 
 /**
  * @brief Called by the Peripheral to reject the CIS (Connected Isochronous Stream) connection request received in the
@@ -519,7 +520,7 @@ wiced_result_t wiced_bt_isoc_peripheral_accept_cis(wiced_bt_isoc_cis_t *p_req);
  * @param[in]       reason : Reject Reason
  * @return wiced_result_t
  */
-wiced_result_t wiced_bt_isoc_peripheral_reject_cis(wiced_bt_isoc_cis_t *p_req, uint8_t reason);
+wiced_result_t wiced_ble_isoc_peripheral_reject_cis(wiced_ble_isoc_cis_t *p_req, uint8_t reason);
 
 /**
  * @brief Disconnect CIS (Connected Isochronous Stream) connection. The \ref WICED_BLE_ISOC_CIS_DISCONNECTED_EVT event will be
@@ -528,7 +529,7 @@ wiced_result_t wiced_bt_isoc_peripheral_reject_cis(wiced_bt_isoc_cis_t *p_req, u
  * @param[in] cis_conn_handle : CIS connection handle received in the \ref WICED_BLE_ISOC_CIS_ESTABLISHED_EVT event
  * @return    status
  */
-wiced_result_t wiced_bt_isoc_disconnect_cis(uint16_t cis_conn_handle);
+wiced_result_t wiced_ble_isoc_disconnect_cis(uint16_t cis_conn_handle);
 
 /**
  * @brief Invoked by the Central host to remove the CIG (Connected Isochronous Group) and associated
@@ -540,7 +541,7 @@ wiced_result_t wiced_bt_isoc_disconnect_cis(uint16_t cis_conn_handle);
  * @param[in] cig_id  : CIG ID
  * @return wiced_result_t
  */
-wiced_result_t wiced_bt_isoc_central_remove_cig(uint8_t cig_id);
+wiced_result_t wiced_ble_isoc_central_remove_cig(uint8_t cig_id);
 
 /**
  * @brief Get the CIS connection handle using CIG and CIS identifiers
@@ -549,7 +550,7 @@ wiced_result_t wiced_bt_isoc_central_remove_cig(uint8_t cig_id);
  * @param cis_id CIS identifier
  * @return uint16_t CIS connection handle
  */
-uint16_t wiced_bt_isoc_central_get_cis_conn_handle(uint8_t cig_id, uint8_t cis_id);
+uint16_t wiced_ble_isoc_central_get_cis_conn_handle(uint8_t cig_id, uint8_t cis_id);
 
 /**
  * @brief Get the CIS connection handle using ACL connection handle, CIG and CIS identifiers
@@ -559,7 +560,7 @@ uint16_t wiced_bt_isoc_central_get_cis_conn_handle(uint8_t cig_id, uint8_t cis_i
  * @param acl_conn_hdl :ACL connection handle
  * @return uint16_t CIS connection handle
  */
-uint16_t wiced_bt_isoc_get_cis_conn_handle(uint8_t cig_id, uint8_t cis_id, uint16_t acl_conn_hdl);
+uint16_t wiced_ble_isoc_get_cis_conn_handle(uint8_t cig_id, uint8_t cis_id, uint16_t acl_conn_hdl);
 
 /**
  * @brief Get CIS connection status by CIS conn id
@@ -567,7 +568,7 @@ uint16_t wiced_bt_isoc_get_cis_conn_handle(uint8_t cig_id, uint8_t cis_id, uint1
  * @param cis_conn_hdl CIS connection handle
  * @return TRUE if CIS connection exists
  */
-wiced_bool_t wiced_bt_isoc_is_cis_connected_with_conn_hdl(uint16_t cis_conn_hdl);
+wiced_bool_t wiced_ble_isoc_is_cis_connected_with_conn_hdl(uint16_t cis_conn_hdl);
 
 /**
  *
@@ -578,7 +579,7 @@ wiced_bool_t wiced_bt_isoc_is_cis_connected_with_conn_hdl(uint16_t cis_conn_hdl)
  *
  * @return wiced_result_t
  */
-wiced_result_t wiced_bt_isoc_central_request_peer_sca(wiced_bt_device_address_t peer_bda);
+wiced_result_t wiced_ble_isoc_central_request_peer_sca(wiced_bt_device_address_t peer_bda);
 
 /**
  * @brief Called by the Central host (Broadcaster) to create BIG with provided parameters
@@ -586,7 +587,7 @@ wiced_result_t wiced_bt_isoc_central_request_peer_sca(wiced_bt_device_address_t 
  * @param p_big_param Number of BIS, SDU Interval, Packing, Framing
  * @return wiced_result_t
  */
-wiced_result_t wiced_bt_isoc_central_create_big(wiced_bt_isoc_create_big_param_t *p_big_param);
+wiced_result_t wiced_ble_isoc_central_create_big(wiced_ble_isoc_create_big_param_t *p_big_param);
 
 /**
  * @brief terminate a BIG identified by the BIG_Handle
@@ -595,15 +596,15 @@ wiced_result_t wiced_bt_isoc_central_create_big(wiced_bt_isoc_create_big_param_t
  * @param reason Reason the BIG is terminated.
  * @return wiced_result_t
  */
-wiced_result_t wiced_bt_isoc_central_terminate_big(uint8_t big_handle, uint8_t reason);
+wiced_result_t wiced_ble_isoc_central_terminate_big(uint8_t big_handle, uint8_t reason);
 
 /**
- * @brief Sync to the BIS stream described by wiced_bt_isoc_big_create_sync_t
+ * @brief Sync to the BIS stream described by wiced_ble_isoc_big_create_sync_t
  *
  * @param p_create_sync sync_handle, list of BIS indices
  * @return wiced_bool_t TRUE if successful
  */
-wiced_result_t wiced_bt_isoc_peripheral_big_create_sync(wiced_bt_isoc_big_create_sync_t *p_create_sync);
+wiced_result_t wiced_ble_isoc_peripheral_big_create_sync(wiced_ble_isoc_big_create_sync_t *p_create_sync);
 
 /**
  * @brief Stop synchronizing or cancel the process of synchronizing to
@@ -612,15 +613,15 @@ wiced_result_t wiced_bt_isoc_peripheral_big_create_sync(wiced_bt_isoc_big_create
  * @param big_handle Used to identify the BIG
  * @return wiced_result_t wiced_result_t WICED_SUCCESS if successful
  */
-wiced_result_t wiced_bt_isoc_peripheral_big_terminate_sync(uint8_t big_handle);
+wiced_result_t wiced_ble_isoc_peripheral_big_terminate_sync(uint8_t big_handle);
 
 /**
- * wiced_bt_isoc_is_bis_created
+ * wiced_ble_isoc_is_bis_created
  *
  * @param[in]       handle  : BIS Connection handle
  * @return     TRUE if BIG exists
  */
-wiced_bool_t wiced_bt_isoc_is_bis_created(uint16_t bis_conn_handle);
+wiced_bool_t wiced_ble_isoc_is_bis_created(uint16_t bis_conn_handle);
 
 /**
  * @brief This function is used to request the Controller to configure the data transport path in a given direction
@@ -634,41 +635,41 @@ wiced_bool_t wiced_bt_isoc_is_bis_created(uint16_t bis_conn_handle);
  * @return wiced_result_t
  */
 
-wiced_result_t wiced_bt_isoc_configure_data_path(wiced_bt_isoc_data_path_direction_t data_path_dir,
-                                                 wiced_bt_isoc_data_path_id_t data_path_id);
+wiced_result_t wiced_ble_isoc_configure_data_path(wiced_ble_isoc_data_path_direction_t data_path_dir,
+                                                 wiced_ble_isoc_data_path_id_t data_path_id);
 
 /**
  * @brief Set's up the codec parameters and configuration for the CIS/BIS connection handle.
- * For the audio offload use cases (encoding/decoding in the controller), invoke \ref wiced_bt_isoc_configure_data_path
+ * For the audio offload use cases (encoding/decoding in the controller), invoke \ref wiced_ble_isoc_configure_data_path
  * to configure the data path \p p_param->data_path_dir direction for data path identifier \p p_param->data_path_id
  *
  * @param p_param : Data path parameters
  * @return wiced_result_t
  */
-wiced_result_t wiced_bt_isoc_setup_data_path(wiced_bt_isoc_setup_data_path_info_t *p_param);
+wiced_result_t wiced_ble_isoc_setup_data_path(wiced_ble_isoc_setup_data_path_info_t *p_param);
 
 /**
  * @brief Remove data path setup for a CIS/BIS
  *
  * @param isoc_conn_hdl CIS/BIS Connection handle
- * @param data_path_dir_bitfield see #wiced_bt_isoc_data_path_bit_t
+ * @param data_path_dir_bitfield see #wiced_ble_isoc_data_path_bit_t
  *                               bit 0: Remove Input data path
  *                               bit 1: Remove output data path
  * @return wiced_bool_t TRUE if successful in sending the command
  */
-wiced_bool_t wiced_bt_isoc_remove_data_path(uint16_t isoc_conn_hdl, wiced_bt_isoc_data_path_bit_t data_path_dir_bitfield);
+wiced_bool_t wiced_ble_isoc_remove_data_path(uint16_t isoc_conn_hdl, wiced_ble_isoc_data_path_bit_t data_path_dir_bitfield);
 
 /**
  * @brief Get status of the ISO CIS/BIS data path
  *
  * @param cig_id CIG identifier
  * @param cis_id CIS identifier
- * @param data_path_dir INPUT/OUTPUT see #wiced_bt_isoc_data_path_direction_t
+ * @param data_path_dir INPUT/OUTPUT see #wiced_ble_isoc_data_path_direction_t
  * @return wiced_bool_t
  */
-wiced_bool_t wiced_bt_isoc_is_data_path_active(uint8_t cig_id,
+wiced_bool_t wiced_ble_isoc_is_data_path_active(uint8_t cig_id,
                                                uint8_t cis_id,
-                                               wiced_bt_isoc_data_path_direction_t data_path_dir);
+                                               wiced_ble_isoc_data_path_direction_t data_path_dir);
 
 
 /**
@@ -682,11 +683,11 @@ wiced_bool_t wiced_bt_isoc_is_data_path_active(uint8_t cig_id,
   * @return : wiced_bool_t TRUE if successful otherwise FALSE
   */
 
- wiced_bool_t wiced_bt_write_iso_data_to_lower(uint8_t *p_data, uint16_t len);
+ wiced_bool_t wiced_ble_isoc_write_data_to_lower(uint8_t *p_data, uint16_t len);
 
 /** This function returns ISOC buffer size */
 
- uint16_t wiced_bt_isoc_get_max_data_pkt_len(void);
+ uint16_t wiced_ble_isoc_get_max_data_pkt_len(void);
 
  /**
   * @brief This function is used to read TX Timestamp and Time offset of a transmitted
@@ -697,8 +698,8 @@ wiced_bool_t wiced_bt_isoc_is_data_path_active(uint8_t cig_id,
   *
   * @return             : WICED_SUCCESS if successful
   */
- wiced_result_t wiced_bt_isoc_read_tx_sync(uint16_t isoc_conn_hdl,
-                                           wiced_bt_isoc_read_tx_sync_complete_cback_t *p_cback);
+ wiced_result_t wiced_ble_isoc_read_tx_sync(uint16_t isoc_conn_hdl,
+                                           wiced_ble_isoc_read_tx_sync_complete_cback_t *p_cback);
 
 
 /**@} wicedbt_isoc_functions */

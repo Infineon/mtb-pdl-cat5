@@ -19,9 +19,7 @@
 #ifndef  __WICED_BT_DEV_H__
 #define  __WICED_BT_DEV_H__
 
-
 #include "wiced_bt_types.h"
-#include "wiced_result.h"
 #include "hcidefs.h"
 #include "wiced_bt_sco.h"
 
@@ -646,7 +644,40 @@ typedef struct
 /** LE Physical link update event related data */
 typedef struct
 {
-    uint8_t                      status;      /**< LE Phy update status */
+    uint8_t status;                    /**< status of the event, ignored when the structure is used to set */
+    wiced_bt_device_address_t bd_addr; /**< peer bd address, set to 0 if default */
+    uint16_t subrate_min;     /**< Minimum subrate factor allowed in requests by a Peripheral,
+                                   Range: 0x0001 to 0x01F4,
+                                   Default: 0x0001
+                                   */
+    uint16_t subrate_max;     /**< Maximum subrate factor allowed in requests by a Peripheral,
+                                   Range: 0x0001 to 0x01F4,
+                                   Default: 0x0001
+                                   */
+    uint16_t latency;         /**< Maximum Peripheral latency allowed in requests by a Peripheral,
+                                   in units of subrated connection intervals,
+                                   Range: 0x0000 to 0x01F3,
+                                   Default: 0x0000
+                                   */
+    uint16_t continuation_number; /**< Minimum number of underlying connection events to remain active
+                                       after a packet containing a Link Layer PDU with a non-zero Length field
+                                       is sent or received in requests by a Peripheral,
+                                       Range: 0x0000 to 0x01F3,
+                                       Default: 0x0000
+                                       */
+    uint16_t supervision_timeout; /**< Maximum supervision timeout allowed in requests by a Peripheral,
+                                       Range: 0x000A to 0x0C80,
+                                       Time = N × 10 ms,
+                                       Time Range: 100 ms to 32 s,
+                                       Default: 0x0C80
+                                       */
+} wiced_bt_ble_conn_subrate_t;
+
+
+/** LE Physical link update event related data */
+typedef struct
+{
+    wiced_bt_hci_err_code_t      status;      /**< LE Phy update status */
     wiced_bt_device_address_t    bd_address;  /**< peer BD address*/
     uint8_t                      tx_phy;      /**< Transmitter PHY, values: 1=1M, 2=2M, 3=LE coded */
     uint8_t                      rx_phy;      /**< Receiver PHY, values: 1=1M, 2=2M, 3=LE coded */
@@ -915,7 +946,7 @@ enum wiced_bt_management_evt_e {
     BTM_SMP_SC_REMOTE_OOB_DATA_REQUEST_EVT,         /* 26, 0x1A */
 
     /**
-     * Event notifies LE secure connection local OOB data (wiced_bt_smp_create_local_sc_oob_data) returned by the stack
+     * Event notifies LE secure connection local OOB data (#wiced_bt_smp_create_local_sc_oob_data) returned by the stack
      * The app is expected to copy the data into it's memory and share out of band with the peer
      * @if DUAL_MODE To build the data to be shared, app can use \ref wiced_bt_dev_build_oob_data @endif
      * Event data: \ref wiced_bt_management_evt_data_t.p_smp_sc_local_oob_data
@@ -983,20 +1014,28 @@ enum wiced_bt_management_evt_e {
     BTM_BLE_DATA_LENGTH_UPDATE_EVENT,               /* 36, 0x24 */
 
     /**
-     * Event to notify change in the device address
-     * Application can register to receive a callback on device address update through
-     * \ref wiced_bt_ble_notify_on_device_address_change
+     * Event to notify subrate change event
+     * LE link
      * Event data: \ref wiced_bt_management_evt_data_t.ble_subrate_change_event
      */
-    BTM_BLE_DEVICE_ADDRESS_UPDATE_EVENT,            /* 37, 0x25 */
+    BTM_BLE_SUBRATE_CHANGE_EVENT,                   /* 37, 0x25 */
 
+    /**
+     * Event to notify change in the device address
+     * Event data: \ref wiced_bt_management_evt_data_t.ble_addr_update_event
+     */
+    BTM_BLE_DEVICE_ADDRESS_UPDATE_EVENT,            /* 38, 0x26 */
 
-
+    /**
+     * Event to notify change channel selection algorithm for the connection
+     * Event data: \ref wiced_bt_management_evt_data_t.ble_channel_sel_algo_event
+     */
+    BTM_BLE_CHANNEL_SELECTION_ALGO_EVENT, /* 39, 0x27*/
 #if SMP_CATB_CONFORMANCE_TESTER == TRUE
     /**
      * The Secure Connections support information of the peer device.
      */
-    BTM_SMP_SC_PEER_INFO_EVT,                        /* 38, 0x26 */
+    BTM_SMP_SC_PEER_INFO_EVT,                        /* 40, 0x28 */
 #endif
 };
 #endif
@@ -1277,12 +1316,33 @@ typedef enum
     HCI_TRACE_OUTGOING_SCO_DATA /**< HCI outgoing sco data */
 }wiced_bt_hci_trace_type_t;
 
+/** LE ACL connection handle */
+typedef uint16_t wiced_bt_ble_connection_handle_t;
+
 /** Event on update of random device address */
 typedef struct
 {
     uint8_t status; /**< status of the change address command */
     wiced_bt_device_address_t bdaddr; /**< current private bluetooth address */
 }wiced_bt_ble_device_addr_update_t;
+
+/** LE channel selection algorithms */
+enum wiced_bt_ble_channel_sel_algo_e
+{
+    LE_CHANNEL_SEL_ALGO_1_USED, /**< LE channel selection algorithm#1 used */
+    LE_CHANNEL_SEL_ALGO_2_USED, /**< LE channel selection algorithm#2 used */
+};
+typedef uint8_t
+    wiced_bt_ble_channel_sel_algo_t; /**< LE channel algorithm selection (see #wiced_bt_ble_channel_sel_algo_e) */
+
+/** Channel selection algorithm event data format */
+typedef struct
+{
+    wiced_bt_ble_connection_handle_t connection_handle; /**< LE ACL connection handle */
+    wiced_bt_ble_channel_sel_algo_t channel_sel_algo;   /**< LE channel selection algorithm used for this connection*/
+    /* remaining RFU */
+} wiced_bt_ble_channel_sel_algo_event_data_t;
+
 
 /** Structure definitions for Bluetooth Management (wiced_bt_management_cback_t) event notifications */
 typedef union
@@ -1330,7 +1390,9 @@ typedef union
     wiced_bt_ble_phy_update_t               ble_phy_update_event;               /**< Data for BTM_BLE_PHY_UPDATE_EVT */
     wiced_bt_ble_multi_adv_response_t       ble_multi_adv_response_event;       /**< Response status update event for the multiadv command BTM_MULTI_ADV_VSC_RESP_EVENT*/
     wiced_bt_ble_phy_data_length_update_t   ble_data_length_update_event;       /**< Data for BTM_BLE_DATA_LENGTH_UPDATE_EVENT*/
-    wiced_bt_ble_device_addr_update_t       ble_addr_update_event;               /**< Data for BTM_BLE_DEVICE_ADDRESS_UPDATE_EVENT */
+    wiced_bt_ble_conn_subrate_t             ble_subrate_change_event;           /**< Data for BTM_BLE_SUBRATE_CHANGE_EVENT */
+    wiced_bt_ble_device_addr_update_t       ble_addr_update_event;              /**< Data for BTM_BLE_DEVICE_ADDRESS_UPDATE_EVENT */
+    wiced_bt_ble_channel_sel_algo_event_data_t ble_channel_sel_algo_event;      /**< Data for BTM_BLE_CHANNEL_SELECTION_ALGO_EVENT*/
 #if SMP_CATB_CONFORMANCE_TESTER == TRUE
     wiced_bt_ble_sc_peer_info               smp_sc_peer_info;                   /* Data for BTM_SMP_SC_PEER_INFO_EVT */
 #endif
@@ -1932,20 +1994,6 @@ uint16_t wiced_bt_dev_build_oob_data(uint8_t *p_data, uint16_t max_len,
  * @note            BR/EDR Only
  */
 void wiced_bt_smp_oob_data_reply(wiced_bt_device_address_t bd_addr, wiced_result_t res, uint8_t len, uint8_t *p_data);
-
-/**
- *
- * Create local LE SC (secure connection) OOB data. When
- * operation is completed, local OOB data will be
- * provided via BTM_SMP_SC_LOCAL_OOB_DATA_NOTIFICATION_EVT.
- *
- * @param[in]       bd_addr         : remote device address for the OOB data
- * @param[in]       bd_addr_type    : device address type of address \p bd_addr
- *
- * @return          TRUE: creation of local SC OOB data set started.
- *
- */
-wiced_bool_t wiced_bt_smp_create_local_sc_oob_data (wiced_bt_device_address_t bd_addr, wiced_bt_ble_address_type_t bd_addr_type);
 
 /**
  *
