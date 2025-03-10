@@ -1,7 +1,7 @@
 # MTB CAT5 Peripheral Driver Library v0.5.0
 
 Please refer to the [README.md](./README.md) and the
-[PDL API Reference Manual](https://infineon.github.io/mtb-pdl-cat1/pdl_api_reference_manual/html/index.html)
+[PDL API Reference Manual](https://infineon.github.io/mtb-pdl-cat5/pdl_api_reference_manual/html/index.html)
 for a complete description of the Peripheral Driver Library.
 
 Some restrictions apply to the PSoC 64 devices configuration. Please refer to [PRA (Protected Register Access)](https://infineon.github.io/mtb-pdl-cat1/pdl_api_reference_manual/html/group__group__pra.html) driver documentation for the details.
