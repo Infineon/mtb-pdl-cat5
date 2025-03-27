@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>AIROC™ CYW55913: wiced_bt_ble_periodic_adv_report_event_data_t Struct Reference</title>
+<title>AIROC™ CYW55913: wiced_ble_ext_scan_phy_params_t Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -77,7 +77,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('structwiced__bt__ble__periodic__adv__report__event__data__t.html','');});
+$(document).ready(function(){initNavTree('structwiced__ble__ext__scan__phy__params__t.html','');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -98,98 +98,68 @@ $(document).ready(function(){initNavTree('structwiced__bt__ble__periodic__adv__r
   <div class="summary">
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">wiced_bt_ble_periodic_adv_report_event_data_t Struct Reference<div class="ingroups"><a class="el" href="group__btm__ble__api__functions.html">LE (Bluetooth Low Energy)</a></div></div>  </div>
+<div class="title">wiced_ble_ext_scan_phy_params_t Struct Reference<div class="ingroups"><a class="el" href="group__wicedbt___extended.html">LE Extended Mode Advertising and Scanning</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Periodic advertising report data format.
- <a href="structwiced__bt__ble__periodic__adv__report__event__data__t.html#details">More...</a></p>
+<p>structure for scan parameter per phy
+ <a href="structwiced__ble__ext__scan__phy__params__t.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a0d8a5577ddfc2d76c96a22173efc5dcb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0d8a5577ddfc2d76c96a22173efc5dcb"></a>
-<a class="el" href="group__btm__ble__api__functions.html#ga70c1c3632c806556629a4009d009ed8d">wiced_bt_ble_periodic_adv_sync_handle_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwiced__bt__ble__periodic__adv__report__event__data__t.html#a0d8a5577ddfc2d76c96a22173efc5dcb">sync_handle</a></td></tr>
-<tr class="memdesc:a0d8a5577ddfc2d76c96a22173efc5dcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">sync handle <br /></td></tr>
-<tr class="separator:a0d8a5577ddfc2d76c96a22173efc5dcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9dff0a9369cee709d7906b318aba5122"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwiced__bt__ble__periodic__adv__report__event__data__t.html#a9dff0a9369cee709d7906b318aba5122">adv_tx_power</a></td></tr>
-<tr class="memdesc:a9dff0a9369cee709d7906b318aba5122"><td class="mdescLeft">&#160;</td><td class="mdescRight">advertisement transmit power Range: -127 to +126 dbm.  <a href="#a9dff0a9369cee709d7906b318aba5122">More...</a><br /></td></tr>
-<tr class="separator:a9dff0a9369cee709d7906b318aba5122"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aec14a6cdcedfb01e4540848f64ca24d7"><td class="memItemLeft" align="right" valign="top">int8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwiced__bt__ble__periodic__adv__report__event__data__t.html#aec14a6cdcedfb01e4540848f64ca24d7">adv_rssi</a></td></tr>
-<tr class="memdesc:aec14a6cdcedfb01e4540848f64ca24d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">RSSI.  <a href="#aec14a6cdcedfb01e4540848f64ca24d7">More...</a><br /></td></tr>
-<tr class="separator:aec14a6cdcedfb01e4540848f64ca24d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a66897469a07940a3bc909dcaf2d29292"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a66897469a07940a3bc909dcaf2d29292"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwiced__bt__ble__periodic__adv__report__event__data__t.html#a66897469a07940a3bc909dcaf2d29292">cte_type</a></td></tr>
-<tr class="memdesc:a66897469a07940a3bc909dcaf2d29292"><td class="mdescLeft">&#160;</td><td class="mdescRight">CTE Type. <br /></td></tr>
-<tr class="separator:a66897469a07940a3bc909dcaf2d29292"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a998b7e20b7cac8996cd1f3fc43f02125"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a998b7e20b7cac8996cd1f3fc43f02125"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwiced__bt__ble__periodic__adv__report__event__data__t.html#a998b7e20b7cac8996cd1f3fc43f02125">data_status</a></td></tr>
-<tr class="memdesc:a998b7e20b7cac8996cd1f3fc43f02125"><td class="mdescLeft">&#160;</td><td class="mdescRight">0 = complete data, 1 = data incomplete more data to come, 2 = data truncated.other RFU <br /></td></tr>
-<tr class="separator:a998b7e20b7cac8996cd1f3fc43f02125"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac78cff7af99787faad2a285dffdde08e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwiced__bt__ble__periodic__adv__report__event__data__t.html#ac78cff7af99787faad2a285dffdde08e">data_len</a></td></tr>
-<tr class="memdesc:ac78cff7af99787faad2a285dffdde08e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Range: 0 -248.  <a href="#ac78cff7af99787faad2a285dffdde08e">More...</a><br /></td></tr>
-<tr class="separator:ac78cff7af99787faad2a285dffdde08e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d828bad0efd64289dc0ea0f5581bddf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2d828bad0efd64289dc0ea0f5581bddf"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwiced__bt__ble__periodic__adv__report__event__data__t.html#a2d828bad0efd64289dc0ea0f5581bddf">adv_data</a> [<a class="el" href="group__btm__ble__api__functions.html#gadfbb097c8f045e5e5b0c510940d64e43">WICED_BT_BLE_MAX_EXT_ADV_DATA_LEN</a>]</td></tr>
-<tr class="memdesc:a2d828bad0efd64289dc0ea0f5581bddf"><td class="mdescLeft">&#160;</td><td class="mdescRight">periodic adv data <br /></td></tr>
-<tr class="separator:a2d828bad0efd64289dc0ea0f5581bddf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57a519a271e7536e2f588cc43b5f39c7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a57a519a271e7536e2f588cc43b5f39c7"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwiced__ble__ext__scan__phy__params__t.html#a57a519a271e7536e2f588cc43b5f39c7">scan_type</a></td></tr>
+<tr class="memdesc:a57a519a271e7536e2f588cc43b5f39c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">scan type, set 0 for passive, 1 for active <br /></td></tr>
+<tr class="separator:a57a519a271e7536e2f588cc43b5f39c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee6704e14e4d5c590990ef4b80857b94"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwiced__ble__ext__scan__phy__params__t.html#aee6704e14e4d5c590990ef4b80857b94">scan_interval</a></td></tr>
+<tr class="memdesc:aee6704e14e4d5c590990ef4b80857b94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Range N: 0x0004 to 0xFFFF.Time = N * 0.625 ms.  <a href="#aee6704e14e4d5c590990ef4b80857b94">More...</a><br /></td></tr>
+<tr class="separator:aee6704e14e4d5c590990ef4b80857b94"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85da8bab044d1c19454c091830144e06"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwiced__ble__ext__scan__phy__params__t.html#a85da8bab044d1c19454c091830144e06">scan_window</a></td></tr>
+<tr class="memdesc:a85da8bab044d1c19454c091830144e06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Range N: 0x0004 to 0xFFFF.Time = N * 0.625 ms.  <a href="#a85da8bab044d1c19454c091830144e06">More...</a><br /></td></tr>
+<tr class="separator:a85da8bab044d1c19454c091830144e06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Periodic advertising report data format. </p>
+<div class="textblock"><p>structure for scan parameter per phy </p>
 </div><h2 class="groupheader">Field Documentation</h2>
-<a class="anchor" id="aec14a6cdcedfb01e4540848f64ca24d7"></a>
+<a class="anchor" id="aee6704e14e4d5c590990ef4b80857b94"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int8_t adv_rssi</td>
+          <td class="memname">uint16_t scan_interval</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>RSSI. </p>
-<p>range: -127 to +126. 127 means RSSI is not available </p>
+<p>Range N: 0x0004 to 0xFFFF.Time = N * 0.625 ms. </p>
+<p>Time Range: 2.5 ms to 40.959375 s </p>
 
 </div>
 </div>
-<a class="anchor" id="a9dff0a9369cee709d7906b318aba5122"></a>
+<a class="anchor" id="a85da8bab044d1c19454c091830144e06"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int8_t adv_tx_power</td>
+          <td class="memname">uint16_t scan_window</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>advertisement transmit power Range: -127 to +126 dbm. </p>
-<p>127 means tx power is not available </p>
-
-</div>
-</div>
-<a class="anchor" id="ac78cff7af99787faad2a285dffdde08e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t data_len</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Range: 0 -248. </p>
-<p>Other values RFU </p>
+<p>Range N: 0x0004 to 0xFFFF.Time = N * 0.625 ms. </p>
+<p>Time Range: 2.5 ms to 40.959375 s </p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li><a class="el" href="wiced__bt__ble_8h.html">wiced_bt_ble.h</a></li>
+<li><a class="el" href="wiced__bt__adv__scan__extended_8h.html">wiced_bt_adv_scan_extended.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="structwiced__bt__ble__periodic__adv__report__event__data__t.html">wiced_bt_ble_periodic_adv_report_event_data_t</a></li>
+    <li class="navelem"><a class="el" href="structwiced__ble__ext__scan__phy__params__t.html">wiced_ble_ext_scan_phy_params_t</a></li>
     <li class="footer">Copyright Infineon Technologies.</li>
   </ul>
 </div>

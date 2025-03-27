@@ -4,8 +4,8 @@ var group___peripheral_spi_driver =
     [ "WICED_SPI_MODE", "group___peripheral_spi_driver.html#ga54cf66480e6263cd2081c3393aaad710", null ],
     [ "WICED_SPI_SS_MODE", "group___peripheral_spi_driver.html#gae612c7678155da1e454606c0a5cf8f23", null ],
     [ "WICED_SPI_SS_POLARITY", "group___peripheral_spi_driver.html#ga4bc6763f74d2d9a3a5cb0dfbaf6240fe", [
-      [ "SPI_MASTER", "group___peripheral_spi_driver.html#gga7ff5f2dff38e7639981794c43dc9167ba84379dc90398ca075038c8d5ee465f6a", null ],
-      [ "SPI_SLAVE", "group___peripheral_spi_driver.html#gga7ff5f2dff38e7639981794c43dc9167babc98c1546fe12d3fceb1f86cf670faa9", null ]
+      [ "SPI_MASTER", "group___peripheral_spi_driver.html#ggae4d5251432e1a9e6803c0240cc492e18a84379dc90398ca075038c8d5ee465f6a", null ],
+      [ "SPI_SLAVE", "group___peripheral_spi_driver.html#ggae4d5251432e1a9e6803c0240cc492e18abc98c1546fe12d3fceb1f86cf670faa9", null ]
     ] ],
     [ "spi_interface_t", "group___peripheral_spi_driver.html#gac6144d3ea3ef78e7923c351d3b62170e", [
       [ "SPI1", "group___peripheral_spi_driver.html#ggac6144d3ea3ef78e7923c351d3b62170eadd83ddb396fbcb33f2d61248e5c4a185", null ],

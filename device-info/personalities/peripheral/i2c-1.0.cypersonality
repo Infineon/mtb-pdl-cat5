@@ -139,7 +139,7 @@
       <Member name="slaveAddress" value="`${Master ? &quot;0U&quot; : SlaveAddress}`" />
       <Member name="slaveAddressMask" value="`${Master ? &quot;0U&quot; : SlaveAddressMask}`" />
       <Member name="acceptAddrInFifo" value="`${Slave ? (AcceptAddress ? &quot;true&quot; : &quot;false&quot;) : &quot;false&quot;}`" />
-      <Member name="ackGeneralAddr" value="`${Slave ? (AcceptGeneralCall ? &quot;true&quot; : &quot;false&quot;) : &quot;false&quot;}`" />
+      <Member name="ackGeneralAddr" value="`${(Slave || MasterSlave) ? (AcceptGeneralCall ? &quot;true&quot; : &quot;false&quot;) : &quot;false&quot;}`" />
       <Member name="enableWakeFromSleep" value="`${EnableWakeup}`" />
       <Member name="enableDigitalFilter" value="`${DigitalFilter ? &quot;true&quot; : &quot;false&quot;}`" />
       <Member name="lowPhaseDutyCycle" value="`${LowPhaseDutyCycle}`" />

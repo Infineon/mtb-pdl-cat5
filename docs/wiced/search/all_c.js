@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['le_20_28bluetooth_20low_20energy_29',['LE (Bluetooth Low Energy)',['../group__btm__ble__api__functions.html',1,'']]],
   ['le_20security',['LE Security',['../group__btm__ble__sec__api__functions.html',1,'']]],
   ['le_20_28bluetooth_20low_20energy_29',['LE (Bluetooth Low Energy)',['../group__gatt__le.html',1,'']]],
   ['l2c_5fble_5finvalid_5fpsm',['L2C_BLE_INVALID_PSM',['../group__l2cap.html#ga032af010a1e5d51fb5e3206be77c01b3',1,'wiced_bt_l2c.h']]],
@@ -284,8 +283,8 @@ var searchData=
   ['lcid',['lcid',['../structwiced__bt__avdt__open__t.html#acb266dd40be81541c458718de4d7ced9',1,'wiced_bt_avdt_open_t']]],
   ['lcids',['lcids',['../structwiced__bt__gatt__eatt__connection__indication__event__t.html#a3fa44c2a7dd2f59a5490a72d755d3187',1,'wiced_bt_gatt_eatt_connection_indication_event_t']]],
   ['lcsrk',['lcsrk',['../structwiced__bt__ble__keys__s.html#a7f3e57f56b673cca28885a6b24f0f3e7',1,'wiced_bt_ble_keys_s']]],
-  ['le_5fchannel_5fsel_5falgo_5f1_5fused',['LE_CHANNEL_SEL_ALGO_1_USED',['../group__btm__ble__api__functions.html#ggacd4a1a8913528880bad341a4f46f92afaf29644acab31ee07ad38f9cbcf6cf5b8',1,'wiced_bt_ble.h']]],
-  ['le_5fchannel_5fsel_5falgo_5f2_5fused',['LE_CHANNEL_SEL_ALGO_2_USED',['../group__btm__ble__api__functions.html#ggacd4a1a8913528880bad341a4f46f92afa421a8eaeaed16ffeda1a714512320476',1,'wiced_bt_ble.h']]],
+  ['le_5fchannel_5fsel_5falgo_5f1_5fused',['LE_CHANNEL_SEL_ALGO_1_USED',['../group__wicedbt___device_management.html#ggacd4a1a8913528880bad341a4f46f92afaf29644acab31ee07ad38f9cbcf6cf5b8',1,'wiced_bt_dev.h']]],
+  ['le_5fchannel_5fsel_5falgo_5f2_5fused',['LE_CHANNEL_SEL_ALGO_2_USED',['../group__wicedbt___device_management.html#ggacd4a1a8913528880bad341a4f46f92afa421a8eaeaed16ffeda1a714512320476',1,'wiced_bt_dev.h']]],
   ['le_5fconnect_5fconfirm_5fcback',['le_connect_confirm_cback',['../structwiced__bt__l2cap__le__appl__information__t.html#ae7b6dde2861da41bb895679b4ba90ba1',1,'wiced_bt_l2cap_le_appl_information_t']]],
   ['le_5fconnect_5findication_5fcback',['le_connect_indication_cback',['../structwiced__bt__l2cap__le__appl__information__t.html#a67fd1eba67de076159a76c0b26dae18f',1,'wiced_bt_l2cap_le_appl_information_t']]],
   ['le_5fkeys',['le_keys',['../structwiced__bt__device__sec__keys__s.html#a3f904f9f4ccd74da1f8e64cd425a11b8',1,'wiced_bt_device_sec_keys_s']]],
@@ -293,7 +292,7 @@ var searchData=
   ['le_5frelease_5fdrb_5fcb',['le_release_drb_cb',['../structwiced__bt__l2cap__le__appl__information__t.html#a382a972051fa080d6dd9aa2c675019e1',1,'wiced_bt_l2cap_le_appl_information_t']]],
   ['le_5fstats',['le_stats',['../structwiced__bt__lq__stats__result__s.html#acd89a2e262012d5dbf9b0d8d03111bc1',1,'wiced_bt_lq_stats_result_s']]],
   ['le_5ftx_5fcomplete_5fcback',['le_tx_complete_cback',['../structwiced__bt__l2cap__le__appl__information__t.html#ae9ee104d61a62ebfc40181e00f628ed9',1,'wiced_bt_l2cap_le_appl_information_t']]],
-  ['len',['len',['../structwiced__bt__avdt__security__t.html#a8aed22e2c7b283705ec82e0120515618',1,'wiced_bt_avdt_security_t::len()'],['../structwiced__bt__avrc__player__app__param__t.html#a5723e60ffd628510c699eddbce90be23',1,'wiced_bt_avrc_player_app_param_t::len()'],['../structwiced__bt__ble__advert__elem__t.html#a8aed22e2c7b283705ec82e0120515618',1,'wiced_bt_ble_advert_elem_t::len()'],['../structwiced__bt__gatt__write__hdr__t.html#a8aed22e2c7b283705ec82e0120515618',1,'wiced_bt_gatt_write_hdr_t::len()'],['../structwiced__bt__gatt__data__t.html#a8aed22e2c7b283705ec82e0120515618',1,'wiced_bt_gatt_data_t::len()'],['../structwiced__bt__hidd__data__t.html#a8aed22e2c7b283705ec82e0120515618',1,'wiced_bt_hidd_data_t::len()'],['../structwiced__bt__uuid__t.html#a5723e60ffd628510c699eddbce90be23',1,'wiced_bt_uuid_t::len()'],['../group__wicedbt__gatt.html#ga5723e60ffd628510c699eddbce90be23',1,'len():&#160;wiced_bt_gatt.h']]],
+  ['len',['len',['../structwiced__bt__ble__advert__elem__t.html#a8aed22e2c7b283705ec82e0120515618',1,'wiced_bt_ble_advert_elem_t::len()'],['../structwiced__bt__avdt__security__t.html#a8aed22e2c7b283705ec82e0120515618',1,'wiced_bt_avdt_security_t::len()'],['../structwiced__bt__avrc__player__app__param__t.html#a5723e60ffd628510c699eddbce90be23',1,'wiced_bt_avrc_player_app_param_t::len()'],['../structwiced__bt__gatt__write__hdr__t.html#a8aed22e2c7b283705ec82e0120515618',1,'wiced_bt_gatt_write_hdr_t::len()'],['../structwiced__bt__gatt__data__t.html#a8aed22e2c7b283705ec82e0120515618',1,'wiced_bt_gatt_data_t::len()'],['../structwiced__bt__hidd__data__t.html#a8aed22e2c7b283705ec82e0120515618',1,'wiced_bt_hidd_data_t::len()'],['../structwiced__bt__uuid__t.html#a5723e60ffd628510c699eddbce90be23',1,'wiced_bt_uuid_t::len()'],['../group__wicedbt__gatt.html#ga5723e60ffd628510c699eddbce90be23',1,'len():&#160;wiced_bt_gatt.h']]],
   ['len_5frequested',['len_requested',['../structwiced__bt__gatt__attribute__request__t.html#a921d5020f6c7ab58a451ad03b4d189ad',1,'wiced_bt_gatt_attribute_request_t::len_requested()'],['../structwiced__bt__gatt__buffer__request__t.html#a921d5020f6c7ab58a451ad03b4d189ad',1,'wiced_bt_gatt_buffer_request_t::len_requested()']]],
   ['len_5fused',['len_used',['../structwiced__bt__avrc__xmit__buf__t.html#ac17582a485f91aee4450564b601e5cc8',1,'wiced_bt_avrc_xmit_buf_t']]],
   ['len_5fuuid_5f128',['LEN_UUID_128',['../wiced__bt__types_8h.html#a18768c6f4e57988ea3ab96dc5f0009a8',1,'wiced_bt_types.h']]],
@@ -331,5 +330,9 @@ var searchData=
   ['low_5fduty_5fscan_5finterval',['low_duty_scan_interval',['../structwiced__bt__cfg__ble__scan__settings__t.html#a9ddcfd55cfb1c73cf5f1fd2e4695e47d',1,'wiced_bt_cfg_ble_scan_settings_t']]],
   ['low_5fduty_5fscan_5fwindow',['low_duty_scan_window',['../structwiced__bt__cfg__ble__scan__settings__t.html#af7d72c45830dfafcdad041cef31d7198',1,'wiced_bt_cfg_ble_scan_settings_t']]],
   ['lsbfirst',['lsbFirst',['../structwiced__hal__pcm__param__t.html#abf2b89bc68855cf70a9addc39ee3f752',1,'wiced_hal_pcm_param_t']]],
-  ['lsr',['lsr',['../structwiced__bt__avdt__report__blk__t.html#a8ecb12ac36585fd75033b28e3157ebb2',1,'wiced_bt_avdt_report_blk_t']]]
+  ['lsr',['lsr',['../structwiced__bt__avdt__report__blk__t.html#a8ecb12ac36585fd75033b28e3157ebb2',1,'wiced_bt_avdt_report_blk_t']]],
+  ['le_20connection',['LE Connection',['../group__wicedbt___conn.html',1,'']]],
+  ['le_20extended_20mode_20advertising_20and_20scanning',['LE Extended Mode Advertising and Scanning',['../group__wicedbt___extended.html',1,'']]],
+  ['le_20legacy_20mode_20advertising_20and_20scanning',['LE Legacy Mode Advertising and Scanning',['../group__wicedbt___legacy.html',1,'']]],
+  ['le_20periodic_20mode_20advertising_20and_20scanning',['LE Periodic Mode Advertising and Scanning',['../group__wicedbt___periodic.html',1,'']]]
 ];

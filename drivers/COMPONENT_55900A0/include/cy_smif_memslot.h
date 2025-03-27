@@ -173,6 +173,9 @@ extern "C" {
 #define CY_SMIF_FAST_READ_4_BYTES_CMD_1S_1S_8S      (0x7CU)                 /**< The command for a 1S-1S-8S SMIF fast read with 4-byte addressing */
 #define CY_SMIF_FAST_READ_4_BYTES_CMD_1S_8S_8S      (0xCCU)                 /**< The command for a 1S-8S-8S SMIF fast read with 4-byte addressing */
 
+#define CY_SMIF_DEEP_POWER_DOWN_CMD                 (0xB9)                  /**< The enter deep power down command */
+#define CY_SMIF_RELEASE_POWER_DOWN_CMD              (0xAB)                  /**< The release power down command */
+
 #if (CY_IP_MXSMIF_VERSION>=2) || defined (CY_DOXYGEN)
 /**
 * \note
@@ -434,6 +437,9 @@ extern "C" {
 #define Cy_SMIF_Memslot_CmdProgram                  Cy_SMIF_MemCmdProgram
 #define Cy_SMIF_Memslot_CmdRead                     Cy_SMIF_MemCmdRead
 
+#define Cy_SMIF_Memslot_CmdDeepPowerDown            Cy_SMIF_MemCmdDeepPowerDown
+#define Cy_SMIF_Memslot_CmdReleasePowerDown         Cy_SMIF_MemCmdReleasePowerDown
+
 #define PARAM_ID_MSB_OFFSET                         (0x08U)  /* The offset of Parameter ID MSB */
 #define PARAM_ID_LSB_MASK                           (0xFFu) /* The mask of Parameter ID LSB */
 #define MEM_ADDR_VALID(addr, size) (0U == ((addr)%(size)))  /* This address must be a multiple of
@@ -561,6 +567,10 @@ typedef struct
     cy_stc_smif_mem_cmd_t* readStsRegQeCmd;               /**< This specifies the command to read the QE-containing status register */
     cy_stc_smif_mem_cmd_t* writeStsRegQeCmd;              /**< This specifies the command to write into the QE-containing status register */
     cy_stc_smif_mem_cmd_t* readSfdpCmd;                   /**< This specifies the read SFDP command */
+#if defined(FIX_CYW55900A0_1240) && (0) // To be included in ROM code backport
+    cy_stc_smif_mem_cmd_t* deepPowerDownCmd;
+    cy_stc_smif_mem_cmd_t* releasePowerDownCmd;
+#endif
     uint32_t stsRegBusyMask;                              /**< The Busy mask for the status registers */
     uint32_t stsRegQuadEnableMask;                        /**< The QE mask for the status registers */
     uint32_t eraseTime;                                   /**< Max time for erase type 1 cycle time in ms */

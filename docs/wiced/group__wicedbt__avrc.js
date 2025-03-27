@@ -7,7 +7,7 @@ var group__wicedbt__avrc =
       [ "msg_type", "structwiced__bt__avrc__msg__t.html#af95f620c0e85b634c0caee87127b12a8", null ],
       [ "opcode", "structwiced__bt__avrc__msg__t.html#a5c1b56e6bccc2a95dbddf1a08e56e87d", null ],
       [ "response", "structwiced__bt__avrc__msg__t.html#a81330ec9a68e54c358ef4f8dc418235f", null ],
-      [ "type", "structwiced__bt__avrc__msg__t.html#ac1cd2d07d79760e661617c6f3c2e2e47", null ]
+      [ "type", "structwiced__bt__avrc__msg__t.html#a480f54cec948f56d73e7167031a8c9ac", null ]
     ] ],
     [ "wiced_bt_avrc_config_t", "structwiced__bt__avrc__config__t.html", [
       [ "avct_seg_buf_len", "structwiced__bt__avrc__config__t.html#a4c52902d41d4ca1a1c5e50b78335105e", null ],
@@ -184,12 +184,12 @@ var group__wicedbt__avrc =
       [ "player_id", "structwiced__bt__avrc__metadata__cmd__t.html#a62970d5e82668190bee027887f474f3c", null ],
       [ "reg_notif", "structwiced__bt__avrc__metadata__cmd__t.html#a5dd727b041d82495b67ff930e7c38cd0", null ],
       [ "set_app_val", "structwiced__bt__avrc__metadata__cmd__t.html#a33921fc5839a55550820067536f62cf8", null ],
-      [ "u", "structwiced__bt__avrc__metadata__cmd__t.html#af6c92e2b36a394af505d0b8cdcef1da0", null ],
+      [ "u", "structwiced__bt__avrc__metadata__cmd__t.html#a1c4346d906d176e33e19ac83ae55f4e4", null ],
       [ "volume", "structwiced__bt__avrc__metadata__cmd__t.html#a14cc77262954756b30c251feabce7ea6", null ]
     ] ],
     [ "wiced_bt_avrc_browse_cmd_t", "structwiced__bt__avrc__browse__cmd__t.html", [
       [ "abort", "structwiced__bt__avrc__browse__cmd__t.html#a6ddf35285e4dc5ae96ef7b3f7b5dde72", null ],
-      [ "browse_cmd", "structwiced__bt__avrc__browse__cmd__t.html#af97e137abb029d2c309cf8bd977b4f87", null ],
+      [ "browse_cmd", "structwiced__bt__avrc__browse__cmd__t.html#a1c54c0fbcbe5e1083d2fdb529a620601", null ],
       [ "chg_path", "structwiced__bt__avrc__browse__cmd__t.html#a3c8f4e616d001ec413dde86606a473cd", null ],
       [ "continu", "structwiced__bt__avrc__browse__cmd__t.html#a0a2c5717af3e9563a52febc777159859", null ],
       [ "get_folder_items", "structwiced__bt__avrc__browse__cmd__t.html#a173b9caaaf4f5c8fa6c291ba7053ff2e", null ],
@@ -288,7 +288,7 @@ var group__wicedbt__avrc =
       [ "item_type", "structwiced__bt__avrc__item__t.html#a74fd0f7ff30631c41fc03183aa50803d", null ],
       [ "media", "structwiced__bt__avrc__item__t.html#af1ecf536c7c0022d50127b1f646cc10c", null ],
       [ "player", "structwiced__bt__avrc__item__t.html#ad51abfbdb5976678c533262957e0b88b", null ],
-      [ "u", "structwiced__bt__avrc__item__t.html#a2d4c2c401b70fd715d9b617a9f56fbc7", null ]
+      [ "u", "structwiced__bt__avrc__item__t.html#afcf54b858f5bd2ab90368ecee608b485", null ]
     ] ],
     [ "wiced_bt_avrc_browse_set_br_player_rsp_t", "structwiced__bt__avrc__browse__set__br__player__rsp__t.html", [
       [ "charset_id", "structwiced__bt__avrc__browse__set__br__player__rsp__t.html#adaa0d82ca0c0cc554c8de96d3fd9c478", null ],
@@ -325,7 +325,7 @@ var group__wicedbt__avrc =
       [ "reg_notif", "structwiced__bt__avrc__metadata__rsp__t.html#a37f431882a1862421aebf9cbff6abb86", null ],
       [ "rejected_rsp", "structwiced__bt__avrc__metadata__rsp__t.html#a27b6426e2539a46f413b738d1538b6d3", null ],
       [ "status", "structwiced__bt__avrc__metadata__rsp__t.html#ade818037fd6c985038ff29656089758d", null ],
-      [ "u", "structwiced__bt__avrc__metadata__rsp__t.html#ab4d155ff0a66c03b4e97d4a947cde502", null ],
+      [ "u", "structwiced__bt__avrc__metadata__rsp__t.html#a82d474e231a7ff7b970630053ccd5e28", null ],
       [ "volume", "structwiced__bt__avrc__metadata__rsp__t.html#a14cc77262954756b30c251feabce7ea6", null ]
     ] ],
     [ "wiced_bt_avrc_browse_rsp_t", "structwiced__bt__avrc__browse__rsp__t.html", [
@@ -339,7 +339,7 @@ var group__wicedbt__avrc =
       [ "search", "structwiced__bt__avrc__browse__rsp__t.html#a3de64be149e9f20a495a15f657f7df0a", null ],
       [ "set_browse_player", "structwiced__bt__avrc__browse__rsp__t.html#a97f9f47a29b38ad871a6e9524844a415", null ],
       [ "status", "structwiced__bt__avrc__browse__rsp__t.html#ade818037fd6c985038ff29656089758d", null ],
-      [ "u", "structwiced__bt__avrc__browse__rsp__t.html#ac22093ee5b6a2b53f40459d641631b44", null ]
+      [ "u", "structwiced__bt__avrc__browse__rsp__t.html#a97003d2e23585a46261ef643c6f9ee71", null ]
     ] ],
     [ "wiced_bt_avrc_cmd_t", "structwiced__bt__avrc__cmd__t.html", [
       [ "browse_cmd", "structwiced__bt__avrc__cmd__t.html#af9848b2da5a84024f3e022bc14ce0d0b", null ],
@@ -347,7 +347,7 @@ var group__wicedbt__avrc =
       [ "metadata", "structwiced__bt__avrc__cmd__t.html#a16b8979bc54c30b442980dd7f7a5e308", null ],
       [ "pass_thru", "structwiced__bt__avrc__cmd__t.html#abb0e5fd050c41055c4aa4cd62ce93e45", null ],
       [ "sub_unit", "structwiced__bt__avrc__cmd__t.html#a3be70c2d9ff3589946141f6e0e5d201a", null ],
-      [ "type", "structwiced__bt__avrc__cmd__t.html#a465dd8be81617e583d2100f131cc34ae", null ],
+      [ "type", "structwiced__bt__avrc__cmd__t.html#ab0d4c6456fddcb742d6aee3776fa08ba", null ],
       [ "unit", "structwiced__bt__avrc__cmd__t.html#af7567d61db8f9d4d45eb204d99129b63", null ]
     ] ],
     [ "wiced_bt_avrc_rsp_t", "structwiced__bt__avrc__rsp__t.html", [
@@ -356,7 +356,7 @@ var group__wicedbt__avrc =
       [ "metadata", "structwiced__bt__avrc__rsp__t.html#ac41e9ada3534e5b3ee5c0621a1c026f5", null ],
       [ "pass", "structwiced__bt__avrc__rsp__t.html#aa42a1cfb0d5534e7edcb61f8ee4ec01d", null ],
       [ "sub_unit", "structwiced__bt__avrc__rsp__t.html#a3e261f1e6a0dcf4c12f7d8d265eed3a6", null ],
-      [ "type", "structwiced__bt__avrc__rsp__t.html#a6a22a28882b6b8e1dec90d9c064d9ed6", null ],
+      [ "type", "structwiced__bt__avrc__rsp__t.html#aa665471472d95b37c5fde34509761734", null ],
       [ "unit", "structwiced__bt__avrc__rsp__t.html#a486155b095094c2fa1ca8ceaaa589a4a", null ]
     ] ],
     [ "AVCT_CMD", "group__wicedbt__avrc.html#ga962f0bddb5098057b86dde720300d10e", null ],

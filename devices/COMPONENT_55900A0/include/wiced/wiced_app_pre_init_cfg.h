@@ -195,8 +195,10 @@ typedef STRUCT_PACKED
     uint8_t                             enable_br_audio;
     void                                *p_br_audio_cfg;
 
-    /* Maximum Frequency Support for H1CP */
-    uint8_t                             enable_max_freq_support;
+    /* LPO source selection and max frequency enablement */
+    uint8_t                               lpo_src_sel_654_max_freq_0;
+    //[0] - enable_max_freq, [3-1] - reserved, [6-4] - lpo_src_sel, [7] - reserved
+    //lpo_src_sel 1:-iLPO1, 2:-iLPO2, 3:-LHL_XTAL_IN, 4:-eLPO_IN
 }wiced_pre_init_cfg_t;
 
 void wiced_register_pre_init_cfg (const wiced_pre_init_cfg_t *p_cfg);

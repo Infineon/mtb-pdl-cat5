@@ -77,6 +77,10 @@ typedef struct
     cy_stc_smif_mem_cmd_t readStsRegQeCmd;               /**< This specifies the command to read the QE-containing status register */
     cy_stc_smif_mem_cmd_t writeStsRegQeCmd;              /**< This specifies the command to write into the QE-containing status register */
     cy_stc_smif_mem_cmd_t readSfdpCmd;                   /**< This specifies the read SFDP command */
+#if (0) //include for ROM code backport
+    cy_stc_smif_mem_cmd_t  deepPowerDownCmd;             /**< This specifies the deep power down command */
+    cy_stc_smif_mem_cmd_t  releasePowerDownCmd;          /**< This specifies the release power down command */
+#endif
     uint32_t stsRegBusyMask;                              /**< The Busy mask for the status registers */
     uint32_t stsRegQuadEnableMask;                        /**< The QE mask for the status registers */
     uint32_t eraseTime;                                   /**< Max time for erase type 1 cycle time in ms */
@@ -147,6 +151,12 @@ typedef struct
     cy_stc_copy_smif_mem_config_t smif_mem_config;
 }   cy_stc_copy_smif_settings_t;
 #endif // defined(XIP_BUILD)
+typedef enum
+{
+    cy_smif_flash_powerdown_disallow = 0, /* Disallow deep power down command to flash */
+    cy_smif_flash_powerdown_allow_app_control = 1, /* Allow deep power down command to flash by application */
+    cy_smif_flash_powerdown_allow_bt_control = 2, /* Allow deep power down command to flash by BT */
+} cy_smif_flash_power_down_method_t;
 
 #ifndef SMIF_NON_SECURE_DRIVER
 #define cy_smif_flash_DetectFlash(A) secure_call_cy_smif_flash_DetectFlash(A)
@@ -186,6 +196,11 @@ BOOL8 cy_smif_flash_IsDetected(void);
 void cy_smif_flash_EnterFirmwareDownloadMode(void);
 void cy_smif_flash_ExitFirmwareDownloadMode(void);
 void cy_smif_flash_InitializeVariablesBeforeScatterload(void);
+
+cy_smif_flash_power_down_method_t smif_flash_isPowerDownCmdAllowed(void);
+cy_smif_flash_power_down_method_t smif_flash_allowPowerDownCmd(cy_smif_flash_power_down_method_t allowed);
+BOOL32 smif_flash_deepPowerDown(BOOL32 fromApp, UINT32 devId);
+BOOL32 smif_flash_releasePowerDown(BOOL32 fromApp, UINT32 devId);
 
 #endif //SMIF_NON_SECURE_DRIVER
 #if defined(__cplusplus)

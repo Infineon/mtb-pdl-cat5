@@ -77,9 +77,17 @@ typedef enum
 /** \brief List of LHL IOs */
 typedef enum
 {
-    CTSS_LHL_IO_0    = 0u,
-    CTSS_LHL_IO_1    = 1u,
-    CTSS_LHL_IO_10   = 10u,
+    CTSS_LHL_IO_0    = 0u, //WL_DEV_WAKE
+    CTSS_LHL_IO_1    = 1u, //BT_DEV_WAKE
+    CTSS_LHL_IO_2    = 2u, //LHL_GPIO_2
+    CTSS_LHL_IO_3    = 3u, //LHL_GPIO_3
+    CTSS_LHL_IO_4    = 4u, //LHL_GPIO_4
+    CTSS_LHL_IO_5    = 5u, //LHL_GPIO_5
+    CTSS_LHL_IO_6    = 6u, //LHL_GPIO_6
+    CTSS_LHL_IO_7    = 7u, //LHL_GPIO_7
+    CTSS_LHL_IO_8    = 8u, //LHL_GPIO_8
+    CTSS_LHL_IO_9    = 9u, //LHL_GPIO_9
+    CTSS_LHL_IO_10   = 10u, //LPO_OUT
 } CTSS_LHL_IO_t;
 
 /** \brief GPIO interrupt trigger */
@@ -98,13 +106,13 @@ typedef void CTSS_LHL_IO_ISR_CALLBACK_t (UINT8 ioPort);
 /** \brief List of WLSS IOs */
 typedef enum
 {
-    WLSS_IO_GPIO_0 = 11,
-    WLSS_IO_GPIO_2 = 13,
-    WLSS_IO_GPIO_3 = 14,
-    WLSS_IO_GPIO_4 = 15,
-    WLSS_IO_GPIO_5 = 5,
-    WLSS_IO_GPIO_6 = 6,
-    WLSS_IO_SDIO_CMD = 0,
+    WLSS_IO_GPIO_0 = 11, //Wake capable
+    WLSS_IO_GPIO_2 = 13, //Wake capable
+    WLSS_IO_GPIO_3 = 14, //Wake capable
+    WLSS_IO_GPIO_4 = 15, //Wake capable
+    WLSS_IO_GPIO_5 = 5,  //Wake capable
+    WLSS_IO_GPIO_6 = 6,  //Wake capable
+    WLSS_IO_SDIO_CMD = 0,//Wake capable
     WLSS_IO_SDIO_DATA_0 = 1,
     WLSS_IO_SDIO_DATA_1 = 2,
     WLSS_IO_SDIO_DATA_2 = 3,
@@ -126,10 +134,11 @@ typedef enum
 /** \brief WLSS IO wake trigger */
 typedef enum
 {
-    WLSS_IO_WAKE_TRIGGER_EDGE_RISING = 0x2,
-    WLSS_IO_WAKE_TRIGGER_EDGE_FALLING = 0x4,
-    WLSS_IO_WAKE_TRIGGER_EDGE_BOTH = 0x6,
-    WLSS_IO_WAKE_TRIGGER_EDGE_NONE = 0x0,
+    WLSS_IO_WAKE_TRIGGER_LEVEL_HIGH = 0x100,
+    WLSS_IO_WAKE_TRIGGER_EDGE_RISING = 0x101,
+    WLSS_IO_WAKE_TRIGGER_LEVEL_LOW = 0x102,
+    WLSS_IO_WAKE_TRIGGER_EDGE_FALLING = 0x103,
+    WLSS_IO_WAKE_TRIGGER_EDGE_BOTH = 0x105,
 } WLSS_IO_WAKE_TRIGGER_TYPE_t;
 
 /** \brief WLSS IO interrupt callback */
@@ -464,7 +473,7 @@ void wlss_io_enableGCIInterrupt(BOOL32 enable);
 /**
  * Function wlss_io_configWake
  *
- * Configure wake trigger for an io
+ * Configure wake trigger for an io (WLSS_IO_GPIO_0 .. 6 and WLSS_IO_SDIO_CMD)
  *
  * \param[in]    io               : io to be configured for wake
  * \param[in]    trigger          : wake trigger selection
@@ -476,7 +485,7 @@ void wlss_io_configWake(WLSS_IO_t io, WLSS_IO_WAKE_TRIGGER_TYPE_t trigger);
 /**
  * Function wlss_io_enableWake
  *
- * Enable wake from configured IOs
+ * Enable wake from configured IOs (WLSS_IO_GPIO_0 .. 6 and WLSS_IO_SDIO_CMD)
  *
  * \param[in]    io               : io to be configured for wake
  * \param[in]    enable

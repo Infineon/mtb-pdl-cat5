@@ -3,7 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<title>AIROC™ CYW55913: wiced_bt_ble_ext_scan_config_t Struct Reference</title>
+<title>AIROC™ CYW55913: wiced_ble_ext_scan_enable_params_t Struct Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -77,7 +77,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('structwiced__bt__ble__ext__scan__config__t.html','');});
+$(document).ready(function(){initNavTree('structwiced__ble__ext__scan__enable__params__t.html','');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -98,93 +98,68 @@ $(document).ready(function(){initNavTree('structwiced__bt__ble__ext__scan__confi
   <div class="summary">
 <a href="#pub-attribs">Data Fields</a>  </div>
   <div class="headertitle">
-<div class="title">wiced_bt_ble_ext_scan_config_t Struct Reference<div class="ingroups"><a class="el" href="group__btm__ble__api__functions.html">LE (Bluetooth Low Energy)</a></div></div>  </div>
+<div class="title">wiced_ble_ext_scan_enable_params_t Struct Reference<div class="ingroups"><a class="el" href="group__wicedbt___extended.html">LE Extended Mode Advertising and Scanning</a></div></div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Configuration for extended scanning.
- <a href="structwiced__bt__ble__ext__scan__config__t.html#details">More...</a></p>
+<p>Extended scanning enable params.
+ <a href="structwiced__ble__ext__scan__enable__params__t.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a9a465424286cc8c27b7d3ca9ab1aabbe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="group__btm__ble__api__functions.html#gab633f94f262d0f2ebcb9eba473c620d4">wiced_bt_ble_ext_adv_phy_mask_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwiced__bt__ble__ext__scan__config__t.html#a9a465424286cc8c27b7d3ca9ab1aabbe">scanning_phys</a></td></tr>
-<tr class="memdesc:a9a465424286cc8c27b7d3ca9ab1aabbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">The Scanning_PHYs parameter indicates the PHY(s) on which the advertising packets should be received on the primary advertising channel.  <a href="#a9a465424286cc8c27b7d3ca9ab1aabbe">More...</a><br /></td></tr>
-<tr class="separator:a9a465424286cc8c27b7d3ca9ab1aabbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76087ef1f1c5a072873a207907757e4b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwiced__bt__ble__ext__scan__config__t.html#a76087ef1f1c5a072873a207907757e4b">enc_phy_scan_type</a></td></tr>
-<tr class="memdesc:a76087ef1f1c5a072873a207907757e4b"><td class="mdescLeft">&#160;</td><td class="mdescRight">encoded phy scan type.  <a href="#a76087ef1f1c5a072873a207907757e4b">More...</a><br /></td></tr>
-<tr class="separator:a76087ef1f1c5a072873a207907757e4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a381ee4f60dad145824a76e57e9554812"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a381ee4f60dad145824a76e57e9554812"></a>
-uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwiced__bt__ble__ext__scan__config__t.html#a381ee4f60dad145824a76e57e9554812">enc_phy_scan_int</a></td></tr>
-<tr class="memdesc:a381ee4f60dad145824a76e57e9554812"><td class="mdescLeft">&#160;</td><td class="mdescRight">encoded phy scan interval <br /></td></tr>
-<tr class="separator:a381ee4f60dad145824a76e57e9554812"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1dd6f67737544a4273334ce32068d68a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1dd6f67737544a4273334ce32068d68a"></a>
-uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwiced__bt__ble__ext__scan__config__t.html#a1dd6f67737544a4273334ce32068d68a">enc_phy_scan_win</a></td></tr>
-<tr class="memdesc:a1dd6f67737544a4273334ce32068d68a"><td class="mdescLeft">&#160;</td><td class="mdescRight">encoded phy scan window <br /></td></tr>
-<tr class="separator:a1dd6f67737544a4273334ce32068d68a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b14ef3e3e30242faa9bbef961493044"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwiced__bt__ble__ext__scan__config__t.html#a5b14ef3e3e30242faa9bbef961493044">duration</a></td></tr>
-<tr class="memdesc:a5b14ef3e3e30242faa9bbef961493044"><td class="mdescLeft">&#160;</td><td class="mdescRight">When the Duration and Period parameters are non-zero, the Controller shall scan for the duration of the Duration parameter within a scan period specified by the Period parameter.  <a href="#a5b14ef3e3e30242faa9bbef961493044">More...</a><br /></td></tr>
-<tr class="separator:a5b14ef3e3e30242faa9bbef961493044"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a258408d6d5d13a24bfa5211d81ce1682"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a258408d6d5d13a24bfa5211d81ce1682"></a>
-uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwiced__bt__ble__ext__scan__config__t.html#a258408d6d5d13a24bfa5211d81ce1682">period</a></td></tr>
-<tr class="memdesc:a258408d6d5d13a24bfa5211d81ce1682"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scan period. <br /></td></tr>
-<tr class="separator:a258408d6d5d13a24bfa5211d81ce1682"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3bcf87f20d86b6d97e3fbd66994e18fc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3bcf87f20d86b6d97e3fbd66994e18fc"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwiced__ble__ext__scan__enable__params__t.html#a3bcf87f20d86b6d97e3fbd66994e18fc">filter_duplicates</a></td></tr>
+<tr class="memdesc:a3bcf87f20d86b6d97e3fbd66994e18fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">filter_duplicates Set 1 to filter duplicates, 0 to allow duplicates <br /></td></tr>
+<tr class="separator:a3bcf87f20d86b6d97e3fbd66994e18fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a45014fcdc8dbfa5a6fab7051bc7f3c43"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwiced__ble__ext__scan__enable__params__t.html#a45014fcdc8dbfa5a6fab7051bc7f3c43">scan_duration</a></td></tr>
+<tr class="memdesc:a45014fcdc8dbfa5a6fab7051bc7f3c43"><td class="mdescLeft">&#160;</td><td class="mdescRight">scan duration, Set 0 to scan continuously till explicit disable, else Range N : 0x0001 to 0xFFFF.  <a href="#a45014fcdc8dbfa5a6fab7051bc7f3c43">More...</a><br /></td></tr>
+<tr class="separator:a45014fcdc8dbfa5a6fab7051bc7f3c43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee5e888d8095809f9047ea24cb487efa"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structwiced__ble__ext__scan__enable__params__t.html#aee5e888d8095809f9047ea24cb487efa">scan_period</a></td></tr>
+<tr class="memdesc:aee5e888d8095809f9047ea24cb487efa"><td class="mdescLeft">&#160;</td><td class="mdescRight">scan period, Set 0 to scan continuously, else Range N : 0x0001 to 0xFFFF.  <a href="#aee5e888d8095809f9047ea24cb487efa">More...</a><br /></td></tr>
+<tr class="separator:aee5e888d8095809f9047ea24cb487efa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Configuration for extended scanning. </p>
+<div class="textblock"><p>Extended scanning enable params. </p>
 </div><h2 class="groupheader">Field Documentation</h2>
-<a class="anchor" id="a5b14ef3e3e30242faa9bbef961493044"></a>
+<a class="anchor" id="a45014fcdc8dbfa5a6fab7051bc7f3c43"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint16_t duration</td>
+          <td class="memname">uint16_t scan_duration</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>When the Duration and Period parameters are non-zero, the Controller shall scan for the duration of the Duration parameter within a scan period specified by the Period parameter. </p>
-<p>After the scan period has expired, a new scan period shall begin and scanning shall begin again for the duration specified. The scan periods continue until the Host disables scanning. Duration parameter cannot be greater than or equal to the Period parameter If the Duration parameter is zero or both the Duration parameter and Period parameter are non-zero controller continue scanning until host disable scanning with enable set to false Scan duration </p>
+<p>scan duration, Set 0 to scan continuously till explicit disable, else Range N : 0x0001 to 0xFFFF. </p>
+<p>Time = N * 0.625 ms.Time Range : 10 ms to 655.35 s </p>
 
 </div>
 </div>
-<a class="anchor" id="a76087ef1f1c5a072873a207907757e4b"></a>
+<a class="anchor" id="aee5e888d8095809f9047ea24cb487efa"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t enc_phy_scan_type</td>
+          <td class="memname">uint16_t scan_period</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>encoded phy scan type. </p>
-<p>(active or passive) </p>
-
-</div>
-</div>
-<a class="anchor" id="a9a465424286cc8c27b7d3ca9ab1aabbe"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="group__btm__ble__api__functions.html#gab633f94f262d0f2ebcb9eba473c620d4">wiced_bt_ble_ext_adv_phy_mask_t</a> scanning_phys</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The Scanning_PHYs parameter indicates the PHY(s) on which the advertising packets should be received on the primary advertising channel. </p>
+<p>scan period, Set 0 to scan continuously, else Range N : 0x0001 to 0xFFFF. </p>
+<p>Time = N * 1.28 s.Time Range : 1.28 s to 83.884 s </p>
 
 </div>
 </div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
-<li><a class="el" href="wiced__bt__ble_8h.html">wiced_bt_ble.h</a></li>
+<li><a class="el" href="wiced__bt__adv__scan__extended_8h.html">wiced_bt_adv_scan_extended.h</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="structwiced__bt__ble__ext__scan__config__t.html">wiced_bt_ble_ext_scan_config_t</a></li>
+    <li class="navelem"><a class="el" href="structwiced__ble__ext__scan__enable__params__t.html">wiced_ble_ext_scan_enable_params_t</a></li>
     <li class="footer">Copyright Infineon Technologies.</li>
   </ul>
 </div>

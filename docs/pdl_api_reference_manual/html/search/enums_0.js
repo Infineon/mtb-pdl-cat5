@@ -8,6 +8,7 @@ var searchData=
   ['btss_5fsystem_5faudio_5fpll_5freq_5ft',['BTSS_SYSTEM_AUDIO_PLL_REQ_t',['../group__group__sysclk__data__structures.html#ga228232337eba0226cce52fcd3a500c97',1,'btss_system.h']]],
   ['btss_5fsystem_5fcpu_5fclk_5ffreq_5ft',['BTSS_SYSTEM_CPU_CLK_FREQ_t',['../group__group__sysclk__data__structures.html#gabe3a85a79805d2998a3962afd274ef56',1,'btss_system.h']]],
   ['btss_5fsystem_5fcpu_5fclk_5freq_5ft',['BTSS_SYSTEM_CPU_CLK_REQ_t',['../group__group__sysclk__data__structures.html#gad50751a7a14a427033c98a8d133b133b',1,'btss_system.h']]],
+  ['btss_5fsystem_5fflash_5fpower_5fdown_5fcmd_5ft',['BTSS_SYSTEM_FLASH_POWER_DOWN_CMD_t',['../group__group__syspm__data__structures.html#gab32892682c0ebac57836e378fccf66e2',1,'btss_system.h']]],
   ['btss_5fsystem_5finterrupt_5ft',['BTSS_SYSTEM_INTERRUPT_t',['../group__group__sysint__data__structures.html#ga1245be70b0eb81b82d021596270b23cf',1,'btss_system.h']]],
   ['btss_5fsystem_5fpmu_5fsleep_5fmode_5ft',['BTSS_SYSTEM_PMU_SLEEP_MODE_t',['../group__group__syspm__data__structures.html#gabb2782f2c08fb2b5dff40b4d67eb47b6',1,'btss_system.h']]],
   ['btss_5fsystem_5fsleep_5factive_5fconfig_5ft',['BTSS_SYSTEM_SLEEP_ACTIVE_CONFIG_t',['../group__group__syspm__data__structures.html#gaa4fde7e070895bb7563db4c6e96e7a53',1,'btss_system.h']]],

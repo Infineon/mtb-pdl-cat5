@@ -12,5 +12,11 @@ var group__group__syspm__function =
     [ "wlss_system_sleepDisableWakeSource", "group__group__syspm__function.html#ga897aba1b71fdacc977819f4a6ee55e4c", null ],
     [ "btss_system_disableSleepAndPause", "group__group__syspm__function.html#ga3049e34f5ffde19a2bc371f46bf244d6", null ],
     [ "btss_system_enableSleepAndPause", "group__group__syspm__function.html#gada155cf659fa4c2676025dbb340c8af8", null ],
-    [ "btss_system_getSleepAndPauseDisabledCount", "group__group__syspm__function.html#gadf8b8759b2b6246022fc1875713387da", null ]
+    [ "btss_system_getSleepAndPauseDisabledCount", "group__group__syspm__function.html#gadf8b8759b2b6246022fc1875713387da", null ],
+    [ "btss_smif_flash_isPowerDownCmdAllowed", "group__group__syspm__function.html#gac8566e38a3d7ff2fbfd70f02156291d6", null ],
+    [ "btss_smif_flash_allowPowerDownCmd", "group__group__syspm__function.html#gaa76c07ddf535be5141adf4e34db5e9cb", null ],
+    [ "btss_smif_flash_deepPowerDown", "group__group__syspm__function.html#ga44982990b1a66e2933ae98c128bee54f", null ],
+    [ "btss_smif_flash_releasePowerDown", "group__group__syspm__function.html#ga82728a7a35fa2ffac7bb10e4d0a03ccb", null ],
+    [ "btss_system_overrideBtSleepInhibition", "group__group__syspm__function.html#ga6f78d120c998d864a0382e870cdc1c1e", null ],
+    [ "btss_system_isBtSleepAllowed", "group__group__syspm__function.html#ga2ba6a5acdc83934bec9a32dda8ea813a", null ]
 ];

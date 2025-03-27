@@ -6,7 +6,9 @@
  * Bluetooth L2CAP Application Programming Interface
  */
 
-#pragma once
+#ifndef __WICED_BT_L2C_H__
+#define __WICED_BT_L2C_H__
+
 #include "l2cdefs.h"
 #include "hcidefs.h"
 #include "wiced_bt_types.h"
@@ -1276,3 +1278,5 @@ int wiced_bt_l2cap_get_num_queued_tx_packets(wiced_bt_device_address_t bd_addr, 
 #ifdef __cplusplus
 }
 #endif
+
+#endif //__WICED_BT_L2C_H__

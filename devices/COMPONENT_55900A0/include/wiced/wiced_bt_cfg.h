@@ -6,7 +6,8 @@
  * Runtime Bluetooth configuration parameters
  *
  */
-#pragma once
+#ifndef __WICED_BT_CFG_H__
+#define __WICED_BT_CFG_H__
 
 #include "wiced_data_types.h"
 #include "wiced_bt_types.h"
@@ -232,7 +233,8 @@ typedef struct
     uint8_t  max_ports;  /**< Maximum number of simultaneous RFCOMM ports */
 } wiced_bt_cfg_rfcomm_t;
 
-/** Isochronous Connection configuration settings */
+
+/** Isochronous Connection configuration settings- Not used (Deprecated)*/
 typedef struct
 {
     uint16_t max_sdu_size;       /**< Max SDU size */
@@ -242,6 +244,7 @@ typedef struct
     uint8_t max_buffers_per_cis; /**< Max Number of buffers per CIS */
     uint8_t max_big_count;       /**< Max Number of BIG connections */
 } wiced_bt_cfg_isoc_t;
+
 
 /** BR/EDR configuration settings */
 typedef struct {
@@ -300,7 +303,7 @@ typedef struct wiced_bt_cfg_settings_t_
     const wiced_bt_cfg_br_t *p_br_cfg;                       /**< BR/EDR related configuration */
     const wiced_bt_cfg_ble_t *p_ble_cfg;                     /**< LE related configuration */
     const wiced_bt_cfg_gatt_t *p_gatt_cfg;                   /**< GATT settings */
-    const wiced_bt_cfg_isoc_t *p_isoc_cfg;                   /**< Isochronous Connection configuration */
+    const wiced_bt_cfg_isoc_t *p_isoc_cfg;                    /**< unused (deprecated)*/
     const wiced_bt_cfg_l2cap_application_t *p_l2cap_app_cfg; /**< l2cap configuration fgitor application defined profiles/protocols */
 } wiced_bt_cfg_settings_t;
 
@@ -320,3 +323,5 @@ int32_t wiced_bt_stack_get_dynamic_memory_size_for_config(const wiced_bt_cfg_set
 
 
 /**@} wiced_bt_cfg */
+
+#endif //__WICED_BT_CFG_H__

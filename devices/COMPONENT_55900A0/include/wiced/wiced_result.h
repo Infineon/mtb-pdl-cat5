@@ -9,7 +9,9 @@
  *
  */
 
-#pragma once
+#ifndef __WICED_RESULT_H__
+#define __WICED_RESULT_H__
+
 #include "wiced_bt_constants.h"
 #ifdef __cplusplus
 extern "C" {
@@ -164,3 +166,5 @@ typedef enum
 #ifdef __cplusplus
 } /*extern "C" */
 #endif
+
+#endif //__WICED_RESULT_H__

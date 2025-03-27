@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--****************************************************************************
+* \file adc.cypersonality
+* \version 1.0
+*
+* \brief
+* ADC personality description file.
+*
+********************************************************************************
+* \copyright
+* Copyright 2022 Cypress Semiconductor Corporation
+* SPDX-License-Identifier: Apache-2.0
+*
+* Licensed under the Apache License, Version 2.0 (the "License");
+* you may not use this file except in compliance with the License.
+* You may obtain a copy of the License at
+*
+*     http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS,
+* WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+* See the License for the specific language governing permissions and
+* limitations under the License.
+*****************************************************************************-->
+<Personality id="adccomp" name="ADCComp" version="1.0" xmlns="http://cypress.com/xsd/cyhwpersonality_v7">
+  <Dependencies>
+    <IpBlock name="h28adccomp" />
+    <Resource name="adccomp" />
+  </Dependencies>
+  <ExposedMembers/>
+  <Parameters>
+    <!-- PDL documentation -->
+    <ParamDoc id="pdlDoc" name="Configuration Help" group="Overview" default="file:///`${cy_libs_path()}`/docs/pdl_api_reference_manual/html/group__group__adccomp.html" linkText="Open ADCComp Documentation" visible="true" desc="Opens the Peripheral Driver Library Documentation" />
+
+    <!-- ADC Mode -->
+    <ParamBool id="enableADCMode" name="Enable ADC Mode" group="ADC Mode" default="false" visible="true" editable="true" desc="ADC block for DC conversion or analog MIC mode for audio acquistion" />
+
+    <ParamChoice id="adcMode" name="ADC Mode" group="ADC Mode" default="CY_ADCCOMP_ADC_DC" visible="`${enableADCMode}`" editable="true" desc="ADC mode of operation">
+      <Entry name="DC Voltage Measurement" value="CY_ADCCOMP_ADC_DC"  visible="true" />
+      <Entry name="Analog MIC with PGA" value="CY_ADCCOMP_ADC_MIC" visible="true" />
+    </ParamChoice>
+
+    <ParamChoice id="adcClkInPdmOut" name="ADC Clock Input and PDM Output" group="ADC Mode" default="CY_ADCCOMP_ADC_CLK_IN_4MHZ_PDM_OUT_2MHZ" visible="`${enableADCMode}`" editable="true" desc="ADC clock input and PDM output selection">
+      <Entry name="Input: 1 MHz / Output: 1 MHz" value="CY_ADCCOMP_ADC_CLK_IN_1MHZ_PDM_OUT_1MHZ" visible="true" />
+      <Entry name="Input: 2 MHz / Output: 1 MHz" value="CY_ADCCOMP_ADC_CLK_IN_2MHZ_PDM_OUT_1MHZ" visible="true" />
+      <Entry name="Input: 2 MHz / Output: 2 MHz" value="CY_ADCCOMP_ADC_CLK_IN_2MHZ_PDM_OUT_2MHZ" visible="true" />
+      <Entry name="Input: 4 MHz / Output: 2 MHz" value="CY_ADCCOMP_ADC_CLK_IN_4MHZ_PDM_OUT_2MHZ" visible="true" />
+    </ParamChoice>
+
+    <ParamChoice id="channel" name="ADC Input Channel" group="ADC Mode" default="CY_ADCCOMP_ADC_IN_LHL_GPIO_2" visible="`${enableADCMode &amp;&amp; (adcMode eq CY_ADCCOMP_ADC_DC)}`" editable="true" desc="ADC input channel for DC conversion">
+      <Entry name="GPIO 0 (LHL_GPIO_2)" value="CY_ADCCOMP_ADC_IN_LHL_GPIO_2"  visible="true" />
+      <Entry name="GPIO 1 (LHL_GPIO_3)" value="CY_ADCCOMP_ADC_IN_LHL_GPIO_3"  visible="true" />
+      <Entry name="GPIO 2 (LHL_GPIO_4)" value="CY_ADCCOMP_ADC_IN_LHL_GPIO_4"  visible="true" />
+      <Entry name="GPIO 3 (LHL_GPIO_5)" value="CY_ADCCOMP_ADC_IN_LHL_GPIO_5"  visible="true" />
+      <Entry name="GPIO 4 (LHL_GPIO_6)" value="CY_ADCCOMP_ADC_IN_LHL_GPIO_6"  visible="true" />
+      <Entry name="GPIO 6 (LHL_GPIO_8)" value="CY_ADCCOMP_ADC_IN_LHL_GPIO_8"  visible="true" />
+      <Entry name="GPIO 7 (LHL_GPIO_9)" value="CY_ADCCOMP_ADC_IN_LHL_GPIO_9"  visible="true" />
+      <Entry name="ADC_IN_I_MIC"       value="CY_ADCCOMP_ADC_IN_I_MIC"  visible="true" />
+      <Entry name="ADC_IN_OPEN"        value="CY_ADCCOMP_ADC_IN_OPEN"  visible="true" />
+    </ParamChoice>
+
+    <ParamRange id="offset" name="Offset Value" group="ADC Mode" default="0" min="0" max="65535" resolution="1" visible="`${enableADCMode &amp;&amp; (adcMode eq CY_ADCCOMP_ADC_DC)}`" editable="true" desc="The storage for the offset calibration value" />
+    <ParamRange id="gain" name="Gain Value" group="ADC Mode" default="0" min="0" max="65535" resolution="1" visible="`${enableADCMode &amp;&amp; (adcMode eq CY_ADCCOMP_ADC_DC)}`" editable="true" desc="The storage for the gain calibration value"/>
+
+    <ParamChoice id="adcMicPgaGain" name="MIC Programmable Gain" group="ADC Mode" default="CY_ADCCOMP_ADC_PGA_GAIN_CTRL_0" visible="`${enableADCMode &amp;&amp; (adcMode eq CY_ADCCOMP_ADC_MIC)}`" editable="true" desc="MIC Programmable gain">
+      <Entry name="Gain 8/8, Max i/p(Vpp) = 1"     value="CY_ADCCOMP_ADC_PGA_GAIN_CTRL_0"  visible="true" />
+      <Entry name="Gain 8/7, Max i/p(Vpp) = 875 m" value="CY_ADCCOMP_ADC_PGA_GAIN_CTRL_1"  visible="true" />
+      <Entry name="Gain 8/6, Max i/p(Vpp) = 750 m" value="CY_ADCCOMP_ADC_PGA_GAIN_CTRL_2"  visible="true" />
+      <Entry name="Gain 8/5, Max i/p(Vpp) = 625 m" value="CY_ADCCOMP_ADC_PGA_GAIN_CTRL_3"  visible="true" />
+      <Entry name="Gain 8/4, Max i/p(Vpp) = 500 m" value="CY_ADCCOMP_ADC_PGA_GAIN_CTRL_4"  visible="true" />
+      <Entry name="Gain 8/3, Max i/p(Vpp) = 375 m" value="CY_ADCCOMP_ADC_PGA_GAIN_CTRL_5"  visible="true" />
+      <Entry name="Gain 8/2, Max i/p(Vpp) = 250 m" value="CY_ADCCOMP_ADC_PGA_GAIN_CTRL_6"  visible="true" />
+      <Entry name="Gain 8/1, Max i/p(Vpp) = 125 m" value="CY_ADCCOMP_ADC_PGA_GAIN_CTRL_7"  visible="true" />
+    </ParamChoice>
+
+    <!-- Low Power comparator 1-->
+    <ParamBool id="enableLPCOMP_1" name="Enable Low Power Comparator 1" group="Low Power Comparator 1" default="false" visible="true" editable="true" desc="Low power comparator 1 for DC mode or noise threshold detect(NTD) mode" />
+
+    <ParamChoice id="lpcompMode_1" name="Operational Mode" group="Low Power Comparator 1" default="CY_ADCCOMP_LPCOMP_DC" visible="`${enableLPCOMP_1}`" editable="true" desc="DC mode: comparator assert when the V(+) - V(-) > 0.5*hysterisis limit; NTD mode: comparator to detect when the peak-peak mic input level is larger than the selected hysterisis limit">
+      <Entry name="DC Mode"  value="CY_ADCCOMP_LPCOMP_DC"  visible="true" />
+      <Entry name="NTD Mode" value="CY_ADCCOMP_LPCOMP_NTD" visible="true" />
+    </ParamChoice>
+
+    <ParamChoice id="lpcompHyst_1" name="Hysterisis for LPCOM" group="Low Power Comparator 1" default="CY_ADCCOMP_LPCOMP_HYST_LIMIT_0MV_NONE" visible="`${enableLPCOMP_1}`" editable="true" desc="The output of the comparator is when the peak-peak mic input level is larger than the selected limit below. In DC mode the output is asserted and latched when the V(+) - V(-) > 0.5*limit. (HYST, Limit, Sound Pressure Level (SPL in db))">
+      <Entry name="HYST_LIMIT_0MV_NONE"     value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_0MV_NONE" visible="true" />
+      <Entry name="HYST_LIMIT_4MV_78DB"     value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_4MV_78DB" visible="true" />
+      <Entry name="HYST_LIMIT_8MV_84DB"     value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_8MV_84DB" visible="true" />
+      <Entry name="HYST_LIMIT_12MV_87_5DB"  value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_12MV_87_5DB" visible="true" />
+      <Entry name="HYST_LIMIT_16MV_90DB"    value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_16MV_90DB" visible="true" />
+      <Entry name="HYST_LIMIT_20MV_92DB"    value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_20MV_92DB" visible="true" />
+      <Entry name="HYST_LIMIT_24MV_93_5DB"  value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_24MV_93_5DB" visible="true" />
+      <Entry name="HYST_LIMIT_28MV_95DB"    value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_28MV_95DB" visible="true" />
+      <Entry name="HYST_LIMIT_32MV_96DB"    value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_32MV_96DB" visible="true" />
+      <Entry name="HYST_LIMIT_36MV_97DB"    value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_36MV_97DB" visible="true" />
+      <Entry name="HYST_LIMIT_40MV_98DB"    value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_40MV_98DB" visible="true" />
+      <Entry name="HYST_LIMIT_44MV_99DB"    value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_44MV_99DB" visible="true" />
+      <Entry name="HYST_LIMIT_48MV_99_6DB"  value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_48MV_99_6DB" visible="true" />
+      <Entry name="HYST_LIMIT_52MV_100_3DB" value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_52MV_100_3DB" visible="true" />
+      <Entry name="HYST_LIMIT_56MV_101DB"   value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_56MV_101DB" visible="true" />
+      <Entry name="HYST_LIMIT_60MV_101_5DB" value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_60MV_101_5DB" visible="true" />
+    </ParamChoice>
+
+    <ParamBool id="lpcompHyst2x_1" name="lpcompHyst2x" group="Low Power Comparator 1" default="false" visible="`${enableLPCOMP_1}`" editable="true" desc="hysterisis value get doubled." />
+
+    <ParamChoice id="inN_1" name="Comparator -ve terminal input MUX" group="Low Power Comparator 1" default="CY_ADCCOMP_LPCOMP_1_IN_N_LHL_GPIO_6" visible="`${enableLPCOMP_1 &amp;&amp; (lpcompMode_1 eq CY_ADCCOMP_LPCOMP_DC)}`" editable="true" desc="Comparator -ve terminal input MUX">
+      <Entry name="LHL_GPIO_6"  value="CY_ADCCOMP_LPCOMP_1_IN_N_LHL_GPIO_6"  visible="true" />
+      <Entry name="IN_N_OPEN"   value="CY_ADCCOMP_LPCOMP_1_IN_N_OPEN" visible="true" />
+    </ParamChoice>
+
+    <ParamChoice id="inP_1" name="Comparator +ve terminal input MUX" group="Low Power Comparator 1" default="CY_ADCCOMP_LPCOMP_1_IN_P_LHL_GPIO_8" visible="`${enableLPCOMP_1 &amp;&amp; (lpcompMode_1 eq CY_ADCCOMP_LPCOMP_DC)}`" editable="true" desc="Comparator +ve terminal input MUX">
+      <Entry name="LHL_GPIO_8"  value="CY_ADCCOMP_LPCOMP_1_IN_P_LHL_GPIO_8"  visible="true" />
+      <Entry name="LHL_GPIO_9"  value="CY_ADCCOMP_LPCOMP_1_IN_P_LHL_GPIO_9" visible="true" />
+      <Entry name="IN_P_MIC"    value="CY_ADCCOMP_LPCOMP_1_IN_P_I_MIC" visible="`${lpcompMode_1 eq CY_ADCCOMP_LPCOMP_NTD}`" />
+      <Entry name="IN_P_OPEN"   value="CY_ADCCOMP_LPCOMP_1_IN_P_OPEN" visible="true" />
+    </ParamChoice>
+
+
+    <!-- Low Power comparator 2-->
+    <ParamBool id="enableLPCOMP_2" name="Enable Low Power Comparator 2" group="Low Power Comparator 2" default="false" visible="true" editable="true" desc="Low power comparator 1 for DC mode or noise threshold detect(NTD) mode" />
+
+    <ParamChoice id="lpcompMode_2" name="Operational Mode" group="Low Power Comparator 2" default="CY_ADCCOMP_LPCOMP_DC" visible="`${enableLPCOMP_2}`" editable="true" desc="DC mode: comparator assert when the V(+) - V(-) > 0.5*hysterisis limit; NTD mode: comparator to detect when the peak-peak mic input level is larger than the selected hysterisis limit">
+      <Entry name="DC Mode"  value="CY_ADCCOMP_LPCOMP_DC"  visible="true" />
+      <Entry name="NTD Mode" value="CY_ADCCOMP_LPCOMP_NTD" visible="true" />
+    </ParamChoice>
+
+    <ParamChoice id="lpcompHyst_2" name="Hysterisis for LPCOM" group="Low Power Comparator 2" default="CY_ADCCOMP_LPCOMP_HYST_LIMIT_0MV_NONE" visible="`${enableLPCOMP_2}`" editable="true" desc="The output of the comparator is when the peak-peak mic input level is larger than the selected limit below. In DC mode the output is asserted and latched when the V(+) - V(-) > 0.5*limit. (HYST, Limit, Sound Pressure Level (SPL in db))">
+      <Entry name="HYST_LIMIT_0MV_NONE"     value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_0MV_NONE" visible="true" />
+      <Entry name="HYST_LIMIT_4MV_78DB"     value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_4MV_78DB" visible="true" />
+      <Entry name="HYST_LIMIT_8MV_84DB"     value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_8MV_84DB" visible="true" />
+      <Entry name="HYST_LIMIT_12MV_87_5DB"  value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_12MV_87_5DB" visible="true" />
+      <Entry name="HYST_LIMIT_16MV_90DB"    value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_16MV_90DB" visible="true" />
+      <Entry name="HYST_LIMIT_20MV_92DB"    value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_20MV_92DB" visible="true" />
+      <Entry name="HYST_LIMIT_24MV_93_5DB"  value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_24MV_93_5DB" visible="true" />
+      <Entry name="HYST_LIMIT_28MV_95DB"    value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_28MV_95DB" visible="true" />
+      <Entry name="HYST_LIMIT_32MV_96DB"    value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_32MV_96DB" visible="true" />
+      <Entry name="HYST_LIMIT_36MV_97DB"    value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_36MV_97DB" visible="true" />
+      <Entry name="HYST_LIMIT_40MV_98DB"    value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_40MV_98DB" visible="true" />
+      <Entry name="HYST_LIMIT_44MV_99DB"    value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_44MV_99DB" visible="true" />
+      <Entry name="HYST_LIMIT_48MV_99_6DB"  value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_48MV_99_6DB" visible="true" />
+      <Entry name="HYST_LIMIT_52MV_100_3DB" value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_52MV_100_3DB" visible="true" />
+      <Entry name="HYST_LIMIT_56MV_101DB"   value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_56MV_101DB" visible="true" />
+      <Entry name="HYST_LIMIT_60MV_101_5DB" value="CY_ADCCOMP_LPCOMP_HYST_LIMIT_60MV_101_5DB" visible="true" />
+    </ParamChoice>
+
+    <ParamBool id="lpcompHyst2x_2" name="lpcompHyst2x" group="Low Power Comparator 2" default="false" visible="`${enableLPCOMP_2}`" editable="true" desc="hysterisis value get doubled." />
+
+    <ParamChoice id="inN_2" name="Comparator -ve terminal input MUX" group="Low Power Comparator 2" default="CY_ADCCOMP_LPCOMP_2_IN_N_LHL_GPIO_2" visible="`${enableLPCOMP_2 &amp;&amp; (lpcompMode_2 eq CY_ADCCOMP_LPCOMP_DC)}`" editable="true" desc="Comparator -ve terminal input MUX">
+      <Entry name="LHL_GPIO_2"  value="CY_ADCCOMP_LPCOMP_2_IN_N_LHL_GPIO_2"  visible="true" />
+      <Entry name="LHL_GPIO_3"  value="CY_ADCCOMP_LPCOMP_2_IN_N_LHL_GPIO_3" visible="true" />
+      <Entry name="IN_N_OPEN"   value="CY_ADCCOMP_LPCOMP_2_IN_N_OPEN" visible="true" />
+    </ParamChoice>
+
+    <ParamChoice id="inP_2" name="Comparator +ve terminal input MUX" group="Low Power Comparator 2" default="CY_ADCCOMP_LPCOMP_2_IN_P_LHL_GPIO_4" visible="`${enableLPCOMP_2 &amp;&amp; (lpcompMode_2 eq CY_ADCCOMP_LPCOMP_DC)}`" editable="true" desc="Comparator +ve terminal input MUX">
+      <Entry name="LHL_GPIO_4"  value="CY_ADCCOMP_LPCOMP_2_IN_P_LHL_GPIO_4"  visible="true" />
+      <Entry name="LHL_GPIO_5"  value="CY_ADCCOMP_LPCOMP_2_IN_P_LHL_GPIO_5" visible="true" />
+      <Entry name="IN_P_MIC"    value="CY_ADCCOMP_LPCOMP_2_IN_P_I_MIC" visible="`${lpcompMode_2 eq CY_ADCCOMP_LPCOMP_NTD}`" />
+      <Entry name="IN_P_OPEN"   value="CY_ADCCOMP_LPCOMP_2_IN_P_OPEN" visible="true" />
+    </ParamChoice>
+
+    <!-- Check GPIO for DRCs to prevent conflict -->
+    <ParamBool id="lpcomp_dc_gpio0" name="lpcomp_dc_gpio0" group="Internal" default="`${enableLPCOMP_2 &amp;&amp; (lpcompMode_2 eq CY_ADCCOMP_LPCOMP_DC) &amp;&amp; (inN_2 eq CY_ADCCOMP_LPCOMP_2_IN_N_LHL_GPIO_2)}`" visible="false" editable="false" desc="" />
+    <ParamBool id="lpcomp_dc_gpio1" name="lpcomp_dc_gpio1" group="Internal" default="`${enableLPCOMP_2 &amp;&amp; (lpcompMode_2 eq CY_ADCCOMP_LPCOMP_DC) &amp;&amp; (inN_2 eq CY_ADCCOMP_LPCOMP_2_IN_N_LHL_GPIO_3)}`" visible="false" editable="false" desc="" />
+    <ParamBool id="lpcomp_dc_gpio2" name="lpcomp_dc_gpio2" group="Internal" default="`${enableLPCOMP_2 &amp;&amp; (lpcompMode_2 eq CY_ADCCOMP_LPCOMP_DC) &amp;&amp; (inP_2 eq CY_ADCCOMP_LPCOMP_2_IN_P_LHL_GPIO_4)}`" visible="false" editable="false" desc="" />
+    <ParamBool id="lpcomp_dc_gpio3" name="lpcomp_dc_gpio3" group="Internal" default="`${enableLPCOMP_2 &amp;&amp; (lpcompMode_2 eq CY_ADCCOMP_LPCOMP_DC) &amp;&amp; (inP_2 eq CY_ADCCOMP_LPCOMP_2_IN_P_LHL_GPIO_5)}`" visible="false" editable="false" desc="" />
+    <ParamBool id="lpcomp_dc_gpio4" name="lpcomp_dc_gpio4" group="Internal" default="`${enableLPCOMP_1 &amp;&amp; (lpcompMode_1 eq CY_ADCCOMP_LPCOMP_DC) &amp;&amp; (inN_1 eq CY_ADCCOMP_LPCOMP_1_IN_N_LHL_GPIO_6)}`" visible="false" editable="false" desc="" />
+    <ParamBool id="lpcomp_dc_gpio6" name="lpcomp_dc_gpio6" group="Internal" default="`${enableLPCOMP_1 &amp;&amp; (lpcompMode_1 eq CY_ADCCOMP_LPCOMP_DC) &amp;&amp; (inP_1 eq CY_ADCCOMP_LPCOMP_1_IN_P_LHL_GPIO_8)}`" visible="false" editable="false" desc="" />
+    <ParamBool id="lpcomp_dc_gpio7" name="lpcomp_dc_gpio7" group="Internal" default="`${enableLPCOMP_1 &amp;&amp; (lpcompMode_1 eq CY_ADCCOMP_LPCOMP_DC) &amp;&amp; (inP_1 eq CY_ADCCOMP_LPCOMP_1_IN_P_LHL_GPIO_9)}`" visible="false" editable="false" desc="" />
+
+    <ParamBool id="adc_dc_gpio0" name="adc_dc_gpio0" group="Internal" default="`${enableADCMode &amp;&amp; (adcMode eq CY_ADCCOMP_ADC_DC) &amp;&amp; (channel eq CY_ADCCOMP_ADC_IN_LHL_GPIO_2)}`" visible="false" editable="false" desc="" />
+    <ParamBool id="adc_dc_gpio1" name="adc_dc_gpio1" group="Internal" default="`${enableADCMode &amp;&amp; (adcMode eq CY_ADCCOMP_ADC_DC) &amp;&amp; (channel eq CY_ADCCOMP_ADC_IN_LHL_GPIO_3)}`" visible="false" editable="false" desc="" />
+    <ParamBool id="adc_dc_gpio2" name="adc_dc_gpio2" group="Internal" default="`${enableADCMode &amp;&amp; (adcMode eq CY_ADCCOMP_ADC_DC) &amp;&amp; (channel eq CY_ADCCOMP_ADC_IN_LHL_GPIO_4)}`" visible="false" editable="false" desc="" />
+    <ParamBool id="adc_dc_gpio3" name="adc_dc_gpio3" group="Internal" default="`${enableADCMode &amp;&amp; (adcMode eq CY_ADCCOMP_ADC_DC) &amp;&amp; (channel eq CY_ADCCOMP_ADC_IN_LHL_GPIO_5)}`" visible="false" editable="false" desc="" />
+    <ParamBool id="adc_dc_gpio4" name="adc_dc_gpio4" group="Internal" default="`${enableADCMode &amp;&amp; (adcMode eq CY_ADCCOMP_ADC_DC) &amp;&amp; (channel eq CY_ADCCOMP_ADC_IN_LHL_GPIO_6)}`" visible="false" editable="false" desc="" />
+    <ParamBool id="adc_dc_gpio6" name="adc_dc_gpio6" group="Internal" default="`${enableADCMode &amp;&amp; (adcMode eq CY_ADCCOMP_ADC_DC) &amp;&amp; (channel eq CY_ADCCOMP_ADC_IN_LHL_GPIO_8)}`" visible="false" editable="false" desc="" />
+    <ParamBool id="adc_dc_gpio7" name="adc_dc_gpio7" group="Internal" default="`${enableADCMode &amp;&amp; (adcMode eq CY_ADCCOMP_ADC_DC) &amp;&amp; (channel eq CY_ADCCOMP_ADC_IN_LHL_GPIO_9)}`" visible="false" editable="false" desc="" />
+
+    <!-- Connections, To-Do -->
+
+    <!-- Advanced -->
+    <ParamBool id="inFlash" name="Store Config in Flash" group="Advanced" default="true" visible="true" editable="true" desc="Controls whether the configuration structure is stored in flash (const, true) or SRAM (not const, false)." />
+  </Parameters>
+
+  <DRCs>
+    <DRC type="ERROR" text="Only one LPCOMP can be configured in the noise detection mode." paramId="lpcompMode_1" condition="`${((enableLPCOMP_1) &amp;&amp; (lpcompMode_1 eq CY_ADCCOMP_LPCOMP_NTD) &amp;&amp; (enableLPCOMP_2) &amp;&amp; (lpcompMode_2 eq CY_ADCCOMP_LPCOMP_NTD)) ? true : false}`" />
+
+    <!-- Check GPIO to prevent conflict -->
+    <DRC type="ERROR" text="GPIO0 (LHL_GPIO_2) conflicted." condition="`${(adc_dc_gpio0) &amp;&amp; (lpcomp_dc_gpio0)}`" />
+    <DRC type="ERROR" text="GPIO1 (LHL_GPIO_3) conflicted." condition="`${(adc_dc_gpio1) &amp;&amp; (lpcomp_dc_gpio1)}`" />
+    <DRC type="ERROR" text="GPIO2 (LHL_GPIO_4) conflicted." condition="`${(adc_dc_gpio2) &amp;&amp; (lpcomp_dc_gpio2)}`" />
+    <DRC type="ERROR" text="GPIO3 (LHL_GPIO_5) conflicted." condition="`${(adc_dc_gpio3) &amp;&amp; (lpcomp_dc_gpio3)}`" />
+    <DRC type="ERROR" text="GPIO4 (LHL_GPIO_6) conflicted." condition="`${(adc_dc_gpio4) &amp;&amp; (lpcomp_dc_gpio4)}`" />
+    <DRC type="ERROR" text="GPIO6 (LHL_GPIO_8) conflicted." condition="`${(adc_dc_gpio6) &amp;&amp; (lpcomp_dc_gpio6)}`" />
+    <DRC type="ERROR" text="GPIO7 (LHL_GPIO_9) conflicted." condition="`${(adc_dc_gpio7) &amp;&amp; (lpcomp_dc_gpio7)}`" />
+  </DRCs>
+
+  <ConfigFirmware>
+    <ConfigInclude value="cy_pdl.h" include="true" />
+    <ConfigInclude value="cyhal_hwmgr.h" include="true" guard="defined (CY_USING_HAL)" />
+
+    <!-- ADC Mode -->
+    <ConfigStruct name="dcContext" type="cy_stc_adccomp_adc_context_t" const="false" public="true" include="`${enableADCMode &amp;&amp; (adcMode eq CY_ADCCOMP_ADC_DC)}`">
+      <Member name="offset" value="`${offset}`" />
+      <Member name="gain" value="`${gain}`" />
+    </ConfigStruct>
+
+    <ConfigStruct name="dcConfig" type="cy_stc_adccomp_adc_dc_config_t" const="false" public="true" include="`${enableADCMode &amp;&amp; (adcMode eq CY_ADCCOMP_ADC_DC)}`">
+      <Member name="channel" value="`${channel}`" />
+      <Member name="context" value="&amp;dcContext" />
+    </ConfigStruct>
+
+    <ConfigStruct name="micConfig" type="cy_stc_adccomp_adc_mic_config_t" const="false" public="true" include="`${enableADCMode &amp;&amp; (adcMode eq CY_ADCCOMP_ADC_MIC)}`">
+      <Member name="adcMicPgaGain" value="`${adcMicPgaGain}`" />
+    </ConfigStruct>
+
+    <ConfigStruct name="adcCfg" type="cy_stc_adccomp_adc_config_t" const="`${inFlash}`" public="true" include="`${enableADCMode}`">
+      <Member name="adcClkInPdmOut" value="`${adcClkInPdmOut}`" />
+      <Member name="dcConfig" value="&amp;dcConfig" include="`${adcMode eq CY_ADCCOMP_ADC_DC}`"/>
+      <Member name="micConfig" value="&amp;micConfig" include="`${adcMode eq CY_ADCCOMP_ADC_MIC}`"/>
+    </ConfigStruct>
+
+    <!-- Low Power comparator 1-->
+    <ConfigStruct name="adccomp_dc_config_1" type="cy_stc_adccomp_lpcomp_dc_config_t" const="false" public="true" include="`${enableLPCOMP_1 &amp;&amp; (lpcompMode_1 eq CY_ADCCOMP_LPCOMP_DC)}`">
+      <Member name="lpcompHyst" value="`${lpcompHyst_1}`" />
+      <Member name="lpcompHyst2x" value="`${lpcompHyst2x_1}`" />
+      <Member name="inN" value="`${inN_1}`" />
+      <Member name="inP" value="`${inP_1}`" />
+    </ConfigStruct>
+    <ConfigStruct name="adccomp_ntd_config_1" type="cy_stc_adccomp_lpcomp_ntd_config_t" const="false" public="true" include="`${enableLPCOMP_1 &amp;&amp; (lpcompMode_1 eq CY_ADCCOMP_LPCOMP_NTD)}`">
+      <Member name="lpcompHyst" value="`${lpcompHyst_1}`" />
+      <Member name="lpcompHyst2x" value="`${lpcompHyst2x_1}`" />
+    </ConfigStruct>
+    <ConfigStruct name="adccomp_config_1" type="cy_stc_adccomp_lpcomp_config_t" const="`${inFlash}`" public="true" include="`${enableLPCOMP_1}`">
+      <Member name="dcConfig" value="&amp;adccomp_dc_config_1" include="`${lpcompMode_1 eq CY_ADCCOMP_LPCOMP_DC}`"/>
+      <Member name="ntdConfig" value="&amp;adccomp_ntd_config_1" include="`${lpcompMode_1 eq CY_ADCCOMP_LPCOMP_NTD}`"/>
+    </ConfigStruct>
+
+    <!-- Low Power comparator 2-->
+    <ConfigStruct name="adccomp_dc_config_2" type="cy_stc_adccomp_lpcomp_dc_config_t" const="false" public="true" include="`${enableLPCOMP_2 &amp;&amp; (lpcompMode_2 eq CY_ADCCOMP_LPCOMP_DC)}`">
+      <Member name="lpcompHyst" value="`${lpcompHyst_2}`" />
+      <Member name="lpcompHyst2x" value="`${lpcompHyst2x_2}`" />
+      <Member name="inN" value="`${inN_2}`" />
+      <Member name="inP" value="`${inP_2}`" />
+    </ConfigStruct>
+    <ConfigStruct name="adccomp_ntd_config_2" type="cy_stc_adccomp_lpcomp_ntd_config_t" const="false" public="true" include="`${enableLPCOMP_2 &amp;&amp; (lpcompMode_2 eq CY_ADCCOMP_LPCOMP_NTD)}`">
+      <Member name="lpcompHyst" value="`${lpcompHyst_2}`" />
+      <Member name="lpcompHyst2x" value="`${lpcompHyst2x_2}`" />
+    </ConfigStruct>
+    <ConfigStruct name="adccomp_config_2" type="cy_stc_adccomp_lpcomp_config_t" const="`${inFlash}`" public="true" include="`${enableLPCOMP_2}`">
+      <Member name="dcConfig" value="&amp;adccomp_dc_config_2" include="`${lpcompMode_2 eq CY_ADCCOMP_LPCOMP_DC}`"/>
+      <Member name="ntdConfig" value="&amp;adccomp_ntd_config_2" include="`${lpcompMode_2 eq CY_ADCCOMP_LPCOMP_NTD}`"/>
+    </ConfigStruct>
+
+ </ConfigFirmware>
+</Personality>

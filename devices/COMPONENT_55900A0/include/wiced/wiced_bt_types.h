@@ -7,7 +7,9 @@
  * Generic types
  *
  */
-#pragma once
+#ifndef __WICED_BT_TYPES_H__
+#define __WICED_BT_TYPES_H__
+
 
 #include "wiced_data_types.h"
 #include "wiced_result.h"
@@ -197,6 +199,7 @@ typedef struct
 
 #define LINK_KEY_LEN    16      /**< Link Key Len */
 typedef uint8_t wiced_bt_link_key_t[LINK_KEY_LEN];  /**< Link Key */
+
 #define IV_LEN 8 /**< Initialization Vector len */
 typedef uint8_t wiced_bt_iv_t[IV_LEN]; /**< IV, Initialization Vector */
 
@@ -435,3 +438,5 @@ typedef enum {
 #ifdef __cplusplus
 }
 #endif
+
+#endif //__WICED_BT_TYPES_H__

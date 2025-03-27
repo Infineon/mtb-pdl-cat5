@@ -8,7 +8,9 @@
  * Programming Interface
  *
  */
-#pragma once
+#ifndef __WICED_BT_AVDT_H__
+#define __WICED_BT_AVDT_H__
+
 
 #include "wiced_result.h"
 #include "wiced_bt_types.h"
@@ -1072,3 +1074,5 @@ uint16_t wiced_bt_avdt_send_report(uint8_t handle, AVDT_REPORT_TYPE type,
  * @} wicedbt_avdt
  */
  /* @endcond*/
+
+#endif //__WICED_BT_AVDT_H__

@@ -166,7 +166,7 @@
     <ParamBool id="hasConnectionMiso" name="hasConnectionMiso" group="Internal" default="`${hasVisibleOption(&quot;spi_miso[0]&quot;)}`" visible="false" editable="false" desc="This parameter determines if MISO has valid connections." />
 
     <!-- Connections -->
-    <ParamSignal port="spi_clk[0]"  name="SCLK" group="Connections" visible="`${MasterMode ? hasConnectionSclk : true}`" desc="The Serial Clock (SCLK) from the master to slave device." canBeEmpty="`${MasterMode}`"/>
+    <ParamSignal port="spi_clk[0]"  name="SCLK" group="Connections" visible="`${hasConnectionSclk}`" desc="The Serial Clock (SCLK) from the master to slave device." canBeEmpty="false"/>
     <ParamSignal port="spi_mosi[0]" name="MOSI" group="Connections" visible="`${hasConnectionMosi}`" desc="The Master Output Slave Input (MOSI) signal between the master and slave devices." canBeEmpty="true" />
     <ParamSignal port="spi_miso[0]" name="MISO" group="Connections" visible="`${hasConnectionMiso}`" desc="The Master Input Slave Output (MOSI) signal between the slave and master devices." canBeEmpty="true" />
     <ParamSignal port="spi_select0[0]" name="SS0" group="Connections" visible="`${isConnectableSel0}`" desc="The Master Output / Slave Input Slave Select (SS) signal. The master uses SS signal to enable Slave for the following communication." canBeEmpty="true" />
@@ -177,7 +177,6 @@
     <ParamSignal port="tr_tx_req[0]" name="TX Trigger Output" group="Connections" visible="`${hasVisibleOption(&quot;tr_tx_req[0]&quot;)}`" desc="Connects SCB TX trigger output to the DMA. Configure RX FIFO Level to define this output behavior." canBeEmpty="true" />
 
     <!-- Clock Frequency -->
-    <ParamRange  id="periDiv" name="Peri Divider" group="Internal" default="`${ClkPeriHz / MasterClkHz}`" min="1" max="127" resolution="1" visible="false" editable="false" desc="Peri Divider Value" />
     <ParamRange id="scbClkHz" name="scbClkHz" group="Internal" default="`${MasterMode ? MasterClkHz : SlaveClkHz}`" min="0" max="400000000" resolution="1" visible="false" editable="false" desc="SCB clock frequency in kHz" />
 
     <!-- Actual data rate notes -->
@@ -191,7 +190,8 @@
     <ParamRange id="SlaveActualDataRate" name="Actual Slave data rate (kbps)" group="Internal" default="`${1000000 / (2 * spiRoundTripDelay)}`" min="0" max="4294967295" resolution="0.001" visible="false" editable="false" desc="Actual Slave data rate (kbps)." />
 
     <!-- Master actual data rate calculations -->
-    <ParamRange id="MasterActualDataRate" name="MasterActualDataRate" group="Internal" default="`${(ClkPeriHz / (periDiv * OvsFactor)) / 1000.0}`" min="0" max="4294967295" resolution="0.001" visible="false" editable="false" desc="Actual Master data rate (kbps)." />
+    <!-- <ParamRange  id="periDiv" name="Peri Divider" group="Internal" default="`${ClkPeriHz / MasterClkHz}`" min="1" max="127" resolution="1" visible="false" editable="false" desc="Peri Divider Value" /> -->
+    <ParamRange id="MasterActualDataRate" name="MasterActualDataRate" group="Internal" default="`${((ClkPeriHz / MasterClkHz) eq 0) ? 0 :((ClkPeriHz / ((ClkPeriHz / MasterClkHz) * OvsFactor)) / 1000.0)}`" min="0" max="4294967295" resolution="0.001" visible="false" editable="false" desc="Actual Master data rate (kbps)." />
 
     <!-- Data Rate and Clock output-->
     <ParamRange id="actualDataRate" name="Actual Data Rate (kbps)" group="Data Rate" default="`${MasterMode ? MasterActualDataRate : SlaveActualDataRate}`" min="1" max="4294967295" resolution="0.001" visible="true" editable="false" desc="`${MasterMode ? MasterActDataRateNote : SlaveActDataRateNote}`" />
@@ -282,7 +282,7 @@
       <Member name="sclkMode" value="`${SclkMode}`" />
 
       <Member name="parity" value="`${Parity}`" include="`${((version &gt; 1) || (ipName eq &quot;mxs22scb&quot;))}`" />
-      <Member name="dropOnParityError" value="`${DropOnParityError}`" include="`${((version &gt; 1) || (ipName eq &quot;mxs22scb&quot;))}`" />
+      <Member name="dropOnParityError" value="`${(Parity eq CY_SCB_SPI_PARITY_NONE) ? &quot;false&quot; : DropOnParityError}`" include="`${((version &gt; 1) || (ipName eq &quot;mxs22scb&quot;))}`" />
 
       <Member name="oversample" value="`${MasterMode ? OvsFactor : &quot;0UL&quot;}`" />
 

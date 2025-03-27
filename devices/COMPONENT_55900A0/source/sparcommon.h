@@ -97,6 +97,25 @@
 #endif
 
 /*  Enable Maximum Frequency 192 MHz Support for H1 CP */
-#ifndef APP_CFG_ENABLE_MAX_SYS_FREQ_192MHz
-#define APP_CFG_ENABLE_MAX_SYS_FREQ_192MHz          0
+#if defined(APP_CFG_ENABLE_MAX_SYS_FREQ_192MHz) && (APP_CFG_ENABLE_MAX_SYS_FREQ_192MHz == 1)
+#define APP_CFG_MAX_FREQ_EN                          1
+#else
+#define APP_CFG_MAX_FREQ_EN                          0
 #endif
+
+/*  LPO Source Selection */
+#define APP_CFG_LPO_SOURCE_SELECTION_TARGET_DEFAULT  0x0
+#define APP_CFG_LPO_SOURCE_SELECTION_ILPO1           0x1
+#define APP_CFG_LPO_SOURCE_SELECTION_ILPO2           0x2
+#define APP_CFG_LPO_SOURCE_SELECTION_LHL_XTAL_IN     0x3
+#define APP_CFG_LPO_SOURCE_SELECTION_ELPO_IN         0x4
+
+#if defined(APP_CFG_LPO_SOURCE_SELECTION) && \
+    ((APP_CFG_LPO_SOURCE_SELECTION > APP_CFG_LPO_SOURCE_SELECTION_TARGET_DEFAULT) && \
+     (APP_CFG_LPO_SOURCE_SELECTION <= APP_CFG_LPO_SOURCE_SELECTION_ELPO_IN))
+#define APP_CFG_LPO_SRC_SEL                          APP_CFG_LPO_SOURCE_SELECTION
+#else
+#define APP_CFG_LPO_SRC_SEL                          APP_CFG_LPO_SOURCE_SELECTION_TARGET_DEFAULT
+#endif
+
+#define APP_CFG_LPO_SRC_SEL_654_MAX_FREQ_EN_0        ((APP_CFG_LPO_SRC_SEL << 4) | APP_CFG_MAX_FREQ_EN)

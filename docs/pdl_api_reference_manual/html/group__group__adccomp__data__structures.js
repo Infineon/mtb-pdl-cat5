@@ -48,21 +48,40 @@ var group__group__adccomp__data__structures =
       [ "CY_ADCCOMP_ADC_IN_GPIO5", "group__group__adccomp__data__structures.html#gga5d18e36866381d90b2847354b4f7f3aaa43440f382459b22f9a9f55d6f554cae0", null ],
       [ "CY_ADCCOMP_ADC_IN_GPIO6", "group__group__adccomp__data__structures.html#gga5d18e36866381d90b2847354b4f7f3aaa43a46f110b7bb0a4d0705d8d1f8af65d", null ],
       [ "CY_ADCCOMP_ADC_IN_GPIO7", "group__group__adccomp__data__structures.html#gga5d18e36866381d90b2847354b4f7f3aaac07f425baa6b043599f8e2f03045206a", null ],
+      [ "CY_ADCCOMP_ADC_IN_LHL_GPIO_2", "group__group__adccomp__data__structures.html#gga5d18e36866381d90b2847354b4f7f3aaa7a13f18ee12c91f2548f9e58630050d3", null ],
+      [ "CY_ADCCOMP_ADC_IN_LHL_GPIO_3", "group__group__adccomp__data__structures.html#gga5d18e36866381d90b2847354b4f7f3aaaeef54e6130eeb1ecafe42a26db17ce49", null ],
+      [ "CY_ADCCOMP_ADC_IN_LHL_GPIO_4", "group__group__adccomp__data__structures.html#gga5d18e36866381d90b2847354b4f7f3aaae040b0401c6d434a4c9194fdba9f49ef", null ],
+      [ "CY_ADCCOMP_ADC_IN_LHL_GPIO_5", "group__group__adccomp__data__structures.html#gga5d18e36866381d90b2847354b4f7f3aaa325cb853f66b0e5b59d39f9b31ecb105", null ],
+      [ "CY_ADCCOMP_ADC_IN_LHL_GPIO_6", "group__group__adccomp__data__structures.html#gga5d18e36866381d90b2847354b4f7f3aaaaac5f4a4c032b250c2f31d3a8313e588", null ],
+      [ "CY_ADCCOMP_ADC_IN_LHL_GPIO_7", "group__group__adccomp__data__structures.html#gga5d18e36866381d90b2847354b4f7f3aaade7cc02c66c0fea3a57f5fe105ace606", null ],
+      [ "CY_ADCCOMP_ADC_IN_LHL_GPIO_8", "group__group__adccomp__data__structures.html#gga5d18e36866381d90b2847354b4f7f3aaa11f28a905a244b543064658fd82a2af4", null ],
+      [ "CY_ADCCOMP_ADC_IN_LHL_GPIO_9", "group__group__adccomp__data__structures.html#gga5d18e36866381d90b2847354b4f7f3aaaec465a6393e38b9e0d0c07423486e229", null ],
       [ "CY_ADCCOMP_ADC_IN_OPEN", "group__group__adccomp__data__structures.html#gga5d18e36866381d90b2847354b4f7f3aaa9323f13b95ef1ec44240623e1476642d", null ]
-    ] ],
-    [ "cy_en_adccomp_adc_mic_channel_t", "group__group__adccomp__data__structures.html#ga173dcc1c8e7f69800bfdd653cfccc840", [
-      [ "CY_ADCCOMP_ADC_IN_MIC", "group__group__adccomp__data__structures.html#gga173dcc1c8e7f69800bfdd653cfccc840a27f602b8ce357ac6c1a5069b8869e28b", null ]
     ] ],
     [ "cy_en_adccomp_lpcomp_negative_channel_t", "group__group__adccomp__data__structures.html#gaecf05cb9a9efc7fda13fda0c45f481b8", [
       [ "CY_ADCCOMP_LPCOMP_IN_N_GPIO04", "group__group__adccomp__data__structures.html#ggaecf05cb9a9efc7fda13fda0c45f481b8a899b529634a6b7164b650b7306512d6e", null ],
       [ "CY_ADCCOMP_LPCOMP_IN_N_GPIO15", "group__group__adccomp__data__structures.html#ggaecf05cb9a9efc7fda13fda0c45f481b8a6a31228554462b5c438e675b28d43b6c", null ],
-      [ "CY_ADCCOMP_LPCOMP_IN_N_OPEN", "group__group__adccomp__data__structures.html#ggaecf05cb9a9efc7fda13fda0c45f481b8af0714e9a738c6a031611c84a9462c49a", null ]
+      [ "CY_ADCCOMP_LPCOMP_IN_N_OPEN", "group__group__adccomp__data__structures.html#ggaecf05cb9a9efc7fda13fda0c45f481b8af0714e9a738c6a031611c84a9462c49a", null ],
+      [ "CY_ADCCOMP_LPCOMP_1_IN_N_LHL_GPIO_6", "group__group__adccomp__data__structures.html#ggaecf05cb9a9efc7fda13fda0c45f481b8ad0db3d74d9e2191c322d7b30d9f9dcb8", null ],
+      [ "CY_ADCCOMP_LPCOMP_1_IN_N_LHL_GPIO_7", "group__group__adccomp__data__structures.html#ggaecf05cb9a9efc7fda13fda0c45f481b8aa95af10c19b6e44209c8d13094dcce70", null ],
+      [ "CY_ADCCOMP_LPCOMP_1_IN_N_OPEN", "group__group__adccomp__data__structures.html#ggaecf05cb9a9efc7fda13fda0c45f481b8a82d7d47b2e34b61687240a09da7bd9cc", null ],
+      [ "CY_ADCCOMP_LPCOMP_2_IN_N_LHL_GPIO_2", "group__group__adccomp__data__structures.html#ggaecf05cb9a9efc7fda13fda0c45f481b8a0a4f689087f423e67bfdfb5637e1eeca", null ],
+      [ "CY_ADCCOMP_LPCOMP_2_IN_N_LHL_GPIO_3", "group__group__adccomp__data__structures.html#ggaecf05cb9a9efc7fda13fda0c45f481b8a6e2fedb653560effa89120e528f3b9b4", null ],
+      [ "CY_ADCCOMP_LPCOMP_2_IN_N_OPEN", "group__group__adccomp__data__structures.html#ggaecf05cb9a9efc7fda13fda0c45f481b8a51a57745714dacd1a504521aef292354", null ]
     ] ],
     [ "cy_en_adccomp_lpcomp_positive_channel_t", "group__group__adccomp__data__structures.html#gacc65677f21a50bca8b6d30ff007c47a5", [
       [ "CY_ADCCOMP_LPCOMP_IN_P_GPIO26", "group__group__adccomp__data__structures.html#ggacc65677f21a50bca8b6d30ff007c47a5a83d146d32c6ab4045e0d15441c4e6642", null ],
       [ "CY_ADCCOMP_LPCOMP_IN_P_GPIO37", "group__group__adccomp__data__structures.html#ggacc65677f21a50bca8b6d30ff007c47a5a75e8b484389d3ba727f3ffbb5949bba1", null ],
       [ "CY_ADCCOMP_LPCOMP_IN_P_MIC", "group__group__adccomp__data__structures.html#ggacc65677f21a50bca8b6d30ff007c47a5a637bf2fc7cee2422031cc37cd95b5cbc", null ],
-      [ "CY_ADCCOMP_LPCOMP_IN_P_OPEN", "group__group__adccomp__data__structures.html#ggacc65677f21a50bca8b6d30ff007c47a5aefca85ff1824a4046e3db2e37cfcb244", null ]
+      [ "CY_ADCCOMP_LPCOMP_IN_P_OPEN", "group__group__adccomp__data__structures.html#ggacc65677f21a50bca8b6d30ff007c47a5aefca85ff1824a4046e3db2e37cfcb244", null ],
+      [ "CY_ADCCOMP_LPCOMP_1_IN_P_LHL_GPIO_8", "group__group__adccomp__data__structures.html#ggacc65677f21a50bca8b6d30ff007c47a5a53ee12678ed31257541ef9385b738fd3", null ],
+      [ "CY_ADCCOMP_LPCOMP_1_IN_P_LHL_GPIO_9", "group__group__adccomp__data__structures.html#ggacc65677f21a50bca8b6d30ff007c47a5a906d5cd248dafbcf1bb644ff4740bfb6", null ],
+      [ "CY_ADCCOMP_LPCOMP_1_IN_P_I_MIC", "group__group__adccomp__data__structures.html#ggacc65677f21a50bca8b6d30ff007c47a5ad1fa0ef0751de4cad21b61a0c40d1785", null ],
+      [ "CY_ADCCOMP_LPCOMP_1_IN_P_OPEN", "group__group__adccomp__data__structures.html#ggacc65677f21a50bca8b6d30ff007c47a5a05809831c30791e8cec4470d0948bebf", null ],
+      [ "CY_ADCCOMP_LPCOMP_2_IN_P_LHL_GPIO_4", "group__group__adccomp__data__structures.html#ggacc65677f21a50bca8b6d30ff007c47a5aa2b3e9dd808a12219267f63013f59eb0", null ],
+      [ "CY_ADCCOMP_LPCOMP_2_IN_P_LHL_GPIO_5", "group__group__adccomp__data__structures.html#ggacc65677f21a50bca8b6d30ff007c47a5ac5ff5ac9b75e4937a01c0569879d7ede", null ],
+      [ "CY_ADCCOMP_LPCOMP_2_IN_P_I_MIC", "group__group__adccomp__data__structures.html#ggacc65677f21a50bca8b6d30ff007c47a5a73b721924d37619027dc5e45f1cc7816", null ],
+      [ "CY_ADCCOMP_LPCOMP_2_IN_P_OPEN", "group__group__adccomp__data__structures.html#ggacc65677f21a50bca8b6d30ff007c47a5a5114eaab1ebcba55ffd1e8e50a95da8d", null ]
     ] ],
     [ "cy_en_adccomp_adc_clk_in_pdm_out_t", "group__group__adccomp__data__structures.html#ga6087a5787dc547e1c86f61d09cb95bc6", [
       [ "CY_ADCCOMP_ADC_CLK_IN_1MHZ_PDM_OUT_1MHZ", "group__group__adccomp__data__structures.html#gga6087a5787dc547e1c86f61d09cb95bc6a73096913751e94eee115d2e06b49827e", null ],

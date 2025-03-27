@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['u',['u',['../structwiced__bt__avrc__metadata__cmd__t.html#af6c92e2b36a394af505d0b8cdcef1da0',1,'wiced_bt_avrc_metadata_cmd_t::u()'],['../structwiced__bt__avrc__item__t.html#a2d4c2c401b70fd715d9b617a9f56fbc7',1,'wiced_bt_avrc_item_t::u()'],['../structwiced__bt__avrc__metadata__rsp__t.html#ab4d155ff0a66c03b4e97d4a947cde502',1,'wiced_bt_avrc_metadata_rsp_t::u()'],['../structwiced__bt__avrc__browse__rsp__t.html#ac22093ee5b6a2b53f40459d641631b44',1,'wiced_bt_avrc_browse_rsp_t::u()']]],
+  ['u',['u',['../structwiced__bt__avrc__metadata__cmd__t.html#a1c4346d906d176e33e19ac83ae55f4e4',1,'wiced_bt_avrc_metadata_cmd_t::u()'],['../structwiced__bt__avrc__item__t.html#afcf54b858f5bd2ab90368ecee608b485',1,'wiced_bt_avrc_item_t::u()'],['../structwiced__bt__avrc__metadata__rsp__t.html#a82d474e231a7ff7b970630053ccd5e28',1,'wiced_bt_avrc_metadata_rsp_t::u()'],['../structwiced__bt__avrc__browse__rsp__t.html#a97003d2e23585a46261ef643c6f9ee71',1,'wiced_bt_avrc_browse_rsp_t::u()']]],
   ['u16',['u16',['../structwiced__bt__sdp__discovery__attribute__value__t.html#a1234f83efa812e259523c91799614a3c',1,'wiced_bt_sdp_discovery_attribute_value_t']]],
   ['u32',['u32',['../structwiced__bt__sdp__discovery__attribute__value__t.html#ae65af0c4a8ee050043fe4b575f0a26a0',1,'wiced_bt_sdp_discovery_attribute_value_t']]],
   ['u8',['u8',['../structwiced__bt__sdp__discovery__attribute__value__t.html#a0084c9e8c5778849f41d9de5df9c0f85',1,'wiced_bt_sdp_discovery_attribute_value_t']]],
@@ -17,7 +17,7 @@ var searchData=
   ['user_5fkeypress_5fnotification',['user_keypress_notification',['../unionwiced__bt__management__evt__data__t.html#a546a002bbb71cc6e1eea8cbe87c70477',1,'wiced_bt_management_evt_data_t']]],
   ['user_5fpasskey_5fnotification',['user_passkey_notification',['../unionwiced__bt__management__evt__data__t.html#a8d622b7a6254ec437e0ba467d645c1db',1,'wiced_bt_management_evt_data_t']]],
   ['user_5fpasskey_5frequest',['user_passkey_request',['../unionwiced__bt__management__evt__data__t.html#a08ca47750f2155d6c50eae32321c73ec',1,'wiced_bt_management_evt_data_t']]],
-  ['uu',['uu',['../structwiced__bt__uuid__t.html#a4fa5d4fa7bed1c479e117d062f7a999f',1,'wiced_bt_uuid_t']]],
+  ['uu',['uu',['../structwiced__bt__uuid__t.html#afb53d31e2633aab304d7d6a84ca5d5fa',1,'wiced_bt_uuid_t']]],
   ['uuid',['uuid',['../structwiced__bt__gatt__read__by__type__t.html#a631c303993e27b6fc7f7e72c098fbcdc',1,'wiced_bt_gatt_read_by_type_t::uuid()'],['../structwiced__bt__gatt__discovery__param__t.html#a631c303993e27b6fc7f7e72c098fbcdc',1,'wiced_bt_gatt_discovery_param_t::uuid()']]],
   ['uuid128',['uuid128',['../structwiced__bt__uuid__t.html#a08ded6ece3acdfb0000c632cef6d82e7',1,'wiced_bt_uuid_t']]],
   ['uuid16',['uuid16',['../structwiced__bt__uuid__t.html#ae4ba2923b4d364d3472acf5ee2a7752c',1,'wiced_bt_uuid_t']]],

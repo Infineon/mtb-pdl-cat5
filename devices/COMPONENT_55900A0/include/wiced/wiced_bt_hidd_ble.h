@@ -19,7 +19,9 @@
   *
   *  @{
   */
-#pragma once
+#ifndef __WICED_BT_HIDD_BLE_H__
+#define __WICED_BT_HIDD_BLE_H__
+
 
 #include "wiced_bt_dev.h"
 #include "hiddefs.h"
@@ -278,3 +280,5 @@ wiced_bt_hidd_ble_status_t wiced_bt_hidd_ble_set_rsp_map_info(wiced_bt_hidd_ble_
 #endif
 
 /** @} wicedbt_hidd_ble */
+
+#endif //__WICED_BT_HIDD_BLE_H__

@@ -129,21 +129,21 @@ Enumerations</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:gae6867ba5a2c8a50b33025341283f491b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pin output config. <br /></td></tr>
 <tr class="separator:gae6867ba5a2c8a50b33025341283f491b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaaf8fd5f0e57d456151c951e0f3715fc4"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
-&#160;&#160;<a class="el" href="group___g_p_i_o_driver.html#ggaaf8fd5f0e57d456151c951e0f3715fc4a83b4ed5524dc27c6152919705119df48">GPIO_EDGE_TRIGGER_MASK</a> = 0x0001,
+<tr class="memitem:ga39fca1837c5ce7715cbf571669660c13"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<a class="el" href="group___g_p_i_o_driver.html#gga39fca1837c5ce7715cbf571669660c13a83b4ed5524dc27c6152919705119df48">GPIO_EDGE_TRIGGER_MASK</a> = 0x0001,
 <b>GPIO_EDGE_TRIGGER</b> = 0x0001,
 <b>GPIO_LEVEL_TRIGGER</b> = 0x0000,
-<a class="el" href="group___g_p_i_o_driver.html#ggaaf8fd5f0e57d456151c951e0f3715fc4a26e29e56c5d5de8b6347a1ecb1ff8d80">GPIO_TRIGGER_POLARITY_MASK</a> = 0x0002,
+<a class="el" href="group___g_p_i_o_driver.html#gga39fca1837c5ce7715cbf571669660c13a26e29e56c5d5de8b6347a1ecb1ff8d80">GPIO_TRIGGER_POLARITY_MASK</a> = 0x0002,
 <br />
 &#160;&#160;<b>GPIO_TRIGGER_NEG</b> = 0x0002,
-<a class="el" href="group___g_p_i_o_driver.html#ggaaf8fd5f0e57d456151c951e0f3715fc4afb319b3451ea86949c1abaa47ba9c89b">GPIO_DUAL_EDGE_TRIGGER_MASK</a> = 0x0004,
+<a class="el" href="group___g_p_i_o_driver.html#gga39fca1837c5ce7715cbf571669660c13afb319b3451ea86949c1abaa47ba9c89b">GPIO_DUAL_EDGE_TRIGGER_MASK</a> = 0x0004,
 <b>GPIO_EDGE_TRIGGER_BOTH</b> = 0x0004,
 <b>GPIO_EDGE_TRIGGER_SINGLE</b> = 0x0000,
 <br />
-&#160;&#160;<a class="el" href="group___g_p_i_o_driver.html#ggaaf8fd5f0e57d456151c951e0f3715fc4af4308306d2240e90954eee6766367155">GPIO_INTERRUPT_ENABLE_MASK</a> = 0x0008,
+&#160;&#160;<a class="el" href="group___g_p_i_o_driver.html#gga39fca1837c5ce7715cbf571669660c13af4308306d2240e90954eee6766367155">GPIO_INTERRUPT_ENABLE_MASK</a> = 0x0008,
 <b>GPIO_INTERRUPT_ENABLE</b> = 0x0008,
 <b>GPIO_INTERRUPT_DISABLE</b> = 0x0000,
-<a class="el" href="group___g_p_i_o_driver.html#ggaaf8fd5f0e57d456151c951e0f3715fc4a139f26b8d3313940c8f3aac5536dc922">GPIO_EN_INT_MASK</a> = GPIO_EDGE_TRIGGER_MASK | GPIO_TRIGGER_POLARITY_MASK | GPIO_DUAL_EDGE_TRIGGER_MASK | GPIO_INTERRUPT_ENABLE_MASK,
+<a class="el" href="group___g_p_i_o_driver.html#gga39fca1837c5ce7715cbf571669660c13a139f26b8d3313940c8f3aac5536dc922">GPIO_EN_INT_MASK</a> = GPIO_EDGE_TRIGGER_MASK | GPIO_TRIGGER_POLARITY_MASK | GPIO_DUAL_EDGE_TRIGGER_MASK | GPIO_INTERRUPT_ENABLE_MASK,
 <br />
 &#160;&#160;<b>GPIO_EN_INT_LEVEL_HIGH</b> = GPIO_INTERRUPT_ENABLE | GPIO_LEVEL_TRIGGER,
 <b>GPIO_EN_INT_LEVEL_LOW</b> = GPIO_INTERRUPT_ENABLE | GPIO_LEVEL_TRIGGER | GPIO_TRIGGER_NEG,
@@ -151,32 +151,32 @@ Enumerations</h2></td></tr>
 <b>GPIO_EN_INT_FALLING_EDGE</b> = GPIO_INTERRUPT_ENABLE | GPIO_EDGE_TRIGGER | GPIO_TRIGGER_NEG,
 <br />
 &#160;&#160;<b>GPIO_EN_INT_BOTH_EDGE</b> = GPIO_INTERRUPT_ENABLE | GPIO_EDGE_TRIGGER | GPIO_EDGE_TRIGGER_BOTH,
-<a class="el" href="group___g_p_i_o_driver.html#ggaaf8fd5f0e57d456151c951e0f3715fc4a4111531c8681de23e196f4aba8612da1">GPIO_INPUT_ENABLE</a> = 0x0000,
+<a class="el" href="group___g_p_i_o_driver.html#gga39fca1837c5ce7715cbf571669660c13a4111531c8681de23e196f4aba8612da1">GPIO_INPUT_ENABLE</a> = 0x0000,
 <b>GPIO_OUTPUT_DISABLE</b> = 0x0000,
 <b>GPIO_OUTPUT_ENABLE</b> = 0x4000,
 <br />
 &#160;&#160;<b>GPIO_KS_OUTPUT_ENABLE</b> = 0x0001,
 <b>GPIO_OUTPUT_FN_SEL_MASK</b> = 0x0000,
 <b>GPIO_OUTPUT_FN_SEL_SHIFT</b> = 0,
-<a class="el" href="group___g_p_i_o_driver.html#ggaaf8fd5f0e57d456151c951e0f3715fc4a3e892d32c8b3a38f4c20d7652c877740">GPIO_GLOBAL_INPUT_ENABLE</a> = 0x0000,
+<a class="el" href="group___g_p_i_o_driver.html#gga39fca1837c5ce7715cbf571669660c13a3e892d32c8b3a38f4c20d7652c877740">GPIO_GLOBAL_INPUT_ENABLE</a> = 0x0000,
 <br />
 &#160;&#160;<b>GPIO_GLOBAL_INPUT_DISABLE</b> = 0x0040,
-<a class="el" href="group___g_p_i_o_driver.html#ggaaf8fd5f0e57d456151c951e0f3715fc4a6bf73d95a8c14336915192a7697ad188">GPIO_PULL_UP_DOWN_NONE</a> = 0x0000,
+<a class="el" href="group___g_p_i_o_driver.html#gga39fca1837c5ce7715cbf571669660c13a6bf73d95a8c14336915192a7697ad188">GPIO_PULL_UP_DOWN_NONE</a> = 0x0000,
 <b>GPIO_PULL_UP</b> = 0x0400,
 <b>GPIO_PULL_DOWN</b> = 0x0200,
 <br />
 &#160;&#160;<b>GPIO_INPUT_DISABLE</b> = 0x0600,
-<a class="el" href="group___g_p_i_o_driver.html#ggaaf8fd5f0e57d456151c951e0f3715fc4afaaf0f0e28ca18ea71124e793c11d4e8">GPIO_DRIVE_SEL_MASK</a> = 0x0800,
+<a class="el" href="group___g_p_i_o_driver.html#gga39fca1837c5ce7715cbf571669660c13afaaf0f0e28ca18ea71124e793c11d4e8">GPIO_DRIVE_SEL_MASK</a> = 0x0800,
 <b>GPIO_DRIVE_SEL_LOWEST</b> = 0x0000,
 <b>GPIO_DRIVE_SEL_MIDDLE_0</b> = 0x0000,
 <br />
 &#160;&#160;<b>GPIO_DRIVE_SEL_MIDDLE_1</b> = 0x0800,
 <b>GPIO_DRIVE_SEL_HIGHEST</b> = 0x0800,
-<a class="el" href="group___g_p_i_o_driver.html#ggaaf8fd5f0e57d456151c951e0f3715fc4a0ea30f9f30b101dbf42180b9d68ca2ae">GPIO_HYSTERESIS_MASK</a> = 0x2000,
+<a class="el" href="group___g_p_i_o_driver.html#gga39fca1837c5ce7715cbf571669660c13a0ea30f9f30b101dbf42180b9d68ca2ae">GPIO_HYSTERESIS_MASK</a> = 0x2000,
 <b>GPIO_HYSTERESIS_ON</b> = 0x2000,
 <br />
 &#160;&#160;<b>GPIO_HYSTERESIS_OFF</b> = 0x0000,
-<a class="el" href="group___g_p_i_o_driver.html#ggaaf8fd5f0e57d456151c951e0f3715fc4ab095761b40fd232d8e4395a7d72bd365">GPIO_ARM_DRIVE_SEL_02MA</a> = 0X40000000,
+<a class="el" href="group___g_p_i_o_driver.html#gga39fca1837c5ce7715cbf571669660c13ab095761b40fd232d8e4395a7d72bd365">GPIO_ARM_DRIVE_SEL_02MA</a> = 0X40000000,
 <b>GPIO_ARM_DRIVE_SEL_04MA</b> = 0X40100000,
 <b>GPIO_ARM_DRIVE_SEL_06MA</b> = 0X40200000,
 <br />
@@ -188,8 +188,8 @@ Enumerations</h2></td></tr>
 &#160;&#160;<b>GPIO_ARM_DRIVE_SEL_16MA</b> = 0X40B00000
 <br />
  }</td></tr>
-<tr class="memdesc:gaaf8fd5f0e57d456151c951e0f3715fc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The following enum defines the constant values for the GPIO driver and associated GPIOs, each of which has a set of configuration signals.  <a href="group___g_p_i_o_driver.html#gaaf8fd5f0e57d456151c951e0f3715fc4">More...</a><br /></td></tr>
-<tr class="separator:gaaf8fd5f0e57d456151c951e0f3715fc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:ga39fca1837c5ce7715cbf571669660c13"><td class="mdescLeft">&#160;</td><td class="mdescRight">The following enum defines the constant values for the GPIO driver and associated GPIOs, each of which has a set of configuration signals.  <a href="group___g_p_i_o_driver.html#ga39fca1837c5ce7715cbf571669660c13">More...</a><br /></td></tr>
+<tr class="separator:ga39fca1837c5ce7715cbf571669660c13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6668f4196eba895096ea26bdfbcd4125"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ga6668f4196eba895096ea26bdfbcd4125"></a>enum &#160;</td><td class="memItemRight" valign="bottom"><b>wiced_bt_gpio_numbers_t</b> { <br />
 &#160;&#160;<b>WICED_P00</b> = 0,
 <b>WICED_P01</b>,

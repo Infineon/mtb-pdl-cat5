@@ -14,7 +14,9 @@
  * @{
  */
 
-#pragma once
+#ifndef __WICED_BT_STACK_PLATFORM_H__
+#define __WICED_BT_STACK_PLATFORM_H__
+
 
 #include <stdarg.h>
 #include "wiced_bt_types.h"
@@ -333,3 +335,5 @@ void wiced_bt_stack_init_internal(wiced_bt_management_cback_t mgmt_cback,
 void wiced_bt_stack_shutdown(void);
 
 /**@} wiced_bt_platform_group */
+
+#endif //__WICED_BT_STACK_PLATFORM_H__

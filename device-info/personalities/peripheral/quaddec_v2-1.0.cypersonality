@@ -243,18 +243,18 @@
 
     <!--Trigger Output DRCs-->
     <DRC type="ERROR" text="Trigger 0 Event has to be enabled to use Trigger 0 Signal." condition="`${hasConnection(&quot;tr_out0&quot;, 0) &amp;&amp; (trigger0Event eq CY_TCPWM_CNT_TRIGGER_ON_DISABLED)}`" paramId="trigger0Event">
-        <FixIt action="SET_PARAM" target="trigger0Event" value="CY_TCPWM_CNT_TRIGGER_ON_OVERFLOW" valid="true" />
-        <FixIt action="SET_PARAM" target="trigger0Event" value="CY_TCPWM_CNT_TRIGGER_ON_UNDEFLOW" valid="true" />
+        <FixIt action="SET_PARAM" target="trigger0Event" value="CY_TCPWM_CNT_TRIGGER_ON_OVERFLOW" valid="`${QuadMode eq CY_TCPWM_QUADDEC_MODE_RANGE1_CAPT || QuadMode eq CY_TCPWM_QUADDEC_MODE_RANGE1_CMP}`" />
+        <FixIt action="SET_PARAM" target="trigger0Event" value="CY_TCPWM_CNT_TRIGGER_ON_UNDEFLOW" valid="`${QuadMode eq CY_TCPWM_QUADDEC_MODE_RANGE1_CAPT || QuadMode eq CY_TCPWM_QUADDEC_MODE_RANGE1_CMP}`" />
         <FixIt action="SET_PARAM" target="trigger0Event" value="CY_TCPWM_CNT_TRIGGER_ON_TC" valid="true" />
         <FixIt action="SET_PARAM" target="trigger0Event" value="CY_TCPWM_CNT_TRIGGER_ON_CC0_MATCH" valid="true" />
-        <FixIt action="SET_PARAM" target="trigger0Event" value="CY_TCPWM_CNT_TRIGGER_ON_CC1_MATCH" valid="false" />
+        <FixIt action="SET_PARAM" target="trigger0Event" value="CY_TCPWM_CNT_TRIGGER_ON_CC1_MATCH" valid="`${pCntCC1 &amp;&amp; !(QuadMode eq CY_TCPWM_QUADDEC_MODE_RANGE0)}`" />
     </DRC>
     <DRC type="ERROR" text="Trigger 1 Event has to be enabled to use Trigger 1 Signal." condition="`${hasConnection(&quot;tr_out1&quot;, 0) &amp;&amp; (trigger1Event eq CY_TCPWM_CNT_TRIGGER_ON_DISABLED)}`" paramId="trigger1Event">
-          <FixIt action="SET_PARAM" target="trigger1Event" value="CY_TCPWM_CNT_TRIGGER_ON_OVERFLOW" valid="true" />
-        <FixIt action="SET_PARAM" target="trigger1Event" value="CY_TCPWM_CNT_TRIGGER_ON_UNDEFLOW" valid="true" />
+          <FixIt action="SET_PARAM" target="trigger1Event" value="CY_TCPWM_CNT_TRIGGER_ON_OVERFLOW" valid="`${QuadMode eq CY_TCPWM_QUADDEC_MODE_RANGE1_CAPT || QuadMode eq CY_TCPWM_QUADDEC_MODE_RANGE1_CMP}`" />
+        <FixIt action="SET_PARAM" target="trigger1Event" value="CY_TCPWM_CNT_TRIGGER_ON_UNDEFLOW" valid="`${QuadMode eq CY_TCPWM_QUADDEC_MODE_RANGE1_CAPT || QuadMode eq CY_TCPWM_QUADDEC_MODE_RANGE1_CMP}`" />
         <FixIt action="SET_PARAM" target="trigger1Event" value="CY_TCPWM_CNT_TRIGGER_ON_TC" valid="true" />
         <FixIt action="SET_PARAM" target="trigger1Event" value="CY_TCPWM_CNT_TRIGGER_ON_CC0_MATCH" valid="true" />
-        <FixIt action="SET_PARAM" target="trigger1Event" value="CY_TCPWM_CNT_TRIGGER_ON_CC1_MATCH" valid="false" />
+        <FixIt action="SET_PARAM" target="trigger1Event" value="CY_TCPWM_CNT_TRIGGER_ON_CC1_MATCH" valid="`${pCntCC1 &amp;&amp; !(QuadMode eq CY_TCPWM_QUADDEC_MODE_RANGE0)}`" />
     </DRC>
   </DRCs>
 

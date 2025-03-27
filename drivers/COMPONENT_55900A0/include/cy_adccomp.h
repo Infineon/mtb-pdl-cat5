@@ -97,38 +97,55 @@ typedef enum
 typedef enum
 {
     /**< ADC input channel for DC conversion */
-    CY_ADCCOMP_ADC_IN_GPIO0,        /**< GPIO 0  */
-    CY_ADCCOMP_ADC_IN_GPIO1,        /**< GPIO 1  */
-    CY_ADCCOMP_ADC_IN_GPIO2,        /**< GPIO 2  */
-    CY_ADCCOMP_ADC_IN_GPIO3,        /**< GPIO 3  */
-    CY_ADCCOMP_ADC_IN_GPIO4,        /**< GPIO 4  */
-    CY_ADCCOMP_ADC_IN_GPIO5,        /**< GPIO 5  */
-    CY_ADCCOMP_ADC_IN_GPIO6,        /**< GPIO 6  */
-    CY_ADCCOMP_ADC_IN_GPIO7,        /**< GPIO 7  */
+    CY_ADCCOMP_ADC_IN_GPIO0,        /**< GPIO 0  DEPRECATED */
+    CY_ADCCOMP_ADC_IN_GPIO1,        /**< GPIO 1  DEPRECATED */
+    CY_ADCCOMP_ADC_IN_GPIO2,        /**< GPIO 2  DEPRECATED */
+    CY_ADCCOMP_ADC_IN_GPIO3,        /**< GPIO 3  DEPRECATED */
+    CY_ADCCOMP_ADC_IN_GPIO4,        /**< GPIO 4  DEPRECATED */
+    CY_ADCCOMP_ADC_IN_GPIO5,        /**< GPIO 5  DEPRECATED */
+    CY_ADCCOMP_ADC_IN_GPIO6,        /**< GPIO 6  DEPRECATED */
+    CY_ADCCOMP_ADC_IN_GPIO7,        /**< GPIO 7  DEPRECATED */
+    CY_ADCCOMP_ADC_IN_LHL_GPIO_2 = 0,        /**< GPIO 0  */
+    CY_ADCCOMP_ADC_IN_LHL_GPIO_3 = 1,        /**< GPIO 1  */
+    CY_ADCCOMP_ADC_IN_LHL_GPIO_4 = 2,        /**< GPIO 2  */
+    CY_ADCCOMP_ADC_IN_LHL_GPIO_5 = 3,        /**< GPIO 3  */
+    CY_ADCCOMP_ADC_IN_LHL_GPIO_6 = 4,        /**< GPIO 4  */
+    CY_ADCCOMP_ADC_IN_LHL_GPIO_7 = 5,        /**< GPIO 5  */
+    CY_ADCCOMP_ADC_IN_LHL_GPIO_8 = 6,        /**< GPIO 6  */
+    CY_ADCCOMP_ADC_IN_LHL_GPIO_9 = 7,        /**< GPIO 7  */
+    CY_ADCCOMP_ADC_IN_I_MIC = 8,
     CY_ADCCOMP_ADC_IN_OPEN = 16     /**< input to ADC is open */
 }cy_en_adccomp_adc_dc_channel_t;
 
 typedef enum
 {
-    /**< ADC input channel for audio capture */
-    CY_ADCCOMP_ADC_IN_MIC = 8
-}cy_en_adccomp_adc_mic_channel_t;
-
-typedef enum
-{
     /**< Comparator -ve terminal input MUX */
-    CY_ADCCOMP_LPCOMP_IN_N_GPIO04,  /**< GPIO0 to LPCOMP2 -ve terminal or GPIO4 to LPCOMP1 -ve terminal*/
-    CY_ADCCOMP_LPCOMP_IN_N_GPIO15,  /**< GPIO1 to LPCOMP2 -ve terminal or GPIO5 to LPCOMP1 -ve terminal*/
-    CY_ADCCOMP_LPCOMP_IN_N_OPEN     /**< comparator negative terminal input to open */
+    CY_ADCCOMP_LPCOMP_IN_N_GPIO04,  /**< GPIO0 to LPCOMP2 -ve terminal or GPIO4 to LPCOMP1 -ve terminal  DEPRECATED */
+    CY_ADCCOMP_LPCOMP_IN_N_GPIO15,  /**< GPIO1 to LPCOMP2 -ve terminal or GPIO5 to LPCOMP1 -ve terminal  DEPRECATED */
+    CY_ADCCOMP_LPCOMP_IN_N_OPEN = 4,   /**< LPCOMP negative terminal input to open */
+    CY_ADCCOMP_LPCOMP_1_IN_N_LHL_GPIO_6 = 0,  /**< Comparator 1's -ve terminal is LHL_GPIO_6 */
+    CY_ADCCOMP_LPCOMP_1_IN_N_LHL_GPIO_7 = 1,  /**< Comparator 1's -ve terminal is LHL_GPIO_7 */
+    CY_ADCCOMP_LPCOMP_1_IN_N_OPEN = 4,   /**< comparator 1's negative terminal input to open */
+    CY_ADCCOMP_LPCOMP_2_IN_N_LHL_GPIO_2 = 0,  /**< Comparator 2's -ve terminal is LHL_GPIO_2 */
+    CY_ADCCOMP_LPCOMP_2_IN_N_LHL_GPIO_3 = 1,  /**< Comparator 2's -ve terminal is LHL_GPIO_3 */
+    CY_ADCCOMP_LPCOMP_2_IN_N_OPEN = 4,   /**< comparator 2's negative terminal input to open */
 } cy_en_adccomp_lpcomp_negative_channel_t;
 
 typedef enum
 {
     /**< Comparator +ve terminal input MUX */
-    CY_ADCCOMP_LPCOMP_IN_P_GPIO26,  /**< GPIO2 to LPCOMP2 +ve terminal or GPIO6 to LPCOMP1 +ve terminal*/
-    CY_ADCCOMP_LPCOMP_IN_P_GPIO37,  /**< GPIO3 to LPCOMP2 +ve terminal or GPIO7 to LPCOMP1 +ve terminal*/
+    CY_ADCCOMP_LPCOMP_IN_P_GPIO26,  /**< GPIO2 to LPCOMP2 +ve terminal or GPIO6 to LPCOMP1 +ve terminal  DEPRECATED */
+    CY_ADCCOMP_LPCOMP_IN_P_GPIO37,  /**< GPIO3 to LPCOMP2 +ve terminal or GPIO7 to LPCOMP1 +ve terminal  DEPRECATED */
     CY_ADCCOMP_LPCOMP_IN_P_MIC,     /**< MIC input to positive terminal of comparator. Applicable only in NTD mode */
-    CY_ADCCOMP_LPCOMP_IN_P_OPEN = 4     /**< comparator positive terminal input to open */
+    CY_ADCCOMP_LPCOMP_IN_P_OPEN = 4,   /**< LPCOMP positive terminal input to open */
+    CY_ADCCOMP_LPCOMP_1_IN_P_LHL_GPIO_8 = 0,  /**< Comparator 1's +ve terminal is LHL_GPIO_8 */
+    CY_ADCCOMP_LPCOMP_1_IN_P_LHL_GPIO_9 = 1,  /**< Comparator 1's +ve terminal is LHL_GPIO_9 */
+    CY_ADCCOMP_LPCOMP_1_IN_P_I_MIC = 2,  /**< Comparator 1's +ve terminal is i_MIC */
+    CY_ADCCOMP_LPCOMP_1_IN_P_OPEN = 4,  /**< Comparator 1's +ve terminal is open*/
+    CY_ADCCOMP_LPCOMP_2_IN_P_LHL_GPIO_4 = 0,  /**< Comparator 1's +ve terminal is LHL_GPIO_4 */
+    CY_ADCCOMP_LPCOMP_2_IN_P_LHL_GPIO_5 = 1,  /**< Comparator 2's +ve terminal is LHL_GPIO_5 */
+    CY_ADCCOMP_LPCOMP_2_IN_P_I_MIC = 2,  /**< Comparator 1's +ve terminal is i_MIC */
+    CY_ADCCOMP_LPCOMP_2_IN_P_OPEN = 4,  /**< Comparator 1's +ve terminal is open */
 } cy_en_adccomp_lpcomp_positive_channel_t;
 
 /**< Hysterisis for lpcomp1. The output of the comparator is asserted

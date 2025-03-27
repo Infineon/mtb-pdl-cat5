@@ -229,7 +229,7 @@ typedef enum
 /** \brief WLSS System - Wake sources */
 typedef enum
 {
-    WLSS_SYSTEM_PMU_WAKE_SRC_GCI2BT = 4096,
+    WLSS_SYSTEM_PMU_WAKE_SRC_WLIO = 4096,
 } WLSS_SYSTEM_SLEEP_PMU_WAKE_SRC_t;
 
 typedef enum
@@ -265,6 +265,14 @@ typedef struct
     BTSS_SYSTEM_SLEEP_ACTIVE_CONFIG_t                  host_wake_mode;         /**< Active level for host wake */
     BTSS_SYSTEM_SLEEP_ACTIVE_CONFIG_t                  device_wake_mode;       /**< Active level for device wake */
 } BTSS_SYSTEM_SLEEP_PARAMS_t;
+
+/** \brief Flash power down mode control methods */
+typedef enum
+{
+    BTSS_SYSTEM_FLASH_POWER_DOWN_CMD_DISALLOW = 0, /* Disallow deep power down command to flash */
+    BTSS_SYSTEM_FLASH_POWER_DOWN_CMD_ALLOW_APP_CONTROL = 1, /* Allow deep power down command to flash by application */
+    BTSS_SYSTEM_FLASH_POWER_DOWN_CMD_ALLOW_BT_CONTROL = 2, /* Allow deep power down command to flash by BT */
+} BTSS_SYSTEM_FLASH_POWER_DOWN_CMD_t;
 
 /** \brief Pre-Sleep Callback from PMU thread */
 typedef BTSS_SYSTEM_PMU_SLEEP_MODE_t(*BTSS_SYSTEM_PRE_SLEEP_CB_t)(BTSS_SYSTEM_PMU_SLEEP_MODE_t sleep_mode, UINT32 sleep_time_in_lpo_cycles);
@@ -562,6 +570,72 @@ UINT32 btss_system_enableSleepAndPause(void);
  * \return       disable request count : UINT32
  */
 UINT32 btss_system_getSleepAndPauseDisabledCount(void);
+
+/**
+ * Function btss_smif_flash_isPowerDownCmdAllowed
+ *
+ * Returns TRUE if the deep power down command to flash is allowed.
+ *
+ * \param[in]    none
+ *
+ * \return       BTSS_SYSTEM_FLASH_POWER_DOWN_CMD_t
+ */
+BTSS_SYSTEM_FLASH_POWER_DOWN_CMD_t btss_smif_flash_isPowerDownCmdAllowed(void);
+
+/**
+ * Function btss_smif_flash_allowPowerDownCmd
+ *
+ * mask/unmasks the power down cmd as per request, returns TRUE if the deep power down command to flash is allowed.
+ *
+ * \param[in]    BTSS_SYSTEM_FLASH_POWER_DOWN_CMD_t
+ *
+ * \return       TRUE/FALSE  : BOOL32
+ */
+BTSS_SYSTEM_FLASH_POWER_DOWN_CMD_t btss_smif_flash_allowPowerDownCmd(BTSS_SYSTEM_FLASH_POWER_DOWN_CMD_t allowed);
+
+/**
+ * Function btss_smif_flash_deepPowerDown
+ *
+ * Returns TRUE if the deep power down command to flash is acknowledged.
+ *
+ * \param[in]    none
+ *
+ * \return       TRUE/FALSE  : BOOL32
+ */
+BOOL32 btss_smif_flash_deepPowerDown(void);
+
+/**
+ * Function btss_smif_flash_releasePowerDown
+ *
+ * Returns TRUE if the release power down command to flash is acknowledged.
+ *
+ * \param[in]    none
+ *
+ * \return       TRUE/FALSE  : BOOL32
+ */
+BOOL32 btss_smif_flash_releasePowerDown(void);
+
+/**
+ * Function btss_system_overrideBtSleepInhibition(BOOL32 sleepAllowed)
+ *
+ * BT sleep is inhibited with iLPO sources, this function can override the inhibition
+ *
+ * \param[in]    sleepAllowed : BOOL32
+ *
+ * \return       none
+ */
+void btss_system_overrideBtSleepInhibition(BOOL32 sleepAllowed);
+
+/**
+ * Function btss_system_isBtSleepAllowed(void)
+ *
+ * Returns TRUE if the BT sleep is allowed
+ *
+ * \param[in]    none
+ *
+ * \return       TRUE/FALSE : BOOL32
+ */
+BOOL32 btss_system_isBtSleepAllowed(void);
 
 /** \} group_syspm_function */
 

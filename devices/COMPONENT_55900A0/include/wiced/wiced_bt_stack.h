@@ -17,7 +17,9 @@
  * AIROC Bluetooth Framework Functions
  */
 
-#pragma once
+#ifndef __WICED_BT_STACK_H__
+#define __WICED_BT_STACK_H__
+
 #include "wiced_bt_cfg.h"
 #include "wiced_bt_dev.h"
 
@@ -91,3 +93,5 @@ wiced_result_t wiced_bt_init_resolution(void);
 #ifdef __cplusplus
 }
 #endif
+
+#endif //__WICED_BT_STACK_H__

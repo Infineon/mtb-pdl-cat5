@@ -2,7 +2,9 @@
  * $ Copyright 2016-YEAR Cypress Semiconductor $
  */
 
-#pragma once
+#ifndef __WICED_BT_A2DP_DEFS_H__
+#define __WICED_BT_A2DP_DEFS_H__
+
 
 #ifdef __cplusplus
 extern "C"
@@ -78,3 +80,5 @@ typedef struct
 #ifdef __cplusplus
 } /*extern "C" */
 #endif
+
+#endif //__WICED_BT_A2DP_DEFS_H__

@@ -332,15 +332,20 @@ var group__wicedbt___device_management =
       [ "conn_handle", "structwiced__bt__lq__stats__result__s.html#a0d5ffe38d68e48d81e61fc6a4999ae68", null ],
       [ "le_stats", "structwiced__bt__lq__stats__result__s.html#acd89a2e262012d5dbf9b0d8d03111bc1", null ],
       [ "status", "structwiced__bt__lq__stats__result__s.html#ade818037fd6c985038ff29656089758d", null ],
-      [ "wiced_bt_lq_stats", "structwiced__bt__lq__stats__result__s.html#a2bb186e5e910ffa939b5d59096c093c7", null ]
+      [ "wiced_bt_lq_stats", "structwiced__bt__lq__stats__result__s.html#a3df352c44ba2f3122ecca3d9963e62d1", null ]
     ] ],
     [ "wiced_bt_ble_device_addr_update_t", "structwiced__bt__ble__device__addr__update__t.html", [
       [ "bdaddr", "structwiced__bt__ble__device__addr__update__t.html#a17f123b687ff9e7b1ff6f55af5fe0865", null ],
       [ "status", "structwiced__bt__ble__device__addr__update__t.html#ade818037fd6c985038ff29656089758d", null ]
     ] ],
+    [ "wiced_bt_ble_channel_sel_algo_event_data_t", "structwiced__bt__ble__channel__sel__algo__event__data__t.html", [
+      [ "channel_sel_algo", "structwiced__bt__ble__channel__sel__algo__event__data__t.html#a25ec3e1a7bdf90a134cfc44474b76877", null ],
+      [ "connection_handle", "structwiced__bt__ble__channel__sel__algo__event__data__t.html#aba34c4fc9a022b191f48e9d28a9a7e36", null ]
+    ] ],
     [ "wiced_bt_management_evt_data_t", "unionwiced__bt__management__evt__data__t.html", [
       [ "ble_addr_update_event", "unionwiced__bt__management__evt__data__t.html#a579e5c5fd5fbf106e4b3ccbb62d8c23b", null ],
       [ "ble_advert_state_changed", "unionwiced__bt__management__evt__data__t.html#a69241b6597cc913252640e2abf4dd151", null ],
+      [ "ble_channel_sel_algo_event", "unionwiced__bt__management__evt__data__t.html#a0c32fd05aa2b4be71f23f1ca6f42885f", null ],
       [ "ble_connection_param_update", "unionwiced__bt__management__evt__data__t.html#a9c1996f9188a2d787ceca68ecc64d046", null ],
       [ "ble_data_length_update_event", "unionwiced__bt__management__evt__data__t.html#a79cec34a0ac8a2711b35657fc5b6ad09", null ],
       [ "ble_multi_adv_response_event", "unionwiced__bt__management__evt__data__t.html#a3f7883c79ee85b4417cbade15c68a93e", null ],
@@ -377,7 +382,6 @@ var group__wicedbt___device_management =
       [ "user_passkey_request", "unionwiced__bt__management__evt__data__t.html#a08ca47750f2155d6c50eae32321c73ec", null ]
     ] ],
     [ "BR/EDR (Bluetooth Basic Rate / Enhanced Data Rate)", "group__wicedbt__bredr.html", "group__wicedbt__bredr" ],
-    [ "LE (Bluetooth Low Energy)", "group__btm__ble__api__functions.html", "group__btm__ble__api__functions" ],
     [ "Utilities", "group__wicedbt__utility.html", "group__wicedbt__utility" ],
     [ "BTM_AFH_CHNL_MAP_SIZE", "group__wicedbt___device_management.html#ga4549fd128a3e5a4c0b7499a154130377", null ],
     [ "BTM_BLE_ADVERT_MODE", "group__wicedbt___device_management.html#gab0cb201b9cdc382e537c80c729cb3571", null ],
@@ -422,7 +426,9 @@ var group__wicedbt___device_management =
     [ "WICED_POWER_STATE_SNIFF", "group__wicedbt___device_management.html#ga94cb8faf8d9047317cbff34aaf7bd1ab", null ],
     [ "WICED_POWER_STATE_SSR", "group__wicedbt___device_management.html#ga5d5e4c3ab1b51f9ed2c1c7742791ef6c", null ],
     [ "wiced_bt_ble_advert_mode_t", "group__wicedbt___device_management.html#gad1d90fe02e687ba52b02f970cb0ad3d3", null ],
+    [ "wiced_bt_ble_channel_sel_algo_t", "group__wicedbt___device_management.html#gad95b6f7034311b47b240b8a711001988", null ],
     [ "wiced_bt_ble_conn_mode_t", "group__wicedbt___device_management.html#ga4309edd4a7a1c7f30bdc57d8107e84ab", null ],
+    [ "wiced_bt_ble_connection_handle_t", "group__wicedbt___device_management.html#gab97503fa3bb2bcc42dc82b24171b11b4", null ],
     [ "wiced_bt_ble_keys_t", "group__wicedbt___device_management.html#ga32dac85b7f2b9e4ff7abec5d42586b28", null ],
     [ "wiced_bt_ble_scan_type_t", "group__wicedbt___device_management.html#gafaba53a20aad0fb7a2536d9c2df7c96e", null ],
     [ "wiced_bt_br_chnl_map_t", "group__wicedbt___device_management.html#ga749420c98d9a38dfd69c313520fbdae9", null ],
@@ -456,33 +462,33 @@ var group__wicedbt___device_management =
     [ "wiced_bt_sco_type_t", "group__wicedbt___device_management.html#gaa60fe446ece8ef8847c1dc84e6485ccc", null ],
     [ "wiced_bt_smp_sec_level_t", "group__wicedbt___device_management.html#gaca4147177a51487244e4fb3876dd1986", null ],
     [ "wiced_bt_smp_status_t", "group__wicedbt___device_management.html#gaed9ea4328615e51aae386ffa2db1b6bc", [
-      [ "BTM_EIR_UUID_SERVCLASS_SERIAL_PORT", "group__wicedbt___device_management.html#ggaf9bdc3014f3d54c426b6d2df10de4960ad4349d945b3245a129419012433bad7d", null ],
-      [ "BTM_EIR_UUID_SERVCLASS_DIALUP_NETWORKING", "group__wicedbt___device_management.html#ggaf9bdc3014f3d54c426b6d2df10de4960a97cdfbfedb9320af72f56d21b5730536", null ],
-      [ "BTM_EIR_UUID_SERVCLASS_IRMC_SYNC", "group__wicedbt___device_management.html#ggaf9bdc3014f3d54c426b6d2df10de4960a32c74a173f55fcae993e2a759e274d9f", null ],
-      [ "BTM_EIR_UUID_SERVCLASS_OBEX_OBJECT_PUSH", "group__wicedbt___device_management.html#ggaf9bdc3014f3d54c426b6d2df10de4960ae23f277d5d823c7ed5b9ce50f2b75d7f", null ],
-      [ "BTM_EIR_UUID_SERVCLASS_OBEX_FILE_TRANSFER", "group__wicedbt___device_management.html#ggaf9bdc3014f3d54c426b6d2df10de4960a416e20059273fe844067df7aad4a9955", null ],
-      [ "BTM_EIR_UUID_SERVCLASS_IRMC_SYNC_COMMAND", "group__wicedbt___device_management.html#ggaf9bdc3014f3d54c426b6d2df10de4960aeb9e797e875191f3ec64968a8fce9675", null ],
-      [ "BTM_EIR_UUID_SERVCLASS_HEADSET", "group__wicedbt___device_management.html#ggaf9bdc3014f3d54c426b6d2df10de4960a55f09cc5794a12ece872c50eca6a9c10", null ],
-      [ "BTM_EIR_UUID_SERVCLASS_AUDIO_SOURCE", "group__wicedbt___device_management.html#ggaf9bdc3014f3d54c426b6d2df10de4960ab8444232c8545ae7dc1b3b9334c0c1ef", null ],
-      [ "BTM_EIR_UUID_SERVCLASS_AUDIO_SINK", "group__wicedbt___device_management.html#ggaf9bdc3014f3d54c426b6d2df10de4960a940fad4b8dbb45d21c4f94b0c19257bd", null ],
-      [ "BTM_EIR_UUID_SERVCLASS_AV_REM_CTRL_TARGET", "group__wicedbt___device_management.html#ggaf9bdc3014f3d54c426b6d2df10de4960af0a126788f101a830b3489291db38401", null ],
-      [ "BTM_EIR_UUID_SERVCLASS_AV_REMOTE_CONTROL", "group__wicedbt___device_management.html#ggaf9bdc3014f3d54c426b6d2df10de4960acd4e8e3d63e1d455584fc29f38b9953e", null ],
-      [ "BTM_EIR_UUID_SERVCLASS_HEADSET_AUDIO_GATEWAY", "group__wicedbt___device_management.html#ggaf9bdc3014f3d54c426b6d2df10de4960a973e50c84c74bcd76559b3b9609e3224", null ],
-      [ "BTM_EIR_UUID_SERVCLASS_DIRECT_PRINTING", "group__wicedbt___device_management.html#ggaf9bdc3014f3d54c426b6d2df10de4960a8429a4ed50ce9a09ccd450c53c869f2e", null ],
-      [ "BTM_EIR_UUID_SERVCLASS_HF_HANDSFREE", "group__wicedbt___device_management.html#ggaf9bdc3014f3d54c426b6d2df10de4960a11c1034576c1206581dcab078e444e61", null ],
-      [ "BTM_EIR_UUID_SERVCLASS_AG_HANDSFREE", "group__wicedbt___device_management.html#ggaf9bdc3014f3d54c426b6d2df10de4960af8013951f00c6415f6a1da1c068d23e4", null ],
-      [ "BTM_EIR_UUID_SERVCLASS_HUMAN_INTERFACE", "group__wicedbt___device_management.html#ggaf9bdc3014f3d54c426b6d2df10de4960a5700116ead84ad022597ddfccafa01a3", null ],
-      [ "BTM_EIR_UUID_SERVCLASS_SAP", "group__wicedbt___device_management.html#ggaf9bdc3014f3d54c426b6d2df10de4960a87ebd0118bbee3af9e1cf298dd5c7d71", null ],
-      [ "BTM_EIR_UUID_SERVCLASS_PBAP_PCE", "group__wicedbt___device_management.html#ggaf9bdc3014f3d54c426b6d2df10de4960afa7da2a3d03c1a84bb1abcc3720d6308", null ],
-      [ "BTM_EIR_UUID_SERVCLASS_PBAP_PSE", "group__wicedbt___device_management.html#ggaf9bdc3014f3d54c426b6d2df10de4960a573fb0eae64fbe9fdb6e00d281cd308b", null ],
-      [ "BTM_EIR_UUID_SERVCLASS_PHONE_ACCESS", "group__wicedbt___device_management.html#ggaf9bdc3014f3d54c426b6d2df10de4960abc49f57bc65fcf3e6234d8cda4f81011", null ],
-      [ "BTM_EIR_UUID_SERVCLASS_HEADSET_HS", "group__wicedbt___device_management.html#ggaf9bdc3014f3d54c426b6d2df10de4960a65bfea607e3e7bc685690fd1da63d1ee", null ],
-      [ "BTM_EIR_UUID_SERVCLASS_PNP_INFORMATION", "group__wicedbt___device_management.html#ggaf9bdc3014f3d54c426b6d2df10de4960a1836194236278122478a67eb221fdfcb", null ],
-      [ "BTM_EIR_UUID_SERVCLASS_MESSAGE_ACCESS", "group__wicedbt___device_management.html#ggaf9bdc3014f3d54c426b6d2df10de4960a1719d2c7eb12405b5fcf2bb266a1ab2e", null ],
-      [ "BTM_EIR_UUID_SERVCLASS_MESSAGE_NOTIFICATION", "group__wicedbt___device_management.html#ggaf9bdc3014f3d54c426b6d2df10de4960a4b42112907efb48e35535ae6e1cd4aaa", null ],
-      [ "BTM_EIR_UUID_SERVCLASS_HDP_SOURCE", "group__wicedbt___device_management.html#ggaf9bdc3014f3d54c426b6d2df10de4960a095dae40f77233162859ad3fa16b22ba", null ],
-      [ "BTM_EIR_UUID_SERVCLASS_HDP_SINK", "group__wicedbt___device_management.html#ggaf9bdc3014f3d54c426b6d2df10de4960a8f314d97e135e0a51317c58428d0a581", null ],
-      [ "BTM_EIR_MAX_SERVICES", "group__wicedbt___device_management.html#ggaf9bdc3014f3d54c426b6d2df10de4960a98e55b0924c25493b462eb5924d28729", null ]
+      [ "BTM_EIR_UUID_SERVCLASS_SERIAL_PORT", "group__wicedbt___device_management.html#gga6b7b47dd702d9e331586d485013fd1eaad4349d945b3245a129419012433bad7d", null ],
+      [ "BTM_EIR_UUID_SERVCLASS_DIALUP_NETWORKING", "group__wicedbt___device_management.html#gga6b7b47dd702d9e331586d485013fd1eaa97cdfbfedb9320af72f56d21b5730536", null ],
+      [ "BTM_EIR_UUID_SERVCLASS_IRMC_SYNC", "group__wicedbt___device_management.html#gga6b7b47dd702d9e331586d485013fd1eaa32c74a173f55fcae993e2a759e274d9f", null ],
+      [ "BTM_EIR_UUID_SERVCLASS_OBEX_OBJECT_PUSH", "group__wicedbt___device_management.html#gga6b7b47dd702d9e331586d485013fd1eaae23f277d5d823c7ed5b9ce50f2b75d7f", null ],
+      [ "BTM_EIR_UUID_SERVCLASS_OBEX_FILE_TRANSFER", "group__wicedbt___device_management.html#gga6b7b47dd702d9e331586d485013fd1eaa416e20059273fe844067df7aad4a9955", null ],
+      [ "BTM_EIR_UUID_SERVCLASS_IRMC_SYNC_COMMAND", "group__wicedbt___device_management.html#gga6b7b47dd702d9e331586d485013fd1eaaeb9e797e875191f3ec64968a8fce9675", null ],
+      [ "BTM_EIR_UUID_SERVCLASS_HEADSET", "group__wicedbt___device_management.html#gga6b7b47dd702d9e331586d485013fd1eaa55f09cc5794a12ece872c50eca6a9c10", null ],
+      [ "BTM_EIR_UUID_SERVCLASS_AUDIO_SOURCE", "group__wicedbt___device_management.html#gga6b7b47dd702d9e331586d485013fd1eaab8444232c8545ae7dc1b3b9334c0c1ef", null ],
+      [ "BTM_EIR_UUID_SERVCLASS_AUDIO_SINK", "group__wicedbt___device_management.html#gga6b7b47dd702d9e331586d485013fd1eaa940fad4b8dbb45d21c4f94b0c19257bd", null ],
+      [ "BTM_EIR_UUID_SERVCLASS_AV_REM_CTRL_TARGET", "group__wicedbt___device_management.html#gga6b7b47dd702d9e331586d485013fd1eaaf0a126788f101a830b3489291db38401", null ],
+      [ "BTM_EIR_UUID_SERVCLASS_AV_REMOTE_CONTROL", "group__wicedbt___device_management.html#gga6b7b47dd702d9e331586d485013fd1eaacd4e8e3d63e1d455584fc29f38b9953e", null ],
+      [ "BTM_EIR_UUID_SERVCLASS_HEADSET_AUDIO_GATEWAY", "group__wicedbt___device_management.html#gga6b7b47dd702d9e331586d485013fd1eaa973e50c84c74bcd76559b3b9609e3224", null ],
+      [ "BTM_EIR_UUID_SERVCLASS_DIRECT_PRINTING", "group__wicedbt___device_management.html#gga6b7b47dd702d9e331586d485013fd1eaa8429a4ed50ce9a09ccd450c53c869f2e", null ],
+      [ "BTM_EIR_UUID_SERVCLASS_HF_HANDSFREE", "group__wicedbt___device_management.html#gga6b7b47dd702d9e331586d485013fd1eaa11c1034576c1206581dcab078e444e61", null ],
+      [ "BTM_EIR_UUID_SERVCLASS_AG_HANDSFREE", "group__wicedbt___device_management.html#gga6b7b47dd702d9e331586d485013fd1eaaf8013951f00c6415f6a1da1c068d23e4", null ],
+      [ "BTM_EIR_UUID_SERVCLASS_HUMAN_INTERFACE", "group__wicedbt___device_management.html#gga6b7b47dd702d9e331586d485013fd1eaa5700116ead84ad022597ddfccafa01a3", null ],
+      [ "BTM_EIR_UUID_SERVCLASS_SAP", "group__wicedbt___device_management.html#gga6b7b47dd702d9e331586d485013fd1eaa87ebd0118bbee3af9e1cf298dd5c7d71", null ],
+      [ "BTM_EIR_UUID_SERVCLASS_PBAP_PCE", "group__wicedbt___device_management.html#gga6b7b47dd702d9e331586d485013fd1eaafa7da2a3d03c1a84bb1abcc3720d6308", null ],
+      [ "BTM_EIR_UUID_SERVCLASS_PBAP_PSE", "group__wicedbt___device_management.html#gga6b7b47dd702d9e331586d485013fd1eaa573fb0eae64fbe9fdb6e00d281cd308b", null ],
+      [ "BTM_EIR_UUID_SERVCLASS_PHONE_ACCESS", "group__wicedbt___device_management.html#gga6b7b47dd702d9e331586d485013fd1eaabc49f57bc65fcf3e6234d8cda4f81011", null ],
+      [ "BTM_EIR_UUID_SERVCLASS_HEADSET_HS", "group__wicedbt___device_management.html#gga6b7b47dd702d9e331586d485013fd1eaa65bfea607e3e7bc685690fd1da63d1ee", null ],
+      [ "BTM_EIR_UUID_SERVCLASS_PNP_INFORMATION", "group__wicedbt___device_management.html#gga6b7b47dd702d9e331586d485013fd1eaa1836194236278122478a67eb221fdfcb", null ],
+      [ "BTM_EIR_UUID_SERVCLASS_MESSAGE_ACCESS", "group__wicedbt___device_management.html#gga6b7b47dd702d9e331586d485013fd1eaa1719d2c7eb12405b5fcf2bb266a1ab2e", null ],
+      [ "BTM_EIR_UUID_SERVCLASS_MESSAGE_NOTIFICATION", "group__wicedbt___device_management.html#gga6b7b47dd702d9e331586d485013fd1eaa4b42112907efb48e35535ae6e1cd4aaa", null ],
+      [ "BTM_EIR_UUID_SERVCLASS_HDP_SOURCE", "group__wicedbt___device_management.html#gga6b7b47dd702d9e331586d485013fd1eaa095dae40f77233162859ad3fa16b22ba", null ],
+      [ "BTM_EIR_UUID_SERVCLASS_HDP_SINK", "group__wicedbt___device_management.html#gga6b7b47dd702d9e331586d485013fd1eaa8f314d97e135e0a51317c58428d0a581", null ],
+      [ "BTM_EIR_MAX_SERVICES", "group__wicedbt___device_management.html#gga6b7b47dd702d9e331586d485013fd1eaa98e55b0924c25493b462eb5924d28729", null ]
     ] ],
     [ "wiced_bt_ble_advert_mode_e", "group__wicedbt___device_management.html#ga1942781c78be25d498d93745db416f08", [
       [ "BTM_BLE_ADVERT_OFF", "group__wicedbt___device_management.html#gga1942781c78be25d498d93745db416f08ab5138f1861c392d29bffce3fd415bfe2", null ],
@@ -494,6 +500,10 @@ var group__wicedbt___device_management =
       [ "BTM_BLE_ADVERT_NONCONN_LOW", "group__wicedbt___device_management.html#gga1942781c78be25d498d93745db416f08a269ddb7699ecf35692744f8c10bb0cbd", null ],
       [ "BTM_BLE_ADVERT_DISCOVERABLE_HIGH", "group__wicedbt___device_management.html#gga1942781c78be25d498d93745db416f08a281ee004bb426d2f4072f6cfeb842165", null ],
       [ "BTM_BLE_ADVERT_DISCOVERABLE_LOW", "group__wicedbt___device_management.html#gga1942781c78be25d498d93745db416f08aaeedea58bb302e0cf8068e9b7126cf8c", null ]
+    ] ],
+    [ "wiced_bt_ble_channel_sel_algo_e", "group__wicedbt___device_management.html#gacd4a1a8913528880bad341a4f46f92af", [
+      [ "LE_CHANNEL_SEL_ALGO_1_USED", "group__wicedbt___device_management.html#ggacd4a1a8913528880bad341a4f46f92afaf29644acab31ee07ad38f9cbcf6cf5b8", null ],
+      [ "LE_CHANNEL_SEL_ALGO_2_USED", "group__wicedbt___device_management.html#ggacd4a1a8913528880bad341a4f46f92afa421a8eaeaed16ffeda1a714512320476", null ]
     ] ],
     [ "wiced_bt_ble_conn_mode_e", "group__wicedbt___device_management.html#gad1c94560ecd0c13e11d7ca0026931a82", [
       [ "BLE_CONN_MODE_OFF", "group__wicedbt___device_management.html#ggad1c94560ecd0c13e11d7ca0026931a82a425737dd2209029e1aa54783022444db", null ],
@@ -652,7 +662,8 @@ var group__wicedbt___device_management =
       [ "BTM_LPM_STATE_LOW_POWER", "group__wicedbt___device_management.html#gga4a427fc37161f2041016d7936399be65a965a79b8ed951bb08083f3072b7d8f16", null ],
       [ "BTM_MULTI_ADVERT_RESP_EVENT", "group__wicedbt___device_management.html#gga4a427fc37161f2041016d7936399be65afccff06434be32f2e31fae45a59fb0bc", null ],
       [ "BTM_BLE_DATA_LENGTH_UPDATE_EVENT", "group__wicedbt___device_management.html#gga4a427fc37161f2041016d7936399be65a4317545a7c310a63a2ff6a77143db123", null ],
-      [ "BTM_BLE_DEVICE_ADDRESS_UPDATE_EVENT", "group__wicedbt___device_management.html#gga4a427fc37161f2041016d7936399be65aa49bd8765b31119cd5008c25e136b11e", null ]
+      [ "BTM_BLE_DEVICE_ADDRESS_UPDATE_EVENT", "group__wicedbt___device_management.html#gga4a427fc37161f2041016d7936399be65aa49bd8765b31119cd5008c25e136b11e", null ],
+      [ "BTM_BLE_CHANNEL_SELECTION_ALGO_EVENT", "group__wicedbt___device_management.html#gga4a427fc37161f2041016d7936399be65aaaa0a674689f3905f116c4ba41c05ceb", null ]
     ] ],
     [ "wiced_bt_multi_adv_opcodes_t", "group__wicedbt___device_management.html#gaf0fdeb6794ca91ad6e2c539b620d88fe", [
       [ "SET_ADVT_PARAM_MULTI", "group__wicedbt___device_management.html#ggaf0fdeb6794ca91ad6e2c539b620d88fea56882b67cc3a8051776bd8a7056016e6", null ],

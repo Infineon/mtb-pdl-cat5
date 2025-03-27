@@ -11,7 +11,9 @@
  * When a heap or a pool is created, this utility allocates required chunk of memory from the system and manages it for the creator.
  */
 
-#pragma once
+#ifndef __WICED_MEMORY_H__
+#define __WICED_MEMORY_H__
+
 
 #include "wiced_data_types.h"
 #include "wiced_result.h"
@@ -75,7 +77,9 @@ extern "C" {
 #endif
 
 /**
- * Returns the number of free bytes of RAM left
+ * Returns the number of free bytes of RAM available for allocation from the
+ * dynamic memory allocation of the Bluetooth Controller firmware
+ * @note This API is valid only for embedded platforms where the application,stack and controller memory is allocated from a common dynamic memory area.
  *
  * @return          the number of free bytes of RAM left
  */
@@ -367,3 +371,5 @@ void wiced_set_exception_callback(pf_wiced_exception pf_handler);
 }
 #endif
 /** @} */
+
+#endif //__WICED_MEMORY_H__

@@ -14,7 +14,9 @@
  *      ISO   -  Isochronous
  *      ISOAL -  Isochronous Adaption Layer
  */
-#pragma once
+#ifndef __WICED_BT_ISOC_H__
+#define __WICED_BT_ISOC_H__
+
 
 #include "wiced_bt_types.h"
 #include "wiced_result.h"
@@ -712,5 +714,6 @@ wiced_bool_t wiced_bt_isoc_setup_data_path(uint16_t conn_hdl,
 
 #ifdef __cplusplus
 }
-
 #endif
+
+#endif //__WICED_BT_ISOC_H__

@@ -33,6 +33,6 @@ var searchData=
   ['smp_5fxtrans_5fderive_5fnot_5fallow',['SMP_XTRANS_DERIVE_NOT_ALLOW',['../group__wicedbt___device_management.html#gga83e5618d32b7fa1fb7c17ea40555e028af10cdc318ef697e0652d9836d448213a',1,'wiced_bt_dev.h']]],
   ['spi1',['SPI1',['../group___peripheral_spi_driver.html#ggac6144d3ea3ef78e7923c351d3b62170eadd83ddb396fbcb33f2d61248e5c4a185',1,'wiced_hal_pspi.h']]],
   ['spi2',['SPI2',['../group___peripheral_spi_driver.html#ggac6144d3ea3ef78e7923c351d3b62170ea382fe69d09c301ce8af3660713dfe8a2',1,'wiced_hal_pspi.h']]],
-  ['spi_5fmaster',['SPI_MASTER',['../group___peripheral_spi_driver.html#gga7ff5f2dff38e7639981794c43dc9167ba84379dc90398ca075038c8d5ee465f6a',1,'wiced_hal_pspi.h']]],
-  ['spi_5fslave',['SPI_SLAVE',['../group___peripheral_spi_driver.html#gga7ff5f2dff38e7639981794c43dc9167babc98c1546fe12d3fceb1f86cf670faa9',1,'wiced_hal_pspi.h']]]
+  ['spi_5fmaster',['SPI_MASTER',['../group___peripheral_spi_driver.html#ggae4d5251432e1a9e6803c0240cc492e18a84379dc90398ca075038c8d5ee465f6a',1,'wiced_hal_pspi.h']]],
+  ['spi_5fslave',['SPI_SLAVE',['../group___peripheral_spi_driver.html#ggae4d5251432e1a9e6803c0240cc492e18abc98c1546fe12d3fceb1f86cf670faa9',1,'wiced_hal_pspi.h']]]
 ];

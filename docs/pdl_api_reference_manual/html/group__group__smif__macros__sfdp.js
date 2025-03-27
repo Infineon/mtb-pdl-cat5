@@ -39,6 +39,8 @@ var group__group__smif__macros__sfdp =
     [ "CY_SMIF_FAST_READ_4_BYTES_CMD_1S_4S_4S", "group__group__smif__macros__sfdp.html#ga6131b3874bdafd6ff6d5ed12a5e5e441", null ],
     [ "CY_SMIF_FAST_READ_4_BYTES_CMD_1S_1S_8S", "group__group__smif__macros__sfdp.html#ga140303b6bc3f5eec8b48454d59e05526", null ],
     [ "CY_SMIF_FAST_READ_4_BYTES_CMD_1S_8S_8S", "group__group__smif__macros__sfdp.html#gae9b75c8b85025a901748afa03d86a1a5", null ],
+    [ "CY_SMIF_DEEP_POWER_DOWN_CMD", "group__group__smif__macros__sfdp.html#ga6bb14f065f5cae6f8511502422002cdb", null ],
+    [ "CY_SMIF_RELEASE_POWER_DOWN_CMD", "group__group__smif__macros__sfdp.html#ga84f91bbc6e2902da4a726446fcd4e067", null ],
     [ "CY_SMIF_FAST_READ_4_BYTES_CMD_1S_4D_4D", "group__group__smif__macros__sfdp.html#gaa3a5a78acd1ee8a2708900dc89c41bd9", null ],
     [ "CY_SMIF_FAST_READ_4_BYTES_CMD_1S_8D_8D", "group__group__smif__macros__sfdp.html#gaaac2da17203b7e2957c47a454724316b", null ],
     [ "CY_SMIF_PAGE_PROGRAM_4_BYTES_CMD_1S_1S_1S", "group__group__smif__macros__sfdp.html#ga0083b3642ce349e52349807dff9b0512", null ],

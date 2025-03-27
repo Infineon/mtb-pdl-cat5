@@ -72,11 +72,11 @@
 		<Entry name="After WFI Transition" value="CYHAL_SYSPM_AFTER_DS_WFI_TRANSITION" visible="true" />
 	</ParamChoice> -->
 
-    <ParamBool id="cbm1" group="Power/SysPM Callback Ignore Mode" editable="true" desc="" default="false" name="Check Fail"  visible="`${enableLPA}`" />
+    <!-- <ParamBool id="cbm1" group="Power/SysPM Callback Ignore Mode" editable="true" desc="" default="false" name="Check Fail"  visible="`${enableLPA}`" />
 	<ParamBool id="cbm2" group="Power/SysPM Callback Ignore Mode" editable="true" desc="" default="true" name="Check Ready"  visible="`${enableLPA}`" />
 	<ParamBool id="cbm3" group="Power/SysPM Callback Ignore Mode" editable="true" desc="" default="false" name="Before Transition"  visible="`${enableLPA}`"/>
 	<ParamBool id="cbm4" group="Power/SysPM Callback Ignore Mode" editable="true" desc="" default="false" name="After Transition"  visible="`${enableLPA}`" />
-	<ParamBool id="cbm5" group="Power/SysPM Callback Ignore Mode" editable="true" desc="" default="false" name="After WFI Transition"  visible="`${enableLPA}`" />
+	<ParamBool id="cbm5" group="Power/SysPM Callback Ignore Mode" editable="true" desc="" default="false" name="After WFI Transition"  visible="`${enableLPA}`" />-->
 
 	<ParamChoice id="pmuSleepMode"
 			name="PMU Sleep Mode"
@@ -122,13 +122,13 @@
   </DRCs> -->
 
   <DRCs>
-		  <DRC type="ERROR" text="Atleast one callback state should be enabled" condition="`${!(cbm1|cbm2|cbm3|cbm4|cbm5)}`">
+		  <!-- <DRC type="ERROR" text="Atleast one callback state should be enabled" condition="`${!(cbm1|cbm2|cbm3|cbm4|cbm5)}`">
 				  <FixIt action="SET_PARAM" target="cbm1" value="true" valid="true" />
 				  <FixIt action="SET_PARAM" target="cbm2" value="true" valid="true" />
 				  <FixIt action="SET_PARAM" target="cbm3" value="true" valid="true" />
 				  <FixIt action="SET_PARAM" target="cbm4" value="true" valid="true" />
 				  <FixIt action="SET_PARAM" target="cbm5" value="true" valid="true" />
-		  </DRC>
+		  </DRC> -->
   </DRCs>
 
   <ConfigFirmware>

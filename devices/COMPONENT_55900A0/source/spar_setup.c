@@ -127,12 +127,8 @@ wiced_pre_init_cfg_t pre_init_cfg = {
     .enable_br_audio = APP_CFG_ENABLE_BR_AUDIO,
     .p_br_audio_cfg = APP_CFG_BR_AUDIO_CFG,
 
-    /* Maximum Frequency Support for H1CP */
-#if APP_CFG_ENABLE_MAX_SYS_FREQ_192MHz
-    .enable_max_freq_support = 0x01,
-#else
-    .enable_max_freq_support = 0x00,
-#endif
+    /* LPO Source Selection and Maximum Frequency Support Enablement */
+    .lpo_src_sel_654_max_freq_0 = APP_CFG_LPO_SRC_SEL_654_MAX_FREQ_EN_0,
 };
 
 const wiced_pre_init_cfg_t *const pre_init_cfg_addr __attribute__((section(".pre_init_cfg"))) = &pre_init_cfg;

@@ -7,7 +7,9 @@
  * Bluetooth Synchronous Connection Oriented Channel Application Programming Interface
  *
  */
-#pragma once
+#ifndef __WICED_BT_SCO_H__
+#define __WICED_BT_SCO_H__
+
 
 
 /**
@@ -222,3 +224,5 @@ void  wiced_bt_sco_turn_off_pcm_clock( void );
 
 /** @} sco */
 /* @endcond*/
+
+#endif //__WICED_BT_SCO_H__

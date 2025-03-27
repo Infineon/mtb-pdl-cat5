@@ -6,7 +6,9 @@
  *
  *  AIROC Generic Attribute (GATT) Application Programming Interface
  */
-#pragma once
+#ifndef __WICED_BT_GATT_H__
+#define __WICED_BT_GATT_H__
+
 
 #include "wiced_result.h"
 #include "gattdefs.h"
@@ -948,7 +950,7 @@ typedef struct
 {
     wiced_bt_device_address_t  bdaddr;                 /**< Bluetooth address of remote device */
     wiced_bt_transport_t       transport;              /**< Transport type of the connection */
-    wiced_bt_ecrb_cid_list_t    lcids;                  /**< List of the l2cap cids (channel ids) */
+    wiced_bt_ecrb_cid_list_t   lcids;                  /**< List of the l2cap cids (channel ids) */
     uint16_t                   mtu;                    /**< Peer MTU */
     uint8_t                    trans_id;               /**< Transaction id for the connection */
 } wiced_bt_gatt_eatt_connection_indication_event_t;
@@ -1638,6 +1640,7 @@ wiced_bt_gatt_status_t wiced_bt_gatt_client_send_indication_confirm (uint16_t co
  *
  */
 
+#if (WICED_BLE_ENABLE_LEGACY_ADV_API == 1)
 /**
  * Open GATT over LE connection to a remote device
  * Result is notified using <b> GATT_CONNECTION_STATUS_EVT </b> of #wiced_bt_gatt_cback_t.
@@ -1665,6 +1668,8 @@ wiced_bool_t wiced_bt_gatt_le_connect (wiced_bt_device_address_t bd_addr,
                                     wiced_bt_ble_address_type_t bd_addr_type,
                                     wiced_bt_ble_conn_mode_t conn_mode,
                                     wiced_bool_t is_direct);
+#endif
+
 /**
  * Open GATT over BR/EDR connection to a remote device
  * Result is notified using <b> GATT_CONNECTION_STATUS_EVT </b> of #wiced_bt_gatt_cback_t.
@@ -1836,7 +1841,6 @@ wiced_bt_gatt_status_t wiced_bt_gatt_get_device_address(uint16_t conn_id,
  */
 wiced_bt_gatt_status_t wiced_bt_gatt_validate_conn_id(uint16_t conn_id);
 
-
 /**
  * @brief Utility function to compare UUIDs
  * @param[in] p_left : UUID to compare
@@ -1998,5 +2002,6 @@ uint8_t *wiced_bt_gattdb_getAttrValue(const wiced_gattdb_entry_t *p_db_entry);
 
 #ifdef __cplusplus
 }
-
 #endif
+
+#endif //__WICED_BT_GATT_H__
