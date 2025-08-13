@@ -245,7 +245,7 @@ typedef enum
     TCPWM_TR_OUT_4     = 0x04,
     TCPWM_TR_OUT_5     = 0x05,
     TCPWM_TR_OUT_6     = 0x06,
-    TCPWM_TR_OUT_7     = 0x07,
+    TCPWM_TR_OUT_7     = 0x07, 
 } TCPWM_TR_OUT_LIST_t;
 
 /** \brief TCPWM - Trigmux - Input adc channel list */

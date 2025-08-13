@@ -74,7 +74,7 @@ typedef struct{
 /// preconfigured GPIO pin.
 ///
 /// (!) Note that the desired GPIO pin must have already been configured
-/// as output. See the HW muxing section in the Kit Guide or HW User Manual for
+/// as output. See the HW muxing section in the Kit Guide or HW User Manual for 
 /// your device for more information.
 ///
 /// \param channel     - Desired PWM channel to use [0-5].
@@ -106,7 +106,7 @@ typedef struct{
 ///
 /// \return 1 if PWM was successfully started, 0 otherwise.
 ///////////////////////////////////////////////////////////////////////////////
-uint32_t wiced_hal_pwm_start(uint8_t channel, PwmClockType clk,
+uint32_t wiced_hal_pwm_start(uint8_t channel, PwmClockType clk, 
         uint32_t toggleCount, uint32_t initCount, int invert);
 
 ///////////////////////////////////////////////////////////////////////////////

@@ -91,7 +91,13 @@ ifeq ($(DIRECT_LOAD),0)
     CY_CORE_CGSLIST+=$(CY_CORE_PLATFORM_PATH)/platform.cgs
     CY_CORE_BTP=$(CY_CORE_PLATFORM_PATH)/flash.btp
     #  CY_CORE_MINIDRIVER=$(CY_CORE_PLATFORM_PATH)/$(LIFE_CYCLE_STATE)_chiperase_flashpatch_loader.hex
-    CY_CORE_MINIDRIVER=$(CY_CORE_PLATFORM_PATH)/$(LIFE_CYCLE_STATE)_sectorerase_flashpatch_loader.hex
+    #  CY_CORE_MINIDRIVER=$(CY_CORE_PLATFORM_PATH)/$(LIFE_CYCLE_STATE)_sectorerase_flashpatch_loader.hex
+    # Edge-protect-tools requires LCS:SM version of minidriver based on below override flag.
+    ifeq ($(POST_BUILD_SECURE_IMAGE),1)
+        CY_CORE_MINIDRIVER=$(CY_CORE_PLATFORM_PATH)/SM_sectorerase_flashpatch_loader.hex
+    else
+        CY_CORE_MINIDRIVER=$(CY_CORE_PLATFORM_PATH)/$(LIFE_CYCLE_STATE)_sectorerase_flashpatch_loader.hex
+    endif
 
 else
 
@@ -119,6 +125,9 @@ else
     CY_CORE_HCI_ID=$(CY_CORE_PLATFORM_PATH)/IDFILE.txt
     CY_CORE_CGSLIST+=$(CY_CORE_PLATFORM_PATH)/platform.cgs
     CY_CORE_BTP=$(CY_CORE_PLATFORM_PATH)/ram.btp
+    ifeq ($(DIRECT_LOAD),2)
+        CY_CORE_MINIDRIVER=$(CY_CORE_PLATFORM_PATH)/$(LIFE_CYCLE_STATE)_hci_psram_loader.hex
+    endif
 
 endif
 

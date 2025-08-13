@@ -414,3 +414,4 @@ BTSS_DMAC_REQ_STATUS_t btss_dmac_dmaReqGetStatus(BTSS_DMAC_APP_REQUEST_t* dmaReq
 #endif //_BTSS_DMAC_H_
 
 /* [] END OF FILE */
+

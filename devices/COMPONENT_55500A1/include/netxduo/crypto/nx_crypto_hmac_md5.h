@@ -111,3 +111,4 @@ UINT _nx_crypto_method_hmac_md5_operation(UINT op,      /* Encrypt, Decrypt, Aut
 #endif
 
 #endif
+

@@ -177,3 +177,4 @@ UINT _nxde_udp_socket_send(NX_UDP_SOCKET *socket_ptr, NX_PACKET **packet_ptr, NX
 /* UDP component data declarations follow.  */
 
 #endif
+

@@ -119,3 +119,4 @@ UINT _nx_crypto_method_sha256_operation(UINT op,      /* Encrypt, Decrypt, Authe
 #endif
 
 #endif /* SRC_NX_CRYPTO_SHA2_H_ */
+

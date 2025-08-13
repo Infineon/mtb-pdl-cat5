@@ -257,3 +257,4 @@ UINT _nxe_icmp_ping(NX_IP *ip_ptr, ULONG ip_address, CHAR *data, ULONG data_size
 
 
 #endif
+

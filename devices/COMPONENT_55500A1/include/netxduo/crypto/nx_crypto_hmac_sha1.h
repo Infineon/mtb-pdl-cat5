@@ -111,3 +111,4 @@ UINT _nx_crypto_method_hmac_sha1_operation(UINT op,      /* Encrypt, Decrypt, Au
 #endif
 
 #endif
+

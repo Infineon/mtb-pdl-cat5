@@ -51,3 +51,4 @@ void wiced_set_exception_callback(pf_wiced_exception pf_handler);
 
 
 #endif //_WICED_GKI_H_
+

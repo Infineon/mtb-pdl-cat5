@@ -677,3 +677,4 @@ UINT _nx_crypto_ec_extract_fixed_size_le(NX_CRYPTO_HUGE_NUMBER *number,
 #endif
 
 #endif /* NX_CRYPTO_EC_H */
+

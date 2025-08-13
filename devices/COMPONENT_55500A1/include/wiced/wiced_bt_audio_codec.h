@@ -215,7 +215,7 @@ typedef struct {
  *
  * Function         wiced_audio_register_codec_handler
  *
- * Description      Replaces dummy handler with handler in AIROC
+ * Description      Replaces dummy handler with handler in AIROC 
  *
  * Parameters       Codec to replace, pointer to the codec function table
  *

@@ -247,3 +247,4 @@ UINT  _nx_crypto_method_aes_xcbc_operation(UINT op,      /* Encrypt, Decrypt, Au
 
 
 #endif /* NX_CRYPTO_AES_H_ */
+

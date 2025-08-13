@@ -337,7 +337,7 @@ UINT32 btss_system_enterCriticalSection(void);
  *
  * Clear pending interrupts for peripheral
  *
- * \param[in]    interrupt_state       : Interrupt state returned
+ * \param[in]    interrupt_state       : Interrupt state returned 
  *                                       in btss_system_enterCriticalSection
  *
  * \return       None

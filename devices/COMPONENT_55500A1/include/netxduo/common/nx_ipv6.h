@@ -319,3 +319,4 @@ UINT _nxde_ipv6_multicast_interface_join(NX_IP *ip_ptr, NXD_ADDRESS *group_addre
 UINT _nxde_ipv6_multicast_interface_leave(NX_IP *ip_ptr, NXD_ADDRESS *group_address, UINT interface_index);
 
 #endif /* NX_IPV6_H */
+

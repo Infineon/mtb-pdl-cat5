@@ -12,34 +12,34 @@
 
 /**************************************************************************/
 /**************************************************************************/
-/**                                                                       */
+/**                                                                       */ 
 /** NetX Component                                                        */
 /**                                                                       */
-/**   Domain Name System (DNS)                                            */
+/**   Domain Name System (DNS)                                            */ 
 /**                                                                       */
 /**************************************************************************/
 /**************************************************************************/
 
 
-/**************************************************************************/
-/*                                                                        */
-/*  APPLICATION INTERFACE DEFINITION                       RELEASE        */
-/*                                                                        */
+/**************************************************************************/ 
+/*                                                                        */ 
+/*  APPLICATION INTERFACE DEFINITION                       RELEASE        */ 
+/*                                                                        */  
 /*    nxd_dns.h                                           PORTABLE C      */
 /*                                                           6.1.5        */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
 /*                                                                        */
-/*  DESCRIPTION                                                           */
-/*                                                                        */
-/*    This file defines the NetX Domain Name System Protocol (DNS)        */
-/*    component, including all data types and external references.        */
-/*    It is assumed that nx_api.h and nx_port.h have already been         */
+/*  DESCRIPTION                                                           */ 
+/*                                                                        */ 
+/*    This file defines the NetX Domain Name System Protocol (DNS)        */ 
+/*    component, including all data types and external references.        */ 
+/*    It is assumed that nx_api.h and nx_port.h have already been         */ 
 /*    included.                                                           */
-/*                                                                        */
-/*  RELEASE HISTORY                                                       */
-/*                                                                        */
+/*                                                                        */ 
+/*  RELEASE HISTORY                                                       */ 
+/*                                                                        */ 
 /*    DATE              NAME                      DESCRIPTION             */
 /*                                                                        */
 /*  05-19-2020     Yuxin Zhou               Initial Version 6.0           */
@@ -55,7 +55,7 @@
 /*                                            resulting in version 6.1.5  */
 /*                                                                        */
 /**************************************************************************/
-
+          
 #ifndef NXD_DNS_H
 #define NXD_DNS_H
 
@@ -68,7 +68,7 @@
 extern   "C" {
 
 #endif
-
+    
 #include "nx_udp.h"
 #include "nx_ipv4.h"
 #include "nx_ipv6.h"
@@ -98,15 +98,15 @@ extern   "C" {
 
 /* Define return code constants.  */
 
-#define NX_DNS_SUCCESS                  0x00        /* DNS success                                          */
-#define NX_DNS_ERROR                    0xA0        /* DNS internal error                                   */
-#define NX_DNS_NO_SERVER                0xA1        /* No DNS server was specified                          */
-#define NX_DNS_TIMEOUT                  0xA2        /* DNS timeout occurred                                 */
-#define NX_DNS_QUERY_FAILED             0xA3        /* DNS query failed; no DNS server sent an 'answer'     */
-#define NX_DNS_BAD_ADDRESS_ERROR        0xA4        /* Improperly formatted IPv4 or IPv6 address            */
-#define NX_DNS_SIZE_ERROR               0xA5        /* DNS destination size is too small                    */
-#define NX_DNS_MALFORMED_PACKET         0xA6        /* Improperly formed or corrupted DNS packet received   */
-#define NX_DNS_BAD_ID_ERROR             0xA7        /* DNS packet from server does not match query ID       */
+#define NX_DNS_SUCCESS                  0x00        /* DNS success                                          */ 
+#define NX_DNS_ERROR                    0xA0        /* DNS internal error                                   */ 
+#define NX_DNS_NO_SERVER                0xA1        /* No DNS server was specified                          */ 
+#define NX_DNS_TIMEOUT                  0xA2        /* DNS timeout occurred                                 */ 
+#define NX_DNS_QUERY_FAILED             0xA3        /* DNS query failed; no DNS server sent an 'answer'     */ 
+#define NX_DNS_BAD_ADDRESS_ERROR        0xA4        /* Improperly formatted IPv4 or IPv6 address            */ 
+#define NX_DNS_SIZE_ERROR               0xA5        /* DNS destination size is too small                    */ 
+#define NX_DNS_MALFORMED_PACKET         0xA6        /* Improperly formed or corrupted DNS packet received   */ 
+#define NX_DNS_BAD_ID_ERROR             0xA7        /* DNS packet from server does not match query ID       */ 
 #define NX_DNS_PARAM_ERROR              0xA8        /* Invalid non pointer input to API                     */
 #define NX_DNS_SERVER_NOT_FOUND         0xA9        /* Server not found in Client list of DNS servers       */
 #define NX_DNS_PACKET_CREATE_ERROR      0xAA        /* Error creating DNS packet                            */
@@ -117,12 +117,12 @@ extern   "C" {
 #define NX_DNS_DUPLICATE_ENTRY          0xAF        /* Duplicate entry exists in DNS server table           */
 #define NX_DNS_RETRY_A_QUERY            0xB0        /* SOA status returned; web site only exists as IPv4    */
 #define NX_DNS_IPV6_DISABLED_ERROR      0xB1        /* Cannot process AAAA or PTR record with IPv6 disabled */
-#define NX_DNS_INVALID_ADDRESS_TYPE     0xB2        /* IP address type (e.g. IPv6) not supported            */
+#define NX_DNS_INVALID_ADDRESS_TYPE     0xB2        /* IP address type (e.g. IPv6) not supported            */ 
 #define NX_DNS_IPV6_NOT_SUPPORTED       0xB3        /* Cannot process AAAA or PTR record with IPv6 disabled */
 #define NX_DNS_NEED_MORE_RECORD_BUFFER  0xB4        /* The buffer size is not enough.                       */
 #define NX_DNS_FEATURE_NOT_SUPPORTED    0xB5        /* The requested feature is not supported in this build */
 #define NX_DNS_NAME_MISMATCH            0xB6        /* The name mismatch.                                   */
-#define NX_DNS_CACHE_ERROR              0xB7        /* The Cache size is not enough.                        */
+#define NX_DNS_CACHE_ERROR              0xB7        /* The Cache size is not enough.                        */ 
 
 
 /* Define constants for the flags word.  */
@@ -208,14 +208,14 @@ extern   "C" {
 
 /* Set the IP instance gateway server to be the DNS server if the gateway address is non zero.  */
 /*
-#define NX_DNS_IP_GATEWAY_AND_DNS_SERVER
+#define NX_DNS_IP_GATEWAY_AND_DNS_SERVER 
 */
 
 /* Determine if the Client will create its own packet pool
    or let the host application create one. See nx_dns_packet_pool_set
    for how to set the DNS packet pool from the host application.   */
 /*
-#define NX_DNS_CLIENT_USER_CREATE_PACKET_POOL
+#define NX_DNS_CLIENT_USER_CREATE_PACKET_POOL   
 */
 
 /* Enable the feature to clear off old DNS packets before sending a fresh query.  */
@@ -229,7 +229,7 @@ extern   "C" {
 */
 
 /* Enable the cache to store the resource record.  */
-/*
+/* 
 #define NX_DNS_CACHE_ENABLE
 */
 
@@ -241,7 +241,7 @@ extern   "C" {
 
 #ifndef NX_DNS_FRAGMENT_OPTION
 #define NX_DNS_FRAGMENT_OPTION          NX_DONT_FRAGMENT
-#endif
+#endif  
 
 #ifndef NX_DNS_TIME_TO_LIVE
 #define NX_DNS_TIME_TO_LIVE                     0x80
@@ -255,8 +255,8 @@ extern   "C" {
 
 /* Define the maximum size of DNS message. 512 is the maximum size defined in RFC 1035 section 2.3.4. */
 
-#ifndef NX_DNS_MESSAGE_MAX
-#define NX_DNS_MESSAGE_MAX                      512
+#ifndef NX_DNS_MESSAGE_MAX              
+#define NX_DNS_MESSAGE_MAX                      512         
 #endif
 
 /* Define a payload to include the maximum size DNS message plus the Ethernet, IP and UDP overhead. */
@@ -279,7 +279,7 @@ extern   "C" {
 
 /* Define the maximum number of retries to a DNS server. */
 
-#ifndef NX_DNS_MAX_RETRIES
+#ifndef NX_DNS_MAX_RETRIES              
 #define NX_DNS_MAX_RETRIES                      3
 #endif
 
@@ -290,9 +290,9 @@ extern   "C" {
 #define NX_DNS_MAX_SERVERS                      5
 #endif
 
-/* Define the maximum amount of time to retransmit a DNS query. The default wait time is 64 seconds.
+/* Define the maximum amount of time to retransmit a DNS query. The default wait time is 64 seconds. 
    the retransmission policy are recommended in RFC1035 page 32.  */
-#ifndef NX_DNS_MAX_RETRANS_TIMEOUT
+#ifndef NX_DNS_MAX_RETRANS_TIMEOUT 
 #define NX_DNS_MAX_RETRANS_TIMEOUT             (64 * NX_IP_PERIODIC_RATE)
 #endif
 
@@ -310,15 +310,15 @@ extern   "C" {
 
 /* Define the basic DNS data structure.  */
 
-typedef struct NX_IP_DNS_STRUCT
+typedef struct NX_IP_DNS_STRUCT 
 {
     ULONG           nx_dns_id;                                      /* DNS ID                                                   */
-    UCHAR           *nx_dns_domain;                                 /* Pointer to domain name                                   */
-    USHORT          nx_dns_lookup_type;                             /* DNS look up type                                         */
-    USHORT          nx_dns_transmit_id;                             /* DNS message transmit identifier                          */
-    NX_IP           *nx_dns_ip_ptr;                                 /* Pointer to associated IP structure                       */
-    NXD_ADDRESS     nx_dns_server_ip_array[NX_DNS_MAX_SERVERS];     /* List of DNS server IP addresses                          */
-    ULONG           nx_dns_retries;                                 /* DNS query retries                                        */
+    UCHAR           *nx_dns_domain;                                 /* Pointer to domain name                                   */ 
+    USHORT          nx_dns_lookup_type;                             /* DNS look up type                                         */ 
+    USHORT          nx_dns_transmit_id;                             /* DNS message transmit identifier                          */ 
+    NX_IP           *nx_dns_ip_ptr;                                 /* Pointer to associated IP structure                       */ 
+    NXD_ADDRESS     nx_dns_server_ip_array[NX_DNS_MAX_SERVERS];     /* List of DNS server IP addresses                          */ 
+    ULONG           nx_dns_retries;                                 /* DNS query retries                                        */ 
 #ifndef NX_DNS_CLIENT_USER_CREATE_PACKET_POOL
     NX_PACKET_POOL  nx_dns_pool;                                    /* The pool of UDP data packets for DNS messages            */
     UCHAR           nx_dns_pool_area[NX_DNS_PACKET_POOL_SIZE];
@@ -327,11 +327,11 @@ typedef struct NX_IP_DNS_STRUCT
     NX_UDP_SOCKET   nx_dns_socket;                                  /* DNS Socket                                               */
     TX_MUTEX        nx_dns_mutex;                                   /* DNS Mutex to protect DNS instance                        */
 #ifdef NX_DNS_CACHE_ENABLE
-    UCHAR*          nx_dns_cache;                                   /* Pointer to the cache.                                    */
+    UCHAR*          nx_dns_cache;                                   /* Pointer to the cache.                                    */        
     UINT            nx_dns_cache_size;                              /* The size of cache.                                       */
-    ULONG           nx_dns_rr_count;                                /* The number of resource records in the cache.             */
-    ULONG           nx_dns_string_count;                            /* The number of strings in the cache.                      */
-    ULONG           nx_dns_string_bytes;                            /* The number of total bytes in string table in the cache.  */
+    ULONG           nx_dns_rr_count;                                /* The number of resource records in the cache.             */        
+    ULONG           nx_dns_string_count;                            /* The number of strings in the cache.                      */         
+    ULONG           nx_dns_string_bytes;                            /* The number of total bytes in string table in the cache.  */ 
     VOID            (*nx_dns_cache_full_notify)(struct NX_IP_DNS_STRUCT *);
 #endif /* NX_DNS_CACHE_ENABLE  */
 } NX_DNS;
@@ -339,40 +339,40 @@ typedef struct NX_IP_DNS_STRUCT
 
 /* Define the RDATA structure.  */
 /********************************************************************************/
-/*                               Type A                                         */
+/*                               Type A                                         */     
 /********************************************************************************/
 
 /* A RDATA format
                         1                   2                   3
-    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1                                             
     |-------------------------------------------------------------|
     |                           ADDRESS                           |
     |-------------------------------------------------------------|
 */
 /* The host name may have multiple addresses,so we need a buffer to record the all addresses.
-   return_buffer must be 4-byte aligned.  This return buffer is used to store IP addresses returned from the server.
+   return_buffer must be 4-byte aligned.  This return buffer is used to store IP addresses returned from the server. 
    record_number stores the number of entries in the buffer. If the server returns more entries than the buffer
    can hold, the entries exceeding the buffer size are dropped. */
 
 /* Layout of the buffer
-   |-------------------------------------------------------------------------------------|
+   |-------------------------------------------------------------------------------------| 
    |ip.address.0|ip.address.1|ip.address.2|.......                          |ip.address.n|
-   |-------------------------------------------------------------------------------------|
+   |-------------------------------------------------------------------------------------| 
 */
-
+        
 /********************************************************************************/
-/*                            Type AAAA                                         */
+/*                            Type AAAA                                         */     
 /********************************************************************************/
 /* AAAA RDATA format
                         1                   2                   3
-    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1                                             
     |-------------------------------------------------------------|
     |                           ADDRESS                           |
-    |-------------------------------------------------------------|
+    |-------------------------------------------------------------|                                        
     |                           ADDRESS                           |
-    |-------------------------------------------------------------|
+    |-------------------------------------------------------------|                                        
     |                           ADDRESS                           |
-    |-------------------------------------------------------------|
+    |-------------------------------------------------------------|                                        
     |                           ADDRESS                           |
     |-------------------------------------------------------------|
 */
@@ -388,18 +388,18 @@ typedef struct NX_DNS_IPV6_ADDRESS_STRUCT
    can hold, the entries exceeding the buffer size are dropped. */
 
 /* Layout of the buffer
-   |---------------------------------------------------------------|
+   |---------------------------------------------------------------| 
    |ip.address.0[0]|ip.address.0[1]|ip.address.0[2]|ip.address.0[3]|
-   |---------------------------------------------------------------|
+   |---------------------------------------------------------------| 
    |ip.address.1[0]|ip.address.1[1]|ip.address.1[2]|ip.address.1[3]|
    |---------------------------------------------------------------|
    |                                                               |
    |        ..........................................             |
    |                                                               |
-   |---------------------------------------------------------------|
+   |---------------------------------------------------------------| 
    |ip.address.n[0]|ip.address.n[1]|ip.address.n[2]|ip.address.n[3]|
    |---------------------------------------------------------------|
-
+ 
 */
 
 /********************************************************************************/
@@ -407,7 +407,7 @@ typedef struct NX_DNS_IPV6_ADDRESS_STRUCT
 /********************************************************************************/
 /* PTR RDATA format
                         1                   2                   3
-    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1                                            
     |-------------------------------------------------------------|
     /                            PTRDNAME                         /
     /                                                             /
@@ -422,7 +422,7 @@ typedef struct NX_DNS_IPV6_ADDRESS_STRUCT
 /********************************************************************************/
 /* NS RDATA format
                         1                   2                   3
-    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1                                            
     |-------------------------------------------------------------|
     /                             NSDNAME                         /
     /                                                             /
@@ -437,23 +437,23 @@ typedef struct NX_DNS_NS_ENTRY_STRUCT
 
 /* Store the message in one buffer.  Layout of the buffer:
 
- record_buffer         |---------------------------------------------------------------|
+ record_buffer         |---------------------------------------------------------------| 
              entry 0   |xx.xx.xx.xx               |Pointer to the host name string     |
- record_buffer + 8     |---------------------------------------------------------------|
+ record_buffer + 8     |---------------------------------------------------------------| 
              entry 1   |xx.xx.xx.xx               |Pointer to the host name string     |
  record_buffer + 16    |---------------------------------------------------------------|
-             entry 2   |xx.xx.xx.xx               |Pointer to the host name string     |
+             entry 2   |xx.xx.xx.xx               |Pointer to the host name string     | 
  record_buffer + 24    |---------------------------------------------------------------|
-             entry 3   |xx.xx.xx.xx               |Pointer to the host name string     |
- record_buffer + 32    |---------------------------------------------------------------|
+             entry 3   |xx.xx.xx.xx               |Pointer to the host name string     | 
+ record_buffer + 32    |---------------------------------------------------------------| 
              entry 4   |xx.xx.xx.xx               |Pointer to the host name string     |
  record_buffer + 40    |---------------------------------------------------------------|
-                       |xx.xx.xx.xx               |Pointer to the host name string     |
+                       |xx.xx.xx.xx               |Pointer to the host name string     | 
                        |---------------------------------------------------------------|
                        |                               | ns_hostname 4                 |
                        |ns_hostname 3              | ns_hostname 2                     |
                        |ns_hostname 1         | ns_hostname 0                          |
- record_buffer + max   |---------------------------------------------------------------|
+ record_buffer + max   |---------------------------------------------------------------| 
  */
 
 /********************************************************************************/
@@ -461,7 +461,7 @@ typedef struct NX_DNS_NS_ENTRY_STRUCT
 /********************************************************************************/
 /* CNAME RDATA format
                         1                   2                   3
-    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1                                            
     |-------------------------------------------------------------|
     /                            CNAME                            /
     /                                                             /
@@ -473,8 +473,8 @@ typedef struct NX_DNS_NS_ENTRY_STRUCT
 /*                                 MX                                           */
 /********************************************************************************/
 /* MX RDATA format
-                        1
-    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5
+                        1         
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5                                           
     |-----------------------------|
     |         PREFERECE           |
     |-----------------------------|
@@ -493,15 +493,15 @@ typedef struct NX_DNS_MAIL_EXCHANGE_ENTRY_STRUCT
 } NX_DNS_MX_ENTRY;
 
 /* Layout of the buffer
- record_buffer         |---------------------------------------------------------|
+ record_buffer         |---------------------------------------------------------| 
              entry 0   |xx.xx.xx.xx|preference|res|pointer to host name string   |
- record_buffer + 12    |---------------------------------------------------------|
+ record_buffer + 12    |---------------------------------------------------------| 
              entry 1   |xx.xx.xx.xx|preference|res|pointer to host name string   |
  record_buffer + 24    |---------------------------------------------------------|
              entry 2   |xx.xx.xx.xx|preference|res|pointer to host name string   |
  record_buffer + 36    |---------------------------------------------------------|
              entry 3   |xx.xx.xx.xx|preference|res|pointer to host name string   |
- record_buffer + 48    |---------------------------------------------------------|
+ record_buffer + 48    |---------------------------------------------------------| 
              entry 4   |xx.xx.xx.xx|preference|res|pointer to host name string   |
  record_buffer + 60    |---------------------------------------------------------|
                        |xx.xx.xx.xx|preference|res|pointer to host name string   |
@@ -509,7 +509,7 @@ typedef struct NX_DNS_MAIL_EXCHANGE_ENTRY_STRUCT
                        |                         | mx_hostname 4                 |
                        |mx_hostname 3        | mx_hostname 2                     |
                        |mx_hostname 1   | mx_hostname 0                          |
- record_buffer + max   |---------------------------------------------------------|
+ record_buffer + max   |---------------------------------------------------------| 
 */
 
 /********************************************************************************/
@@ -529,22 +529,22 @@ typedef struct NX_DNS_SERVICE_ENTRY_STRUCT
 
 /* Layout of the buffer:
 
- record_buffer         |-------------------------------------------------------------------|
+ record_buffer         |-------------------------------------------------------------------| 
              entry 0   |xx.xx.xx.xx|priority|weight|port|res|pointer to host name string   |
- record_buffer + 16    |-------------------------------------------------------------------|
+ record_buffer + 16    |-------------------------------------------------------------------| 
              entry 1   |xx.xx.xx.xx|priority|weight|port|res|pointer to host name string   |
  record_buffer + 32    |-------------------------------------------------------------------|
              entry 2   |xx.xx.xx.xx|priority|weight|port|res|pointer to host name string   |
  record_buffer + 48    |-------------------------------------------------------------------|
              entry 3   |xx.xx.xx.xx|priority|weight|port|res|pointer to host name string   |
- record_buffer + 64    |-------------------------------------------------------------------|
+ record_buffer + 64    |-------------------------------------------------------------------| 
              entry 4   |xx.xx.xx.xx|priority|weight|port|res|pointer to host name string   |
  record_buffer + 80    |-------------------------------------------------------------------|
                        |xx.xx.xx.xx|priority|weight|port|res|pointer to host name string   |
                        |                                   | srv_hostname 4                |
                        |srv_hostname 3                  | srv_hostname 2                   |
                        |srv_hostname 1             | srv_hostname 0                        |
- record_buffer + max   |-------------------------------------------------------------------|
+ record_buffer + max   |-------------------------------------------------------------------| 
 
 */
 /********************************************************************************/
@@ -552,7 +552,7 @@ typedef struct NX_DNS_SERVICE_ENTRY_STRUCT
 /********************************************************************************/
 /* TXT RDATA format
                         1                   2                   3
-    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1                                            
     |-------------------------------------------------------------|
     /                            TXT-DATA                         /
     /                                                             /
@@ -564,23 +564,23 @@ typedef struct NX_DNS_SERVICE_ENTRY_STRUCT
 /********************************************************************************/
 /* SOA RDATA format
                         1                   2                   3
-    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1
+    0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 0 1                                            
     |-------------------------------------------------------------|
     /                            MNAME                            /
     /                                                             /
-    |-------------------------------------------------------------|
+    |-------------------------------------------------------------| 
     /                            RNAME                            /
-    /                                                             /
-    |-------------------------------------------------------------|
-    |                            SERIAL                           |
-    |-------------------------------------------------------------|
-    |                            REFRESH                          |
-    |-------------------------------------------------------------|
-    |                            RETRY                            |
-    |-------------------------------------------------------------|
-    |                            EXPIRE                           |
-    |-------------------------------------------------------------|
-    |                            MINMUM                           |
+    /                                                             / 
+    |-------------------------------------------------------------|                                      
+    |                            SERIAL                           | 
+    |-------------------------------------------------------------|                                      
+    |                            REFRESH                          | 
+    |-------------------------------------------------------------|                                      
+    |                            RETRY                            | 
+    |-------------------------------------------------------------|                                      
+    |                            EXPIRE                           | 
+    |-------------------------------------------------------------|                                      
+    |                            MINMUM                           | 
     |-------------------------------------------------------------|
 */
 
@@ -588,7 +588,7 @@ typedef struct NX_DNS_SERVICE_ENTRY_STRUCT
 
 typedef struct NX_DNS_SOA_ENTRY_STRUCT
 {
-
+    
     UCHAR           *nx_dns_soa_host_mname_ptr;
     UCHAR           *nx_dns_soa_host_rname_ptr;
     ULONG           nx_dns_soa_serial;
@@ -599,15 +599,15 @@ typedef struct NX_DNS_SOA_ENTRY_STRUCT
 } NX_DNS_SOA_ENTRY;
 
 /* Layout of the buffer
- record_buffer
-
-                       |-------------------------------------------------------------------|
+ record_buffer         
+                       
+                       |-------------------------------------------------------------------| 
                        | pointer to primary name server| pointer to responsible mailbox    |
-                       |-------------------------------------------------------------------|
+                       |-------------------------------------------------------------------| 
                        |   serial   |  refresh   |    retry   |   expire   |   minmum      |
-                       |-------------------------------------------------------------------|
+                       |-------------------------------------------------------------------| 
                        | soa_host_mname         | soa_host_rname                           |
-                       |-------------------------------------------------------------------|
+                       |-------------------------------------------------------------------| 
  */
 
 /********************************************************************************/
@@ -627,12 +627,12 @@ typedef struct NX_DNS_SOA_ENTRY_STRUCT
 
 #endif
 
-
+               
 /* Define the RDATA structure.  */
 
 /* A RDATA format
       0                             1
-      0  1  2  3  4  5  6  7  8  9  0  1  2  3  4  5
+      0  1  2  3  4  5  6  7  8  9  0  1  2  3  4  5                                           
     |--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--|
     |                     ADDRESS                   |
     |                                               |
@@ -643,10 +643,10 @@ typedef struct NX_DNS_RR_A_STRUCT
 {
     ULONG           nx_dns_rr_a_address;
 } NX_DNS_RR_A;
-
+                    
 /* AAAA RDATA format
       0                             1
-      0  1  2  3  4  5  6  7  8  9  0  1  2  3  4  5
+      0  1  2  3  4  5  6  7  8  9  0  1  2  3  4  5                                           
     |--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--|
     |                                               |
     |                                               |
@@ -661,13 +661,13 @@ typedef struct NX_DNS_RR_A_STRUCT
 
 typedef struct NX_DNS_RR_AAAA_STRUCT
 {
-    ULONG*          nx_dns_rr_aaaa_address;         /* Keep the same resource record structure size, store the rdata information into cache with string.  */
+    ULONG*          nx_dns_rr_aaaa_address;         /* Keep the same resource record structure size, store the rdata information into cache with string.  */   
 } NX_DNS_RR_AAAA;
 
-
+                       
 /* PTR RDATA format
       0                             1
-      0  1  2  3  4  5  6  7  8  9  0  1  2  3  4  5
+      0  1  2  3  4  5  6  7  8  9  0  1  2  3  4  5                                           
     |--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--|
     /                     PTRDNAME                  /
     |--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--|
@@ -681,7 +681,7 @@ typedef struct NX_DNS_RR_PTR_STRUCT
 
 /* NS RDATA format
       0                             1
-      0  1  2  3  4  5  6  7  8  9  0  1  2  3  4  5
+      0  1  2  3  4  5  6  7  8  9  0  1  2  3  4  5                                           
     |--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--|
     /                     NSDNAME                   /
     /                                               /
@@ -692,10 +692,10 @@ typedef struct NX_DNS_RR_NS_STRUCT
 {
     UCHAR*          nx_dns_rr_ns_name;
 } NX_DNS_RR_NS;
-
+                  
 /* CNMAE RDATA format
       0                             1
-      0  1  2  3  4  5  6  7  8  9  0  1  2  3  4  5
+      0  1  2  3  4  5  6  7  8  9  0  1  2  3  4  5                                           
     |--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--|
     /                     CNAME                     /
     /                                               /
@@ -706,13 +706,13 @@ typedef struct NX_DNS_RR_CNAME_STRUCT
 {
     UCHAR*          nx_dns_rr_cname_name;
 } NX_DNS_RR_CNAME;
-
-
+              
+                   
 /* MX RDATA format
       0                             1
-      0  1  2  3  4  5  6  7  8  9  0  1  2  3  4  5
+      0  1  2  3  4  5  6  7  8  9  0  1  2  3  4  5  
     |--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--|
-    |                     PREFERENCE                |
+    |                     PREFERENCE                |                                         
     |--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--|
     /                     NEWNAME                   /
     /                                               /
@@ -726,7 +726,7 @@ typedef struct NX_DNS_RR_MX_STRUCT
 
 /* TXT RDATA format
       0                             1
-      0  1  2  3  4  5  6  7  8  9  0  1  2  3  4  5
+      0  1  2  3  4  5  6  7  8  9  0  1  2  3  4  5                                           
     |--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--|
     /                     TXT-DATA                  /
     |--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--|
@@ -739,7 +739,7 @@ typedef struct NX_DNS_RR_TXT_STRUCT
 
 /* SRV RDATA format
       0                             1
-      0  1  2  3  4  5  6  7  8  9  0  1  2  3  4  5
+      0  1  2  3  4  5  6  7  8  9  0  1  2  3  4  5                                           
     |--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--|
     |                     PRIORITY                  |
     |--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--|
@@ -755,11 +755,11 @@ typedef struct NX_DNS_RR_SRV_STRUCT
 {
     UCHAR*          nx_dns_rr_srv_rdata;        /* Keep the same resource record structure size, store the rdata information into cache with string, "priority, weights, port,target".  */
 } NX_DNS_RR_SRV;
-
+                    
 
 /* SOA RDATA format
       0                             1
-      0  1  2  3  4  5  6  7  8  9  0  1  2  3  4  5
+      0  1  2  3  4  5  6  7  8  9  0  1  2  3  4  5                                           
     |--+--+--+--+--+--+--+--+--+--+--+--+--+--+--+--|
     /                     MNAME                     /
     /                                               /
@@ -785,14 +785,14 @@ typedef struct NX_DNS_RR_SRV_STRUCT
 
 typedef struct NX_DNS_RR_SOA_STRUCT
 {
-    UCHAR*          nx_dns_rr_soa_rdata;            /* Keep the same resource record structure size, store the rdata information into cache with string.
+    UCHAR*          nx_dns_rr_soa_rdata;            /* Keep the same resource record structure size, store the rdata information into cache with string. 
                                                        "Mname, Rname, Serial, Refresh, Retry, Expire, Minmum"  */
 } NX_DNS_RR_SOA;
 
 
 /* The following data structure is used to store the resource records(RRs). */
 typedef struct NX_DNS_RR_STRUCT
-{
+{   
 
     UCHAR*  nx_dns_rr_name;                     /* Owner's name,i.e., the name of the node to which this resource record pertains. */
 
@@ -801,7 +801,7 @@ typedef struct NX_DNS_RR_STRUCT
     USHORT  nx_dns_rr_class;                    /* RR CLASS.                                                */
 
     ULONG   nx_dns_rr_ttl;                      /* The time interval that the RR may be cached before the source of the information should again be consulted. */
-
+                                     
     ULONG   nx_dns_rr_last_used_time;           /* Define the last used time for the peer RR.               */
 
     /* Union that holds resource record data. */
@@ -814,8 +814,8 @@ typedef struct NX_DNS_RR_STRUCT
         NX_DNS_RR_TXT       nx_dns_rr_rdata_txt;
         NX_DNS_RR_CNAME     nx_dns_rr_rdata_cname;
         NX_DNS_RR_NS        nx_dns_rr_rdata_ns;
-        NX_DNS_RR_MX        nx_dns_rr_rdata_mx;
-        NX_DNS_RR_SOA       nx_dns_rr_rdata_soa;
+        NX_DNS_RR_MX        nx_dns_rr_rdata_mx;  
+        NX_DNS_RR_SOA       nx_dns_rr_rdata_soa; 
     } nx_dns_rr_rdata;
 
 }NX_DNS_RR;
@@ -825,9 +825,9 @@ typedef struct NX_DNS_RR_STRUCT
 
 /* Application caller is present, perform API mapping.  */
 
-/* Determine if error checking is desired.  If so, map API functions
+/* Determine if error checking is desired.  If so, map API functions 
    to the appropriate error checking front-ends.  Otherwise, map API
-   functions to the core functions that actually perform the work.
+   functions to the core functions that actually perform the work. 
    Note: error checking is enabled by default.  */
 
 #ifdef NX_DISABLE_ERROR_CHECKING
@@ -840,9 +840,9 @@ typedef struct NX_DNS_RR_STRUCT
 #define nx_dns_host_by_address_get                  _nx_dns_host_by_address_get
 #define nx_dns_host_by_name_get                     _nx_dns_host_by_name_get
 #define nx_dns_ipv4_address_by_name_get             _nx_dns_ipv4_address_by_name_get
-
-#ifdef NX_DNS_ENABLE_EXTENDED_RR_TYPES
-#define nx_dns_cname_get                            _nx_dns_cname_get
+   
+#ifdef NX_DNS_ENABLE_EXTENDED_RR_TYPES 
+#define nx_dns_cname_get                            _nx_dns_cname_get 
 #define nx_dns_domain_name_server_get               _nx_dns_domain_name_server_get
 #define nx_dns_host_text_get                        _nx_dns_host_text_get
 #define nx_dns_domain_mail_exchange_get             _nx_dns_domain_mail_exchange_get
@@ -865,7 +865,7 @@ typedef struct NX_DNS_RR_STRUCT
 #define nxd_dns_server_get                          _nxd_dns_server_get
 
 #ifdef NX_DNS_CACHE_ENABLE
-#define nx_dns_cache_initialize                     _nx_dns_cache_initialize
+#define nx_dns_cache_initialize                     _nx_dns_cache_initialize   
 #define nx_dns_cache_notify_set                     _nx_dns_cache_notify_set
 #define nx_dns_cache_notify_clear                   _nx_dns_cache_notify_clear
 #endif /* NX_DNS_CACHE_ENABLE  */
@@ -880,9 +880,9 @@ typedef struct NX_DNS_RR_STRUCT
 #define nx_dns_host_by_address_get                  _nxe_dns_host_by_address_get
 #define nx_dns_host_by_name_get                     _nxe_dns_host_by_name_get
 #define nx_dns_ipv4_address_by_name_get             _nxe_dns_ipv4_address_by_name_get
-
-#ifdef NX_DNS_ENABLE_EXTENDED_RR_TYPES
-#define nx_dns_cname_get                            _nxe_dns_cname_get
+   
+#ifdef NX_DNS_ENABLE_EXTENDED_RR_TYPES 
+#define nx_dns_cname_get                            _nxe_dns_cname_get 
 #define nx_dns_domain_name_server_get               _nxe_dns_domain_name_server_get
 #define nx_dns_host_text_get                        _nxe_dns_host_text_get
 #define nx_dns_domain_mail_exchange_get             _nxe_dns_domain_mail_exchange_get
@@ -905,7 +905,7 @@ typedef struct NX_DNS_RR_STRUCT
 #define nxd_dns_server_get                          _nxde_dns_server_get
 
 #ifdef NX_DNS_CACHE_ENABLE
-#define nx_dns_cache_initialize                     _nxe_dns_cache_initialize
+#define nx_dns_cache_initialize                     _nxe_dns_cache_initialize   
 #define nx_dns_cache_notify_set                     _nxe_dns_cache_notify_set
 #define nx_dns_cache_notify_clear                   _nxe_dns_cache_notify_clear
 #endif /* NX_DNS_CACHE_ENABLE  */
@@ -925,8 +925,8 @@ UINT        nx_dns_get_serverlist_size(NX_DNS *dns_ptr, UINT *server_list_size);
 UINT        nx_dns_host_by_name_get(NX_DNS *dns_ptr, UCHAR *host_name, ULONG *host_address_ptr, ULONG wait_option);
 UINT        nx_dns_host_by_address_get(NX_DNS *dns_ptr, ULONG ip_address, UCHAR *host_name_ptr, UINT host_name_buffer_size, ULONG wait_option);
 UINT        nx_dns_ipv4_address_by_name_get(NX_DNS *dns_ptr, UCHAR *host_name,  VOID *record_buffer, UINT buffer_size, UINT *record_count, ULONG wait_option);
-
-#ifdef NX_DNS_ENABLE_EXTENDED_RR_TYPES
+   
+#ifdef NX_DNS_ENABLE_EXTENDED_RR_TYPES 
 UINT        nx_dns_cname_get (NX_DNS *dns_ptr, UCHAR *host_name,  UCHAR *record_buffer, UINT buffer_size, ULONG wait_option);
 UINT        nx_dns_domain_name_server_get(NX_DNS *dns_ptr, UCHAR *host_name,  VOID *record_buffer, UINT buffer_size, UINT *record_count, ULONG wait_option);
 UINT        nx_dns_host_text_get(NX_DNS *dns_ptr, UCHAR *host_name,  UCHAR *record_buffer, UINT buffer_size, ULONG wait_option);
@@ -944,9 +944,9 @@ UINT        nxd_dns_server_remove(NX_DNS *dns_ptr, NXD_ADDRESS *server_address);
 UINT        nxd_dns_server_get(NX_DNS *dns_ptr, UINT index, NXD_ADDRESS *dns_server_address);
 
 #ifdef NX_DNS_CACHE_ENABLE
-UINT        nx_dns_cache_initialize(NX_DNS *dns_ptr, VOID *cache_ptr, UINT cache_size);
+UINT        nx_dns_cache_initialize(NX_DNS *dns_ptr, VOID *cache_ptr, UINT cache_size); 
 UINT        nx_dns_cache_notify_set(NX_DNS *dns_ptr, VOID (*cache_full_notify_cb)(NX_DNS *dns_ptr));
-UINT        nx_dns_cache_notify_clear(NX_DNS *dns_ptr);
+UINT        nx_dns_cache_notify_clear(NX_DNS *dns_ptr);    
 #endif /* NX_DNS_CACHE_ENABLE  */
 
 #else
@@ -965,8 +965,8 @@ UINT        _nxe_dns_host_by_name_get(NX_DNS *dns_ptr, UCHAR *host_name, ULONG *
 UINT        _nx_dns_host_by_name_get(NX_DNS *dns_ptr, UCHAR *host_name, ULONG *host_address_ptr, ULONG wait_option);
 UINT        _nxe_dns_ipv4_address_by_name_get(NX_DNS *dns_ptr, UCHAR *host_name, VOID *record_buffer, UINT buffer_size, UINT *record_count, ULONG wait_option);
 UINT        _nx_dns_ipv4_address_by_name_get(NX_DNS *dns_ptr, UCHAR *host_name, VOID *record_buffer, UINT buffer_size, UINT *record_count, ULONG wait_option);
-
-#ifdef NX_DNS_ENABLE_EXTENDED_RR_TYPES
+   
+#ifdef NX_DNS_ENABLE_EXTENDED_RR_TYPES 
 UINT        _nxe_dns_cname_get (NX_DNS *dns_ptr, UCHAR *host_name,  UCHAR *record_buffer, UINT buffer_size,ULONG wait_option);
 UINT        _nx_dns_cname_get (NX_DNS *dns_ptr, UCHAR *host_name,  UCHAR *record_buffer, UINT buffer_size,ULONG wait_option);
 UINT        _nxe_dns_domain_name_server_get(NX_DNS *dns_ptr, UCHAR *host_name,  VOID *record_buffer, UINT buffer_size, UINT *record_count, ULONG wait_option);
@@ -991,7 +991,7 @@ UINT        _nxe_dns_server_remove_all(NX_DNS *dns_ptr);
 UINT        _nx_dns_server_remove_all(NX_DNS *dns_ptr);
 UINT        _nxe_dns_server_get(NX_DNS *dns_ptr, UINT index, ULONG *dns_server_address);
 UINT        _nx_dns_server_get(NX_DNS *dns_ptr, UINT index, ULONG *dns_server_address);
-UINT        _nxe_dns_get_serverlist_size(NX_DNS *dns_ptr, UINT *server_list_size);
+UINT        _nxe_dns_get_serverlist_size(NX_DNS *dns_ptr, UINT *server_list_size); 
 UINT        _nx_dns_get_serverlist_size(NX_DNS *dns_ptr, UINT *server_list_size);
 UINT        _nxde_dns_ipv6_address_by_name_get(NX_DNS *dns_ptr, UCHAR *host_name, VOID *record_buffer, UINT buffer_size, UINT *record_count, ULONG wait_option);
 UINT        _nxd_dns_ipv6_address_by_name_get(NX_DNS *dns_ptr, UCHAR *host_name, VOID *record_buffer, UINT buffer_size, UINT *record_count, ULONG wait_option);
@@ -1006,19 +1006,19 @@ UINT        _nxd_dns_server_remove(NX_DNS *dns_ptr, NXD_ADDRESS *server_address)
 UINT        _nxde_dns_server_get(NX_DNS *dns_ptr, UINT index, NXD_ADDRESS *dns_server_address);
 UINT        _nxd_dns_server_get(NX_DNS *dns_ptr, UINT index, NXD_ADDRESS *dns_server_address);
 
-#ifdef NX_DNS_CACHE_ENABLE
-UINT        _nxe_dns_cache_initialize(NX_DNS *dns_ptr, VOID *cache_ptr, UINT cache_size);
-UINT        _nx_dns_cache_initialize(NX_DNS *dns_ptr, VOID *cache_ptr, UINT cache_size);
+#ifdef NX_DNS_CACHE_ENABLE                                                               
+UINT        _nxe_dns_cache_initialize(NX_DNS *dns_ptr, VOID *cache_ptr, UINT cache_size); 
+UINT        _nx_dns_cache_initialize(NX_DNS *dns_ptr, VOID *cache_ptr, UINT cache_size);            
 UINT        _nxe_dns_cache_notify_set(NX_DNS *dns_ptr, VOID (*cache_full_notify_cb)(NX_DNS *dns_ptr));
-UINT        _nx_dns_cache_notify_set(NX_DNS *dns_ptr, VOID (*cache_full_notify_cb)(NX_DNS *dns_ptr));
-UINT        _nxe_dns_cache_notify_clear(NX_DNS *dns_ptr);
-UINT        _nx_dns_cache_notify_clear(NX_DNS *dns_ptr);
+UINT        _nx_dns_cache_notify_set(NX_DNS *dns_ptr, VOID (*cache_full_notify_cb)(NX_DNS *dns_ptr)); 
+UINT        _nxe_dns_cache_notify_clear(NX_DNS *dns_ptr);     
+UINT        _nx_dns_cache_notify_clear(NX_DNS *dns_ptr);    
 #endif /* NX_DNS_CACHE_ENABLE  */
 
 #endif
 
 /* Internal DNS response getting function.  */
-UINT        _nx_dns_response_get(NX_DNS *dns_ptr, UCHAR *host_name, UCHAR *record_buffer, UINT buffer_size,
+UINT        _nx_dns_response_get(NX_DNS *dns_ptr, UCHAR *host_name, UCHAR *record_buffer, UINT buffer_size, 
                                  UINT *record_count, ULONG wait_option);
 
 /* Determine if a C++ compiler is being used.  If so, complete the standard
@@ -1028,3 +1028,4 @@ UINT        _nx_dns_response_get(NX_DNS *dns_ptr, UCHAR *host_name, UCHAR *recor
 #endif
 
 #endif  /* NXD_DNS_H */
+

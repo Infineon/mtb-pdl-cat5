@@ -91,3 +91,4 @@ UINT _nx_crypto_method_prf_sha512_operation(UINT op,      /* Encrypt, Decrypt, A
 #ifdef __cplusplus
 }
 #endif
+

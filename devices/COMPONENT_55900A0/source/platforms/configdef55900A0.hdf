@@ -1,5 +1,5 @@
 # DO NOT EDIT MANUALLY! FW2 VERSION
-# Automatically generated on Mon Mar 17 11:41:56 2025 from firmware 1.1.71
+# Automatically generated on Fri Aug  1 09:16:14 2025 from firmware 1.1.71
 SECTION "Config Data Entries" 0
 {
      COMMAND "Config layout" 0x0100
@@ -3487,11 +3487,11 @@ SECTION "Config Data Entries" 0
              binary_message_only
              encode_value = 0
              enabled_if (0 = 1);     # Never
-
+    
          PARAM "enable in sniff"
              uint32{ 16:16 }
              doc "use lpo in sniff mode when as a slave.";
-
+    
          PARAM "lpo drift"
              uint32{ 15:0 }
              doc "lpo clock drift. Drift value used to calculate receive window.";
@@ -3718,7 +3718,7 @@ SECTION "Config Data Entries" 0
      COMMAND "32Bit Register Pokes With Fab ID" 0x0112
      {
          doc "Config item code used to poke hardware register values to optimize system performance."
-
+    
          PARAM "Fab ID"
              uint8
              doc "Fab ID";
@@ -3796,7 +3796,7 @@ SECTION "Config Data Entries" 0
      {
          doc "CPU Speed Config for Clock Request."
                 "Setting both to the same value will lock the CPU speed to that value."
-
+    
          PARAM "Min CPU Speed"
              uint8
              doc "Min CPU Speed (enum value)"
@@ -6303,7 +6303,7 @@ SECTION "Config Data Entries" 0
              doc "Reserved (Pin)"
              binary_message_only
              encode_value = 0;
-
+    
          PARAM "LDO Sleep Output Level"
              uint32 {4:2}
              doc "Enable powe down of the bandgap in HIDDOFF mode automatically."
@@ -6317,10 +6317,10 @@ SECTION "Config Data Entries" 0
                  { 0x1,      "LDO_VOUT_1P24V" },
                  { 0x2,      "LDO_VOUT_1P28V" },
                  { 0x3,      "LDO_VOUT_1P32V" }
-
+    
              }
              default = 0;
-
+    
          PARAM "HIDOFF Powerdown Bandgap Enable"
              uint32 {1}
              doc "Enable powe down of the bandgap in HIDDOFF mode automatically."
@@ -6330,7 +6330,7 @@ SECTION "Config Data Entries" 0
                  {0, "Disable"}
              }
              default = 0;
-
+    
          PARAM "LDO Control Enable"
              uint32 {0}
              doc "Enable LDO control"
@@ -6340,24 +6340,24 @@ SECTION "Config Data Entries" 0
                  {0, "Disable"}
              }
              default = 0;
-
+    
          PARAM "RESERVED_1"
              uint32 {31:26}
              doc "Reserved (Pin)"
              binary_message_only
              encode_value = 0;
-
+    
          PARAM "LDO Current Feedback for ESR Zero"
              uint32 {25:24}
              doc "LDO Current Feedback Adjustment."
              max     = 15
              default = 0;
-
+    
          PARAM "LDO Current Limit Adjustment"
              uint32 {23}
              doc "LDO Current Limit Adjustment"
              default = 0;
-
+    
          PARAM "LDO Current Limit Mode"
              uint32 {22}
              doc "The current limit mode if LDO Current limit enable"
@@ -6368,7 +6368,7 @@ SECTION "Config Data Entries" 0
                  {1, "Feedback"}
              }
              default = 0;
-
+    
          PARAM "LDO Current Limit Enable"
              uint32 {21}
              doc "LDO Current limit enable"
@@ -6379,7 +6379,7 @@ SECTION "Config Data Entries" 0
                  {1, "Enable"}
              }
              default = 0;
-
+    
          PARAM "LDO VDS Matching Amp Enable"
              uint32 {20}
              doc "Enable VDS matching amplifier for LDO operation"
@@ -6390,7 +6390,7 @@ SECTION "Config Data Entries" 0
                  {1, "Enable"}
              }
              default = 0;
-
+    
          PARAM "LDO Output Adjustment"
              uint32 {19:17}
              doc "Enable powe down of the bandgap in HIDDOFF mode automatically."
@@ -6405,9 +6405,9 @@ SECTION "Config Data Entries" 0
                  { 0x2,      "LDO_VOUT_1P28V" },
                  { 0x3,      "LDO_VOUT_1P32V" }
              }
-
+    
              default = 0;
-
+    
          PARAM "LDO Power Mode"
              uint32 {16}
              doc "LDO power mode."
@@ -6418,34 +6418,34 @@ SECTION "Config Data Entries" 0
                  {1, "Power Down"}
              }
              default = 0;
-
+    
          PARAM "RESERVED_2"
              uint32 {15}
              doc "Reserved (Pin)"
              binary_message_only
              encode_value = 0;
-
+    
          PARAM "Bandgap Reference Voltage Adjustment"
              uint32 {14:12}
              doc "Bandgap reference voltage adjustment."
                  "Default 0."
              max     = 7
              default = 0;
-
+    
          PARAM "Bandgap CTAT Current Adjustment"
              uint32 {11:8}
              doc "Bandgap CTAT current adjustment"
                  "Default 0."
              max     = 15
              default = 0;
-
+    
          PARAM "Bandgap PTAT Current Adjustment"
              uint32 {7:4}
              doc "Bandgap PTAT current adjustment."
                  "Default 0."
              max     = 15
              default = 0;
-
+    
          PARAM "Bandgap Power Mode"
              uint32 {3}
              doc "Bandgap low power mode."
@@ -6456,15 +6456,15 @@ SECTION "Config Data Entries" 0
                  {1, "Power Down"}
              }
              default = 0;
-
+    
          PARAM "LPF Filter Off Bandgap Noise"
              uint32 {2:1}
              doc "LPF enable/adjust to filter off BG noise."
                  "Default disabled for fast startup."
              max     = 7
              default = 0;
-
-
+    
+    
          PARAM "Bandgap Low Powermode Enable"
              uint32 {0}
              doc "Bandgap low power mode."
@@ -6480,7 +6480,7 @@ SECTION "Config Data Entries" 0
      COMMAND "MPAF_CONFIG_ITEM_ID_RTC_CONFIG" 0x051D
      {
          doc "Configure RTC Driver"
-
+    
          PARAM "Oscillator Frequency in kHz"
              uint8
              doc "Oscillator Frequence for RTC. Default = 128 kHz"
@@ -6526,7 +6526,7 @@ SECTION "Config Data Entries" 0
                  {0x0200, "Pull-Down"},
                  {0x0000, "Floating"}
              };
-
+    
          PARAM "7050 Initial Config Register Value"
              uint8
              doc "Defines the initial value of the 7050 sensor configuration register"
@@ -7000,7 +7000,7 @@ SECTION "Config Data Entries" 0
      COMMAND "MPAF_CONFIG_ITEM_ID_SPIFFY_DRIVER_CONFIG" 0x0522
      {
          doc "Spiffy1 GPIO configuration"
-
+    
          PARAM "Spiffy Master or Slave"
           uint8
           doc "Master or Slave mode"
@@ -7009,7 +7009,7 @@ SECTION "Config Data Entries" 0
                  {1, "Master"},
                  {2, "Slave"}
              };
-
+    
          PARAM "Input Pin Pull Config"
              uint16
              doc "Set the input Pull-up, pull-down,float configuration"
@@ -7024,7 +7024,7 @@ SECTION "Config Data Entries" 0
           doc "Configure for CLK/MOSI/MISO/CS"
              enum
              {
-
+    
                  {0x00030001, "MASTER2_P03_CLK_P00_MOSI_P01_MISO" },
                  {0x00030005, "MASTER2_P03_CLK_P00_MOSI_P05_MISO" },
                  {0x00030201, "MASTER2_P03_CLK_P02_MOSI_P01_MISO" },
@@ -7035,7 +7035,7 @@ SECTION "Config Data Entries" 0
                  {0x00031b05, "MASTER2_P03_CLK_P27_MOSI_P05_MISO" },
                  {0x00032601, "MASTER2_P03_CLK_P38_MOSI_P01_MISO" },
                  {0x00032605, "MASTER2_P03_CLK_P38_MOSI_P05_MISO" },
-
+    
                  {0x00070001, "MASTER2_P07_CLK_P00_MOSI_P01_MISO" },
                  {0x00070005, "MASTER2_P07_CLK_P00_MOSI_P05_MISO" },
                  {0x00070201, "MASTER2_P07_CLK_P02_MOSI_P01_MISO" },
@@ -7135,7 +7135,7 @@ SECTION "Config Data Entries" 0
                  {0x27242605 , "SLAVE2_P39_CS_P36_CLK_P38_MOSI_P05_MISO" },
                  {0x27242619 , "SLAVE2_P39_CS_P36_CLK_P38_MOSI_P25_MISO" }
              };
-
+    
          PARAM "Spiffy 2 GPIO Config"
           uint32
           doc "Configure for SPI-2 interface, for SPI-2 only support master mode."
@@ -7353,13 +7353,13 @@ SECTION "Config Data Entries" 0
      COMMAND "MPAF_CONFIG_ITEM_ID_ADC_DRIVER_CONFIG" 0x0525
      {
          doc "Configure ADC driver"
-
+    
          PARAM "Reserved_1"
              uint32 {31}
              doc "Reserved"
              binary_message_only
              encode_value = 0;
-
+    
          PARAM "ADC internal clock division"
              uint32 {30}
              doc "ADC internal clock division"
@@ -7369,7 +7369,7 @@ SECTION "Config Data Entries" 0
                  {0,  "Disable divide-by-2"}
              }
              default = 0x0;
-
+    
          PARAM "ADC input range selection for DC measurement path"
              uint32 {29}
              doc "ADC input range selection for DC measurement path"
@@ -7379,18 +7379,18 @@ SECTION "Config Data Entries" 0
                  {1,  "1.8V"}
              }
              default = 0x0;
-
+    
          PARAM "Reserved_0"
              uint32 {28:26}
              doc "Reserved"
              binary_message_only
              encode_value = 0;
-
+    
          PARAM "Global bias current programmability"
              uint32 {25:24}
              doc "Global bias current programmability"
              default = 0x0;
-
+    
          PARAM "Internal/External BG SCF power up sequence selection"
              uint32 {23}
              doc "Internal/External BG SCF power up sequence selection"
@@ -7400,7 +7400,7 @@ SECTION "Config Data Entries" 0
                  {0, "use internal power up sequence"}
              }
              default = 0x0;
-
+    
          PARAM "External power up sequence for BG SCF bypass"
              uint32 {22}
              doc "External power up sequence for BG SCF bypass"
@@ -7410,7 +7410,7 @@ SECTION "Config Data Entries" 0
                  {0, "Not bypass"}
              }
              default = 0x0;
-
+    
          PARAM "BG REF switch cap filter bypass"
              uint32 {21}
              doc "BG REF switch cap filter bypass"
@@ -7420,7 +7420,7 @@ SECTION "Config Data Entries" 0
                  {0, "Enable switch cap filter"}
              }
              default = 0x0;
-
+    
          PARAM " Switch cap filter clock frequency selection"
              uint32 {20:19}
              doc " Switch cap filter clock frequency selection"
@@ -7432,7 +7432,7 @@ SECTION "Config Data Entries" 0
                  {3, "SCF_CLK_DIV_1p6MHz"}
              }
              default = 0x0;
-
+    
          PARAM "ADC reference voltage programmability"
              uint32 {18:15}
              doc "ADC reference voltage programmability"
@@ -7456,7 +7456,7 @@ SECTION "Config Data Entries" 0
                  {15, "843.9"}
              }
              default = 0x0;
-
+    
          PARAM "BG CTAT current adjustment"
              uint32 {14:12}
              doc "BG CTAT current adjustment"
@@ -7472,7 +7472,7 @@ SECTION "Config Data Entries" 0
                  {7, "CTAT Current adjustment -0.93"}
              }
              default = 0x0;
-
+    
          PARAM "BG PTAT current adjustment"
              uint32 {11:9}
              doc "BG PTAT current adjustment"
@@ -7488,7 +7488,7 @@ SECTION "Config Data Entries" 0
                  {7, "PTAT Current adjustment -1.11"}
              }
              default = 0x0;
-
+    
          PARAM "Chip global power down control"
              uint32 {8}
              doc "Chip global power down control"
@@ -7498,7 +7498,7 @@ SECTION "Config Data Entries" 0
                  {0, "Power up"}
              }
              default = 0x0;
-
+    
          PARAM "MIC path power up/down control selection in DC measurement mode"
              uint32 {7}
              doc "MIC path power up/down control selection in DC measurement mode"
@@ -7508,7 +7508,7 @@ SECTION "Config Data Entries" 0
                  {0, "Power down"}
              }
              default = 0x0;
-
+    
          PARAM "MIC (Audio) input and DC measurement input selection"
              uint32 {6}
              doc "MIC (Audio) input and DC measurement input selection"
@@ -7518,7 +7518,7 @@ SECTION "Config Data Entries" 0
                  {0, "ADC in DC mode"}
              }
              default = 0x0;
-
+    
          PARAM "Output synchronization clock phase controls"
              uint32 {5}
              doc "Output synchronization clock phase control"
@@ -7528,7 +7528,7 @@ SECTION "Config Data Entries" 0
                  {0, "Non-inverted clock phase"}
              }
              default = 0x0;
-
+    
          PARAM "MIC bias power up/down"
              uint32 {4}
              doc "MIC bias power up/down"
@@ -7538,7 +7538,7 @@ SECTION "Config Data Entries" 0
                  {0, "Power down"}
              }
              default = 0x0;
-
+    
          PARAM "ADC MIC (Audio) path power up/down control"
              uint32 {3}
              doc "ADC MIC (Audio) path power up/down control"
@@ -7548,7 +7548,7 @@ SECTION "Config Data Entries" 0
                  {0, "Power down"}
              }
              default = 0x0;
-
+    
          PARAM "ADC core power up/down"
              uint32 {2}
              doc "ADC core power up/down"
@@ -7558,7 +7558,7 @@ SECTION "Config Data Entries" 0
                  {0, "Power down"}
              }
              default = 0x0;
-
+    
          PARAM "ADC BG & REF power up/down"
              uint32 {1}
              doc "ADC BG & REF power up/down"
@@ -7568,7 +7568,7 @@ SECTION "Config Data Entries" 0
                  {0, "Power down"}
              }
              default = 0x0;
-
+    
          PARAM "ADC IP level main power up/down control"
              uint32 {0}
              doc "ADC IP level main power up/down control"
@@ -7578,26 +7578,26 @@ SECTION "Config Data Entries" 0
                  {0, "Power down"}
              }
              default = 0x0;
-
-
+    
+    
          PARAM "Reserved_3"
              uint32 {31:23}
              doc "Reserved (Pin)"
              binary_message_only
              encode_value = 0;
-
+    
          PARAM "MIC negative input select"
              uint32 {22}
              doc "MIC negative input select"
                  "default 0x0"
              default = 0x0;
-
+    
          PARAM "MIC_PGA_incmres_ctl"
              uint32 {21:20}
              doc "MIC_PGA_incmres_ctl"
                  "default 0x0"
              default = 0x0;
-
+    
          PARAM "PGA output common mode control"
              uint32 {19:18}
              doc "PGA output common mode control"
@@ -7609,7 +7609,7 @@ SECTION "Config Data Entries" 0
                  {0x2,  "0.5V"}
              }
              default = 0x0;
-
+    
          PARAM "PGA input common mode control"
              uint32 {17:16}
              doc "PGA input common mode control"
@@ -7621,13 +7621,13 @@ SECTION "Config Data Entries" 0
                  {0x2,  "0.35*AVDD"}
              }
              default = 0x0;
-
+    
          PARAM "Reserved_19"
              uint32 {15:12}
              doc "Reserved"
              binary_message_only
              encode_value = 0;
-
+    
          PARAM "MIC bias output impedance control"
              uint32 {11}
              doc "MIC bias low/high output impedance control during power down mode"
@@ -7638,7 +7638,7 @@ SECTION "Config Data Entries" 0
                  {0x1,  "MIC bias output is LZ in power down mode"}
              }
              default = 0x0;
-
+    
          PARAM "Internal/External MIC bias SCF power up sequence selection"
              uint32 {10}
              doc "Internal/External MIC bias SCF power up sequence selection"
@@ -7648,18 +7648,18 @@ SECTION "Config Data Entries" 0
                  {0x1,  "Use external power up sequence"}
              }
              default = 0x0;
-
+    
          PARAM "External power up sequence for MIC bias SCF bypass"
              uint32 {9}
              doc "External power up sequence for MIC bias SCF bypass"
              default = 0x0;
-
+    
          PARAM "Reserved_2"
              uint32 {8}
              doc "Reserved"
              binary_message_only
              encode_value = 0;
-
+    
          PARAM "MIC bias switch cap filter bypass"
              uint32 {7}
              doc "MIC bias switch cap filter bypass"
@@ -7670,7 +7670,7 @@ SECTION "Config Data Entries" 0
                  {0x1,  "Bypass switch cap filter"}
              }
              default = 0x0;
-
+    
          PARAM "MIC bias reference filter clock programmability"
              uint32 {6:5}
              doc "MIC bias reference filter clock programmability"
@@ -7683,7 +7683,7 @@ SECTION "Config Data Entries" 0
                  {0x3,  "1.6MHz"}
              }
              default = 0x0;
-
+    
          PARAM "MIC bias reference selection"
              uint32 {4}
              doc "MIC bias reference selection"
@@ -7694,7 +7694,7 @@ SECTION "Config Data Entries" 0
                  {0x1,  "BG voltage as MIC bias reference to have constant MIC bias output voltage"}
              }
              default = 0x0;
-
+    
          PARAM "MIC bias output voltage programmability"
              uint32 {3:2}
              doc "MIC bias output voltage programmability"
@@ -7707,7 +7707,7 @@ SECTION "Config Data Entries" 0
                  {0x3,  "1.10 X Reference voltage"}
              }
              default = 0x0;
-
+    
          PARAM "MIC bias reference voltage programmability"
              uint32 {1:0}
              doc "MIC bias reference voltage programmability"
@@ -7720,25 +7720,25 @@ SECTION "Config Data Entries" 0
                  {0x3,  "70% of Audio Supply"}
              }
              default = 0x0;
-
-
+    
+    
          PARAM "Spare_0"
              uint32 {31:22}
              doc "Spare register"
              binary_message_only
              encode_value = 0;
-
+    
          PARAM "Reserved_20"
              uint32 {21:18}
              doc "Reserved (Pin)"
              binary_message_only
              encode_value = 0;
-
+    
          PARAM "MIC PGA gain control"
              uint32 {17:12}
              doc "MIC PGA gain control: 1dB steps"
              default = 0x0;
-
+    
          PARAM "PGA clamp threshold voltage control"
              uint32 {11:10}
              doc "PGA clamp threshold voltage control"
@@ -7750,7 +7750,7 @@ SECTION "Config Data Entries" 0
                  {0x3,  "1V"}
              }
              default = 0x0;
-
+    
          PARAM "MIC PGA clamping enable"
              uint32 {9}
              doc "MIC PGA clamping enable"
@@ -7760,7 +7760,7 @@ SECTION "Config Data Entries" 0
                  {0,  "Disable"}
              }
              default = 0x1;
-
+    
          PARAM "Disable reset function on DC measurement"
              uint32 {8}
              doc "Disable reset function on DC measurement"
@@ -7770,7 +7770,7 @@ SECTION "Config Data Entries" 0
                  {0,  "Disable"}
              }
              default = 0x0;
-
+    
          PARAM "Disable the shuffler"
              uint32 {7}
              doc "Disable the shuffler"
@@ -7781,7 +7781,7 @@ SECTION "Config Data Entries" 0
                  {0,  "Disable"}
              }
              default = 0x0;
-
+    
          PARAM "Dither Sequence control"
              uint32 {6:5}
              doc "Dither Sequence control"
@@ -7794,7 +7794,7 @@ SECTION "Config Data Entries" 0
                  {3,  "prbs31"}
              }
              default = 0x0;
-
+    
          PARAM "ADC DC input selection"
              uint32 {4:0}
              doc "ADC DC input selection"
@@ -7834,25 +7834,25 @@ SECTION "Config Data Entries" 0
                  {0x1F,  "ADC_INPUT_P18"}
              }
              default = 0x0;
-
+    
          PARAM "Reserved_6"
              uint32 {31:24}
              doc "Reserved (Pin)"
              binary_message_only
              encode_value = 0;
-
+    
          PARAM "ADC latency count max."
              uint32 {23:16}
              doc "ADC latency count max., value = (divide ratio - 1), for example, 0xf = divide by 16"
                  "Default = 0xf"
              default = 0xf;
-
+    
          PARAM "Reserved_5"
              uint32 {15:14}
              doc "Reserved (Pin)"
              binary_message_only
              encode_value = 0;
-
+    
          PARAM "ADC latency count software reset"
              uint32 {13}
              doc "ADC latency count software reset"
@@ -7862,7 +7862,7 @@ SECTION "Config Data Entries" 0
                  {1,  "Software reset latency_cnt to adc_latency_cnt_max"}
              }
              default = 0;
-
+    
          PARAM "ADC uses latency count"
              uint32 {12}
              doc "ADC uses latency count"
@@ -7872,7 +7872,7 @@ SECTION "Config Data Entries" 0
                  {1,  "latency_cnt has effect"}
              }
              default = 0;
-
+    
          PARAM "ADC debug output select"
              uint32 {11:9}
              doc "ADC debug output select"
@@ -7888,7 +7888,7 @@ SECTION "Config Data Entries" 0
                  {7,  "adc_fifo_sample[31:16], DMACCLR"}
              }
              default = 0;
-
+    
          PARAM "Data alignment mode of ADC DMA interface and pattern generator"
              uint32 {8}
              doc "Data alignment mode of ADC DMA interface and pattern generator"
@@ -7898,7 +7898,7 @@ SECTION "Config Data Entries" 0
                  {1,  "LSB aligned"}
              }
              default = 0;
-
+    
          PARAM "pattern generator init source select"
              uint32 {7}
              doc "pattern generator init source select"
@@ -7908,7 +7908,7 @@ SECTION "Config Data Entries" 0
                  {1,  "ADC DMA interface"}
              }
              default = 0;
-
+    
          PARAM "ADC API interface input select"
              uint32 {6}
              doc "ADC API interface input select"
@@ -7918,7 +7918,7 @@ SECTION "Config Data Entries" 0
                  {1,  "pattern generator output"}
              }
              default = 0;
-
+    
          PARAM "ADC DMA interface input select"
              uint32 {5}
              doc "ADC DMA interface input select"
@@ -7928,12 +7928,12 @@ SECTION "Config Data Entries" 0
                  {1,  "pattern generator output"}
              }
              default = 0;
-
+    
          PARAM "Pattern generator software init"
              uint32 {4}
              doc "Pattern generator software init, only has effect when adc_pat_gen_source == 0"
              default = 0;
-
+    
          PARAM "Pattern generator clock enable"
              uint32 {3}
              doc "Pattern generator clock enable"
@@ -7943,7 +7943,7 @@ SECTION "Config Data Entries" 0
                  {1,  "Enable"}
              }
              default = 0;
-
+    
          PARAM "Pattern generator output mode"
              uint32 {2:0}
              doc "Pattern generator output mode"
@@ -7959,13 +7959,13 @@ SECTION "Config Data Entries" 0
                  {7,  "MODE_FF"}
              }
              default = 0;
-
+    
          PARAM "Reserved_7"
              uint32 {31:3}
              doc "Reserved (Pin)"
              binary_message_only
              encode_value = 0;
-
+    
          PARAM "Mode of operation of the CIC filter"
              uint32 {2:0}
              doc "Mode of operation of the CIC filter"
@@ -7981,107 +7981,107 @@ SECTION "Config Data Entries" 0
                  {6,  "DF_MODE_8KHz_DIG"}
              }
              default = 1;
-
-
+    
+    
          PARAM "High Pass Filter Denominator Co-efficient"
              uint32 {31:16}
              doc "High Pass Filter Denominator Co-efficient"
              default = 0x81b5;
-
+    
          PARAM "High Pass Filter Numerator Co-efficient"
              uint32 {15:0}
              doc "High Pass Filter Numerator Co-efficient"
              default = 0x3f27;
-
-
+    
+    
          PARAM "Biquad 2 numerator  - 1 (LPF)"
              uint32 {31:16}
              doc "Biquad 2 numerator  - 1 (LPF)"
              default = 0;
-
+    
          PARAM "Biquad 1 numerator - 1 (LPF)"
              uint32 {15:0}
              doc "Biquad 1 numerator - 1 (LPF)"
              default = 0;
-
-
+    
+    
          PARAM "Biquad 4 numerator - 1 (LPF)"
              uint32 {31:16}
              doc "Biquad 4 numerator - 1 (LPF)"
              default = 0;
-
+    
          PARAM "Biquad 3 numerator - 1 (LPF)"
              uint32 {15:0}
              doc "Biquad 3 numerator - 1 (LPF)"
              default = 0;
-
-
+    
+    
          PARAM "Biquad 2 numerator - 2 (LPF)"
              uint32 {31:16}
              doc "Biquad 2 numerator - 2 (LPF)"
              default = 0;
-
+    
          PARAM "Biquad 1 numerator - 2 (LPF)"
              uint32 {15:0}
              doc "Biquad 1 numerator - 2 (LPF)"
              default = 0;
-
-
+    
+    
          PARAM "Biquad 4 numerator -2 (LPF)"
              uint32 {31:16}
              doc "Biquad 4 numerator -2 (LPF)"
              default = 0;
-
+    
          PARAM "Biquad 3 numerator - 2 (LPF)"
              uint32 {15:0}
              doc "Biquad 3 numerator - 2 (LPF)"
              default = 0;
-
-
+    
+    
          PARAM "Biquad 2 denominator - 1 (LPF)"
              uint32 {31:16}
              doc "Biquad 2 denominator - 1 (LPF)"
              default = 0;
-
+    
          PARAM "Biquad 1 denominator - 1 (LPF)"
              uint32 {15:0}
              doc "Biquad 1 denominator - 1 (LPF)"
              default = 0;
-
-
+    
+    
          PARAM "Biquad 4 denominator - 1 (LPF)"
              uint32 {31:16}
              doc "Biquad 4 denominator - 1 (LPF)"
              default = 0;
-
+    
          PARAM "Biquad 3 denominator - 1 (LPF)"
              uint32 {15:0}
              doc "Biquad 3 denominator - 1 (LPF)"
              default = 0;
-
-
+    
+    
          PARAM "Biquad 2 denominator - 2 (LPF)"
              uint32 {31:16}
              doc "Biquad 2 denominator - 2 (LPF)"
              default = 0;
-
+    
          PARAM "Biquad 1 denominator - 2 (LPF)"
              uint32 {15:0}
              doc "Biquad 1 denominator - 2 (LPF)"
              default = 0;
-
-
+    
+    
          PARAM "Biquad 4 denominator - 2 (LPF)"
              uint32 {31:16}
              doc "Biquad 4 denominator - 2 (LPF)"
              default = 0;
-
+    
          PARAM "Biquad 3 denominator - 2 (LPF)"
              uint32 {15:0}
              doc "Biquad 3 denominator - 2 (LPF)"
              default = 0;
-
-
+    
+    
          PARAM "ADC output precision"
              uint32 {31:30}
              doc "ADC output precision"
@@ -8093,7 +8093,7 @@ SECTION "Config Data Entries" 0
                  {2,  "8 Bits"}
              }
              default = 0;
-
+    
          PARAM "Low pass filter rate"
              uint32 {29:28}
              doc "Low pass filter rate"
@@ -8106,7 +8106,7 @@ SECTION "Config Data Entries" 0
                  {3,  "128KHz"}
              }
              default = 2;
-
+    
          PARAM "Bypass mapper"
              uint32 {27}
              doc "Bypass mapper"
@@ -8116,17 +8116,17 @@ SECTION "Config Data Entries" 0
                  {1,  "Bypass"}
              }
              default = 0;
-
+    
          PARAM "ADC output rate"
              uint32 {26:24}
              doc "ADC output rate, Used to vary sampling rate of the high pass filter"
              default = 0x4;
-
+    
          PARAM "auxAdcMpr"
              uint32 {23}
              doc "auxAdcMpr"
              default = 0x0;
-
+    
          PARAM "To select between dc measurement and audio"
              uint32 {22}
              doc "To select between dc measurement and audio"
@@ -8136,7 +8136,7 @@ SECTION "Config Data Entries" 0
                  {1,  "Audio mode"}
              }
              default = 0;
-
+    
          PARAM "Flag to bypass high pass filter (if there is no DC)"
              uint32 {21}
              doc "Flag to bypass high pass filter (if there is no DC)"
@@ -8146,7 +8146,7 @@ SECTION "Config Data Entries" 0
                  {1,  "Bypass filter"}
              }
              default = 0;
-
+    
          PARAM "Output strobe rate that is used to decimate the output:  1 - 16KHz, 0 - 8KHz"
              uint32 {20}
              doc "Output strobe rate that is used to decimate the output:  1 - 16KHz, 0 - 8KHz"
@@ -8157,62 +8157,62 @@ SECTION "Config Data Entries" 0
                  {1,  "16KHz"}
              }
              default = 0;
-
+    
          PARAM "Gain corresponding to second-order-section (biquad) implementation"
              uint32 {19:0}
              doc "Gain corresponding to second-order-section (biquad) implementation"
              default = 0x764;
-
-
+    
+    
          PARAM "Spare_1"
              uint32 {31:16}
              doc "Spare register"
              binary_message_only
              encode_value = 0;
-
+    
          PARAM "Reserved_8"
              uint32 {15:10}
              doc "Reserved"
              binary_message_only
              encode_value = 0;
-
+    
          PARAM "df3Byp"
              uint32 {9}
              doc "df3Byp"
              default = 0x0;
-
+    
          PARAM "adc channel sel"
              uint32 {8}
              doc "channel select for adc decimation filter (read status and debug pin out)."
              default = 0x0;
-
+    
          PARAM "Mapper input corresponding to 11"
              uint32 {7:6}
              doc "Mapper input corresponding to 11"
              default = 0x1;
-
+    
          PARAM "Mapper input corresponding to 10 - Same as Mapper input corresponding to 01"
              uint32 {5:4}
              doc "Mapper input corresponding to 10 - Same as Mapper input corresponding to 01"
              default = 0x0;
-
+    
          PARAM "Mapper input corresponding to 01"
              uint32 {3:2}
              doc "Mapper input corresponding to 01"
              default = 0x0;
-
+    
          PARAM "Mapper input corresponding to 00"
              uint32 {1:0}
              doc "Mapper input corresponding to 00"
              default = 0x3;
-
-
+    
+    
          PARAM "Reserved_9"
              uint32 {31:8}
              doc "Reserved"
              binary_message_only
              encode_value = 0;
-
+    
          PARAM "ADC API interface output data shift mode"
              uint32 {7:6}
              doc "ADC API interface output data shift mode"
@@ -8225,7 +8225,7 @@ SECTION "Config Data Entries" 0
                  {3,  "SHIFT_MODE_4B0_24B_4B0"}
              }
              default = 0x0;
-
+    
          PARAM "ADC API interface output alignment mode"
              uint32 {5}
              doc "ADC API interface output alignment mode"
@@ -8235,7 +8235,7 @@ SECTION "Config Data Entries" 0
                  {1,  "API interface outputs data as LSB aligned"}
              }
              default = 0x0;
-
+    
          PARAM "ADC API interface input alignment mode"
              uint32 {4}
              doc "ADC API interface input alignment mode"
@@ -8245,7 +8245,7 @@ SECTION "Config Data Entries" 0
                  {1,  "API interface treats input data as LSB aligned"}
              }
              default = 0x0;
-
+    
          PARAM "API data mode"
              uint32 {3:2}
              doc "API data mode"
@@ -8257,13 +8257,13 @@ SECTION "Config Data Entries" 0
                  {3,  "MODE_16BIT"}
              }
              default = 0x0;
-
+    
          PARAM "Reserved_10"
              uint32 {1}
              doc "Reserved"
              binary_message_only
              encode_value = 0;
-
+    
          PARAM "API enable"
              uint32 {0}
              doc "API enable"
@@ -8273,78 +8273,78 @@ SECTION "Config Data Entries" 0
                  {1,  "Enable"}
              }
              default = 0x0;
-
-
+    
+    
          PARAM "Reserved_13"
              uint32 {31:26}
              doc "Reserved"
              binary_message_only
              encode_value = 0;
-
+    
          PARAM "apiBclkClrByDen"
              uint32 {25}
              doc "apiBclkClrByDen"
              default = 0x0;
-
+    
          PARAM "apiBclkSetByDen"
              uint32 {24}
              doc "apiBclkSetByDen"
              default = 0x0;
-
+    
          PARAM "apiBclkClrByInit"
              uint32 {23}
              doc "apiBclkClrByInit"
              default = 0x0;
-
+    
          PARAM "apiBclkSetByInit"
              uint32 {22}
              doc "apiBclkSetByInit"
              default = 0x0;
-
+    
          PARAM "apiBclkTogF"
              uint32 {21:16}
              doc "apiBclkTogF"
              default = 0xA;
-
+    
          PARAM "Reserved_12"
              uint32 {15:14}
              doc "Reserved"
              binary_message_only
              encode_value = 0;
-
+    
          PARAM "apiBclkH2l"
              uint32 {13:8}
              doc "apiBclkH2l"
              default = 0x6;
-
+    
          PARAM "Reserved_11"
              uint32 {7:6}
              doc "Reserved"
              binary_message_only
              encode_value = 0;
-
+    
          PARAM "apiBclkLl2h"
              uint32 {5:0}
              doc "apiBclkLl2h"
              default = 0x1;
-
-
+    
+    
          PARAM "Reserved_14"
              uint32 {31:28}
              doc "Reserved"
              binary_message_only
              encode_value = 0;
-
+    
          PARAM "Set API frame clock output high to low"
              uint32 {27:22}
              doc "bclk_cnt value to set API frame clock output high to low, only has effect when api_fclk_h2l_bclk_on = 1"
              default = 0x0;
-
+    
          PARAM "set API frame clock output low to high"
              uint32 {21:16}
              doc "bclk_cnt value to set API frame clock output low to high, only has effect when api_fclk_l2h_bclk_on = 1"
              default = 0x0;
-
+    
          PARAM "API frame clock output high to low ignores bclk_cnt or not"
              uint32 {15}
              doc "API frame clock output high to low ignores bclk_cnt or not"
@@ -8354,7 +8354,7 @@ SECTION "Config Data Entries" 0
                  {1,  "Checks bclk_cnt"}
              }
              default = 0;
-
+    
          PARAM "API frame clock output low to high ignores bclk_cnt or not"
              uint32 {14}
              doc "API frame clock output low to high ignores bclk_cnt or not"
@@ -8364,17 +8364,17 @@ SECTION "Config Data Entries" 0
                  {1,  "Checks bclk_cnt"}
              }
              default = 0;
-
+    
          PARAM "fclk_cnt value to set API frame clock output high to low"
              uint32 {13:9}
              doc "fclk_cnt value to set API frame clock output high to low"
              default = 0x1F;
-
+    
          PARAM "fclk_cnt value to set API frame clock output low to high"
              uint32 {8:4}
              doc "fclk_cnt value to set API frame clock output low to high"
              default = 0;
-
+    
          PARAM "apiFclkClrByDen"
              uint32 {3}
              doc "apiFclkClrByDen"
@@ -8384,7 +8384,7 @@ SECTION "Config Data Entries" 0
                  {1,  "API frame clock output reset to 0 by every input data sample"}
              }
              default = 0;
-
+    
          PARAM "apiFclkSetByDen"
              uint32 {2}
              doc "apiFclkSetByDen"
@@ -8394,7 +8394,7 @@ SECTION "Config Data Entries" 0
                  {1,  "API frame clock output set to 1 by every input data sample"}
              }
              default = 1;
-
+    
          PARAM "apiFclkClrByInit"
              uint32 {1}
              doc "apiFclkClrByInit"
@@ -8404,7 +8404,7 @@ SECTION "Config Data Entries" 0
                  {1,  "API frame clock output reset to 0 at init (enable from low to high)"}
              }
              default = 0;
-
+    
          PARAM "apiFclkSetByInit"
              uint32 {0}
              doc "apiFclkSetByInit"
@@ -8414,19 +8414,19 @@ SECTION "Config Data Entries" 0
                  {1,  "API frame clock output set to 1 at init (enable from low to high)"}
              }
              default = 0;
-
-
+    
+    
          PARAM "Reserved_15"
              uint32 {31:13}
              doc "Reserved"
              binary_message_only
              encode_value = 0;
-
+    
          PARAM "fclk_cnt reset value"
              uint32 {12:8}
              doc "fclk_cnt reset value, this offset can be used to shift output data position"
              default = 0;
-
+    
          PARAM "apiFclkCntMaxEn"
              uint32 {7}
              doc "apiFclkCntMaxEn"
@@ -8436,12 +8436,12 @@ SECTION "Config Data Entries" 0
                  {1,  "fclk_cnt[4:0] wrap around at api_fclk_cnt_max"}
              }
              default = 0;
-
+    
          PARAM "fclk_cnt wrap around value"
              uint32 {6:2}
              doc "fclk_cnt wrap around value, only effective when api_fclk_cnt_max_en == 1"
              default = 0x1f;
-
+    
          PARAM "apiRclkAlwaysOn"
              uint32 {1}
              doc "apiRclkAlwaysOn"
@@ -8451,7 +8451,7 @@ SECTION "Config Data Entries" 0
                  {1,  "API reference clock output is not gated when api_enable == 0"}
              }
              default = 0;
-
+    
          PARAM "API reference clock output inversion"
              uint32 {0}
              doc "API reference clock output inversion"
@@ -8461,63 +8461,63 @@ SECTION "Config Data Entries" 0
                  {1,  "Invert"}
              }
              default = 0;
-
-
+    
+    
          PARAM "ADC power on delay"
              uint8
              doc "ADC power on delay in us"
                  "Default 20"
              max = 255
              default = 20;
-
-
+    
+    
          PARAM "bandgap reference channel"
              uint8
              doc "bandgap reference channel"
                  "Default 14"
              max = 31
              default = 13;
-
-
+    
+    
          PARAM "Calibration Reading Ave Count"
              uint8
              doc "Auto calibration reading average count."
                  "Default 8"
              max = 255
              default = 8;
-
+    
          PARAM "Input Range"
              uint8
              doc "ADC input range select. Default is 0-1.2v"
-
+    
              enum
              {
                  {0, "0V-3.6V"},
                  {1, "0V-1.8V"}
              }
              default = 0;
-
+    
          PARAM "Reference MicroVoltage"
              uint32
              doc "ADC calibration reference voltage in mV"
                  "Default 1200mV"
              default = 1200;
-
+    
          PARAM "ADCBandgapDelta[0]"
              int16
              doc "Offset to VSS to be applied to get bandgap for 0-1.2V range"
              default = 18790;
-
+    
          PARAM "ADCBandgapDelta[1]"
              int16
              doc "Offset to VSS to be applied to get bandgap for 0-2.4V range"
              default = 7082;
-
+    
           PARAM "ADCBandgapDelta[2]"
              int16
              doc "Offset to VSS to be applied to get bandgap for 0-3.6V range"
              default = 4306;
-
+    
          PARAM "ADC api enable"
              uint8
              doc "AADC api enable"
@@ -8527,171 +8527,171 @@ SECTION "Config Data Entries" 0
                  {1, "Enable ADC API"}
              }
              default = 0;
-
+    
          PARAM "ADC audio fifo number"
              uint8
              doc "ADC audio fifo number"
                  "Default 5"
              max = 255
              default = 5;
-
+    
          PARAM "ADC audio fifo size"
              uint32
              doc "ADC audio fifo size"
                  "Default 240"
              default = 240;
-
-
+    
+    
          PARAM "Reserved_16"
              uint32 {31:23}
              doc "Reserved"
              binary_message_only
              encode_value = 0;
-
+    
          PARAM "pdm_phase_sel"
              uint32 {22:20}
              doc "pdm_phase_sel"
              default = 1;
-
+    
          PARAM "pdm_decim_en_sel"
              uint32 {19}
              doc "pdm_decim_en_sel"
              default = 0;
-
+    
          PARAM "pdm_decim_en_sel_manual"
              uint32 {18}
              doc "pdm_decim_en_sel_manual"
              default = 0;
-
+    
          PARAM "adcDataSel"
              uint32 {17}
              doc "adcDataSel"
              default = 0;
-
+    
          PARAM "adcDbgOutSelMsb"
              uint32 {16}
              doc "adcDbgOutSelMsb"
              default = 0;
-
+    
          PARAM "latencyCnt2Set"
              uint32 {15:8}
              doc "latencyCnt2Set"
              default = 0;
-
+    
          PARAM "dataToggleCntEn"
              uint32 {7}
              doc "dataToggleCntEn"
              default = 0;
-
+    
          PARAM "clkDmaCntEn"
              uint32 {6}
              doc "clkDmaCntEn"
              default = 0;
-
+    
          PARAM "clkAdcCntEn"
              uint32 {5}
              doc "clkAdcCntEn"
              default = 0;
-
+    
          PARAM "latencyCnt2En"
              uint32 {4}
              doc "latencyCnt2En"
              default = 0;
-
+    
          PARAM "dataToggleCntClr"
              uint32 {3}
              doc "dataToggleCntClr"
              default = 0;
-
+    
          PARAM "clkDmaCntClr"
              uint32 {2}
              doc "clkDmaCntClr"
              default = 0;
-
+    
          PARAM "clkAdcCntClr"
              uint32 {1}
              doc "clkAdcCntClr"
              default = 0;
-
+    
          PARAM "adcSampleReadyClr"
              uint32 {0}
              doc "adcSampleReadyClr"
              default = 0;
-
-
+    
+    
          PARAM "Reserved_17"
              uint32 {31:7}
              doc "Reserved"
              binary_message_only
              encode_value = 0;
-
+    
          PARAM "apiFclkClrOld"
              uint32 {6}
              doc "apiFclkClrOld"
              default = 0;
-
+    
          PARAM "apiBclkTogFEven"
              uint32 {5:0}
              doc "apiBclkTogFEven"
              default = 0xB;
-
-
+    
+    
          PARAM "Reserved_18"
              uint32 {31:16}
              doc "Reserved"
              binary_message_only
              encode_value = 0;
-
+    
          PARAM "api_ch_swap"
              uint32 {15}
              doc "api_ch_swap"
              default = 0;
-
+    
          PARAM "apiFclkCntOffsetMsb"
              uint32 {14}
              doc "apiFclkCntOffsetMsb"
              default = 0;
-
+    
          PARAM "apiFclkH2lFclkMsb"
              uint32 {13}
              doc "apiFclkH2lFclkMsb"
              default = 0;
-
+    
          PARAM "apiFclkl2hFclkMsb"
              uint32 {12}
              doc "apiFclkl2hFclkMsb"
              default = 0;
-
+    
          PARAM "apiFclkCntMaxMsb"
              uint32 {11}
              doc "apiFclkCntMaxMsb"
              default = 1;
-
+    
          PARAM "apiBclkTogFLast"
              uint32 {10:4}
              doc "apiBclkTogFLast"
              default = 0x19;
-
+    
          PARAM "apiFclkl2hBclkMsb"
              uint32 {3}
              doc "apiFclkl2hBclkMsb"
              default = 0;
-
+    
          PARAM "fclkLastGatedOff"
              uint32 {2}
              doc "fclkLastGatedOff"
              default = 0;
-
+    
          PARAM "fclkPhaseSel"
              uint32 {1}
              doc "fclkPhaseSel"
              default = 0;
-
+    
          PARAM "bclk2xSpeed"
              uint32 {0}
              doc "bclk2xSpeed"
              default = 0;
-
+    
      }
 
      COMMAND "USB Device Configuration" 0x0600
@@ -8708,14 +8708,14 @@ SECTION "Config Data Entries" 0
              {4, "Shared USB"}
              }
              default = 5;
-
+    
          PARAM "Device function"
              uint8
              doc "This is a selection of functionality that depends on ROM support. "
                  "For USB11 controller, enabling functions other than Bluetooth only will result in the "
                  "Hub also being enabled.  Hub is only valid for USB11 controller."
                  "For USB30 controller, enabling multiple functions will result in a composite device "
-             bitmap
+             bitmap 
              {
                  {0x1, "Bluetooth"},
                  {0x2, "Keyboard"},
@@ -8725,13 +8725,13 @@ SECTION "Config Data Entries" 0
                ## {0x7, "UHE"}
              }
              default = 1;
-
+    
          PARAM "RESERVED"
              uint32 {31:2}
              doc "Reserved"
              binary_message_only
              encode_value = 0;
-
+    
          PARAM "Skip USB detection"
              uint32 {1}
              doc "Hard code USB transport to TRUE. Transport detection will still happen but USB will"
@@ -8742,7 +8742,7 @@ SECTION "Config Data Entries" 0
                  {1,"TRUE"}
              }
              default = 0;
-
+    
          PARAM "HID ZLP Enable"
              uint32 {0}
              doc "Send ZLP packets when HID transactions are multiple of max packet size."
@@ -8753,16 +8753,16 @@ SECTION "Config Data Entries" 0
                  {1,"TRUE"}
              }
              default = 0;
-
+    
      }
 
      COMMAND "USB Internal Configuration" 0x0601
      {
          doc "Internal USB Configuration"
          PARAM "Internal configuration"
-             uint32
+             uint32 
              doc "Internal configuration only to be set with guidance of USB team";
-
+    
      }
 
      COMMAND "Bluetooth Device Descriptor" 0x0610
@@ -8824,7 +8824,7 @@ SECTION "Config Data Entries" 0
      {
          doc "Config item code for USB Configuration Descriptor."
          PARAM "Descriptor"
-             uint8[255] omit_pad_bytes
+             uint8[255] omit_pad_bytes 
              doc "USB Configuration Descriptor";
      }
 
@@ -9088,7 +9088,7 @@ SECTION "Config Data Entries" 0
              binary_message_only
              encode_value = 1;
      }
-
+    
 
      COMMAND "DFU Configuration Descriptor" 0x0641
      {
@@ -9097,7 +9097,7 @@ SECTION "Config Data Entries" 0
              uint8[0x19]
              doc "($$$ NEEDS EXPLANATION)";
      }
-
+    
 
      COMMAND "DFU Manufacturer ID String Descriptor" 0x0642
      {
@@ -9118,7 +9118,7 @@ SECTION "Config Data Entries" 0
              valid_length = ("Manufacturer ID length" - 4)                   # in bytes
                  min = 0;
      }
-
+    
 
      COMMAND "DFU Product ID String Descriptor" 0x0643
      {
@@ -9139,7 +9139,7 @@ SECTION "Config Data Entries" 0
              valid_length = ("Product ID length" - 4)                        # in bytes
                  min = 0;
      }
-
+    
 
      COMMAND "Language ID String Descriptor" 0x0670
      {
@@ -9202,7 +9202,7 @@ SECTION "Config Data Entries" 0
 
     COMMAND "Temperature Correction Algorithm Config" 0x0700
     {
-
+    
         doc "TCA config"
             PARAM "Enable"
             uint32
@@ -9284,7 +9284,7 @@ SECTION "Config Data Entries" 0
         PARAM "Tmin[5]"
             uint8
             present_if("Num TSteps" > 5);
-
+    
         # TSSI Target Settings - GFSK
         PARAM "Num TssiTargets"
             uint8
@@ -9292,7 +9292,7 @@ SECTION "Config Data Entries" 0
                 "Set value either 1 or 5."
             min = 1
             max = 5;
-
+    
         PARAM "TssiTarget[0][0]"
             uint16
             doc "TSSI target for the GFSK PA gain binary search for"
@@ -9309,7 +9309,7 @@ SECTION "Config Data Entries" 0
         PARAM "TssiTarget[0][4]"
             uint16
             present_if("Num TssiTargets" > 4);
-
+    
         PARAM "TssiTarget[1][0]"
             uint16
             doc "TSSI target for the GFSK PA gain binary search for"
@@ -9327,7 +9327,7 @@ SECTION "Config Data Entries" 0
         PARAM "TssiTarget[1][4]"
             uint16
             present_if(("Num TSteps" > 1) and ("Num TssiTargets" > 4));
-
+    
         PARAM "TssiTarget[2][0]"
             uint16
             doc "TSSI target for the GFSK PA gain binary search for"
@@ -9345,7 +9345,7 @@ SECTION "Config Data Entries" 0
         PARAM "TssiTarget[2][4]"
             uint16
             present_if(("Num TSteps" > 2) and ("Num TssiTargets" > 4));
-
+    
         PARAM "TssiTarget[3][0]"
             uint16
             doc "TSSI target for the GFSK PA gain binary search for"
@@ -9363,7 +9363,7 @@ SECTION "Config Data Entries" 0
         PARAM "TssiTarget[3][4]"
             uint16
             present_if(("Num TSteps" > 3) and ("Num TssiTargets" > 4));
-
+    
         PARAM "TssiTarget[4][0]"
             uint16
             doc "TSSI target for the GFSK PA gain binary search for"
@@ -9381,7 +9381,7 @@ SECTION "Config Data Entries" 0
         PARAM "TssiTarget[4][4]"
             uint16
             present_if(("Num TSteps" > 4) and ("Num TssiTargets" > 4));
-
+    
         PARAM "TssiTarget[5][0]"
             uint16
             doc "TSSI target for the GFSK PA gain binary search for"
@@ -9399,8 +9399,8 @@ SECTION "Config Data Entries" 0
         PARAM "TssiTarget[5][4]"
             uint16
             present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 4));
-
-
+    
+    
         # TSSI ranges - GFSK
         PARAM "TssiRangeLow[0]"
             uint8
@@ -9440,8 +9440,8 @@ SECTION "Config Data Entries" 0
         PARAM "TssiRangeHigh[5]"
             uint8
             present_if("Num TSteps" > 5);
-
-
+    
+    
         #TSSI targets - EDR
         PARAM "TssiTargetEDR[0][0]"
             uint16
@@ -9459,7 +9459,7 @@ SECTION "Config Data Entries" 0
         PARAM "TssiTargetEDR[0][4]"
             uint16
             present_if("Num TssiTargets" > 4);
-
+    
         PARAM "TssiTargetEDR[1][0]"
             uint16
             doc "TSSI target for the EDR PA gain binary search for"
@@ -9477,7 +9477,7 @@ SECTION "Config Data Entries" 0
         PARAM "TssiTargetEDR[1][4]"
             uint16
             present_if(("Num TSteps" > 1) and ("Num TssiTargets" > 4));
-
+    
         PARAM "TssiTargetEDR[2][0]"
             uint16
             doc "TSSI target for the EDR PA gain binary search for"
@@ -9495,7 +9495,7 @@ SECTION "Config Data Entries" 0
         PARAM "TssiTargetEDR[2][4]"
             uint16
             present_if(("Num TSteps" > 2) and ("Num TssiTargets" > 4));
-
+    
         PARAM "TssiTargetEDR[3][0]"
             uint16
             doc "TSSI target for the EDR PA gain binary search for"
@@ -9513,7 +9513,7 @@ SECTION "Config Data Entries" 0
         PARAM "TssiTargetEDR[3][4]"
             uint16
             present_if(("Num TSteps" > 3) and ("Num TssiTargets" > 4));
-
+    
         PARAM "TssiTargetEDR[4][0]"
             uint16
             doc "TSSI target for the EDR PA gain binary search for"
@@ -9531,7 +9531,7 @@ SECTION "Config Data Entries" 0
         PARAM "TssiTargetEDR[4][4]"
             uint16
             present_if(("Num TSteps" > 4) and ("Num TssiTargets" > 4));
-
+    
         PARAM "TssiTargetEDR[5][0]"
             uint16
             doc "TSSI target for the EDR PA gain binary search for"
@@ -9549,8 +9549,8 @@ SECTION "Config Data Entries" 0
         PARAM "TssiTargetEDR[5][4]"
             uint16
             present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 4));
-
-
+    
+    
         ## TSSI ranges - EDR
         ## RFP PA gain binary search endpoints
         PARAM "TssiRangeLowEDR[0]"
@@ -9591,7 +9591,7 @@ SECTION "Config Data Entries" 0
         PARAM "TssiRangeHighEDR[5]"
             uint8
             present_if("Num TSteps" > 5);
-
+    
         # Temperature dependent PA gain calibration factors
         PARAM "Num Pages8"
             uint8
@@ -11815,7 +11815,7 @@ SECTION "Config Data Entries" 0
             "repeated adjustments around a switching point."
             min = 1
             max = 6;
-
+    
     # TSSI Target Settings - GFSK
         PARAM "Num TssiTargets"
             uint8
@@ -11823,7 +11823,7 @@ SECTION "Config Data Entries" 0
             "Set value either 1 or 5."
             min = 1
             max = 5;
-
+    
         PARAM "TssiTarget[0][0]"
             uint16
             doc "TSSI target for the GFSK PA gain binary search for"
@@ -11840,7 +11840,7 @@ SECTION "Config Data Entries" 0
         PARAM "TssiTarget[0][4]"
             uint16
             present_if("Num TssiTargets" > 4);
-
+    
         PARAM "TssiTarget[1][0]"
             uint16
             doc "TSSI target for the GFSK PA gain binary search for"
@@ -11858,7 +11858,7 @@ SECTION "Config Data Entries" 0
         PARAM "TssiTarget[1][4]"
             uint16
             present_if(("Num TSteps" > 1) and ("Num TssiTargets" > 4));
-
+    
         PARAM "TssiTarget[2][0]"
             uint16
             doc "TSSI target for the GFSK PA gain binary search for"
@@ -11876,7 +11876,7 @@ SECTION "Config Data Entries" 0
         PARAM "TssiTarget[2][4]"
             uint16
             present_if(("Num TSteps" > 2) and ("Num TssiTargets" > 4));
-
+    
         PARAM "TssiTarget[3][0]"
             uint16
             doc "TSSI target for the GFSK PA gain binary search for"
@@ -11894,7 +11894,7 @@ SECTION "Config Data Entries" 0
         PARAM "TssiTarget[3][4]"
             uint16
             present_if(("Num TSteps" > 3) and ("Num TssiTargets" > 4));
-
+    
         PARAM "TssiTarget[4][0]"
             uint16
             doc "TSSI target for the GFSK PA gain binary search for"
@@ -11912,7 +11912,7 @@ SECTION "Config Data Entries" 0
         PARAM "TssiTarget[4][4]"
             uint16
             present_if(("Num TSteps" > 4) and ("Num TssiTargets" > 4));
-
+    
         PARAM "TssiTarget[5][0]"
             uint16
             doc "TSSI target for the GFSK PA gain binary search for"
@@ -11930,8 +11930,8 @@ SECTION "Config Data Entries" 0
         PARAM "TssiTarget[5][4]"
             uint16
             present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 4));
-
-
+    
+    
     # TSSI ranges - GFSK
         PARAM "TssiRangeLow[0]"
             uint8
@@ -11971,8 +11971,8 @@ SECTION "Config Data Entries" 0
         PARAM "TssiRangeHigh[5]"
             uint8
             present_if("Num TSteps" > 5);
-
-
+    
+    
     # Temperature dependent PA gain calibration factors
         PARAM "Num Pages8"
             uint8
@@ -12048,7 +12048,7 @@ SECTION "Config Data Entries" 0
             uint8
             doc " 8-bit bit mask for Page 0 Reg 4 "
             present_if(( "Num Pages8" > 0) and ("NumRegs8[0]" > 4 ));
-
+    
     # Page 1
         PARAM "BaseAddress8[1]"
             uint32
@@ -12100,7 +12100,7 @@ SECTION "Config Data Entries" 0
             uint8
             doc " 8-bit bit mask for Page 1 Reg 4 "
             present_if(( "Num Pages8" > 1) and ("NumRegs8[1]" > 4 ));
-
+    
     # Page 2
         PARAM "BaseAddress8[2]"
             uint32
@@ -12152,7 +12152,7 @@ SECTION "Config Data Entries" 0
             uint8
             doc " 8-bit bit mask for Page 2 Reg 4 "
             present_if(( "Num Pages8" > 2) and ("NumRegs8[2]" > 4 ));
-
+    
     #######################################################################
     #
     # 16-BIT PAGE DESCRIPTORS
@@ -12604,7 +12604,7 @@ SECTION "Config Data Entries" 0
             uint8
             doc " 8-bit data for TStep 5 Page 2 Reg 4"
             present_if( ( "Num TSteps" > 5) and ("Num Pages8" > 2) and ("NumRegs8[2]" > 4) );
-
+    
     # 16-BIT PAGE DATA
     #######################################################################
     # TStep 0
@@ -12828,7 +12828,7 @@ SECTION "Config Data Entries" 0
             doc "Initial HIGH endpoint for the IQ Theta binary search";
     }
 
-
+    
     COMMAND "HW Power LUT Table" 0x0704
     {
         doc "This item is used to reload the internal h/w power LUT present"
@@ -13417,7 +13417,7 @@ SECTION "Config Data Entries" 0
             "UINT16 EdrTarget[TCA_NUM_TSTEPS_MAX][RFP_NUM_OF_FREQ_BINS_9BIN]"
             "UINT16 BleTarget[TCA_NUM_TSTEPS_MAX][RFP_NUM_OF_FREQ_BINS_9BIN]"
             "------------------------------------------------------------------------"
-
+    
         PARAM "Num TSteps"
             uint8
             doc "The number of temperature minimum switching points. The value"
@@ -13449,7 +13449,7 @@ SECTION "Config Data Entries" 0
         PARAM "Tmin[5]"
             uint8
             present_if("Num TSteps" > 5);
-
+    
         # TSSI ranges - GFSK
         PARAM "GfskRangeLow"
             uint8
@@ -13471,11 +13471,11 @@ SECTION "Config Data Entries" 0
         PARAM "BleRangeHigh"
             uint8
             doc "Value of the high endpoint for the PA gain binary search at BLE mode";
-
+    
         PARAM "Num TssiTargets"
             uint8
             doc "No of Tssi Target values per frequency bin";
-
+    
         # TSSI Target Settings - GFSK
         PARAM "GfskTarget[0][0]"
             uint16
@@ -13650,7 +13650,7 @@ SECTION "Config Data Entries" 0
         PARAM "GfskTarget[5][8]"
             uint16
             present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 8));
-
+    
         # TSSI Target Settings - EDR
         PARAM "EdrTarget[0][0]"
             uint16
@@ -13825,7 +13825,7 @@ SECTION "Config Data Entries" 0
         PARAM "EdrTarget[5][8]"
             uint16
             present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 8));
-
+    
         # TSSI Target Settings - BLE
         PARAM "BleTarget[0][0]"
             uint16
@@ -14022,7 +14022,7 @@ SECTION "Config Data Entries" 0
             "UINT16 EdrTarget[TCA_NUM_TSTEPS_MAX][RFP_NUM_OF_FREQ_BINS_9BIN]"
             "UINT16 BleTarget[TCA_NUM_TSTEPS_MAX][RFP_NUM_OF_FREQ_BINS_9BIN]"
             "------------------------------------------------------------------------"
-
+    
         PARAM "Num TSteps"
             uint8
             doc "The number of temperature minimum switching points. The value"
@@ -14054,7 +14054,7 @@ SECTION "Config Data Entries" 0
         PARAM "Tmin[5]"
             uint8
             present_if("Num TSteps" > 5);
-
+    
         # TSSI ranges - GFSK
         PARAM "GfskRangeLow"
             uint8
@@ -14076,11 +14076,11 @@ SECTION "Config Data Entries" 0
         PARAM "BleRangeHigh"
             uint8
             doc "Value of the high endpoint for the PA gain binary search at BLE mode";
-
+    
         PARAM "Num TssiTargets"
             uint8
             doc "No of Tssi Target values per frequency bin";
-
+    
         # TSSI Target Settings - GFSK
         PARAM "GfskTarget[0][0]"
             uint16
@@ -14255,7 +14255,7 @@ SECTION "Config Data Entries" 0
         PARAM "GfskTarget[5][8]"
             uint16
             present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 8));
-
+    
         # TSSI Target Settings - EDR
         PARAM "EdrTarget[0][0]"
             uint16
@@ -14430,7 +14430,7 @@ SECTION "Config Data Entries" 0
         PARAM "EdrTarget[5][8]"
             uint16
             present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 8));
-
+    
         # TSSI Target Settings - BLE
         PARAM "BleTarget[0][0]"
             uint16
@@ -14648,7 +14648,7 @@ SECTION "Config Data Entries" 0
             "repeated adjustments around a switching point."
             min = 1
             max = 6;
-
+    
     # TSSI Target Settings - GFSK
         PARAM "Num TssiTargets"
             uint8
@@ -14656,7 +14656,7 @@ SECTION "Config Data Entries" 0
             "Set value either 1 or 5."
             min = 1
             max = 5;
-
+    
         PARAM "TssiTarget[0][0]"
             uint16
             doc "TSSI target for the GFSK PA gain binary search for"
@@ -14673,7 +14673,7 @@ SECTION "Config Data Entries" 0
         PARAM "TssiTarget[0][4]"
             uint16
             present_if("Num TssiTargets" > 4);
-
+    
         PARAM "TssiTarget[1][0]"
             uint16
             doc "TSSI target for the GFSK PA gain binary search for"
@@ -14691,7 +14691,7 @@ SECTION "Config Data Entries" 0
         PARAM "TssiTarget[1][4]"
             uint16
             present_if(("Num TSteps" > 1) and ("Num TssiTargets" > 4));
-
+    
         PARAM "TssiTarget[2][0]"
             uint16
             doc "TSSI target for the GFSK PA gain binary search for"
@@ -14709,7 +14709,7 @@ SECTION "Config Data Entries" 0
         PARAM "TssiTarget[2][4]"
             uint16
             present_if(("Num TSteps" > 2) and ("Num TssiTargets" > 4));
-
+    
         PARAM "TssiTarget[3][0]"
             uint16
             doc "TSSI target for the GFSK PA gain binary search for"
@@ -14727,7 +14727,7 @@ SECTION "Config Data Entries" 0
         PARAM "TssiTarget[3][4]"
             uint16
             present_if(("Num TSteps" > 3) and ("Num TssiTargets" > 4));
-
+    
         PARAM "TssiTarget[4][0]"
             uint16
             doc "TSSI target for the GFSK PA gain binary search for"
@@ -14745,7 +14745,7 @@ SECTION "Config Data Entries" 0
         PARAM "TssiTarget[4][4]"
             uint16
             present_if(("Num TSteps" > 4) and ("Num TssiTargets" > 4));
-
+    
         PARAM "TssiTarget[5][0]"
             uint16
             doc "TSSI target for the GFSK PA gain binary search for"
@@ -14763,8 +14763,8 @@ SECTION "Config Data Entries" 0
         PARAM "TssiTarget[5][4]"
             uint16
             present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 4));
-
-
+    
+    
     # TSSI ranges - GFSK
         PARAM "TssiRangeLow[0]"
             uint8
@@ -14804,8 +14804,8 @@ SECTION "Config Data Entries" 0
         PARAM "TssiRangeHigh[5]"
             uint8
             present_if("Num TSteps" > 5);
-
-
+    
+    
     # Temperature dependent PA gain calibration factors
         PARAM "Num Pages8"
             uint8
@@ -14881,7 +14881,7 @@ SECTION "Config Data Entries" 0
             uint8
             doc " 8-bit bit mask for Page 0 Reg 4 "
             present_if(( "Num Pages8" > 0) and ("NumRegs8[0]" > 4 ));
-
+    
     # Page 1
         PARAM "BaseAddress8[1]"
             uint32
@@ -14933,7 +14933,7 @@ SECTION "Config Data Entries" 0
             uint8
             doc " 8-bit bit mask for Page 1 Reg 4 "
             present_if(( "Num Pages8" > 1) and ("NumRegs8[1]" > 4 ));
-
+    
     # Page 2
         PARAM "BaseAddress8[2]"
             uint32
@@ -14985,7 +14985,7 @@ SECTION "Config Data Entries" 0
             uint8
             doc " 8-bit bit mask for Page 2 Reg 4 "
             present_if(( "Num Pages8" > 2) and ("NumRegs8[2]" > 4 ));
-
+    
     #######################################################################
     #
     # 16-BIT PAGE DESCRIPTORS
@@ -15437,7 +15437,7 @@ SECTION "Config Data Entries" 0
             uint8
             doc " 8-bit data for TStep 5 Page 2 Reg 4"
             present_if( ( "Num TSteps" > 5) and ("Num Pages8" > 2) and ("NumRegs8[2]" > 4) );
-
+    
     # 16-BIT PAGE DATA
     #######################################################################
     # TStep 0
@@ -15615,7 +15615,7 @@ SECTION "Config Data Entries" 0
             "repeated adjustments around a switching point."
             min = 1
             max = 6;
-
+    
     # TSSI Target Settings - GFSK
         PARAM "Num TssiTargets"
             uint8
@@ -15623,7 +15623,7 @@ SECTION "Config Data Entries" 0
             "Set value either 1 or 5."
             min = 1
             max = 5;
-
+    
         PARAM "TssiTarget[0][0]"
             uint16
             doc "TSSI target for the GFSK PA gain binary search for"
@@ -15640,7 +15640,7 @@ SECTION "Config Data Entries" 0
         PARAM "TssiTarget[0][4]"
             uint16
             present_if("Num TssiTargets" > 4);
-
+    
         PARAM "TssiTarget[1][0]"
             uint16
             doc "TSSI target for the GFSK PA gain binary search for"
@@ -15658,7 +15658,7 @@ SECTION "Config Data Entries" 0
         PARAM "TssiTarget[1][4]"
             uint16
             present_if(("Num TSteps" > 1) and ("Num TssiTargets" > 4));
-
+    
         PARAM "TssiTarget[2][0]"
             uint16
             doc "TSSI target for the GFSK PA gain binary search for"
@@ -15676,7 +15676,7 @@ SECTION "Config Data Entries" 0
         PARAM "TssiTarget[2][4]"
             uint16
             present_if(("Num TSteps" > 2) and ("Num TssiTargets" > 4));
-
+    
         PARAM "TssiTarget[3][0]"
             uint16
             doc "TSSI target for the GFSK PA gain binary search for"
@@ -15694,7 +15694,7 @@ SECTION "Config Data Entries" 0
         PARAM "TssiTarget[3][4]"
             uint16
             present_if(("Num TSteps" > 3) and ("Num TssiTargets" > 4));
-
+    
         PARAM "TssiTarget[4][0]"
             uint16
             doc "TSSI target for the GFSK PA gain binary search for"
@@ -15712,7 +15712,7 @@ SECTION "Config Data Entries" 0
         PARAM "TssiTarget[4][4]"
             uint16
             present_if(("Num TSteps" > 4) and ("Num TssiTargets" > 4));
-
+    
         PARAM "TssiTarget[5][0]"
             uint16
             doc "TSSI target for the GFSK PA gain binary search for"
@@ -15730,8 +15730,8 @@ SECTION "Config Data Entries" 0
         PARAM "TssiTarget[5][4]"
             uint16
             present_if(("Num TSteps" > 5) and ("Num TssiTargets" > 4));
-
-
+    
+    
     # TSSI ranges - GFSK
         PARAM "TssiRangeLow[0]"
             uint8
@@ -15771,8 +15771,8 @@ SECTION "Config Data Entries" 0
         PARAM "TssiRangeHigh[5]"
             uint8
             present_if("Num TSteps" > 5);
-
-
+    
+    
     # Temperature dependent PA gain calibration factors
         PARAM "Num Pages8"
             uint8
@@ -15848,7 +15848,7 @@ SECTION "Config Data Entries" 0
             uint8
             doc " 8-bit bit mask for Page 0 Reg 4 "
             present_if(( "Num Pages8" > 0) and ("NumRegs8[0]" > 4 ));
-
+    
     # Page 1
         PARAM "BaseAddress8[1]"
             uint32
@@ -15900,7 +15900,7 @@ SECTION "Config Data Entries" 0
             uint8
             doc " 8-bit bit mask for Page 1 Reg 4 "
             present_if(( "Num Pages8" > 1) and ("NumRegs8[1]" > 4 ));
-
+    
     # Page 2
         PARAM "BaseAddress8[2]"
             uint32
@@ -15952,7 +15952,7 @@ SECTION "Config Data Entries" 0
             uint8
             doc " 8-bit bit mask for Page 2 Reg 4 "
             present_if(( "Num Pages8" > 2) and ("NumRegs8[2]" > 4 ));
-
+    
     #######################################################################
     #
     # 16-BIT PAGE DESCRIPTORS
@@ -16404,7 +16404,7 @@ SECTION "Config Data Entries" 0
             uint8
             doc " 8-bit data for TStep 5 Page 2 Reg 4"
             present_if( ( "Num TSteps" > 5) and ("Num Pages8" > 2) and ("NumRegs8[2]" > 4) );
-
+    
     # 16-BIT PAGE DATA
     #######################################################################
     # TStep 0
@@ -17736,7 +17736,7 @@ SECTION "Config Data Entries" 0
             min = 1
             max = 40;
         PARAM "Data"
-            uint8[512] omit_pad_bytes
+            uint8[512] omit_pad_bytes 
             doc "12 bytes for each register entry - Register Mask Data";
     }
 

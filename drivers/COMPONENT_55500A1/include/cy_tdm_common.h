@@ -42,7 +42,7 @@ typedef void(*CY_TDM_IRQ_THREAD_CB_t)(UINT8 instance, BOOL8 rx_int);
 
 
 /** \brief MXTDM - Chip Specific output control for CYW55513 */
-typedef enum
+typedef enum 
 {
     CY_TDM_SELECT_DEFAULT    = 0x00u, /**< Selects Tx fsync & sck as TDM fsync & sck */
     CY_TDM_SELECT_TX_OUTPUT  = 0x00u, /**< Selects Tx fsync & sck as TDM fsync & sck */

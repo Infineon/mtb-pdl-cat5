@@ -140,10 +140,10 @@ void wiced_hal_batmon_init(void);
 
 ///////////////////////////////////////////////////////////////////////////////
 /// Polls the battery by monitoring the voltage via the ADC. Takes a running
-/// average of the measured voltage and determines whether to
+/// average of the measured voltage and determines whether to 
 /// shut down the system based upon the provided threshold values.
 /// See wiced_hal_batmon_config().
-/// It also compares the current battery level with previous measurement,
+/// It also compares the current battery level with previous measurement, 
 /// if different, it will inform the registered battery observers.
 ///
 /// \param none

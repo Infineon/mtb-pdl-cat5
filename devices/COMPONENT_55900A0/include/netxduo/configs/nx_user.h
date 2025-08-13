@@ -809,3 +809,4 @@ typedef unsigned long               ULONG;
 #define NX_DHCP_CLIENT_OPTIONS_MAX      50
 
 #endif
+

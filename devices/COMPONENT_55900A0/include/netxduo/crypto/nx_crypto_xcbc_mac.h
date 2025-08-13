@@ -77,3 +77,4 @@ UINT _nx_crypto_xcbc_mac(VOID *crypto_metadata, UINT (*crypto_function)(VOID *, 
 
 
 #endif /* NX_CRYPTO_XCBC_MAC_H */
+

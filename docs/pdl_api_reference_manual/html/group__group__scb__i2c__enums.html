@@ -58,8 +58,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
                onmouseout="return searchBox.OnSearchSelectHide()"
                alt=""/>
           <input type="text" id="MSearchField" value="Search" accesskey="S"
-               onfocus="searchBox.OnSearchFieldFocus(true)"
-               onblur="searchBox.OnSearchFieldFocus(false)"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
                onkeyup="searchBox.OnSearchFieldChange(event)"/>
           </span><span class="right">
             <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
@@ -75,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <div id="nav-sync" class="sync"></div>
     </div>
   </div>
-  <div id="splitbar" style="-moz-user-select:none;"
+  <div id="splitbar" style="-moz-user-select:none;" 
        class="ui-resizable-handle">
   </div>
 </div>
@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('group__group__scb__i2c__enums.html',''
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
-<iframe src="javascript:void(0)" frameborder="0"
+<iframe src="javascript:void(0)" frameborder="0" 
         name="MSearchResults" id="MSearchResults">
 </iframe>
 </div>
@@ -109,21 +109,21 @@ $(document).ready(function(){initNavTree('group__group__scb__i2c__enums.html',''
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:gaf621eb0719ad9ad7178d02268575b247"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__scb__i2c__enums.html#gaf621eb0719ad9ad7178d02268575b247">cy_en_scb_i2c_status_t</a> { <br />
-&#160;&#160;<a class="el" href="group__group__scb__i2c__enums.html#ggaf621eb0719ad9ad7178d02268575b247a80d0133e4536adccb11defa72a9aa9b0">CY_SCB_I2C_SUCCESS</a> = 0U,
+&#160;&#160;<a class="el" href="group__group__scb__i2c__enums.html#ggaf621eb0719ad9ad7178d02268575b247a80d0133e4536adccb11defa72a9aa9b0">CY_SCB_I2C_SUCCESS</a> = 0U, 
 <br />
-&#160;&#160;<a class="el" href="group__group__scb__i2c__enums.html#ggaf621eb0719ad9ad7178d02268575b247a88b8ce3f8df47d917d2eb711da6e289b">CY_SCB_I2C_BAD_PARAM</a> = (CY_SCB_ID | CY_PDL_STATUS_ERROR | CY_SCB_I2C_ID | 1U),
+&#160;&#160;<a class="el" href="group__group__scb__i2c__enums.html#ggaf621eb0719ad9ad7178d02268575b247a88b8ce3f8df47d917d2eb711da6e289b">CY_SCB_I2C_BAD_PARAM</a> = (CY_SCB_ID | CY_PDL_STATUS_ERROR | CY_SCB_I2C_ID | 1U), 
 <br />
-&#160;&#160;<a class="el" href="group__group__scb__i2c__enums.html#ggaf621eb0719ad9ad7178d02268575b247a87d64b12d320a5119189d10f4d4adf18">CY_SCB_I2C_MASTER_NOT_READY</a> = (CY_SCB_ID | CY_PDL_STATUS_ERROR | CY_SCB_I2C_ID | 2U),
+&#160;&#160;<a class="el" href="group__group__scb__i2c__enums.html#ggaf621eb0719ad9ad7178d02268575b247a87d64b12d320a5119189d10f4d4adf18">CY_SCB_I2C_MASTER_NOT_READY</a> = (CY_SCB_ID | CY_PDL_STATUS_ERROR | CY_SCB_I2C_ID | 2U), 
 <br />
-&#160;&#160;<a class="el" href="group__group__scb__i2c__enums.html#ggaf621eb0719ad9ad7178d02268575b247a70db75ea69bdbc70254aad3d6038010c">CY_SCB_I2C_MASTER_MANUAL_TIMEOUT</a> = (CY_SCB_ID | CY_PDL_STATUS_ERROR | CY_SCB_I2C_ID | 3U),
+&#160;&#160;<a class="el" href="group__group__scb__i2c__enums.html#ggaf621eb0719ad9ad7178d02268575b247a70db75ea69bdbc70254aad3d6038010c">CY_SCB_I2C_MASTER_MANUAL_TIMEOUT</a> = (CY_SCB_ID | CY_PDL_STATUS_ERROR | CY_SCB_I2C_ID | 3U), 
 <br />
-&#160;&#160;<a class="el" href="group__group__scb__i2c__enums.html#ggaf621eb0719ad9ad7178d02268575b247a779a11182cb3545ae0a7a615e5f322cb">CY_SCB_I2C_MASTER_MANUAL_ADDR_NAK</a> = (CY_SCB_ID | CY_PDL_STATUS_ERROR | CY_SCB_I2C_ID | 4U),
+&#160;&#160;<a class="el" href="group__group__scb__i2c__enums.html#ggaf621eb0719ad9ad7178d02268575b247a779a11182cb3545ae0a7a615e5f322cb">CY_SCB_I2C_MASTER_MANUAL_ADDR_NAK</a> = (CY_SCB_ID | CY_PDL_STATUS_ERROR | CY_SCB_I2C_ID | 4U), 
 <br />
-&#160;&#160;<a class="el" href="group__group__scb__i2c__enums.html#ggaf621eb0719ad9ad7178d02268575b247ada7da6531ad390819f7fa40f41c8c8e2">CY_SCB_I2C_MASTER_MANUAL_NAK</a> = (CY_SCB_ID | CY_PDL_STATUS_ERROR | CY_SCB_I2C_ID | 5U),
+&#160;&#160;<a class="el" href="group__group__scb__i2c__enums.html#ggaf621eb0719ad9ad7178d02268575b247ada7da6531ad390819f7fa40f41c8c8e2">CY_SCB_I2C_MASTER_MANUAL_NAK</a> = (CY_SCB_ID | CY_PDL_STATUS_ERROR | CY_SCB_I2C_ID | 5U), 
 <br />
-&#160;&#160;<a class="el" href="group__group__scb__i2c__enums.html#ggaf621eb0719ad9ad7178d02268575b247adc8581d0d86566d2db7a76618af3a873">CY_SCB_I2C_MASTER_MANUAL_ARB_LOST</a> = (CY_SCB_ID | CY_PDL_STATUS_ERROR | CY_SCB_I2C_ID | 6U),
+&#160;&#160;<a class="el" href="group__group__scb__i2c__enums.html#ggaf621eb0719ad9ad7178d02268575b247adc8581d0d86566d2db7a76618af3a873">CY_SCB_I2C_MASTER_MANUAL_ARB_LOST</a> = (CY_SCB_ID | CY_PDL_STATUS_ERROR | CY_SCB_I2C_ID | 6U), 
 <br />
-&#160;&#160;<a class="el" href="group__group__scb__i2c__enums.html#ggaf621eb0719ad9ad7178d02268575b247a762117541efacce9e7a713c041ddb7ee">CY_SCB_I2C_MASTER_MANUAL_BUS_ERR</a> = (CY_SCB_ID | CY_PDL_STATUS_ERROR | CY_SCB_I2C_ID | 7U),
+&#160;&#160;<a class="el" href="group__group__scb__i2c__enums.html#ggaf621eb0719ad9ad7178d02268575b247a762117541efacce9e7a713c041ddb7ee">CY_SCB_I2C_MASTER_MANUAL_BUS_ERR</a> = (CY_SCB_ID | CY_PDL_STATUS_ERROR | CY_SCB_I2C_ID | 7U), 
 <br />
 &#160;&#160;<a class="el" href="group__group__scb__i2c__enums.html#ggaf621eb0719ad9ad7178d02268575b247ab5b04efd779b1ccd737ba56aa932d0aa">CY_SCB_I2C_MASTER_MANUAL_ABORT_START</a> = (CY_SCB_ID | CY_PDL_STATUS_ERROR | CY_SCB_I2C_ID | 8U)
 <br />
@@ -131,9 +131,9 @@ Enumerations</h2></td></tr>
 <tr class="memdesc:gaf621eb0719ad9ad7178d02268575b247"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2C status codes.  <a href="group__group__scb__i2c__enums.html#gaf621eb0719ad9ad7178d02268575b247">More...</a><br /></td></tr>
 <tr class="separator:gaf621eb0719ad9ad7178d02268575b247"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga848386100a4d9700bf5bb790b3db3ed2"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__scb__i2c__enums.html#ga848386100a4d9700bf5bb790b3db3ed2">cy_en_scb_i2c_mode_t</a> { <br />
-&#160;&#160;<a class="el" href="group__group__scb__i2c__enums.html#gga848386100a4d9700bf5bb790b3db3ed2a9ceefa04abbb537720c9924350b5e179">CY_SCB_I2C_SLAVE</a> = 1U,
+&#160;&#160;<a class="el" href="group__group__scb__i2c__enums.html#gga848386100a4d9700bf5bb790b3db3ed2a9ceefa04abbb537720c9924350b5e179">CY_SCB_I2C_SLAVE</a> = 1U, 
 <br />
-&#160;&#160;<a class="el" href="group__group__scb__i2c__enums.html#gga848386100a4d9700bf5bb790b3db3ed2ac1dc09a53d6852a737909498356978c6">CY_SCB_I2C_MASTER</a> = 2U,
+&#160;&#160;<a class="el" href="group__group__scb__i2c__enums.html#gga848386100a4d9700bf5bb790b3db3ed2ac1dc09a53d6852a737909498356978c6">CY_SCB_I2C_MASTER</a> = 2U, 
 <br />
 &#160;&#160;<a class="el" href="group__group__scb__i2c__enums.html#gga848386100a4d9700bf5bb790b3db3ed2a0eb5244a51c5a71b69fc5d1d3a89ed08">CY_SCB_I2C_MASTER_SLAVE</a> = 3U
 <br />
@@ -141,7 +141,7 @@ Enumerations</h2></td></tr>
 <tr class="memdesc:ga848386100a4d9700bf5bb790b3db3ed2"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2C Operation Modes.  <a href="group__group__scb__i2c__enums.html#ga848386100a4d9700bf5bb790b3db3ed2">More...</a><br /></td></tr>
 <tr class="separator:ga848386100a4d9700bf5bb790b3db3ed2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga6a168a5e662ce781920027bebbab5d8d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__scb__i2c__enums.html#ga6a168a5e662ce781920027bebbab5d8d">cy_en_scb_i2c_direction_t</a> { <br />
-&#160;&#160;<a class="el" href="group__group__scb__i2c__enums.html#gga6a168a5e662ce781920027bebbab5d8da62791e1d00155a9693ceb8310aff2fee">CY_SCB_I2C_WRITE_XFER</a> = 0U,
+&#160;&#160;<a class="el" href="group__group__scb__i2c__enums.html#gga6a168a5e662ce781920027bebbab5d8da62791e1d00155a9693ceb8310aff2fee">CY_SCB_I2C_WRITE_XFER</a> = 0U, 
 <br />
 &#160;&#160;<a class="el" href="group__group__scb__i2c__enums.html#gga6a168a5e662ce781920027bebbab5d8dacc5e8ec50bb8970779560cedef3c6f35">CY_SCB_I2C_READ_XFER</a> = 1U
 <br />
@@ -149,7 +149,7 @@ Enumerations</h2></td></tr>
 <tr class="memdesc:ga6a168a5e662ce781920027bebbab5d8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">I2C Transaction Direction.  <a href="group__group__scb__i2c__enums.html#ga6a168a5e662ce781920027bebbab5d8d">More...</a><br /></td></tr>
 <tr class="separator:ga6a168a5e662ce781920027bebbab5d8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga4600410051f7febf79d167ffbf85d7ef"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__scb__i2c__enums.html#ga4600410051f7febf79d167ffbf85d7ef">cy_en_scb_i2c_command_t</a> { <br />
-&#160;&#160;<a class="el" href="group__group__scb__i2c__enums.html#gga4600410051f7febf79d167ffbf85d7efadd6046656aba93adef7c4823a25081fd">CY_SCB_I2C_ACK</a>,
+&#160;&#160;<a class="el" href="group__group__scb__i2c__enums.html#gga4600410051f7febf79d167ffbf85d7efadd6046656aba93adef7c4823a25081fd">CY_SCB_I2C_ACK</a>, 
 <br />
 &#160;&#160;<a class="el" href="group__group__scb__i2c__enums.html#gga4600410051f7febf79d167ffbf85d7efa46363791a98697b7b015b3b64441bfc6">CY_SCB_I2C_NAK</a>
 <br />

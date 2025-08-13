@@ -105,3 +105,4 @@ UINT _nxe_rarp_disable(NX_IP *ip_ptr);
 UINT _nxe_rarp_info_get(NX_IP *ip_ptr, ULONG *rarp_requests_sent, ULONG *rarp_responses_received,
                         ULONG *rarp_invalid_messages);
 #endif
+

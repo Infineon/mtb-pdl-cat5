@@ -139,3 +139,4 @@ UINT _nxe_arp_static_entries_delete(NX_IP *ip_ptr);
 UINT _nxe_arp_static_entry_create(NX_IP *ip_ptr, ULONG ip_address,  ULONG physical_msw, ULONG physical_lsw);
 UINT _nxe_arp_static_entry_delete(NX_IP *ip_ptr, ULONG ip_address, ULONG physical_msw, ULONG physical_lsw);
 #endif
+

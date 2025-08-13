@@ -79,3 +79,4 @@ UINT _nxde_icmp_enable(NX_IP *ip_ptr);
 #include "nx_icmpv6.h"
 
 #endif
+

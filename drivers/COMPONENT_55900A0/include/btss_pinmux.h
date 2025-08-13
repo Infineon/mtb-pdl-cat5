@@ -445,7 +445,7 @@ BOOL32 wlss_pad_configure(WLSS_PAD_LIST_t pad, WLSS_PINMUX_FUNC_LIST_t func, UIN
  *
  * \param[in]    pad               : BTSS_PAD_LIST_t
  *
- * \return      FUNC_NONE when error,
+ * \return      FUNC_NONE when error, 
  * \return      BTSS_PINMUX_FUNC_LIST_t (defined in btss_pinmux.h) when SUCCESS
  */
 BTSS_PINMUX_FUNC_LIST_t btss_pad_getFunction(BTSS_PAD_LIST_t pad);
@@ -482,3 +482,4 @@ BOOL32 btss_pad_getHwConfig(BTSS_PAD_LIST_t pad, UINT8 *pad_config);
 #endif //__BTSS_PINMUX_H__
 
 /* [] END OF FILE */
+

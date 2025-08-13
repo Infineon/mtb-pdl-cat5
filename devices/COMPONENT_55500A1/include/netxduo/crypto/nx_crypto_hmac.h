@@ -135,3 +135,4 @@ UINT _nx_crypto_method_hmac_operation(UINT op,      /* Encrypt, Decrypt, Authent
 
 
 #endif /* NX_CRYPTO_HAMC_H */
+

@@ -1670,7 +1670,7 @@ typedef struct NX_ARP_STRUCT
 #endif /* NX_DISABLE_IPV4 */
 
 
-/* Determine if the UDP control block has an extension defined. If not,
+/* Determine if the UDP control block has an extension defined. If not, 
    define the extension to whitespace.  */
 
 #ifndef NX_UDP_SOCKET_MODULE_EXTENSION
@@ -1764,15 +1764,15 @@ typedef struct NX_UDP_SOCKET_STRUCT
     /* This pointer is reserved for application specific use.  */
     /*lint -esym(768,NX_UDP_SOCKET_STRUCT::nx_udp_socket_reserved_ptr) suppress member not referenced. It is reserved for future use. */
     void        *nx_udp_socket_reserved_ptr;
-
-    /* Define the port extension in the UDP socket control block. This
+    
+    /* Define the port extension in the UDP socket control block. This 
        is typically defined to whitespace in nx_port.h.  */
     NX_UDP_SOCKET_MODULE_EXTENSION
-
+    
 } NX_UDP_SOCKET;
 
 
-/* Determine if the TCP control block has an extension defined. If not,
+/* Determine if the TCP control block has an extension defined. If not, 
    define the extension to whitespace.  */
 
 #ifndef NX_TCP_SOCKET_MODULE_EXTENSION
@@ -2040,10 +2040,10 @@ typedef struct NX_TCP_SOCKET_STRUCT
 
 #endif /* NX_IPSEC_ENABLE */
 
-    /* Define the port extension in the TCP socket control block. This
+    /* Define the port extension in the TCP socket control block. This 
        is typically defined to whitespace in nx_port.h.  */
     NX_TCP_SOCKET_MODULE_EXTENSION
-
+    
 } NX_TCP_SOCKET;
 
 
@@ -2303,7 +2303,7 @@ typedef struct NX_IPV6_MULTICAST_STRUCT
 #endif /* NX_ENABLE_IPV6_MULTICAST  */
 
 
-/* Determine if the IP control block has an extension defined. If not,
+/* Determine if the IP control block has an extension defined. If not, 
    define the extension to whitespace.  */
 
 #ifndef NX_IP_MODULE_EXTENSION
@@ -2915,10 +2915,10 @@ typedef struct NX_IP_STRUCT
     UINT        (*nx_ip_packet_filter)(VOID *, UINT);
 #endif /* NX_ENABLE_IP_PACKET_FILTER */
 
-    /* Define the port extension in the IP control block. This
+    /* Define the port extension in the IP control block. This 
        is typically defined to whitespace in nx_port.h.  */
     NX_IP_MODULE_EXTENSION
-
+    
 } NX_IP;
 
 
@@ -3833,3 +3833,4 @@ UINT _nx_utility_base64_decode(UCHAR *base64name, UINT base64name_size, UCHAR *n
 #endif
 
 #endif
+

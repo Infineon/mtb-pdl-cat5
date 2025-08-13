@@ -324,3 +324,4 @@ void wiced_hal_pspi_clear_rx_fifo(spi_interface_t spi);
 /* @} */
 
 #endif // __WICED_PSPI_DRIVER_H__
+

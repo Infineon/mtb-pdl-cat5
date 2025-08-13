@@ -29,7 +29,7 @@
 
 /**
  * @brief Retrieve CSR specific to the requested Key-index
- *
+ * 
  * @param key_idx         Key-index for CSR.
  * @param p_token_buf     Output buffer where CSR is to be written.
  * @param p_token_size    Input/Output variable for the actual token size.
