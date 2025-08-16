@@ -20,6 +20,30 @@
  * @{
  */
 
+/** default connection interval min
+ *  recommended min: 30ms  = 24 * 1.25
+ */
+#define BTM_BLE_CONN_INTERVAL_MIN_DEF 24
+
+/** default connection interval max
+ * recommended max: 50 ms = 56 * 1.25
+ */
+#define BTM_BLE_CONN_INTERVAL_MAX_DEF 40
+
+/** default Peripheral latency */
+#define BTM_BLE_CONN_PERIPHERAL_LATENCY_DEF 0
+
+/** default supervision timeout */
+#define BTM_BLE_CONN_TIMEOUT_DEF 2000
+
+/** LE Signature
+ *  LE data signature length 8 Bytes + 4 bytes counter
+ */
+#define BTM_BLE_AUTH_SIGNATURE_SIZE 12
+/** Device address (see #BTM_BLE_AUTH_SIGNATURE_SIZE) */
+typedef uint8_t wiced_dev_ble_signature_t[BTM_BLE_AUTH_SIGNATURE_SIZE];
+
+
 /**
  * LE encryption method
  */
@@ -129,6 +153,11 @@ typedef struct
     wiced_bt_link_key_t session_key; /**< Session key */
     wiced_bt_iv_t iv;                /**< Initialization Vector */
 } wiced_bt_ble_key_material_t;
+
+#define BTM_AFH_CHNL_MAP_SIZE HCI_AFH_CHANNEL_MAP_LEN /**< AFH channel map size */
+#define BLE_CHANNEL_MAP_LEN 5                         /**< AFH Channel Map len */
+/** LE Channel Map */
+typedef uint8_t wiced_bt_ble_chnl_map_t[BLE_CHANNEL_MAP_LEN];
 
 
 /**

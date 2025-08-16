@@ -16,7 +16,7 @@
 
 /**  \addtogroup I2CDriver I2C
 * \ingroup HardwareDrivers
-* @{ 
+* @{
 *
 * Defines an I2C driver to facilitate communication with other devices on an
 * I2C bus (such as a temperature sensor, etc). The driver is only capable of
@@ -178,4 +178,3 @@ uint8_t wiced_hal_i2c_combined_read(uint8_t* rx_data, uint8_t rx_data_len, uint8
 /** @} */
 
 #endif // __WICED_I2C_DRIVER_H__
-

@@ -91,8 +91,8 @@ typedef struct
 PDM-PCM bq filter coeff_data structure
 
 A digital filter is characterized by its transfer function, or equivalently,
-its difference equation. Mathematical analysis of the transfer function can 
-describe how it will respond to any input. As such, designing a filter 
+its difference equation. Mathematical analysis of the transfer function can
+describe how it will respond to any input. As such, designing a filter
 consists of developing specifications appropriate to the
 problem (for example, a second-order low pass filter with a specific cut-off frequency),
 and then producing a transfer function which meets the specifications.
@@ -143,8 +143,8 @@ typedef struct
 *
 * Configures PDM PCM block as per PDM and PCM sampling rate.
 * Programms filter coeffients, if NULL default values programmed.
-* controls latching of PDM data based on interface selection. if NULL, default 
-* configuration used. 
+* controls latching of PDM data based on interface selection. if NULL, default
+* configuration used.
 *
 * \param base
 * The pointer to the hardware PDMPCM IP block.
@@ -290,4 +290,3 @@ cy_en_pdm_pcm_status_t Cy_PDM_PCM_RegisterCallback ( CY_PDM_PCM_IRQ_THREAD_CB_t 
 #endif //_CY_PDM_PCM_H_
 
 /* [] END OF FILE */
-

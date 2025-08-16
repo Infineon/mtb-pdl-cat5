@@ -1030,12 +1030,30 @@ enum wiced_bt_management_evt_e {
      * Event to notify change channel selection algorithm for the connection
      * Event data: \ref wiced_bt_management_evt_data_t.ble_channel_sel_algo_event
      */
-    BTM_BLE_CHANNEL_SELECTION_ALGO_EVENT, /* 39, 0x27*/
+    BTM_BLE_CHANNEL_SELECTION_ALGO_EVENT,           /* 39, 0x27*/
+
+    /**
+     * Event to notify Maximum Advertising data length supported
+     * Event data: \ref wiced_bt_management_evt_data_t.max_adv_data_len
+     */
+    BTM_BLE_READ_MAX_ADV_DATA_LEN_EVENT,            /* 40, 0x28 */
+
+    /**
+     * Event to notify Setup QoS Complete or Flow Specication complete
+     * Event data: \ref wiced_bt_management_evt_data_t.br_flow_spec_event
+     */
+    BTM_BR_ACL_FLOW_SPEC_COMPLETE_EVENT,           /* 41, 0x29 */
+
+    /**
+     * Event to notify 2nd LE link for the same device comming
+     * Event data: \ref wiced_bt_management_evt_data_t.ble_second_link_info
+     */
+    BTM_BLE_SECOND_LINK_INFO_EVENT,                /* 42, 0x2A */
 #if SMP_CATB_CONFORMANCE_TESTER == TRUE
     /**
      * The Secure Connections support information of the peer device.
      */
-    BTM_SMP_SC_PEER_INFO_EVT,                        /* 40, 0x28 */
+    BTM_SMP_SC_PEER_INFO_EVT,                      /* 43, 0x2B */
 #endif
 };
 #endif
@@ -1303,6 +1321,13 @@ typedef struct
 } wiced_bt_ble_sc_peer_info;
 #endif
 
+typedef struct
+{
+    uint16_t                        conn_handle;          /**< connection handle of 2nd LE link */
+    wiced_bt_device_address_t       peer_bda;             /**< [in] actual BD Address used */
+    wiced_bt_device_address_t       virtual_bda;          /**< [in/out] virual BD Address,  app can override  */
+} wiced_bt_ble_second_link_info;
+
 /** HCI trace types  */
 typedef enum
 {
@@ -1393,10 +1418,10 @@ typedef union
     wiced_bt_ble_conn_subrate_t             ble_subrate_change_event;           /**< Data for BTM_BLE_SUBRATE_CHANGE_EVENT */
     wiced_bt_ble_device_addr_update_t       ble_addr_update_event;              /**< Data for BTM_BLE_DEVICE_ADDRESS_UPDATE_EVENT */
     wiced_bt_ble_channel_sel_algo_event_data_t ble_channel_sel_algo_event;      /**< Data for BTM_BLE_CHANNEL_SELECTION_ALGO_EVENT*/
+    wiced_bt_ble_second_link_info           ble_second_link_info;               /**< Data for BTM_BLE_SECOND_LINK_INFO_EVENT */
 #if SMP_CATB_CONFORMANCE_TESTER == TRUE
     wiced_bt_ble_sc_peer_info               smp_sc_peer_info;                   /* Data for BTM_SMP_SC_PEER_INFO_EVT */
 #endif
-
 } wiced_bt_management_evt_data_t;
 
 /**
@@ -2441,7 +2466,38 @@ wiced_result_t wiced_bt_dev_remove_device_from_address_resolution_db(wiced_bt_de
  */
 uint16_t wiced_bt_dev_get_acl_conn_handle(wiced_bt_device_address_t bdaddr, wiced_bt_transport_t transport);
 
+
 /**@} btm_ble_sec_api_functions */
+
+/** @cond DUAL_MODE */
+/**
+ * Quality of Service (QoS) setup
+ *
+ * @param[in] remote_bda: peer device bdaddr
+ * @param[in] p_flow: qos setup parameters
+ * @param[in] p_cb: callback
+ *
+ * @return wiced_result_t
+ */
+wiced_result_t wiced_bt_dev_qos_setup_by_bda(wiced_bt_device_address_t remote_bda,
+                                             wiced_bt_flow_spec_t *p_flow,
+                                             wiced_bt_dev_cmpl_cback_t *p_cb);
+
+/**
+ * Quality of Service (QoS) setup
+ *
+ * @param[in] connection_handle: acl connection handle
+ * @param[in] p_flow: qos setup parameters
+ * @param[in] p_cb: callback
+ *
+ * @return wiced_result_t
+ */
+wiced_result_t wiced_bt_dev_qos_setup_by_handle(uint16_t connection_handle,
+                                                wiced_bt_flow_spec_t *p_flow,
+                                                wiced_bt_dev_cmpl_cback_t *p_cb);
+/**
+ * @endcond // DUAL_MODE
+*/
 
 
 #ifdef __cplusplus

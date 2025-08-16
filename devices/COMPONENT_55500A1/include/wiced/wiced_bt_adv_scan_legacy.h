@@ -13,6 +13,17 @@
 #include "wiced_bt_cfg.h"
 #include "wiced_bt_dev.h"
 
+#ifndef WICED_BLE_ENABLE_LEGACY_ADV_API
+#define WICED_BLE_ENABLE_LEGACY_ADV_API 1
+#endif
+
+#if (WICED_BLE_ENABLE_LEGACY_ADV_API == 1)
+#if (WICED_BLE_ENABLE_LEGACY_EXTENDED_API_ERROR_CHECK)
+#if (WICED_BLE_ENABLE_EXTENDED_ADV_API == 1)
+#error "Cannot enable legacy and extended adv together"
+#endif
+#endif
+
 /**
  * This section contains the legacy mode advertisement and scanning defines, structures and functions.
  * @note Applications should invoke functions in this section if and only if the application wishes to use
@@ -26,10 +37,6 @@
  */
 
 #define BTM_BLE_LEGACY_AD_DATA_LEN 31                 /**< Max legacy advertisement data len*/
-#define BTM_AFH_CHNL_MAP_SIZE HCI_AFH_CHANNEL_MAP_LEN /**< AFH channel map size */
-#define BLE_CHANNEL_MAP_LEN 5                         /**< AFH Channel Map len */
-/** LE Channel Map */
-typedef uint8_t wiced_bt_ble_chnl_map_t[BLE_CHANNEL_MAP_LEN];
 
 /** Scanner filter policy */
 enum wiced_bt_ble_scanner_filter_policy_e
@@ -42,122 +49,6 @@ enum wiced_bt_ble_scanner_filter_policy_e
 };
 /** LE Scanner filter policy (see #wiced_bt_ble_scanner_filter_policy_e) */
 typedef uint8_t wiced_bt_ble_scanner_filter_policy_t;
-
-/** default advertising channel map */
-#ifndef BTM_BLE_DEFAULT_ADVERT_CHNL_MAP
-#define BTM_BLE_DEFAULT_ADVERT_CHNL_MAP (BTM_BLE_ADVERT_CHNL_37 | BTM_BLE_ADVERT_CHNL_38 | BTM_BLE_ADVERT_CHNL_39)
-#endif
-
-/** Advertising filter policy */
-enum wiced_bt_ble_advert_filter_policy_e
-{
-    /**< Process scan and connection requests from all devices (i.e., the Filter Accept List is not in use) (default) */
-    BTM_BLE_ADV_POLICY_ACCEPT_CONN_AND_SCAN = 0x00,
-    /**< Process connection requests from all devices and only scan requests from devices that are in the Filter Accept List. */
-    BTM_BLE_ADV_POLICY_ACCEPT_CONN_FILTER_SCAN = 0x01,
-    /**< Process scan requests from all devices and only connection requests from devices that are in the Filter Accept List */
-    BTM_BLE_ADV_POLICY_FILTER_CONN_ACCEPT_SCAN = 0x02,
-    /**< Process scan and connection requests only from devices in the Filter Accept List. */
-    BTM_BLE_ADV_POLICY_FILTER_CONN_FILTER_SCAN = 0x03,
-    /**< Max Adv filter value */
-    BTM_BLE_ADV_POLICY_MAX
-};
-/** Advertising filter policy (see wiced_bt_ble_advert_filter_policy_e) */
-typedef uint8_t wiced_bt_ble_advert_filter_policy_t;
-
-/** default advertising filter policy */
-#define BTM_BLE_ADVERT_FILTER_DEFAULT BTM_BLE_ADV_POLICY_ACCEPT_CONN_AND_SCAN
-
-#define BTM_BLE_ADVERT_INTERVAL_MIN 0x0020 /**< adv parameter Min value */
-#define BTM_BLE_ADVERT_INTERVAL_MAX 0x4000 /**< adv parameter Max value */
-
-#define BTM_BLE_SCAN_INTERVAL_MIN 0x0004 /**< Scan interval minimum value */
-#define BTM_BLE_SCAN_INTERVAL_MAX 0x4000 /**< Scan interval miximum value */
-#define BTM_BLE_SCAN_WINDOW_MIN 0x0004   /**< Scan window minimum value */
-#define BTM_BLE_SCAN_WINDOW_MAX 0x4000   /**< Scan window maximum value */
-#define BTM_BLE_CONN_INTERVAL_MIN 0x0006 /**< Connection interval minimum value */
-#define BTM_BLE_CONN_INTERVAL_MAX 0x0C80 /**< Connection interval maximum value */
-#define BTM_BLE_CONN_LATENCY_MAX 500     /**< Maximum Connection Latency */
-#define BTM_BLE_CONN_SUP_TOUT_MIN 0x000A /**< Minimum Supervision Timeout */
-#define BTM_BLE_CONN_SUP_TOUT_MAX 0x0C80 /**< Maximum Supervision Timeout */
-#define BTM_BLE_CONN_PARAM_UNDEF 0xffff  /**< use this value when a specific value not to be overwritten */
-#define BTM_BLE_CONN_SUP_TOUT_DEF 700    /**< Default Supervision Timeout */
-
-/* default connection parameters if not configured, use GAP recommend value for auto connection */
-/** default scan interval
- *  30 ~ 60 ms (use 60)  = 96 *0.625
- */
-#define BTM_BLE_SCAN_FAST_INTERVAL 96
-
-/** default scan window (in .625ms slots) for background auto connections
- * 30 ms = 48 *0.625
- */
-#define BTM_BLE_SCAN_FAST_WINDOW 48
-
-/** default scan interval used in reduced power cycle (background scanning)
- *  1.28 s   = 2048 *0.625
- */
-#define BTM_BLE_SCAN_SLOW_INTERVAL_1 2048
-
-/** default scan window used in reduced power cycle (background scanning)
- *   11.25 ms = 18 *0.625
- */
-#define BTM_BLE_SCAN_SLOW_WINDOW_1 18
-
-/** default scan interval used in reduced power cycle (background scanning)
- *  2.56 s   = 4096 *0.625
- */
-#define BTM_BLE_SCAN_SLOW_INTERVAL_2 4096
-
-/** default scan window used in reduced power cycle (background scanning)
- *  22.5 ms = 36 *0.625
- */
-#define BTM_BLE_SCAN_SLOW_WINDOW_2 36
-
-/** default connection interval min
- *  recommended min: 30ms  = 24 * 1.25
- */
-#define BTM_BLE_CONN_INTERVAL_MIN_DEF 24
-
-/** default connection interval max
- * recommended max: 50 ms = 56 * 1.25
- */
-#define BTM_BLE_CONN_INTERVAL_MAX_DEF 40
-
-/** default Peripheral latency */
-#define BTM_BLE_CONN_PERIPHERAL_LATENCY_DEF 0
-
-/** default supervision timeout */
-#define BTM_BLE_CONN_TIMEOUT_DEF 2000
-
-/** LE Signature
- *  LE data signature length 8 Bytes + 4 bytes counter
- */
-#define BTM_BLE_AUTH_SIGNATURE_SIZE 12
-/** Device address (see #BTM_BLE_AUTH_SIGNATURE_SIZE) */
-typedef uint8_t wiced_dev_ble_signature_t[BTM_BLE_AUTH_SIGNATURE_SIZE];
-
-#define BTM_BLE_POLICY_REJECT_ALL 0x00 /**< relevant to both */
-#define BTM_BLE_POLICY_ALLOW_SCAN 0x01 /**< relevant to advertiser */
-#define BTM_BLE_POLICY_ALLOW_CONN 0x02 /**< relevant to advertiser */
-#define BTM_BLE_POLICY_ALLOW_ALL 0x03  /**< relevant to both */
-
-/* ADV data flag bit definition used for BTM_BLE_ADVERT_TYPE_FLAG */
-#define BTM_BLE_LIMITED_DISCOVERABLE_FLAG (0x01 << 0) /**< Limited Discoverable */
-#define BTM_BLE_GENERAL_DISCOVERABLE_FLAG (0x01 << 1) /**< General Discoverable */
-#define BTM_BLE_BREDR_NOT_SUPPORTED (0x01 << 2)       /**< BR/EDR Not Supported */
-/* 4.1 spec adv flag for simultaneous BR/EDR+LE connection support (see) */
-#define BTM_BLE_SIMULTANEOUS_DUAL_MODE_TO_SAME_DEVICE_CONTROLLER_SUPPORTED                                             \
-    (0x01 << 3) /**< Simultaneous LE and BR/EDR to Same Device Capable (Controller). */
-#define BTM_BLE_SIMULTANEOUS_DUAL_MODE_TO_SAME_DEVICE_HOST_SUPPORTED                                                   \
-    (0x01 << 4)                                      /**< Simultaneous LE and BR/EDR to Same Device Capable (Host). */
-#define BTM_BLE_NON_LIMITED_DISCOVERABLE_FLAG (0x00) /**< Non Discoverable */
-#define BTM_BLE_ADVERT_FLAG_MASK                                                                                       \
-    (BTM_BLE_LIMITED_DISCOVERABLE_FLAG | BTM_BLE_BREDR_NOT_SUPPORTED |                                                 \
-     BTM_BLE_GENERAL_DISCOVERABLE_FLAG)                                       /**< LE adverisement mask */
-#define BTM_BLE_LIMITED_DISCOVERABLE_MASK (BTM_BLE_LIMITED_DISCOVERABLE_FLAG) /**< LE Limited discovery mask*/
-
-
 
 /** Scan result event type */
 enum wiced_bt_dev_ble_evt_type_e
@@ -597,5 +488,5 @@ extern "C"
 #endif
 
 /**@} wicedbt */
-
+#endif // WICED_BLE_ENABLE_LEGACY_ADV_API
 #endif // __WICED_BT_ADV_SCAN_LEGACY_H__

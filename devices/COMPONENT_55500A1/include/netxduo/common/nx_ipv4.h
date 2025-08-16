@@ -206,4 +206,3 @@ UINT _nxe_ipv4_multicast_interface_leave(NX_IP *ip_ptr, ULONG group_address, UIN
 #endif /* NX_IPSEC_ENABLE */
 #endif /* FEATURE_NX_IPV6 */
 #endif /* NX_IPV4_H */
-

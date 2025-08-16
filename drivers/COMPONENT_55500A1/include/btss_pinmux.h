@@ -284,4 +284,3 @@ BOOL32 btss_pad_getHwConfig(BTSS_PAD_LIST_t pad, UINT8 *pad_config);
 #endif //__BTSS_PINMUX_H__
 
 /* [] END OF FILE */
-

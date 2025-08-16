@@ -12,33 +12,33 @@
 
 /**************************************************************************/
 /**************************************************************************/
-/**                                                                       */ 
+/**                                                                       */
 /** NetX Component                                                        */
 /**                                                                       */
-/**   AutoIP (AutoIP)                                                     */ 
+/**   AutoIP (AutoIP)                                                     */
 /**                                                                       */
 /**************************************************************************/
 /**************************************************************************/
 
 
-/**************************************************************************/ 
-/*                                                                        */ 
-/*  APPLICATION INTERFACE DEFINITION                       RELEASE        */ 
-/*                                                                        */ 
-/*    nx_auto_ip.h                                        PORTABLE C      */ 
+/**************************************************************************/
+/*                                                                        */
+/*  APPLICATION INTERFACE DEFINITION                       RELEASE        */
+/*                                                                        */
+/*    nx_auto_ip.h                                        PORTABLE C      */
 /*                                                           6.1          */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
 /*                                                                        */
-/*  DESCRIPTION                                                           */ 
-/*                                                                        */ 
-/*    This file defines the NetX AutoIP Protocol (AutoIP) component,      */ 
-/*    including all data types and external references. It is assumed     */ 
+/*  DESCRIPTION                                                           */
+/*                                                                        */
+/*    This file defines the NetX AutoIP Protocol (AutoIP) component,      */
+/*    including all data types and external references. It is assumed     */
 /*    that nx_api.h and nx_port.h have already been included.             */
-/*                                                                        */ 
-/*  RELEASE HISTORY                                                       */ 
-/*                                                                        */ 
+/*                                                                        */
+/*  RELEASE HISTORY                                                       */
+/*                                                                        */
 /*    DATE              NAME                      DESCRIPTION             */
 /*                                                                        */
 /*  05-19-2020     Yuxin Zhou               Initial Version 6.0           */
@@ -122,10 +122,10 @@ extern   "C" {
 #define NX_AUTO_IP_BAD_INTERFACE_INDEX      0xA02
 
 
-/* Define the AutoIP structure that holds all the information necessary for this AutoIP 
+/* Define the AutoIP structure that holds all the information necessary for this AutoIP
    instance.  */
 
-typedef struct NX_AUTO_IP_STRUCT 
+typedef struct NX_AUTO_IP_STRUCT
 {
     ULONG                   nx_auto_ip_id;
     CHAR                    *nx_auto_ip_name;
@@ -146,9 +146,9 @@ typedef struct NX_AUTO_IP_STRUCT
 
 /* Application caller is present, perform API mapping.  */
 
-/* Determine if error checking is desired.  If so, map AutoIP API functions 
+/* Determine if error checking is desired.  If so, map AutoIP API functions
    to the appropriate error checking front-ends.  Otherwise, map API
-   functions to the core functions that actually perform the work. 
+   functions to the core functions that actually perform the work.
    Note: error checking is enabled by default.  */
 
 #ifdef NX_DISABLE_ERROR_CHECKING
@@ -157,7 +157,7 @@ typedef struct NX_AUTO_IP_STRUCT
 
 #define nx_auto_ip_create               _nx_auto_ip_create
 #define nx_auto_ip_get_address          _nx_auto_ip_get_address
-#define nx_auto_ip_set_interface        _nx_auto_ip_set_interface      
+#define nx_auto_ip_set_interface        _nx_auto_ip_set_interface
 #define nx_auto_ip_start                _nx_auto_ip_start
 #define nx_auto_ip_stop                 _nx_auto_ip_stop
 #define nx_auto_ip_delete               _nx_auto_ip_delete
@@ -168,7 +168,7 @@ typedef struct NX_AUTO_IP_STRUCT
 
 #define nx_auto_ip_create               _nxe_auto_ip_create
 #define nx_auto_ip_get_address          _nxe_auto_ip_get_address
-#define nx_auto_ip_set_interface        _nxe_auto_ip_set_interface    
+#define nx_auto_ip_set_interface        _nxe_auto_ip_set_interface
 #define nx_auto_ip_start                _nxe_auto_ip_start
 #define nx_auto_ip_stop                 _nxe_auto_ip_stop
 #define nx_auto_ip_delete               _nxe_auto_ip_delete
@@ -179,7 +179,7 @@ typedef struct NX_AUTO_IP_STRUCT
 
 UINT        nx_auto_ip_create(NX_AUTO_IP *auto_ip_ptr, CHAR *name, NX_IP *ip_ptr, VOID *stack_ptr, ULONG stack_size, UINT priority);
 UINT        nx_auto_ip_get_address(NX_AUTO_IP *auto_ip_ptr, ULONG *local_ip_address);
-UINT        nx_auto_ip_set_interface(NX_AUTO_IP *auto_ip_ptr, UINT interface_index); 
+UINT        nx_auto_ip_set_interface(NX_AUTO_IP *auto_ip_ptr, UINT interface_index);
 UINT        nx_auto_ip_start(NX_AUTO_IP *auto_ip_ptr, ULONG starting_local_address);
 UINT        nx_auto_ip_stop(NX_AUTO_IP *auto_ip_ptr);
 UINT        nx_auto_ip_delete(NX_AUTO_IP *auto_ip_ptr);
@@ -214,4 +214,3 @@ VOID        _nx_auto_ip_conflict(NX_IP *ip_ptr, UINT interface_index, ULONG ip_a
 #endif
 
 #endif /* NX_AUTO_IP_H */
-

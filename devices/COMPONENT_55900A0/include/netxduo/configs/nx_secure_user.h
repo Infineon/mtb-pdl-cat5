@@ -319,7 +319,7 @@
 */
 
 /* NX_SECURE_TLS_DISABLE_CLIENT_INITIATED_RENEGOTIATION disables client-initiated renegotiation for TLS
-   servers. In some instances, client-initiated renegotiation can become a possible denial-of-service 
+   servers. In some instances, client-initiated renegotiation can become a possible denial-of-service
    vulnerability. */
 /*
   #define NX_SECURE_TLS_DISABLE_CLIENT_INITIATED_RENEGOTIATION

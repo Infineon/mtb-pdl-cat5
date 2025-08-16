@@ -208,6 +208,14 @@ typedef BTSS_SYSTEM_PMU_SLEEP_MODE_t(*BTSS_SYSTEM_PRE_SLEEP_CB_t)(BTSS_SYSTEM_PM
 /** \brief Post-Sleep Callback from PMU thread */
 typedef void(*BTSS_SYSTEM_POST_SLEEP_CB_t)(BTSS_SYSTEM_PMU_SLEEP_MODE_t sleep_mode);
 
+/** \brief PSRAM Low Power mode control methods */
+typedef enum
+{
+    BTSS_SYSTEM_PSRAM_LOW_POWER_DISALLOW = 0,           /* Disallow Low Power mode request to PSRAM */
+    BTSS_SYSTEM_PSRAM_LOW_POWER_ALLOW_APP_CONTROL = 1,  /* Allow Low Power mode request to PSRAM by Application */
+    BTSS_SYSTEM_PSRAM_LOW_POWER_ALLOW_BTSS_CONTROL = 2, /* Allow Low Power mode request to PSRAM by BTSS */
+} BTSS_SYSTEM_PSRAM_LPM_CONTROL_t;
+
 
 /**
  * Function btss_system_cpuclockRequest
@@ -337,7 +345,7 @@ UINT32 btss_system_enterCriticalSection(void);
  *
  * Clear pending interrupts for peripheral
  *
- * \param[in]    interrupt_state       : Interrupt state returned 
+ * \param[in]    interrupt_state       : Interrupt state returned
  *                                       in btss_system_enterCriticalSection
  *
  * \return       None
@@ -400,6 +408,50 @@ BOOL32 btss_system_sleepEnableWakeSource(BTSS_SYSTEM_SLEEP_PMU_WAKE_SRC_t wakeSo
  * \return       TRUE/FALSE as Status
  */
 BOOL32 btss_system_sleepDisableWakeSource(BTSS_SYSTEM_SLEEP_PMU_WAKE_SRC_t wakeSource);
+
+/**
+ * Function btss_smif_psram_isLowPowerAllowed
+ *
+ * Returns controlling PSRAM Low Power mode is allowed or not.
+ *
+ * \param[in]    none
+ *
+ * \return       BTSS_SYSTEM_PSRAM_LPM_CONTROL_t
+ */
+BTSS_SYSTEM_PSRAM_LPM_CONTROL_t btss_smif_psram_isLowPowerAllowed(void);
+
+/**
+ * Function btss_smif_psram_allowLowPowerMode
+ *
+ * enable/disable the Low Power mode as per request, returns controlling PSRAM Low Power mode is allowed or not.
+ *
+ * \param[in]    BTSS_SYSTEM_PSRAM_LPM_CONTROL_t
+ *
+ * \return       BTSS_SYSTEM_PSRAM_LPM_CONTROL_t
+ */
+BTSS_SYSTEM_PSRAM_LPM_CONTROL_t btss_smif_psram_allowLowPowerMode(BTSS_SYSTEM_PSRAM_LPM_CONTROL_t allowed);
+
+/**
+ * Function btss_smif_psram_enterLowPowerMode
+ *
+ * Returns TRUE if the operation of entering Low Power mode to PSRAM is acknowledged.
+ *
+ * \param[in]    none
+ *
+ * \return       TRUE/FALSE  : BOOL32
+ */
+BOOL32 btss_smif_psram_enterLowPowerMode(void);
+
+/**
+ * Function btss_smif_psram_exitLowPowerMode
+ *
+ * Returns TRUE if the operation of exiting Low Power mode to PSRAM is acknowledged.
+ *
+ * \param[in]    none
+ *
+ * \return       TRUE/FALSE  : BOOL32
+ */
+BOOL32 btss_smif_psram_exitLowPowerMode(void);
 
 #include "bt_types.h"
 

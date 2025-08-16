@@ -41,7 +41,14 @@ extern void* app_irom_data_begin;
 #endif
 
 void SPAR_CRT_SETUP(void);
+void cy_smif_psram_config(void);
 int main(void);
+
+#ifdef APP_CFG_ENABLE_BR_AUDIO_CFG_AA_POOL
+wiced_br_audio_cfg_t br_audio_cfg = {
+    .aa_pool_size = APP_CFG_BR_AUDIO_CFG_AA_POOL_SIZE, /* Size of the AA pool */
+};
+#endif
 
 wiced_pre_init_cfg_t pre_init_cfg = {
     /* ACL Configuration - Default value */
@@ -141,7 +148,11 @@ wiced_pre_init_cfg_t pre_init_cfg = {
 #else
     .enable_br_audio = APP_CFG_ENABLE_BR_AUDIO,
 #endif
+#if APP_CFG_ENABLE_BR_AUDIO_CFG_AA_POOL
+    .p_br_audio_cfg = (void *)&br_audio_cfg,
+#else
     .p_br_audio_cfg = APP_CFG_BR_AUDIO_CFG,
+#endif
 };
 
 const wiced_pre_init_cfg_t *const pre_init_cfg_addr __attribute__((section(".pre_init_cfg"))) = &pre_init_cfg;
@@ -161,6 +172,9 @@ void cy_toolchain_init();
 __attribute__((section(".app_entry")))
 void SPAR_CRT_SETUP(void)
 {
+    /* memory configuration and setup required for PSRAM */
+    cy_smif_psram_config();
+
     /* set up c library support */
 #if defined(COMPONENT_MW_CLIB_SUPPORT)
 #if defined (__ARMCC_VERSION)

@@ -20,6 +20,7 @@
 #define  __WICED_BT_DEV_H__
 
 #include "wiced_bt_types.h"
+#include "wiced_result.h"
 #include "hcidefs.h"
 #include "wiced_bt_sco.h"
 

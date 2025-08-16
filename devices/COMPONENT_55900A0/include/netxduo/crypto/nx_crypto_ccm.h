@@ -106,4 +106,3 @@ NX_CRYPTO_KEEP UINT _nx_crypto_ccm_decrypt_calculate(VOID *crypto_metadata, NX_C
 
 
 #endif /* NX_CRYPTO_CCM_H */
-

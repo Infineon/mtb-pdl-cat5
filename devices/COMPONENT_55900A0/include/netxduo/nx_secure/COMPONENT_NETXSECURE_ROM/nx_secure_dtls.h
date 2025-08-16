@@ -525,4 +525,3 @@ DTLS_DECLARE  ULONG    _nx_secure_dtls_server_created_count;
 #endif
 
 #endif /* SRC_NX_SECURE_DTLS_H_ */
-

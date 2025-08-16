@@ -167,4 +167,3 @@ UINT _nx_crypto_ecdh_compute_secret_x25519_448(NX_CRYPTO_ECDH *ecdh_ptr,
 #endif
 
 #endif /* NX_CRYPTO_ECDH_H */
-

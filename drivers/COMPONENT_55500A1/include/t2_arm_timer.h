@@ -159,4 +159,3 @@ UINT32 clock_auxTimerUsToExpiry(T2_ARM_TIMER_AUX_t which_timer);
 #endif //_T2_ARM_TIMERS_H_
 
 /* [] END OF FILE */
-

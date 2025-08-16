@@ -232,4 +232,3 @@ VOID _nx_crypto_huge_number_crt_power_modulus(NX_CRYPTO_HUGE_NUMBER *x,
 #endif
 
 #endif /* NX_CRYPTO_HUGE_NUMBER_H */
-

@@ -195,4 +195,9 @@ typedef STRUCT_PACKED
     void                                *p_br_audio_cfg;
 }wiced_pre_init_cfg_t;
 
+
+typedef struct {
+    uint32_t aa_pool_size;          /* Size of the AA pool */
+} wiced_br_audio_cfg_t;
+
 void wiced_register_pre_init_cfg (const wiced_pre_init_cfg_t *p_cfg);

@@ -86,4 +86,3 @@ NX_CRYPTO_KEEP UINT _nx_crypto_ctr_encrypt_init(NX_CRYPTO_CTR *ctr_metadata, UCH
 
 
 #endif /* NX_CRYPTO_CTR_H */
-

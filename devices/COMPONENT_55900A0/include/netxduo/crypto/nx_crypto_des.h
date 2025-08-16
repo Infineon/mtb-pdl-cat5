@@ -119,4 +119,3 @@ VOID _nx_crypto_des_process_block(UCHAR source[8], UCHAR destination[8], ULONG k
 #endif
 
 #endif
-

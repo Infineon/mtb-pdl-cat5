@@ -115,4 +115,3 @@ UINT _nx_crypto_dh_compute_secret(NX_CRYPTO_DH  *dh_ptr,
 #endif
 
 #endif /* NX_CRYPTO_DH_H */
-

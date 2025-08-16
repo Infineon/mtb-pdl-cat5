@@ -58,8 +58,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
                onmouseout="return searchBox.OnSearchSelectHide()"
                alt=""/>
           <input type="text" id="MSearchField" value="Search" accesskey="S"
-               onfocus="searchBox.OnSearchFieldFocus(true)" 
-               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onfocus="searchBox.OnSearchFieldFocus(true)"
+               onblur="searchBox.OnSearchFieldFocus(false)"
                onkeyup="searchBox.OnSearchFieldChange(event)"/>
           </span><span class="right">
             <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
@@ -75,7 +75,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <div id="nav-sync" class="sync"></div>
     </div>
   </div>
-  <div id="splitbar" style="-moz-user-select:none;" 
+  <div id="splitbar" style="-moz-user-select:none;"
        class="ui-resizable-handle">
   </div>
 </div>
@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('group__group__scb__uart__enums.html','
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
-<iframe src="javascript:void(0)" frameborder="0" 
+<iframe src="javascript:void(0)" frameborder="0"
         name="MSearchResults" id="MSearchResults">
 </iframe>
 </div>
@@ -109,11 +109,11 @@ $(document).ready(function(){initNavTree('group__group__scb__uart__enums.html','
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
 <tr class="memitem:gac72413306ca26b7b8174526e3fc539df"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__scb__uart__enums.html#gac72413306ca26b7b8174526e3fc539df">cy_en_scb_uart_status_t</a> { <br />
-&#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#ggac72413306ca26b7b8174526e3fc539dfa09315d924a513c3913841725ec5299f1">CY_SCB_UART_SUCCESS</a> = 0U, 
+&#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#ggac72413306ca26b7b8174526e3fc539dfa09315d924a513c3913841725ec5299f1">CY_SCB_UART_SUCCESS</a> = 0U,
 <br />
-&#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#ggac72413306ca26b7b8174526e3fc539dfa1176c30161403a3f635b8885980220fc">CY_SCB_UART_BAD_PARAM</a> = (CY_SCB_ID | CY_PDL_STATUS_ERROR | CY_SCB_UART_ID | 1U), 
+&#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#ggac72413306ca26b7b8174526e3fc539dfa1176c30161403a3f635b8885980220fc">CY_SCB_UART_BAD_PARAM</a> = (CY_SCB_ID | CY_PDL_STATUS_ERROR | CY_SCB_UART_ID | 1U),
 <br />
-&#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#ggac72413306ca26b7b8174526e3fc539dfa8439a067c2f1c5677958d014262095a1">CY_SCB_UART_RECEIVE_BUSY</a> = (CY_SCB_ID | CY_PDL_STATUS_ERROR | CY_SCB_UART_ID | 2U), 
+&#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#ggac72413306ca26b7b8174526e3fc539dfa8439a067c2f1c5677958d014262095a1">CY_SCB_UART_RECEIVE_BUSY</a> = (CY_SCB_ID | CY_PDL_STATUS_ERROR | CY_SCB_UART_ID | 2U),
 <br />
 &#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#ggac72413306ca26b7b8174526e3fc539dfa5ea1f40f9e1a48d4d058d6b67f9e76d1">CY_SCB_UART_TRANSMIT_BUSY</a> = (CY_SCB_ID | CY_PDL_STATUS_ERROR | CY_SCB_UART_ID | 3U)
 <br />
@@ -121,9 +121,9 @@ Enumerations</h2></td></tr>
 <tr class="memdesc:gac72413306ca26b7b8174526e3fc539df"><td class="mdescLeft">&#160;</td><td class="mdescRight">UART status codes.  <a href="group__group__scb__uart__enums.html#gac72413306ca26b7b8174526e3fc539df">More...</a><br /></td></tr>
 <tr class="separator:gac72413306ca26b7b8174526e3fc539df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaff3a50e4dbd1e0efe1550b05816e1a65"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__scb__uart__enums.html#gaff3a50e4dbd1e0efe1550b05816e1a65">cy_en_scb_uart_mode_t</a> { <br />
-&#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#ggaff3a50e4dbd1e0efe1550b05816e1a65a039e9ca2ab60fb9e0d2226bd21e4787c">CY_SCB_UART_STANDARD</a> = 0U, 
+&#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#ggaff3a50e4dbd1e0efe1550b05816e1a65a039e9ca2ab60fb9e0d2226bd21e4787c">CY_SCB_UART_STANDARD</a> = 0U,
 <br />
-&#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#ggaff3a50e4dbd1e0efe1550b05816e1a65a01e69d950d3827c058d6aaf2e3328e5a">CY_SCB_UART_SMARTCARD</a> = 1U, 
+&#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#ggaff3a50e4dbd1e0efe1550b05816e1a65a01e69d950d3827c058d6aaf2e3328e5a">CY_SCB_UART_SMARTCARD</a> = 1U,
 <br />
 &#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#ggaff3a50e4dbd1e0efe1550b05816e1a65a848f6989ec7e1a440cb7666e698b6343">CY_SCB_UART_IRDA</a> = 2U
 <br />
@@ -131,17 +131,17 @@ Enumerations</h2></td></tr>
 <tr class="memdesc:gaff3a50e4dbd1e0efe1550b05816e1a65"><td class="mdescLeft">&#160;</td><td class="mdescRight">UART Mode.  <a href="group__group__scb__uart__enums.html#gaff3a50e4dbd1e0efe1550b05816e1a65">More...</a><br /></td></tr>
 <tr class="separator:gaff3a50e4dbd1e0efe1550b05816e1a65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga980f6c273a50db8f6b6fa7f703b1a7f9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__scb__uart__enums.html#ga980f6c273a50db8f6b6fa7f703b1a7f9">cy_en_scb_uart_stop_bits_t</a> { <br />
-&#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#gga980f6c273a50db8f6b6fa7f703b1a7f9ac35384addc6b2590f3ec209ae4541394">CY_SCB_UART_STOP_BITS_1</a> = 2U, 
+&#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#gga980f6c273a50db8f6b6fa7f703b1a7f9ac35384addc6b2590f3ec209ae4541394">CY_SCB_UART_STOP_BITS_1</a> = 2U,
 <br />
-&#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#gga980f6c273a50db8f6b6fa7f703b1a7f9afc05c3dabb1830dc8abdd63d1937e935">CY_SCB_UART_STOP_BITS_1_5</a> = 3U, 
+&#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#gga980f6c273a50db8f6b6fa7f703b1a7f9afc05c3dabb1830dc8abdd63d1937e935">CY_SCB_UART_STOP_BITS_1_5</a> = 3U,
 <br />
-&#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#gga980f6c273a50db8f6b6fa7f703b1a7f9ada74a68d5ee99d9cbf5474e30a6b8a14">CY_SCB_UART_STOP_BITS_2</a> = 4U, 
+&#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#gga980f6c273a50db8f6b6fa7f703b1a7f9ada74a68d5ee99d9cbf5474e30a6b8a14">CY_SCB_UART_STOP_BITS_2</a> = 4U,
 <br />
-&#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#gga980f6c273a50db8f6b6fa7f703b1a7f9a507526d31978a62430165190da698649">CY_SCB_UART_STOP_BITS_2_5</a> = 5U, 
+&#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#gga980f6c273a50db8f6b6fa7f703b1a7f9a507526d31978a62430165190da698649">CY_SCB_UART_STOP_BITS_2_5</a> = 5U,
 <br />
-&#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#gga980f6c273a50db8f6b6fa7f703b1a7f9a0556d9f8224745fa3abd76667840950b">CY_SCB_UART_STOP_BITS_3</a> = 6U, 
+&#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#gga980f6c273a50db8f6b6fa7f703b1a7f9a0556d9f8224745fa3abd76667840950b">CY_SCB_UART_STOP_BITS_3</a> = 6U,
 <br />
-&#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#gga980f6c273a50db8f6b6fa7f703b1a7f9a3ce46e36b481f0ecbddee36b82540aa1">CY_SCB_UART_STOP_BITS_3_5</a> = 7U, 
+&#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#gga980f6c273a50db8f6b6fa7f703b1a7f9a3ce46e36b481f0ecbddee36b82540aa1">CY_SCB_UART_STOP_BITS_3_5</a> = 7U,
 <br />
 &#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#gga980f6c273a50db8f6b6fa7f703b1a7f9ac1c9b3ffd1ceb51bf1ab622141ebe0b0">CY_SCB_UART_STOP_BITS_4</a> = 8U
 <br />
@@ -149,9 +149,9 @@ Enumerations</h2></td></tr>
 <tr class="memdesc:ga980f6c273a50db8f6b6fa7f703b1a7f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">UART Stop Bits.  <a href="group__group__scb__uart__enums.html#ga980f6c273a50db8f6b6fa7f703b1a7f9">More...</a><br /></td></tr>
 <tr class="separator:ga980f6c273a50db8f6b6fa7f703b1a7f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ga5ee6d587ef3399954d609f17775a3f42"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__scb__uart__enums.html#ga5ee6d587ef3399954d609f17775a3f42">cy_en_scb_uart_parity_t</a> { <br />
-&#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#gga5ee6d587ef3399954d609f17775a3f42a4684fcd6cd3d48bf9372f5947af95f0d">CY_SCB_UART_PARITY_NONE</a> = 0U, 
+&#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#gga5ee6d587ef3399954d609f17775a3f42a4684fcd6cd3d48bf9372f5947af95f0d">CY_SCB_UART_PARITY_NONE</a> = 0U,
 <br />
-&#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#gga5ee6d587ef3399954d609f17775a3f42ad5504b310cb761b26b98b169bfee5338">CY_SCB_UART_PARITY_EVEN</a> = 2U, 
+&#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#gga5ee6d587ef3399954d609f17775a3f42ad5504b310cb761b26b98b169bfee5338">CY_SCB_UART_PARITY_EVEN</a> = 2U,
 <br />
 &#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#gga5ee6d587ef3399954d609f17775a3f42a11542902faa4834b09d170e9e92ab918">CY_SCB_UART_PARITY_ODD</a> = 3U
 <br />
@@ -159,7 +159,7 @@ Enumerations</h2></td></tr>
 <tr class="memdesc:ga5ee6d587ef3399954d609f17775a3f42"><td class="mdescLeft">&#160;</td><td class="mdescRight">UART Parity.  <a href="group__group__scb__uart__enums.html#ga5ee6d587ef3399954d609f17775a3f42">More...</a><br /></td></tr>
 <tr class="separator:ga5ee6d587ef3399954d609f17775a3f42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gadd7a3cc34b487e9898095db7b1638098"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__group__scb__uart__enums.html#gadd7a3cc34b487e9898095db7b1638098">cy_en_scb_uart_polarity_t</a> { <br />
-&#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#ggadd7a3cc34b487e9898095db7b1638098a61a976af6edbc286fc87ee17b3809f36">CY_SCB_UART_ACTIVE_LOW</a> = 0U, 
+&#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#ggadd7a3cc34b487e9898095db7b1638098a61a976af6edbc286fc87ee17b3809f36">CY_SCB_UART_ACTIVE_LOW</a> = 0U,
 <br />
 &#160;&#160;<a class="el" href="group__group__scb__uart__enums.html#ggadd7a3cc34b487e9898095db7b1638098a8c7e88090ac28e6d0fb0ca2b74daabc2">CY_SCB_UART_ACTIVE_HIGH</a> = 1U
 <br />

@@ -157,4 +157,3 @@ UINT _nxd_nd_cache_hardware_address_find(NX_IP *ip_ptr, NXD_ADDRESS *ip_address,
 UINT _nxde_nd_cache_hardware_address_find(NX_IP *ip_ptr, NXD_ADDRESS *ip_address, ULONG *physical_msw, ULONG *physical_lsw, UINT *if_index);
 
 #endif /* NX_ND_CACHE_H */
-

@@ -1640,6 +1640,7 @@ wiced_bt_gatt_status_t wiced_bt_gatt_client_send_indication_confirm (uint16_t co
  *
  */
 
+#if (WICED_BLE_ENABLE_LEGACY_ADV_API == 1)
 /**
  * Open GATT over LE connection to a remote device
  * Result is notified using <b> GATT_CONNECTION_STATUS_EVT </b> of #wiced_bt_gatt_cback_t.
@@ -1667,6 +1668,8 @@ wiced_bool_t wiced_bt_gatt_le_connect (wiced_bt_device_address_t bd_addr,
                                     wiced_bt_ble_address_type_t bd_addr_type,
                                     wiced_bt_ble_conn_mode_t conn_mode,
                                     wiced_bool_t is_direct);
+#endif
+
 /**
  * Open GATT over BR/EDR connection to a remote device
  * Result is notified using <b> GATT_CONNECTION_STATUS_EVT </b> of #wiced_bt_gatt_cback_t.

@@ -47,4 +47,3 @@ DevicePreset "55900A0_wlbga_iPA_dLNA_ANT0 RAM"
     OTAFWUUpdateFirmware = 1
     OTAFWUUpdateConfig = 1
 }
-

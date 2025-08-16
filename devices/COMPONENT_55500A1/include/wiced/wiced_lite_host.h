@@ -61,6 +61,18 @@ typedef struct wiced_bt_tdm_composite_setting
     uint8_t           a2dpRightCh;
 } wiced_bt_tdm_composite_setting_t;
 
+typedef struct wiced_bt_tdm_composite_channel_setting
+{
+    //! Sets the composite MXTDM pair;
+    wiced_tdm_composite_mxtdmPair_t         mxtdmPair;
+    //! Sets the composite MXTDM mode;
+    wiced_vs_tdm_composite_mode_t           mode;
+    //! Sets the mxtdm tx direction hw channel map;
+    uint8_t           mxtdmTxHwChMap;
+    //! Sets the mxtdm rx direction hw channel map;
+    uint8_t           mxtdmRxHwChMap;
+} wiced_bt_tdm_composite_channel_setting_t;
+
 /*****************************************************************
 * Function: wiced_lite_host_setEvent()
 *
@@ -98,5 +110,18 @@ void wiced_lite_host_setEvent( UINT32 event, void *data );
 wiced_result_t wiced_lite_host_set_compositeMxtdm(wiced_bt_tdm_composite_setting_t *inMxtdmParams);
 
 
-
+/**
+ *
+ * This API is called to set the MXTDM composite mode
+ *
+ *
+ * @param[in]       mxtdmPair         : set MXTDM_PAIR_0 or MXTDM_PAIR_1 as MXTDM composite
+ * @param[in]       mode              : the composite MXTDM mode. MXTDM_MODE_TDM(0) or MXTDM_MODE_I2S(1)
+ * @param[in]       mxtdmTxHwChMap    : Sets the mxtdm tx direction hw channel map
+ * @param[in]       mxtdmRxHwChMap    : Sets the mxtdm rx direction hw channel map;
+ *
+ * @return          WICED_BT_SUCCESS if successful
+ *
+ */
+wiced_result_t wiced_lite_host_set_compositeMxtdmChannel(wiced_bt_tdm_composite_channel_setting_t *inMxtdmChParams);
 #endif // __WICED_LITE_HOST_H__

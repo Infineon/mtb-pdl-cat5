@@ -12,7 +12,7 @@
 
 /**************************************************************************/
 /**************************************************************************/
-/**                                                                       */ 
+/**                                                                       */
 /** NetX Component                                                        */
 /**                                                                       */
 /**   Dynamic Host Configuration Protocol over IPv6 (DHCPv6)              */
@@ -21,25 +21,25 @@
 /**************************************************************************/
 
 
-/**************************************************************************/ 
-/*                                                                        */ 
-/*  APPLICATION INTERFACE DEFINITION                       RELEASE        */ 
-/*                                                                        */ 
-/*    nxd_dhcpv6_client.h                                 PORTABLE C      */ 
+/**************************************************************************/
+/*                                                                        */
+/*  APPLICATION INTERFACE DEFINITION                       RELEASE        */
+/*                                                                        */
+/*    nxd_dhcpv6_client.h                                 PORTABLE C      */
 /*                                                           6.1          */
 /*  AUTHOR                                                                */
 /*                                                                        */
 /*    Yuxin Zhou, Microsoft Corporation                                   */
 /*                                                                        */
-/*  DESCRIPTION                                                           */ 
-/*                                                                        */ 
-/*    This file defines the NetX Dynamic Host Configuration Protocol over */ 
-/*    IPv6 (DHCPv6) component, including all data types and external      */ 
-/*    references. It is assumed that nx_api.h and nx_port.h have already  */ 
+/*  DESCRIPTION                                                           */
+/*                                                                        */
+/*    This file defines the NetX Dynamic Host Configuration Protocol over */
+/*    IPv6 (DHCPv6) component, including all data types and external      */
+/*    references. It is assumed that nx_api.h and nx_port.h have already  */
 /*    been included.                                                      */
-/*                                                                        */ 
-/*  RELEASE HISTORY                                                       */ 
-/*                                                                        */ 
+/*                                                                        */
+/*  RELEASE HISTORY                                                       */
+/*                                                                        */
 /*    DATE              NAME                      DESCRIPTION             */
 /*                                                                        */
 /*  05-19-2020     Yuxin Zhou               Initial Version 6.0           */
@@ -61,11 +61,11 @@
 extern   "C" {
 
 #endif
-                
 
-/*  Enable support for DHCPv6 client state preserved between reboots  */ 
+
+/*  Enable support for DHCPv6 client state preserved between reboots  */
 /*
-#define NX_DHCPV6_CLIENT_RESTORE_STATE  
+#define NX_DHCPV6_CLIENT_RESTORE_STATE
 */
 
 
@@ -74,17 +74,17 @@ extern   "C" {
 #define NX_DHCPV6_ID                                    0x44484336UL
 
 
-/* Set the Client lease time. An infinate lease time is not recommended by the RFC 
+/* Set the Client lease time. An infinate lease time is not recommended by the RFC
    unless the Client requires a permanent IP address.  Most servers will likely not
    grant an infinite IP address lease. */
 
 #define NX_DHCPV6_INFINITE_LEASE                        0xffffffffUL
-#define NX_DHCPV6_MULTICAST_MASK                        0xff000000UL         
-    
-typedef enum 
+#define NX_DHCPV6_MULTICAST_MASK                        0xff000000UL
+
+typedef enum
 {
     NX_DHCPV6_DUID_TYPE_LINK_TIME =                     1,
-    NX_DHCPV6_DUID_TYPE_VENDOR_ASSIGNED, 
+    NX_DHCPV6_DUID_TYPE_VENDOR_ASSIGNED,
     NX_DHCPV6_DUID_TYPE_LINK_ONLY
 
 } NX_DHCPV6_DUID_TYPE;
@@ -102,7 +102,7 @@ typedef enum
 #define NX_DHCPV6_HW_TYPE_IEEE_802                      1
 
 
-/* Define approximate time since Jan 1, 2000 for computing DUID time. This will form the 
+/* Define approximate time since Jan 1, 2000 for computing DUID time. This will form the
    basis for the DUID time ID field.  */
 
 #define SECONDS_SINCE_JAN_1_2000_MOD_32                 2563729999UL
@@ -130,7 +130,7 @@ typedef enum
 #define NX_DHCPV6_OP_CLIENT_ID                          1         /* Client DUID (DHCP unique identifier) */
 #define NX_DHCPV6_OP_SERVER_ID                          2         /* Server DUID (DHCP unique identifier) */
 #define NX_DHCPV6_OP_IA_NA                              3         /* Identity association for non temporary addresses */
-#define NX_DHCPV6_OP_IA_TA                              4         /* Identity association for temporary addresses */  
+#define NX_DHCPV6_OP_IA_TA                              4         /* Identity association for temporary addresses */
 #define NX_DHCPV6_OP_IA_ADDRESS                         5         /* Address associated with IA_NA or IA_TA */
 #define NX_DHCPV6_OP_OPTION_REQUEST                     6         /* Identifies a list of options */
 #define NX_DHCPV6_OP_PREFERENCE                         7         /* Server's means of affecting Client choice of servers. */
@@ -190,14 +190,14 @@ typedef enum
 #define NX_DHCPV6_INCLUDE_SNTP_SERVER_OPTION            0x02000000    /* The reply message includes a network time protocol servers option. */
 #define NX_DHCPV6_INCLUDE_NEW_POSIX_TIIMEZONE_OPTION    0x04000000    /* The reply message includes a new timezone POSIX string index option. */
 #define NX_DHCPV6_INCLUDE_CLIENT_FQDN_OPTION            0x08000000    /* The reply message includes a client FQDN option. */
-             
+
 
 /* Define internal DHCPv6 option flags. */
 
 #define NX_DHCPV6_DNS_SERVER_OPTION                     0x00000001UL    /* Option code for requesting DNS server IP address  */
 #define NX_DHCPV6_DOMAIN_NAME_OPTION                    0x00000002UL    /* Option code for requesting domain name. */
 #define NX_DHCPV6_SNTP_SERVER_OPTION                    0x00000004UL    /* Option code for requesting time server IP address. */
-#define NX_DHCPV6_NEW_POSIX_TIMEZONE_OPTION             0x00000008UL    /* Option code for requesting Time zone. */               
+#define NX_DHCPV6_NEW_POSIX_TIMEZONE_OPTION             0x00000008UL    /* Option code for requesting Time zone. */
 #define NX_DHCPV6_CLIENT_FQDN_OPTION                    0x00000010UL    /* Option code for requesting FQDN.  */
 
 
@@ -229,7 +229,7 @@ typedef enum
 #define NX_DHCPV6_IA_ADDRESS_STATE_INITIAL              1           /* The IA inlcude one IPv6 address,but the DHCPv6 interactive is not complete. */
 #define NX_DHCPV6_IA_ADDRESS_STATE_DAD_TENTATIVE        2           /* After DHCPv6 interactive, NetX pefrome the DAD to check this IPv6 address.  */
 #define NX_DHCPV6_IA_ADDRESS_STATE_DAD_FAILURE          3           /* DAD process failure,the DHCPv6 Client should send DECLINE message.*/
-#define NX_DHCPV6_IA_ADDRESS_STATE_VALID                4           /* The global IP address is valid and set it to the IP instance. */          
+#define NX_DHCPV6_IA_ADDRESS_STATE_VALID                4           /* The global IP address is valid and set it to the IP instance. */
 
 /* Internal DHCPv6 event flags.  These events are processed by the Client DHCPv6 thread. */
 
@@ -241,7 +241,7 @@ typedef enum
 
 #define NX_DHCPV6_CLIENT_DESIRES_UPDATE_AAAA_RR         0           /* DHCPv6 Client choose to updating the FQDN-to-IPv6 address mapping for FQDN and address(es) used by the client.  */
 #define NX_DHCPV6_CLIENT_DESIRES_SERVER_DO_DNS_UPDATE   1           /* DHCPv6 Client choose to updating the FQDN-to-IPv6 address mapping for FQDN and address(es) used by the client to the server.  */
-#define NX_DHCPV6_CLIENT_DESIRES_NO_SERVER_DNS_UPDATE   2           /* DHCPv6 Client choose to request that the server perform no DNS updatest on its behalf.  */   
+#define NX_DHCPV6_CLIENT_DESIRES_NO_SERVER_DNS_UPDATE   2           /* DHCPv6 Client choose to request that the server perform no DNS updatest on its behalf.  */
 
 
 /* RFC mandated DHCPv6 client and server ports.  */
@@ -268,8 +268,8 @@ typedef enum
 
 #define NX_DHCPV6_TASK_SUSPENDED                        0xE90    /* DHCPv6 task suspended by host application. */
 #define NX_DHCPV6_ALREADY_STARTED                       0xE91    /* DHCPv6 already started when API called to start it. */
-#define NX_DHCPV6_NOT_STARTED                           0xE92    /* DHCPv6 was not started when API was called  */ 
-#define NX_DHCPV6_PARAM_ERROR                           0xE93    /* Invalid non pointer input to API */     
+#define NX_DHCPV6_NOT_STARTED                           0xE92    /* DHCPv6 was not started when API was called  */
+#define NX_DHCPV6_PARAM_ERROR                           0xE93    /* Invalid non pointer input to API */
 #define NX_DHCPV6_NOT_BOUND                             0xE94    /* DHCPv6 was not bound when API was called.  */
 
 #define NX_DHCPV6_INVALID_CLIENT_DUID                   0xE95    /* Client DUID received from Server with invalid data or mismatches Client server DUID on record. */
@@ -278,7 +278,7 @@ typedef enum
 #define NX_DHCPV6_UNSUPPORTED_DUID_TYPE                 0xE98    /* Client configuration involves a DUID type not supported by this API. */
 #define NX_DHCPV6_UNSUPPORTED_DUID_HW_TYPE              0xE99    /* Client configuration involves a network hardware type not supported by this API. */
 #define NX_DHCPV6_NO_DUID_OPTION                        0xE9A    /* The reply message does not include server or client identifier option. */
-#define NX_DHCPV6_NO_RAPID_COMMIT_OPTION                0xE9B    /* The reply message does not iclude rapid commit option. */    
+#define NX_DHCPV6_NO_RAPID_COMMIT_OPTION                0xE9B    /* The reply message does not iclude rapid commit option. */
 #define NX_DHCPV6_EQUAL_OR_LESS_PREF_VALUE              0xE9C    /* The current preference value is equal to or less than the recorded preference valude. */
 
 #define NX_DHCPV6_INVALID_IANA_TIME                     0xEA0    /* Server IA-NA option T1 vs T2 address lease time is invalid. */
@@ -289,7 +289,7 @@ typedef enum
 #define NX_DHCPV6_INVALID_IA_DATA                       0xEA5    /* Server IA address option block has bad syntax or missing data */
 #define NX_DHCPV6_INVALID_IA_TIME                       0xEA6    /* Server IA option preferred vs valid lease time is invalid. */
 #define NX_DHCPV6_INVALID_PREF_DATA                     0xEA7    /* Client received Preference block with missing data or bad syntax */
-#define NX_DHCPV6_INCOMPLETE_OPTION_BLOCK               0xEA8    /* Empty option block data; either zero length or zero option parsed. */    
+#define NX_DHCPV6_INCOMPLETE_OPTION_BLOCK               0xEA8    /* Empty option block data; either zero length or zero option parsed. */
 #define NX_DHCPV6_MISSING_REQUIRED_OPTIONS              0xEA9    /* Cannot start the DHCPv6 Client because required options are missing e.g. IANA, DUID etc */
 #define NX_DHCPV6_INVALID_OPTION_DATA                   0xEAA    /* Client received option data with missing data or bad syntax */
 #define NX_DHCPV6_UNKNOWN_OPTION                        0xEAB    /* Client received an unknown or unsupported option from server */
@@ -313,7 +313,7 @@ typedef enum
 
 
 /* Define DHCPv6 timeout for checking DHCPv6 flag status. */
-#define NX_DHCPV6_TIME_INTERVAL                         (NX_IP_PERIODIC_RATE)   
+#define NX_DHCPV6_TIME_INTERVAL                         (NX_IP_PERIODIC_RATE)
 
 
 /* Define the conversion between timer ticks and seconds (processor dependent). */
@@ -331,12 +331,12 @@ typedef enum
 #endif
 
 
-/* Define the time out option to obtain a DHCPv6 Client mutex lock. If the 
+/* Define the time out option to obtain a DHCPv6 Client mutex lock. If the
    the Client appears to be locking up, this can be set to a finite value
    for debugging as well as restore responsiveness to the Client */
 
 #ifndef NX_DHCPV6_MUTEX_WAIT
-#define NX_DHCPV6_MUTEX_WAIT                            TX_WAIT_FOREVER 
+#define NX_DHCPV6_MUTEX_WAIT                            TX_WAIT_FOREVER
 #endif
 
 
@@ -385,15 +385,15 @@ typedef enum
 
 /* Define the amount of packet payload to store DHCPv6 server messages. */
 
-#ifndef NX_DHCPV6_MAX_MESSAGE_SIZE      
+#ifndef NX_DHCPV6_MAX_MESSAGE_SIZE
 #define NX_DHCPV6_MAX_MESSAGE_SIZE                      100
-#endif  
+#endif
 
 /* Define the amount of IA addresses to store IPv6 addresses. */
 
-#ifndef NX_DHCPV6_MAX_IA_ADDRESS      
+#ifndef NX_DHCPV6_MAX_IA_ADDRESS
 #define NX_DHCPV6_MAX_IA_ADDRESS                        1
-#endif  
+#endif
 
 
 /* DHCPv6 Client Network Configuration */
@@ -411,7 +411,7 @@ typedef enum
 #define NX_DHCPV6_TYPE_OF_SERVICE                       NX_IP_NORMAL
 #endif
 
- 
+
 /* Define the number of routers a UDP packet passes before it is discarded. */
 
 #ifndef NX_DHCPV6_TIME_TO_LIVE
@@ -425,24 +425,24 @@ typedef enum
 #endif
 
 
-/* Define the initial retransmission timeout in timer ticks for DHCPv6 messages. 
+/* Define the initial retransmission timeout in timer ticks for DHCPv6 messages.
    For no limit on the retransmission timeout set to 0, for no limit
-   on the retries, set to 0. 
+   on the retries, set to 0.
 
-   Note that regardless of length of timeout or number of retries, when the IP address 
-   valid lifetime expires, the Client can no longer use its global IP address 
+   Note that regardless of length of timeout or number of retries, when the IP address
+   valid lifetime expires, the Client can no longer use its global IP address
    assigned by the DHCPv6 Server. */
 
-#ifndef NX_DHCPV6_FIRST_SOL_MAX_DELAY                 
-#define NX_DHCPV6_FIRST_SOL_MAX_DELAY                   (1 * NX_DHCPV6_TICKS_PER_SECOND) 
+#ifndef NX_DHCPV6_FIRST_SOL_MAX_DELAY
+#define NX_DHCPV6_FIRST_SOL_MAX_DELAY                   (1 * NX_DHCPV6_TICKS_PER_SECOND)
 #endif
 
 #ifndef NX_DHCPV6_INIT_SOL_TRANSMISSION_TIMEOUT
-#define NX_DHCPV6_INIT_SOL_TRANSMISSION_TIMEOUT         (1 * NX_DHCPV6_TICKS_PER_SECOND) 
+#define NX_DHCPV6_INIT_SOL_TRANSMISSION_TIMEOUT         (1 * NX_DHCPV6_TICKS_PER_SECOND)
 #endif
 
-#ifndef NX_DHCPV6_MAX_SOL_RETRANSMISSION_TIMEOUT 
-#define NX_DHCPV6_MAX_SOL_RETRANSMISSION_TIMEOUT        (120 * NX_DHCPV6_TICKS_PER_SECOND) 
+#ifndef NX_DHCPV6_MAX_SOL_RETRANSMISSION_TIMEOUT
+#define NX_DHCPV6_MAX_SOL_RETRANSMISSION_TIMEOUT        (120 * NX_DHCPV6_TICKS_PER_SECOND)
 #endif
 
 #ifndef NX_DHCPV6_MAX_SOL_RETRANSMISSION_COUNT
@@ -454,11 +454,11 @@ typedef enum
 #endif
 
 #ifndef NX_DHCPV6_INIT_REQ_TRANSMISSION_TIMEOUT
-#define NX_DHCPV6_INIT_REQ_TRANSMISSION_TIMEOUT         (1 * NX_DHCPV6_TICKS_PER_SECOND) 
+#define NX_DHCPV6_INIT_REQ_TRANSMISSION_TIMEOUT         (1 * NX_DHCPV6_TICKS_PER_SECOND)
 #endif
 
 #ifndef NX_DHCPV6_MAX_REQ_RETRANSMISSION_TIMEOUT
-#define NX_DHCPV6_MAX_REQ_RETRANSMISSION_TIMEOUT        (30 * NX_DHCPV6_TICKS_PER_SECOND) 
+#define NX_DHCPV6_MAX_REQ_RETRANSMISSION_TIMEOUT        (30 * NX_DHCPV6_TICKS_PER_SECOND)
 #endif
 
 #ifndef NX_DHCPV6_MAX_REQ_RETRANSMISSION_COUNT
@@ -466,16 +466,16 @@ typedef enum
 #endif
 
 
-#ifndef NX_DHCPV6_MAX_REQ_RETRANSMISSION_DURATION        
+#ifndef NX_DHCPV6_MAX_REQ_RETRANSMISSION_DURATION
 #define NX_DHCPV6_MAX_REQ_RETRANSMISSION_DURATION        0
 #endif
 
 #ifndef NX_DHCPV6_INIT_RENEW_TRANSMISSION_TIMEOUT
-#define NX_DHCPV6_INIT_RENEW_TRANSMISSION_TIMEOUT       (10 * NX_DHCPV6_TICKS_PER_SECOND)     
+#define NX_DHCPV6_INIT_RENEW_TRANSMISSION_TIMEOUT       (10 * NX_DHCPV6_TICKS_PER_SECOND)
 #endif
 
 #ifndef NX_DHCPV6_MAX_RENEW_RETRANSMISSION_TIMEOUT
-#define NX_DHCPV6_MAX_RENEW_RETRANSMISSION_TIMEOUT      (600 * NX_DHCPV6_TICKS_PER_SECOND)  
+#define NX_DHCPV6_MAX_RENEW_RETRANSMISSION_TIMEOUT      (600 * NX_DHCPV6_TICKS_PER_SECOND)
 #endif
 
 #ifndef NX_DHCPV6_MAX_RENEW_RETRANSMISSION_COUNT
@@ -483,15 +483,15 @@ typedef enum
 #endif
 
 #ifndef NX_DHCPV6_INIT_REBIND_TRANSMISSION_TIMEOUT
-#define NX_DHCPV6_INIT_REBIND_TRANSMISSION_TIMEOUT      (10 * NX_DHCPV6_TICKS_PER_SECOND)     
+#define NX_DHCPV6_INIT_REBIND_TRANSMISSION_TIMEOUT      (10 * NX_DHCPV6_TICKS_PER_SECOND)
 #endif
 
 #ifndef NX_DHCPV6_MAX_REBIND_RETRANSMISSION_TIMEOUT
-#define NX_DHCPV6_MAX_REBIND_RETRANSMISSION_TIMEOUT     (600 * NX_DHCPV6_TICKS_PER_SECOND)  
+#define NX_DHCPV6_MAX_REBIND_RETRANSMISSION_TIMEOUT     (600 * NX_DHCPV6_TICKS_PER_SECOND)
 #endif
 
 #ifndef NX_DHCPV6_MAX_REBIND_RETRANSMISSION_COUNT
-#define NX_DHCPV6_MAX_REBIND_RETRANSMISSION_COUNT        0 
+#define NX_DHCPV6_MAX_REBIND_RETRANSMISSION_COUNT        0
 #endif
 
 #ifndef NX_DHCPV6_INIT_RELEASE_TRANSMISSION_TIMEOUT
@@ -499,11 +499,11 @@ typedef enum
 #endif
 
 #ifndef NX_DHCPV6_MAX_RELEASE_RETRANSMISSION_TIMEOUT
-#define NX_DHCPV6_MAX_RELEASE_RETRANSMISSION_TIMEOUT     0 
+#define NX_DHCPV6_MAX_RELEASE_RETRANSMISSION_TIMEOUT     0
 #endif
 
 #ifndef NX_DHCPV6_MAX_RELEASE_RETRANSMISSION_COUNT
-#define NX_DHCPV6_MAX_RELEASE_RETRANSMISSION_COUNT       5  
+#define NX_DHCPV6_MAX_RELEASE_RETRANSMISSION_COUNT       5
 #endif
 
 #ifndef NX_DHCPV6_MAX_RELEASE_RETRANSMISSION_DURATION
@@ -519,7 +519,7 @@ typedef enum
 #endif
 
 #ifndef NX_DHCPV6_MAX_DECLINE_RETRANSMISSION_COUNT
-#define NX_DHCPV6_MAX_DECLINE_RETRANSMISSION_COUNT       5  
+#define NX_DHCPV6_MAX_DECLINE_RETRANSMISSION_COUNT       5
 #endif
 
 #ifndef NX_DHCPV6_MAX_DECLINE_RETRANSMISSION_DURATION
@@ -539,7 +539,7 @@ typedef enum
 #endif
 
 #ifndef NX_DHCPV6_MAX_CONFIRM_RETRANSMISSION_COUNT
-#define NX_DHCPV6_MAX_CONFIRM_RETRANSMISSION_COUNT       0  
+#define NX_DHCPV6_MAX_CONFIRM_RETRANSMISSION_COUNT       0
 #endif
 
 #ifndef NX_DHCPV6_MAX_CONFIRM_RETRANSMISSION_DURATION
@@ -559,7 +559,7 @@ typedef enum
 #endif
 
 #ifndef NX_DHCPV6_MAX_INFORM_RETRANSMISSION_COUNT
-#define NX_DHCPV6_MAX_INFORM_RETRANSMISSION_COUNT        0 
+#define NX_DHCPV6_MAX_INFORM_RETRANSMISSION_COUNT        0
 #endif
 
 #ifndef NX_DHCPV6_MAX_INFORM_RETRANSMISSION_DURATION
@@ -645,7 +645,7 @@ typedef struct NX_DHCPV6_ELAPSED_TIME_STRUCT
 
 /* Define the Message Option structure. Each message from the Client must have a unique message ID. */
 
-typedef struct NX_DHCPV6_MESSAGE_HDR_STRUCT 
+typedef struct NX_DHCPV6_MESSAGE_HDR_STRUCT
 {
 
     USHORT             nx_message_type;           /* Message type (1 byte) */
@@ -653,7 +653,7 @@ typedef struct NX_DHCPV6_MESSAGE_HDR_STRUCT
     ULONG              nx_message_xid;            /* Message transaction ID (3 bytes)*/
 } NX_DHCPV6_MESSAGE_HDR;
 
-/* Define the option request structure. This is how the Client requests information other than global IP address.  
+/* Define the option request structure. This is how the Client requests information other than global IP address.
    It can ask for domain name, DNS server, time zone, time server and other options. */
 
 typedef struct NX_DHCPV6_OPTIONREQUEST_STRUCT
@@ -679,25 +679,25 @@ typedef struct NX_DHCPV6_CLIENT_FQDN_STRUCT
 
 /* Define the Client DHCPv6 structure containind the DHCPv6 Client record (DHCPv6 status, server DUID etc).  */
 
-typedef struct NX_DHCPV6_STRUCT 
+typedef struct NX_DHCPV6_STRUCT
 {
     ULONG                   nx_dhcpv6_id;                               /* DHCPv6 Structure ID  */
-    CHAR                    *nx_dhcpv6_name;                            /* DHCPv6 name supplied at create */ 
-    UINT                    nx_dhcpv6_client_address_index[NX_DHCPV6_MAX_IA_ADDRESS];         
+    CHAR                    *nx_dhcpv6_name;                            /* DHCPv6 name supplied at create */
+    UINT                    nx_dhcpv6_client_address_index[NX_DHCPV6_MAX_IA_ADDRESS];
                                                                         /* Index in IP address table where the Client assigned address is located. */
     UINT                    nx_dhcpv6_client_interface_index;           /* DHCPv6 outgoing network interface index */
     TX_THREAD               nx_dhcpv6_thread;                           /* Client processing thread */
     TX_EVENT_FLAGS_GROUP    nx_dhcpv6_events;                           /* DHCPv6 Client event flags. */
-    TX_MUTEX                nx_dhcpv6_client_mutex;                     /* Mutex for exclusive access to the DHCP Client instance */ 
-    TX_TIMER                nx_dhcpv6_IP_lifetime_timer;                /* Client IP lifetime timeout timer. */ 
-    TX_TIMER                nx_dhcpv6_session_timer;                    /* Client session duration timer. */ 
-    NX_IP                   *nx_dhcpv6_ip_ptr;                          /* The associated IP pointer for this DHCPV6 instance */ 
+    TX_MUTEX                nx_dhcpv6_client_mutex;                     /* Mutex for exclusive access to the DHCP Client instance */
+    TX_TIMER                nx_dhcpv6_IP_lifetime_timer;                /* Client IP lifetime timeout timer. */
+    TX_TIMER                nx_dhcpv6_session_timer;                    /* Client session duration timer. */
+    NX_IP                   *nx_dhcpv6_ip_ptr;                          /* The associated IP pointer for this DHCPV6 instance */
     NX_PACKET_POOL          *nx_dhcpv6_pool_ptr;                        /* Pointer to packet pool for sending DHCPV6 messages */
     NX_UDP_SOCKET           nx_dhcpv6_socket;                           /* UDP socket for communicating with DHCPv6 server */
-    UCHAR                   nx_dhcpv6_started;                          /* DHCPv6 client task has been started */ 
-    UCHAR                   nx_dhcpv6_state;                            /* The current state of the DHCPv6 Client */     
+    UCHAR                   nx_dhcpv6_started;                          /* DHCPv6 client task has been started */
+    UCHAR                   nx_dhcpv6_state;                            /* The current state of the DHCPv6 Client */
     USHORT                  nx_status_code;                             /* Status of current option received by Client */
-    UINT                    nx_dhcpv6_sleep_flag;                       /* If true, the DHCPv6 client is in a position where it can be stopped */ 
+    UINT                    nx_dhcpv6_sleep_flag;                       /* If true, the DHCPv6 client is in a position where it can be stopped */
     NX_DHCPV6_MESSAGE_HDR   nx_dhcpv6_message_hdr;                      /* Message Header for all client messages to DHCPv6 Servers */
     NX_DHCPV6_DUID          nx_dhcpv6_client_duid;                      /* Client DUID; ID by which Client and Server identify each other's DUID */
     NX_DHCPV6_DUID          nx_dhcpv6_server_duid;                      /* Server DUID; ID by which Client and Server identify each other's DUID */
@@ -715,22 +715,22 @@ typedef struct NX_DHCPV6_STRUCT
     NXD_ADDRESS             nx_dhcpv6_client_destination_address;       /* The destination address where DHCP message should be sent, by default All_DHCP_Relay_Agents_and_Servers(FF02::1:2).  */
     UCHAR                   nx_dhcpv6_domain_name[NX_DHCPV6_DOMAIN_NAME_BUFFER_SIZE];       /* Buffer for holding domain name. */
     UCHAR                   nx_dhcpv6_time_zone[NX_DHCPV6_TIME_ZONE_BUFFER_SIZE];           /* Buffer for holding time zone. */
-    ULONG                   nx_dhcpv6_solicitations_sent;               /* The number of Solicit messages sent */ 
-    ULONG                   nx_dhcpv6_solicitation_responses;           /* The number of solicitations server responded to */ 
-    ULONG                   nx_dhcpv6_requests_sent;                    /* The number of Request messages sent */ 
-    ULONG                   nx_dhcpv6_request_responses;                /* The number of requests server responded to */ 
-    ULONG                   nx_dhcpv6_renews_sent;                      /* The number of renew messages sent */ 
-    ULONG                   nx_dhcpv6_renew_responses;                  /* The number of renews server responded to */ 
-    ULONG                   nx_dhcpv6_rebinds_sent;                     /* The number of Rebind messages sent */ 
-    ULONG                   nx_dhcpv6_rebind_responses;                 /* The number of Rebind requests Server responded to */ 
-    ULONG                   nx_dhcpv6_releases_sent;                    /* The number of Release messages sent */ 
-    ULONG                   nx_dhcpv6_release_responses;                /* The number of Releases server responded to  */ 
-    ULONG                   nx_dhcpv6_confirms_sent;                    /* The number of confirmations sent */ 
-    ULONG                   nx_dhcpv6_confirm_responses;                /* The number of confirmations server responded to */ 
-    ULONG                   nx_dhcpv6_declines_sent;                    /* The number of declines sent */ 
-    ULONG                   nx_dhcpv6_decline_responses;                /* The number of declines server responded to */ 
-    ULONG                   nx_dhcpv6_inform_req_sent;                  /* The number of Inform (option requests) sent */ 
-    ULONG                   nx_dhcpv6_inform_req_responses;             /* The number of Inform server responsed to */ 
+    ULONG                   nx_dhcpv6_solicitations_sent;               /* The number of Solicit messages sent */
+    ULONG                   nx_dhcpv6_solicitation_responses;           /* The number of solicitations server responded to */
+    ULONG                   nx_dhcpv6_requests_sent;                    /* The number of Request messages sent */
+    ULONG                   nx_dhcpv6_request_responses;                /* The number of requests server responded to */
+    ULONG                   nx_dhcpv6_renews_sent;                      /* The number of renew messages sent */
+    ULONG                   nx_dhcpv6_renew_responses;                  /* The number of renews server responded to */
+    ULONG                   nx_dhcpv6_rebinds_sent;                     /* The number of Rebind messages sent */
+    ULONG                   nx_dhcpv6_rebind_responses;                 /* The number of Rebind requests Server responded to */
+    ULONG                   nx_dhcpv6_releases_sent;                    /* The number of Release messages sent */
+    ULONG                   nx_dhcpv6_release_responses;                /* The number of Releases server responded to  */
+    ULONG                   nx_dhcpv6_confirms_sent;                    /* The number of confirmations sent */
+    ULONG                   nx_dhcpv6_confirm_responses;                /* The number of confirmations server responded to */
+    ULONG                   nx_dhcpv6_declines_sent;                    /* The number of declines sent */
+    ULONG                   nx_dhcpv6_decline_responses;                /* The number of declines server responded to */
+    ULONG                   nx_dhcpv6_inform_req_sent;                  /* The number of Inform (option requests) sent */
+    ULONG                   nx_dhcpv6_inform_req_responses;             /* The number of Inform server responsed to */
     ULONG                   nx_dhcpv6_transmission_timeout;             /* Timeout on Client messages before resending a request to the server. */
     ULONG                   nx_dhcpv6_retransmission_count;             /* The number of request retransmissions to the server. */
     ULONG                   nx_dhcpv6_init_retransmission_timeout;      /* The initial retransmission time. */
@@ -742,7 +742,7 @@ typedef struct NX_DHCPV6_STRUCT
     USHORT                  nx_dhcpv6_reply_option_current_pref_value;  /* The preference value of current advertise message. */
     UCHAR                   nx_dhcpv6_received_message_type;            /* The type of received message  */
     UCHAR                   nx_dhcpv6_reserved;                         /* Reserved.  */
-   
+
     /* Define the callback function for DHCP state change notification. If specified
        by the application, this function is called whenever a state change occurs for
        the DHCP associated with this IP instance.  */
@@ -755,17 +755,17 @@ typedef struct NX_DHCPV6_STRUCT
 
 } NX_DHCPV6;
 
-                                          
+
 
 #ifdef NX_DHCPV6_CLIENT_RESTORE_STATE
 /* Define the DHCPv6 Client record structure for restore the DHCPv6 Client state from non volatile memory/across reboots.  */
 
-typedef struct NX_DHCPV6_CLIENT_RECORD_STRUCT 
-{                                                                                 
-    UCHAR                   nx_dhcpv6_state;                            /* The current state of the DHCPv6 Client */      
+typedef struct NX_DHCPV6_CLIENT_RECORD_STRUCT
+{
+    UCHAR                   nx_dhcpv6_state;                            /* The current state of the DHCPv6 Client */
     UCHAR                   nx_dhcpv6_reserved[3];                      /* Reserved.  */
-    UINT                    nx_dhcpv6_client_interface_index;           /* DHCPv6 outgoing network interface index */ 
-    UINT                    nx_dhcpv6_client_address_index[NX_DHCPV6_MAX_IA_ADDRESS];         
+    UINT                    nx_dhcpv6_client_interface_index;           /* DHCPv6 outgoing network interface index */
+    UINT                    nx_dhcpv6_client_address_index[NX_DHCPV6_MAX_IA_ADDRESS];
                                                                         /* Index in IP address table where the Client assigned address is located. */
     ULONG                   nx_dhcpv6_IP_lifetime_time_accrued;         /* Time since Client set received or renewed its IP address with the DHCPv6 server. */
     NX_DHCPV6_DUID          nx_dhcpv6_client_duid;                      /* Client DUID; ID by which Client and Server identify each other's DUID */
@@ -773,7 +773,7 @@ typedef struct NX_DHCPV6_CLIENT_RECORD_STRUCT
     NX_DHCPV6_IA_NA         nx_dhcpv6_iana;                             /* Identity Association for non temp address - must be stored in non volatile memory */
     NX_DHCPV6_IA_ADDRESS    nx_dhcpv6_ia[NX_DHCPV6_MAX_IA_ADDRESS];     /* Client internet address option */
     NX_DHCPV6_OPTIONREQUEST nx_dhcpv6_option_request;                   /* Set of request options in Solicit, Renew, Confirm or Rebind message types. */
-    NX_DHCPV6_CLIENT_FQDN   nx_dhcpv6_client_FQDN;                      /* Set of Client options in Solicit, Request, Renew, or Rebind message types. */              
+    NX_DHCPV6_CLIENT_FQDN   nx_dhcpv6_client_FQDN;                      /* Set of Client options in Solicit, Request, Renew, or Rebind message types. */
     NXD_ADDRESS             nx_dhcpv6_DNS_name_server_address[NX_DHCPV6_NUM_DNS_SERVERS];   /* DNS name server IP address */
     NXD_ADDRESS             nx_dhcpv6_time_server_address[NX_DHCPV6_NUM_TIME_SERVERS];      /* time server IP address */
     UCHAR                   nx_dhcpv6_domain_name[NX_DHCPV6_DOMAIN_NAME_BUFFER_SIZE];       /* Buffer for holding domain name. */
@@ -785,9 +785,9 @@ typedef struct NX_DHCPV6_CLIENT_RECORD_STRUCT
 
 /* Application caller is present, perform API mapping.  */
 
-/* Determine if error checking is desired.  If so, map DHCP API functions 
+/* Determine if error checking is desired.  If so, map DHCP API functions
    to the appropriate error checking front-ends.  Otherwise, map API
-   functions to the core functions that actually perform the work. 
+   functions to the core functions that actually perform the work.
    Note: error checking is enabled by default.  */
 
 
@@ -801,14 +801,14 @@ typedef struct NX_DHCPV6_CLIENT_RECORD_STRUCT
 #define nx_dhcpv6_create_client_iana                        _nx_dhcpv6_create_client_iana
 #define nx_dhcpv6_create_client_ia                          _nx_dhcpv6_add_client_ia
 #define nx_dhcpv6_add_client_ia                             _nx_dhcpv6_add_client_ia
-#define nx_dhcpv6_client_set_interface                      _nx_dhcpv6_client_set_interface 
+#define nx_dhcpv6_client_set_interface                      _nx_dhcpv6_client_set_interface
 #define nx_dhcpv6_client_set_destination_address            _nx_dhcpv6_client_set_destination_address
 #define nx_dhcpv6_set_time_accrued                          _nx_dhcpv6_set_time_accrued
 #define nx_dhcpv6_get_client_duid_time_id                   _nx_dhcpv6_get_client_duid_time_id
 #define nx_dhcpv6_get_IP_address                            _nx_dhcpv6_get_IP_address
 #define nx_dhcpv6_get_lease_time_data                       _nx_dhcpv6_get_lease_time_data
 #define nx_dhcpv6_get_other_option_data                     _nx_dhcpv6_get_other_option_data
-#define nx_dhcpv6_get_DNS_server_address                    _nx_dhcpv6_get_DNS_server_address 
+#define nx_dhcpv6_get_DNS_server_address                    _nx_dhcpv6_get_DNS_server_address
 #define nx_dhcpv6_get_time_server_address                   _nx_dhcpv6_get_time_server_address
 #define nx_dhcpv6_get_time_accrued                          _nx_dhcpv6_get_time_accrued
 #define nx_dhcpv6_get_iana_lease_time                       _nx_dhcpv6_get_iana_lease_time
@@ -828,11 +828,11 @@ typedef struct NX_DHCPV6_CLIENT_RECORD_STRUCT
 #define nx_dhcpv6_start                                     _nx_dhcpv6_start
 #define nx_dhcpv6_stop                                      _nx_dhcpv6_stop
 #define nx_dhcpv6_suspend                                   _nx_dhcpv6_suspend
-#define nx_dhcpv6_resume                                    _nx_dhcpv6_resume   
-#ifdef NX_DHCPV6_CLIENT_RESTORE_STATE                                     
+#define nx_dhcpv6_resume                                    _nx_dhcpv6_resume
+#ifdef NX_DHCPV6_CLIENT_RESTORE_STATE
 #define nx_dhcpv6_client_get_record                         _nx_dhcpv6_client_get_record
 #define nx_dhcpv6_client_restore_record                     _nx_dhcpv6_client_restore_record
-#endif                                                                
+#endif
 
 #else
 
@@ -851,7 +851,7 @@ typedef struct NX_DHCPV6_CLIENT_RECORD_STRUCT
 #define nx_dhcpv6_get_IP_address                            _nxe_dhcpv6_get_IP_address
 #define nx_dhcpv6_get_lease_time_data                       _nxe_dhcpv6_get_lease_time_data
 #define nx_dhcpv6_get_other_option_data                     _nxe_dhcpv6_get_other_option_data
-#define nx_dhcpv6_get_DNS_server_address                    _nxe_dhcpv6_get_DNS_server_address 
+#define nx_dhcpv6_get_DNS_server_address                    _nxe_dhcpv6_get_DNS_server_address
 #define nx_dhcpv6_get_time_server_address                   _nxe_dhcpv6_get_time_server_address
 #define nx_dhcpv6_get_time_accrued                          _nxe_dhcpv6_get_time_accrued
 #define nx_dhcpv6_get_iana_lease_time                       _nxe_dhcpv6_get_iana_lease_time
@@ -871,23 +871,23 @@ typedef struct NX_DHCPV6_CLIENT_RECORD_STRUCT
 #define nx_dhcpv6_start                                     _nxe_dhcpv6_start
 #define nx_dhcpv6_stop                                      _nxe_dhcpv6_stop
 #define nx_dhcpv6_suspend                                   _nxe_dhcpv6_suspend
-#define nx_dhcpv6_resume                                    _nxe_dhcpv6_resume   
-#ifdef NX_DHCPV6_CLIENT_RESTORE_STATE                                     
+#define nx_dhcpv6_resume                                    _nxe_dhcpv6_resume
+#ifdef NX_DHCPV6_CLIENT_RESTORE_STATE
 #define nx_dhcpv6_client_get_record                         _nxe_dhcpv6_client_get_record
 #define nx_dhcpv6_client_restore_record                     _nxe_dhcpv6_client_restore_record
-#endif     
+#endif
 
 #endif
 
 /* Define the prototypes accessible to the application software.  */
 UINT        nx_dhcpv6_client_create(NX_DHCPV6 *dhcpv6_ptr, NX_IP *ip_ptr, CHAR *name_ptr, NX_PACKET_POOL *packet_pool_ptr, VOID *stack_ptr, ULONG stack_size,
-                                    VOID (*dhcpv6_state_change_notify)(struct NX_DHCPV6_STRUCT *dhcpv6_ptr, UINT old_state, UINT new_state),                             
+                                    VOID (*dhcpv6_state_change_notify)(struct NX_DHCPV6_STRUCT *dhcpv6_ptr, UINT old_state, UINT new_state),
                                     VOID (*dhcpv6_server_error_handler)(struct NX_DHCPV6_STRUCT *dhcpv6_ptr, UINT op_code, UINT status_code, UINT message_type));
 UINT        nx_dhcpv6_client_delete(NX_DHCPV6 *dhcpv6_ptr);
 UINT        nx_dhcpv6_create_client_duid(NX_DHCPV6 *dhcpv6_ptr, UINT duid_type, UINT hardware_type, ULONG time);
 UINT        nx_dhcpv6_create_client_iana(NX_DHCPV6 *dhcpv6_ptr, UINT IA_ident, ULONG T1, ULONG T2);
-UINT        nx_dhcpv6_create_client_ia(NX_DHCPV6 *dhcpv6_ptr, NXD_ADDRESS *ipv6_address, ULONG preferred_lifetime, ULONG valid_lifetime);  
-UINT        nx_dhcpv6_add_client_ia(NX_DHCPV6 *dhcpv6_ptr, NXD_ADDRESS *ipv6_address, ULONG preferred_lifetime, ULONG valid_lifetime);  
+UINT        nx_dhcpv6_create_client_ia(NX_DHCPV6 *dhcpv6_ptr, NXD_ADDRESS *ipv6_address, ULONG preferred_lifetime, ULONG valid_lifetime);
+UINT        nx_dhcpv6_add_client_ia(NX_DHCPV6 *dhcpv6_ptr, NXD_ADDRESS *ipv6_address, ULONG preferred_lifetime, ULONG valid_lifetime);
 UINT        nx_dhcpv6_client_set_interface(NX_DHCPV6 *dhcpv6_ptr, UINT interface_index);
 UINT        nx_dhcpv6_client_set_destination_address(NX_DHCPV6 *dhcpv6_ptr, NXD_ADDRESS *destination_address);
 UINT        nx_dhcpv6_set_time_accrued(NX_DHCPV6 *dhcpv6_ptr, ULONG time_accrued);
@@ -895,7 +895,7 @@ UINT        nx_dhcpv6_get_client_duid_time_id(NX_DHCPV6 *dhcpv6_ptr, ULONG *time
 UINT        nx_dhcpv6_get_IP_address(NX_DHCPV6 *dhcpv6_ptr, NXD_ADDRESS *ip_address);
 UINT        nx_dhcpv6_get_lease_time_data(NX_DHCPV6 *dhcpv6_ptr, ULONG *T1, ULONG *T2, ULONG *preferred_lifetime, ULONG *valid_lifetime);
 UINT        nx_dhcpv6_get_other_option_data(NX_DHCPV6 *dhcpv6_ptr, UINT option_code, UCHAR *buffer, UINT buffer_length);
-UINT        nx_dhcpv6_get_DNS_server_address(NX_DHCPV6 *dhcpv6_ptr, UINT index, NXD_ADDRESS *server_address);   
+UINT        nx_dhcpv6_get_DNS_server_address(NX_DHCPV6 *dhcpv6_ptr, UINT index, NXD_ADDRESS *server_address);
 UINT        nx_dhcpv6_get_time_server_address(NX_DHCPV6 *dhcpv6_ptr, UINT index, NXD_ADDRESS *server_address);
 UINT        nx_dhcpv6_get_time_accrued(NX_DHCPV6 *dhcpv6_ptr, ULONG *time_accrued);
 UINT        nx_dhcpv6_get_iana_lease_time(NX_DHCPV6 *dhcpv6_ptr, ULONG *T1, ULONG *T2);
@@ -915,9 +915,9 @@ UINT        nx_dhcpv6_request_option_FQDN(NX_DHCPV6 *dhcpv6_ptr, CHAR *domain_na
 UINT        nx_dhcpv6_start(NX_DHCPV6 *dhcpv6_ptr);
 UINT        nx_dhcpv6_stop(NX_DHCPV6 *dhcpv6_ptr);
 UINT        nx_dhcpv6_suspend(NX_DHCPV6 *dhcpv6_ptr);
-UINT        nx_dhcpv6_resume(NX_DHCPV6 *dhcpv6_ptr);  
+UINT        nx_dhcpv6_resume(NX_DHCPV6 *dhcpv6_ptr);
 #ifdef NX_DHCPV6_CLIENT_RESTORE_STATE
-UINT        nx_dhcpv6_client_get_record(NX_DHCPV6 *dhcpv6_ptr, NX_DHCPV6_CLIENT_RECORD *client_record_ptr);  
+UINT        nx_dhcpv6_client_get_record(NX_DHCPV6 *dhcpv6_ptr, NX_DHCPV6_CLIENT_RECORD *client_record_ptr);
 UINT        nx_dhcpv6_client_restore_record(NX_DHCPV6 *dhcpv6_ptr, NX_DHCPV6_CLIENT_RECORD *client_record_ptr, ULONG time_elapsed);
 #endif
 
@@ -941,7 +941,7 @@ UINT        _nx_dhcpv6_create_client_iana(NX_DHCPV6 *dhcpv6_ptr, UINT IA_ident, 
 UINT        _nxe_dhcpv6_add_client_ia(NX_DHCPV6 *dhcpv6_ptr, NXD_ADDRESS *ipv6_address, ULONG preferred_lifetime, ULONG valid_lifetime);
 UINT        _nx_dhcpv6_add_client_ia(NX_DHCPV6 *dhcpv6_ptr, NXD_ADDRESS *ipv6_address, ULONG preferred_lifetime, ULONG valid_lifetime);
 UINT        _nxe_dhcpv6_client_set_interface(NX_DHCPV6 *dhcpv6_ptr, UINT interface_index);
-UINT        _nx_dhcpv6_client_set_interface(NX_DHCPV6 *dhcpv6_ptr, UINT interface_index); 
+UINT        _nx_dhcpv6_client_set_interface(NX_DHCPV6 *dhcpv6_ptr, UINT interface_index);
 UINT        _nxe_dhcpv6_client_set_destination_address(NX_DHCPV6 *dhcpv6_ptr, NXD_ADDRESS *destination_address);
 UINT        _nx_dhcpv6_client_set_destination_address(NX_DHCPV6 *dhcpv6_ptr, NXD_ADDRESS *destination_address);
 UINT        _nxe_dhcpv6_set_time_accrued(NX_DHCPV6 *dhcpv6_ptr, ULONG time_accrued);
@@ -995,10 +995,10 @@ UINT        _nx_dhcpv6_stop(NX_DHCPV6 *dhcpv6_ptr);
 UINT        _nxe_dhcpv6_suspend(NX_DHCPV6 *dhcpv6_ptr);
 UINT        _nx_dhcpv6_suspend(NX_DHCPV6 *dhcpv6_ptr);
 UINT        _nxe_dhcpv6_resume(NX_DHCPV6 *dhcpv6_ptr);
-UINT        _nx_dhcpv6_resume(NX_DHCPV6 *dhcpv6_ptr);   
+UINT        _nx_dhcpv6_resume(NX_DHCPV6 *dhcpv6_ptr);
 #ifdef NX_DHCPV6_CLIENT_RESTORE_STATE
-UINT        _nxe_dhcpv6_client_get_record(NX_DHCPV6 *dhcpv6_ptr, NX_DHCPV6_CLIENT_RECORD *client_record_ptr);     
-UINT        _nx_dhcpv6_client_get_record(NX_DHCPV6 *dhcpv6_ptr, NX_DHCPV6_CLIENT_RECORD *client_record_ptr);  
+UINT        _nxe_dhcpv6_client_get_record(NX_DHCPV6 *dhcpv6_ptr, NX_DHCPV6_CLIENT_RECORD *client_record_ptr);
+UINT        _nx_dhcpv6_client_get_record(NX_DHCPV6 *dhcpv6_ptr, NX_DHCPV6_CLIENT_RECORD *client_record_ptr);
 UINT        _nxe_dhcpv6_client_restore_record(NX_DHCPV6 *dhcpv6_ptr, NX_DHCPV6_CLIENT_RECORD *client_record_ptr, ULONG time_elapsed);
 UINT        _nx_dhcpv6_client_restore_record(NX_DHCPV6 *dhcpv6_ptr, NX_DHCPV6_CLIENT_RECORD *client_record_ptr, ULONG time_elapsed);
 #endif
@@ -1014,19 +1014,19 @@ UINT        _nx_dhcpv6_request(NX_DHCPV6 *dhcpv6_ptr, UINT dhcpv6_state);
 UINT        _nx_dhcpv6_request_renew(NX_DHCPV6 *dhcpv6_ptr);
 UINT        _nx_dhcpv6_request_rebind(NX_DHCPV6 *dhcpv6_ptr);
 UINT        _nx_dhcpv6_request_decline(NX_DHCPV6 *dhcpv6_ptr);
-UINT        _nx_dhcpv6_send_request(NX_DHCPV6 *dhcpv6_ptr); 
+UINT        _nx_dhcpv6_send_request(NX_DHCPV6 *dhcpv6_ptr);
 UINT        _nx_dhcpv6_add_client_duid(NX_DHCPV6 *dhcpv6_ptr, UCHAR *buffer_ptr, UINT *index);
-UINT        _nx_dhcpv6_add_elapsed_time(NX_DHCPV6 *dhcpv6_ptr, UCHAR *buffer_ptr, UINT *index); 
-UINT        _nx_dhcpv6_add_option_request(NX_DHCPV6 *dhcpv6_ptr, UCHAR *buffer_ptr, UINT *index); 
-UINT        _nx_dhcpv6_add_ia_address(NX_DHCPV6 *dhcpv6_ptr, UCHAR *buffer_ptr, UINT *index, UINT ia_index); 
-UINT        _nx_dhcpv6_add_iana(NX_DHCPV6 *dhcpv6_ptr, UCHAR *buffer_ptr, UINT *index); 
-UINT        _nx_dhcpv6_add_server_duid(NX_DHCPV6 *dhcpv6_ptr, UCHAR *buffer_ptr, UINT *index); 
+UINT        _nx_dhcpv6_add_elapsed_time(NX_DHCPV6 *dhcpv6_ptr, UCHAR *buffer_ptr, UINT *index);
+UINT        _nx_dhcpv6_add_option_request(NX_DHCPV6 *dhcpv6_ptr, UCHAR *buffer_ptr, UINT *index);
+UINT        _nx_dhcpv6_add_ia_address(NX_DHCPV6 *dhcpv6_ptr, UCHAR *buffer_ptr, UINT *index, UINT ia_index);
+UINT        _nx_dhcpv6_add_iana(NX_DHCPV6 *dhcpv6_ptr, UCHAR *buffer_ptr, UINT *index);
+UINT        _nx_dhcpv6_add_server_duid(NX_DHCPV6 *dhcpv6_ptr, UCHAR *buffer_ptr, UINT *index);
 UINT        _nx_dhcpv6_add_client_FQDN(NX_DHCPV6 *dhcpv6_ptr, UCHAR *buffer_ptr, UINT *index);
 UINT        _nx_dhcpv6_waiting_on_reply(NX_DHCPV6 *dhcpv6_ptr);
 UINT        _nx_dhcpv6_packet_process(NX_DHCPV6 *dhcpv6_ptr, NX_PACKET *packet_ptr);
 UINT        _nx_dhcpv6_scan_packet_options(NX_DHCPV6 *dhcpv6_ptr, NX_PACKET *packet_ptr);
 UINT        _nx_dhcpv6_preprocess_packet_information(NX_DHCPV6 *dhcpv6_ptr, NX_PACKET *packet_ptr);
-UINT        _nx_dhcpv6_extract_packet_information(NX_DHCPV6 *dhcpv6_ptr, NX_PACKET *packet_ptr);       
+UINT        _nx_dhcpv6_extract_packet_information(NX_DHCPV6 *dhcpv6_ptr, NX_PACKET *packet_ptr);
 VOID        _nx_dhcpv6_flush_queue_packets(NX_DHCPV6 *dhcpv6_ptr);
 UINT        _nx_dhcpv6_process_client_duid(NX_DHCPV6 *dhcpv6_ptr, UCHAR *option_data, UINT option_length);
 UINT        _nx_dhcpv6_process_DNS_server(NX_DHCPV6 *dhcpv6_ptr, UCHAR *option_data, UINT option_length);
@@ -1059,5 +1059,3 @@ VOID        _nx_dhcpv6_ipv6_address_DAD_notify(NX_IP *ip_ptr, UINT status, UINT 
 #endif
 
 #endif /* NX_DHCPV6_CLIENT_H */
-
-

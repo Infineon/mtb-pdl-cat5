@@ -129,4 +129,3 @@ UINT _nx_crypto_method_rsa_init(struct NX_CRYPTO_METHOD_STRUCT *method,
 #endif
 
 #endif /* NX_CRYPTO_RSA_H */
-

@@ -42,7 +42,7 @@ typedef void(*CY_TDM_IRQ_THREAD_CB_t)(UINT8 instance, BOOL8 rx_int);
 
 
 /** \brief MXTDM - Chip Specific output control for CYW55513 */
-typedef enum 
+typedef enum
 {
     CY_TDM_SELECT_DEFAULT    = 0x00u, /**< Selects Tx fsync & sck as TDM fsync & sck */
     CY_TDM_SELECT_TX_OUTPUT  = 0x00u, /**< Selects Tx fsync & sck as TDM fsync & sck */
@@ -96,27 +96,6 @@ void Cy_AudioTDM_DisableInterrupt    (TDM_STRUCT_Type *base);
  */
 void Cy_AudioTDM_EnableOutput(TDM_STRUCT_Type *base, CY_TDM_OUTPUT_CONFIG_t config);
 
-/**
- * Function Cy_AudioTDM_EnableClock
- *
- * Enable system clock for TDM IP. Required for register read/write access.
- *
- * \param[in]    base          : MXTDM IP base address
- *
- * \return       None
- */
-void Cy_AudioTDM_EnableClock(TDM_STRUCT_Type *base);
-
-/**
- * Function Cy_AudioTDM_DisableClock
- *
- * Enable system clock for TDM IP. Required for register read/write access.
- *
- * \param[in]    base          : MXTDM IP base address
- *
- * \return       None
- */
-void Cy_AudioTDM_DisableClock(TDM_STRUCT_Type *base);
 
 #if defined(__cplusplus)
     }

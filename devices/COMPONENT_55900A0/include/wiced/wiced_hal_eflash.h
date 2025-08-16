@@ -4,9 +4,9 @@
 
 /** @file
  *
-* List of parameters and defined functions needed to access the 
-* Embedded Flash interface driver. 
-*  
+* List of parameters and defined functions needed to access the
+* Embedded Flash interface driver.
+*
 */
 
 #ifndef _WICED_HAL_EFLASH_H_
@@ -88,5 +88,3 @@ uint32_t wiced_hal_eflash_get_size( void );
 /* @} */
 
 #endif // _WICED_HAL_EFLASH_H_
-
-

@@ -215,7 +215,7 @@ extern   "C" {
 /* Configuration macro: disable secure session renegotiation extension (RFC 5746).
    #define NX_SECURE_TLS_DISABLE_SECURE_RENEGOTIATION
  */
-/* Configuration macro: terminate the connection immediately upon failure to receive the 
+/* Configuration macro: terminate the connection immediately upon failure to receive the
    secure renegotiation extension during the initial handshake.
    #define NX_SECURE_TLS_REQUIRE_RENEGOTIATION_EXT
  */
@@ -444,7 +444,7 @@ extern   "C" {
 
 #ifdef NX_SECURE_TLS_ENABLE_TLS_1_3
 #define NX_SECURE_TLS_TLS_1_3_ENABLED                   (1)
-#endif 
+#endif
 
 #ifndef NX_SECURE_TLS_TLS_1_3_ENABLED
 #define NX_SECURE_TLS_TLS_1_3_ENABLED                   (0)
@@ -572,10 +572,10 @@ typedef struct NX_SECURE_VERSIONS_LIST_STRUCT
 #define TLS_PUBLIC_AUTH_ECJPAKE                            NX_CRYPTO_KEY_EXCHANGE_ECJPAKE
 #define TLS_PRF_1                                          NX_CRYPTO_PRF_HMAC_SHA1 /* TLSv1.0/1.1 PRF */
 #define TLS_PRF_SHA_256                                    NX_CRYPTO_PRF_HMAC_SHA2_256 /* TLS PRF, SHA-256 based for TLSv1.2. */
-#define TLS_HASH_SHA_1                                     NX_CRYPTO_HASH_SHA1 
-#define TLS_HASH_SHA_256                                   NX_CRYPTO_HASH_SHA256 
-#define TLS_HASH_SHA_384                                   NX_CRYPTO_HASH_SHA384 
-#define TLS_HASH_SHA_512                                   NX_CRYPTO_HASH_SHA512 
+#define TLS_HASH_SHA_1                                     NX_CRYPTO_HASH_SHA1
+#define TLS_HASH_SHA_256                                   NX_CRYPTO_HASH_SHA256
+#define TLS_HASH_SHA_384                                   NX_CRYPTO_HASH_SHA384
+#define TLS_HASH_SHA_512                                   NX_CRYPTO_HASH_SHA512
 
 /* Client Certificate Types for Certificate Request messages.
    Values taken directly from RFC 5246, section 7.4.4. */
@@ -1187,7 +1187,7 @@ typedef struct NX_SECURE_TLS_SESSION_STRUCT
 
 #if (NX_SECURE_TLS_TLS_1_3_ENABLED)
     UCHAR nx_secure_tls_1_3;
-    UCHAR nx_secure_tls_1_3_supported; 
+    UCHAR nx_secure_tls_1_3_supported;
 #endif
 
     /* This field overrides the version returned by _nx_secure_tls_newest_supported_version. */
@@ -1474,7 +1474,7 @@ UINT _nx_secure_tls_1_3_crypto_init(NX_SECURE_TLS_SESSION *tls_session);
 UINT _nx_secure_tls_1_3_client_handshake(NX_SECURE_TLS_SESSION *tls_session, UCHAR *packet_buffer,
                                          UINT data_length, ULONG wait_option);
 UINT _nx_secure_tls_1_3_server_handshake(NX_SECURE_TLS_SESSION *tls_session, UCHAR *packet_buffer,
-                                         UINT data_length, ULONG wait_option);    
+                                         UINT data_length, ULONG wait_option);
 UINT _nx_secure_tls_1_3_generate_handshake_keys(NX_SECURE_TLS_SESSION *tls_session);
 UINT _nx_secure_tls_1_3_generate_session_keys(NX_SECURE_TLS_SESSION *tls_session);
 UINT _nx_secure_tls_1_3_session_psk_generate(NX_SECURE_TLS_SESSION *tls_session, NX_SECURE_TLS_PSK_STORE *ticket_psk, UCHAR *nonce, UINT nonce_len);
@@ -1575,7 +1575,7 @@ UINT _nx_secure_tls_record_hash_update(NX_SECURE_TLS_SESSION *tls_session, UCHAR
 UINT _nx_secure_tls_record_payload_decrypt(NX_SECURE_TLS_SESSION *tls_session, NX_PACKET *encrypted_packet,
                                            UINT offset, UINT message_length, NX_PACKET **decrypted_packet,
                                            ULONG sequence_num[NX_SECURE_TLS_SEQUENCE_NUMBER_SIZE],
-                                           UCHAR record_type, UINT wait_option);                                           
+                                           UCHAR record_type, UINT wait_option);
 UINT _nx_secure_tls_record_payload_encrypt(NX_SECURE_TLS_SESSION *tls_session,
                                            NX_PACKET *send_packet,
                                            ULONG sequence_num[NX_SECURE_TLS_SEQUENCE_NUMBER_SIZE],
@@ -1908,4 +1908,3 @@ TLS_DECLARE  TX_MUTEX _nx_secure_tls_protection;
 #endif
 
 #endif /* SRC_NX_SECURE_TLS_H_ */
-

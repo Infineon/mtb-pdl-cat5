@@ -6,7 +6,7 @@
  *
  *  AIROC BLEHIDD COMMON APIs for Human Interface Device Profile (HID) Device over LE
  *
- * This file provides definitions of the interfaces for AIROC 
+ * This file provides definitions of the interfaces for AIROC
  * BLEHIDD Application development.
  *
  */
@@ -32,4 +32,3 @@ wiced_bool_t wiced_hidd_is_transport_detection_polling_on(void);
 /* @} */
 
 #endif // __WICED_HIDD_LIB_H__
-

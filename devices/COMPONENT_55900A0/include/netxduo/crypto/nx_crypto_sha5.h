@@ -131,4 +131,3 @@ UINT _nx_crypto_method_sha512_operation(UINT op,      /* Encrypt, Decrypt, Authe
 #endif
 
 #endif /* SRC_NX_CRYPTO_SHA5_H_ */
-

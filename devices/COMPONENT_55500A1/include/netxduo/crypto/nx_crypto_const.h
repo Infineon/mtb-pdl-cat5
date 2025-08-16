@@ -298,7 +298,7 @@ extern   "C" {
 typedef UINT NX_CRYPTO_KEY_SIZE;
 
 #define NX_CRYPTO_SUCCESS                        0x0           /* Function returned successfully. */
-#define NX_CRYPTO_INVALID_LIBRARY                0x20001       /* Crypto library has not been initialized or failed 
+#define NX_CRYPTO_INVALID_LIBRARY                0x20001       /* Crypto library has not been initialized or failed
                                                                   the Power On Self Test (POST). */
 #define NX_CRYPTO_UNSUPPORTED_KEY_SIZE           0x20002       /* Unsupported key size.  */
 #define NX_CRYPTO_AUTHENTICATION_FAILED          0x20003       /* Authentication failed.  */

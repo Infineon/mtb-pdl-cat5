@@ -10,6 +10,12 @@
 #ifndef __WICED_BT_ADV_SCAN_PERIODIC_H__
 #define __WICED_BT_ADV_SCAN_PERIODIC_H__
 
+#ifndef WICED_BLE_ENABLE_EXTENDED_ADV_API
+#define WICED_BLE_ENABLE_EXTENDED_ADV_API 1
+#endif
+
+#if (WICED_BLE_ENABLE_EXTENDED_ADV_API == 1)
+
 /**
  * This section contains LE Periodic advertisement and scanning defines, structures and functions.
  * @note Applications using extended and periodic mode advertising and scanning shall use only extended mode APIs
@@ -23,13 +29,13 @@
 
 
 /** Periodic adv property */
-enum wiced_ble_periodic_adv_prop_e
+enum wiced_ble_padv_prop_e
 {
     /**< Speicify Tx power in periodic adv events */
-    WICED_BLE_PERIODIC_ADV_PROPERTY_INCLUDE_TX_POWER = (1 << 6)
+    WICED_BLE_PADV_PROPERTY_INCLUDE_TX_POWER = (1 << 6)
 };
-/** Periodic adv property (see #wiced_ble_periodic_adv_prop_e) */
-typedef uint16_t wiced_ble_periodic_adv_prop_t;
+/** Periodic adv property (see #wiced_ble_padv_prop_e) */
+typedef uint16_t wiced_ble_padv_prop_t;
 
 
 /** Options used in create sync to periodic adv command
@@ -40,28 +46,28 @@ typedef uint16_t wiced_ble_periodic_adv_prop_t;
  * and Advertiser Address parameters specify the periodic advertising device to listen to;
  * otherwise they shall be ignored.
 */
-enum wiced_ble_periodic_adv_sync_options_e
+enum wiced_ble_padv_sync_options_e
 {
     /** Use the Advertising_SID, Advertising_Address_Type, and Advertising Address parameters specified
      * in create sync command to determine which advertiser to listen to */
-    WICED_BLE_PERIODIC_CREATE_SYNC_OPTION_IGNORE_PA_LIST = 0,
+    WICED_BLE_PADV_CREATE_SYNC_OPTION_IGNORE_PA_LIST = 0,
 
     /** Use the Periodic Advertiser List to determine which advertiser to listen to.*/
-    WICED_BLE_PERIODIC_CREATE_SYNC_OPTION_USE_PA_LIST = 1,
+    WICED_BLE_PADV_CREATE_SYNC_OPTION_USE_PA_LIST = 1,
 
     /**
     * Disable receiving periodic advertising reports
     */
-    WICED_BLE_PERIODIC_CREATE_SYNC_OPTION_DISABLE_REPORTING = 2,
+    WICED_BLE_PADV_CREATE_SYNC_OPTION_DISABLE_REPORTING = 2,
 
     /**
     * Enable duplicate filtering for the periodic advertising reports
     */
-    WICED_BLE_PERIODIC_CREATE_SYNC_OPTION_ENABLE_DUPLICATE_FILTERING = 4
+    WICED_BLE_PADV_CREATE_SYNC_OPTION_ENABLE_DUPLICATE_FILTERING = 4
 };
 
-/** Options used in create periodic sync to periodic adv command (see #wiced_ble_periodic_adv_sync_options_e)*/
-typedef uint8_t wiced_ble_periodic_adv_sync_options_t;
+/** Options used in create periodic sync to periodic adv command (see #wiced_ble_padv_sync_options_e)*/
+typedef uint8_t wiced_ble_padv_sync_options_t;
 
 /* @cond PAWR_API
    APIs for Periodic Advertising with Response*/
@@ -78,7 +84,7 @@ typedef struct
     uint8_t subevent_start;
     /** number of subevents that data is requested for */
     uint8_t subevent_start_data_count;
-} wiced_ble_periodic_adv_subevent_data_req_event_data_t;
+} wiced_ble_padv_subevent_data_req_event_data_t;
 
 /** Periodic Advertising with Response (PAWR) Response Report Event Data */
 typedef struct
@@ -91,9 +97,9 @@ typedef struct
     uint8_t cte_type;      /**< constant tone extension */
     uint8_t response_slot; /**< response slot */
     uint8_t data_status;   /**< data status */
-    uint16_t data_len;     /**< data length */
+    uint16_t data_length;  /**< data length */
     uint8_t *p_data;       /**< data in the event */
-} wiced_ble_periodic_adv_rsp_report_event_data_t;
+} wiced_ble_padv_rsp_report_event_data_t;
 
 /* @endcond */
 
@@ -110,7 +116,7 @@ typedef struct
     uint8_t rsp_slot_count;   /**< Response slot count */
     uint16_t subevent_data_length; /**< Length of the subevent indication data  */
     uint8_t subevent_data[1];      /**< Start of the subevent data of \p subevent_data_length  */
-} wiced_ble_periodic_adv_subevent_data_t;
+} wiced_ble_padv_subevent_data_t;
 
 /** Configuration for Periodic Advertising with Response (PAWR) response data*/
 typedef struct
@@ -121,7 +127,7 @@ typedef struct
     uint8_t rsp_slot;      /**< Response Slot */
     uint16_t rsp_data_len; /**< Response data length */
     uint8_t *p_data;       /**< Response data  */
-} wiced_ble_periodic_adv_subevent_rsp_data_t;
+} wiced_ble_padv_subevent_rsp_data_t;
 
 /** Parameters for LE Set Periodic Advertising Parameter command */
 typedef struct
@@ -131,7 +137,7 @@ typedef struct
     /** Maximum Periodic Advertising Interval  */
     uint16_t adv_int_max;
     /** Advertising properties */
-    wiced_ble_periodic_adv_prop_t adv_properties;
+    wiced_ble_padv_prop_t adv_properties;
     /** Number of subevents, applies to PAWR */
     uint8_t subevent_num;
     /** Interval between subevents,
@@ -150,14 +156,14 @@ typedef struct
      * applies to PAWR valid only if \p subevent_num is not zero
      */
     uint8_t rsp_slot_num;
-} wiced_ble_periodic_adv_params_t;
+} wiced_ble_padv_params_t;
 
 /**< @endcond */
 
 /** Peridic Adv Create Sync parameters */
 typedef struct
 {
-    wiced_ble_periodic_adv_sync_options_t options;   /**< Options for the sync cmd */
+    wiced_ble_padv_sync_options_t options;   /**< Options for the sync cmd */
     wiced_ble_ext_adv_sid_t adv_sid;        /**< adv sid to identify periodic adv */
     wiced_bt_ble_address_type_t adv_addr_type; /**< peer address type  */
     wiced_bt_device_address_t adv_addr;        /**< peer address */
@@ -169,15 +175,14 @@ typedef struct
                                 bit 1 - Do not sync to packets with an AoD Constant Tone Extension with 1 μs slots
                                 bit 2 - Do not sync to packets with an AoD Constant Tone Extension with 2 μs slots
                                 bit 3 - Do not sync to packets with a type 3 Constant Tone Extension*/
-    uint16_t max_periodic_adv_len; /**< max periodic adv len to be received in the callback */
-} wiced_ble_periodic_adv_create_sync_params_t;
+} wiced_ble_padv_create_sync_params_t;
 
 /** Sync_Handle to be used to identify the periodic advertiser. Range: 0x0000-0x0EFF
  * */
-typedef uint16_t wiced_ble_periodic_adv_sync_handle_t;
+typedef uint16_t wiced_ble_padv_sync_handle_t;
 
 /** Advertiser clock accuracy */
-enum wiced_ble_periodic_adv_clock_accuracy_e
+enum wiced_ble_padv_clock_accuracy_e
 {
     PERIODIC_ADVERTISER_CLK_ACCURACY_500PPM, /**< Advertiser clock accuracy 500 ppm */
     PERIODIC_ADVERTISER_CLK_ACCURACY_250PPM, /**< Advertiser clock accuracy 250 ppm */
@@ -188,8 +193,8 @@ enum wiced_ble_periodic_adv_clock_accuracy_e
     PERIODIC_ADVERTISER_CLK_ACCURACY_30PPM,  /**< Advertiser clock accuracy 30 ppm */
     PERIODIC_ADVERTISER_CLK_ACCURACY_20PPM,  /**< Advertiser clock accuracy 20 ppm */
 };
-/** Advertiser clock accuracy (see #wiced_ble_periodic_adv_clock_accuracy_e) */
-typedef uint8_t wiced_ble_periodic_adv_clock_accuracy_t;
+/** Advertiser clock accuracy (see #wiced_ble_padv_clock_accuracy_e) */
+typedef uint8_t wiced_ble_padv_clock_accuracy_t;
 
 /**
  * Periodic Advertising Sync Established Event Data
@@ -204,7 +209,7 @@ typedef struct
     /** HCI status */
     uint8_t status;
     /** sync handle */
-    wiced_ble_periodic_adv_sync_handle_t sync_handle;
+    wiced_ble_padv_sync_handle_t sync_handle;
     /** advertisement set identifier */
     wiced_ble_ext_adv_sid_t adv_sid;
     /** advertiser address type */
@@ -216,7 +221,7 @@ typedef struct
     /** Periodic adv interval */
     uint16_t periodic_adv_int;
     /** advertiser clock accuracy */
-    wiced_ble_periodic_adv_clock_accuracy_t advertiser_clock_accuracy;
+    wiced_ble_padv_clock_accuracy_t advertiser_clock_accuracy;
     /** number of subevents, valid only for PAWR */
     uint8_t num_subevents;
     /** subevent interval, valid only for PAWR*/
@@ -225,24 +230,24 @@ typedef struct
     uint8_t response_slot_delay;
     /** response slot spacing, valid only for PAWR*/
     uint8_t response_slot_spacing;
-} wiced_ble_periodic_adv_sync_established_event_data_t;
+} wiced_ble_padv_sync_established_event_data_t;
 
 /** Periodic Adv Sync Transfer Received Event Data */
 typedef struct
 {
     /** Periodic Adv Sync Data */
-    wiced_ble_periodic_adv_sync_established_event_data_t sync_data;
+    wiced_ble_padv_sync_established_event_data_t sync_data;
     /** connection handle */
     wiced_bt_ble_connection_handle_t conn_handle;
     /** Service Data value provided by the peer device */
     uint16_t service_data;
-} wiced_ble_periodic_adv_sync_transfer_event_data_t;
+} wiced_ble_padv_sync_transfer_event_data_t;
 
 /** Periodic advertising report data format */
 typedef struct
 {
     /** sync handle */
-    wiced_ble_periodic_adv_sync_handle_t sync_handle;
+    wiced_ble_padv_sync_handle_t sync_handle;
     /** tx power */
     uint8_t tx_power;
     /** rssi */
@@ -257,12 +262,12 @@ typedef struct
     uint8_t data_status;
     /** Length of the subevent indication data  */
     uint16_t data_length;
-    /** Subevent data  */
-    uint8_t data[1];
-} wiced_ble_periodic_adv_report_event_data_t;
+    /** Data received from a Periodic Advertising packet  */
+    uint8_t * p_data;
+} wiced_ble_padv_report_event_data_t;
 
 /** Mode used in Periodic Advertising Sync Transfer Parameters */
-enum wiced_ble_periodic_adv_sync_transfer_mode_e
+enum wiced_ble_padv_sync_transfer_mode_e
 {
     /** No attempt is made to synchronize to the Periodic Advertising (PA) and no
      * HCI_LE_Periodic_Advertising_Sync_Transfer_Received event is sent to the Host (default)
@@ -278,9 +283,9 @@ enum wiced_ble_periodic_adv_sync_transfer_mode_e
     WICED_BLE_PERIODIC_ENABLE_PA_SYNC_TRANSFER_ENABLE_PA_REPORT_EVT,
 };
 /** Mode used in create periodic sync to periodic adv command
- * (see #wiced_ble_periodic_adv_sync_transfer_mode_e)
+ * (see #wiced_ble_padv_sync_transfer_mode_e)
  * */
-typedef uint8_t wiced_ble_periodic_adv_sync_transfer_mode_t;
+typedef uint8_t wiced_ble_padv_sync_transfer_mode_t;
 
 /** Periodic adv sync transfer params*/
 typedef struct
@@ -290,18 +295,18 @@ typedef struct
     /** Sync timeout value */
     uint16_t sync_timeout;
     /** Periodic Adv sync transfer mode */
-    wiced_ble_periodic_adv_sync_transfer_mode_t mode;
+    wiced_ble_padv_sync_transfer_mode_t mode;
 
     /** bit 0 - Do not sync to packets with an AoA Constant Tone Extension
     * bit 1 - Do not sync to packets with an AoD Constant Tone Extension with 1 μs slots
     * bit 2 - Do not sync to packets with an AoD Constant Tone Extension with 2 μs slots
     * bit 3 - Do not sync to packets with a type 3 Constant Tone Extension */
     uint8_t sync_cte_type;
-} wiced_ble_periodic_adv_sync_transfer_param_t; /**< Periodic adv sync transfer params*/
+} wiced_ble_padv_sync_transfer_param_t; /**< Periodic adv sync transfer params*/
 
 
 /**
-* Function         wiced_ble_periodic_adv_set_params
+* Function         wiced_ble_padv_set_adv_params
 *                  This API is called on a central to set the PAWR parameters
 *
 * @param[in]  adv_handle    Handle of the Advertising Set
@@ -310,8 +315,8 @@ typedef struct
 *                  WICED_BT_SUCCESS contents of features are valid
 *                  WICED_BT_ERROR   otherwise.
 */
-wiced_bt_dev_status_t wiced_ble_periodic_adv_set_params(wiced_ble_ext_adv_handle_t adv_handle,
-                                                        wiced_ble_periodic_adv_params_t *p_adv_params);
+wiced_bt_dev_status_t wiced_ble_padv_set_adv_params(wiced_ble_ext_adv_handle_t adv_handle,
+                                                    wiced_ble_padv_params_t *p_adv_params);
 
 /**
  * Sends the HCI command to write the periodic adv data
@@ -327,9 +332,9 @@ wiced_bt_dev_status_t wiced_ble_periodic_adv_set_params(wiced_ble_ext_adv_handle
  * <b> WICED_BT_SUCCESS </b>       : If successful\n
  *
  */
-wiced_bt_dev_status_t wiced_ble_periodic_set_adv_data(wiced_ble_ext_adv_handle_t adv_handle,
-                                                      uint16_t adv_data_length,
-                                                      uint8_t *p_adv_data);
+wiced_bt_dev_status_t wiced_ble_padv_set_adv_data(wiced_ble_ext_adv_handle_t adv_handle,
+                                                  uint16_t adv_data_length,
+                                                  uint8_t *p_adv_data);
 
 /**
  * Sends the HCI command to enable/disable periodic advertisements
@@ -344,7 +349,7 @@ wiced_bt_dev_status_t wiced_ble_periodic_set_adv_data(wiced_ble_ext_adv_handle_t
  * <b> WICED_BT_SUCCESS </b>       : If successful\n
  *
  */
-wiced_bt_dev_status_t wiced_ble_periodic_adv_enable(wiced_ble_ext_adv_handle_t adv_handle, wiced_bool_t enable);
+wiced_bt_dev_status_t wiced_ble_padv_enable_adv(wiced_ble_ext_adv_handle_t adv_handle, wiced_bool_t enable);
 
 /**
  * Sends the HCI command to synchronize with periodic advertising from an advertiser and begin receiving periodic
@@ -359,8 +364,7 @@ wiced_bt_dev_status_t wiced_ble_periodic_adv_enable(wiced_ble_ext_adv_handle_t a
  * <b> WICED_BT_SUCCESS </b>       : If successful\n
  *
  */
-wiced_bt_dev_status_t
-   wiced_ble_periodic_adv_create_sync(wiced_ble_periodic_adv_create_sync_params_t *p_sync_params);
+wiced_bt_dev_status_t wiced_ble_padv_create_sync(wiced_ble_padv_create_sync_params_t *p_sync_params);
 
 /**
  * Sends HCI command to cancel the create sync command while it is pending.
@@ -372,7 +376,7 @@ wiced_bt_dev_status_t
  * <b> WICED_BT_SUCCESS </b>       : If successful\n
  *
  */
-wiced_bt_dev_status_t wiced_ble_periodic_adv_cancel_sync(void);
+wiced_bt_dev_status_t wiced_ble_padv_cancel_sync(void);
 
 /**
  * Sends the HCI command to stop reception of periodic advertising identified by the sync_handle
@@ -386,7 +390,7 @@ wiced_bt_dev_status_t wiced_ble_periodic_adv_cancel_sync(void);
  * <b> WICED_BT_SUCCESS </b>       : If successful \n
  *
  */
-wiced_bt_dev_status_t wiced_ble_periodic_adv_terminate_sync(uint16_t sync_handle);
+wiced_bt_dev_status_t wiced_ble_padv_terminate_sync(uint16_t sync_handle);
 
 /**
  * Sends the HCI command to add the given advertiser to Periodic Advertiser list.
@@ -406,9 +410,9 @@ wiced_bt_dev_status_t wiced_ble_periodic_adv_terminate_sync(uint16_t sync_handle
  * <b> WICED_BT_SUCCESS </b>       : If successful\n
  *
  */
-wiced_bt_dev_status_t wiced_ble_periodic_adv_add_device_to_list(wiced_bt_ble_address_type_t advertiser_addr_type,
-                                                                   wiced_bt_device_address_t advetiser_addr,
-                                                                   wiced_ble_ext_adv_sid_t adv_sid);
+wiced_bt_dev_status_t wiced_ble_padv_add_device_to_list(wiced_bt_ble_address_type_t advertiser_addr_type,
+                                                        wiced_bt_device_address_t advetiser_addr,
+                                                        wiced_ble_ext_adv_sid_t adv_sid);
 
 /**
  * Sends the HCI command to remove the given advertiser from Periodic Advertiser list.
@@ -426,10 +430,9 @@ wiced_bt_dev_status_t wiced_ble_periodic_adv_add_device_to_list(wiced_bt_ble_add
  * <b> WICED_BT_SUCCESS </b>       : If successful\n
  *
  */
-wiced_bt_dev_status_t wiced_ble_periodic_adv_remove_device_from_list(
-    wiced_bt_ble_address_type_t advertiser_addr_type,
-    wiced_bt_device_address_t advetiser_addr,
-    wiced_ble_ext_adv_sid_t adv_sid);
+wiced_bt_dev_status_t wiced_ble_padv_remove_device_from_list(wiced_bt_ble_address_type_t advertiser_addr_type,
+                                                             wiced_bt_device_address_t advetiser_addr,
+                                                             wiced_ble_ext_adv_sid_t adv_sid);
 
 /**
  * Sends the HCI command to remove to remove all devices from the the Periodic Advertisers list.
@@ -442,7 +445,7 @@ wiced_bt_dev_status_t wiced_ble_periodic_adv_remove_device_from_list(
  * <b> WICED_BT_SUCCESS </b>       : If successful\n
  *
  */
-wiced_bt_dev_status_t wiced_ble_periodic_adv_clear_list(void);
+wiced_bt_dev_status_t wiced_ble_padv_clear_list(void);
 
 /**
  * Sends the HCI command to enable or disable receiving periodic ADV data for a sync handle.
@@ -456,8 +459,7 @@ wiced_bt_dev_status_t wiced_ble_periodic_adv_clear_list(void);
  * <b> WICED_BT_SUCCESS </b>       : If command queued to send down \n
  *
  */
-wiced_bt_dev_status_t wiced_ble_periodic_adv_set_rcv_enable(wiced_ble_periodic_adv_sync_handle_t sync_handle,
-                                                            wiced_bool_t enable);
+wiced_bt_dev_status_t wiced_ble_padv_set_rcv_enable(wiced_ble_padv_sync_handle_t sync_handle, wiced_bool_t enable);
 
 /**
  * Sends the HCI command to send synchronization information about the periodic advertising train identified by the Sync_Handle parameter to given device
@@ -472,9 +474,9 @@ wiced_bt_dev_status_t wiced_ble_periodic_adv_set_rcv_enable(wiced_ble_periodic_a
  * <b> WICED_BT_SUCCESS </b>       : If command queued to send down \n
  *
  */
-wiced_bt_dev_status_t wiced_ble_periodic_adv_transfer_sync(wiced_bt_device_address_t peer_bda,
-                                                              uint16_t service_data,
-                                                              wiced_ble_periodic_adv_sync_handle_t sync_handle);
+wiced_bt_dev_status_t wiced_ble_padv_transfer_sync(wiced_bt_device_address_t peer_bda,
+                                                   uint16_t service_data,
+                                                   wiced_ble_padv_sync_handle_t sync_handle);
 
 /**
  * Sends the HCI command  to send synchronization information about the periodic advertising in an advertising
@@ -490,9 +492,9 @@ wiced_bt_dev_status_t wiced_ble_periodic_adv_transfer_sync(wiced_bt_device_addre
  * <b> WICED_BT_SUCCESS </b>       : If command queued to send down \n
  *
  */
-wiced_bt_dev_status_t wiced_ble_periodic_adv_transfer_set_info(wiced_bt_device_address_t peer_bda,
-                                                                  uint16_t service_data,
-                                                                  wiced_ble_ext_adv_handle_t adv_handle);
+wiced_bt_dev_status_t wiced_ble_padv_transfer_set_info(wiced_bt_device_address_t peer_bda,
+                                                       uint16_t service_data,
+                                                       wiced_ble_ext_adv_handle_t adv_handle);
 
 /**
  * Sends the HCI command to set synchronize periodic transfer parameter
@@ -506,9 +508,8 @@ wiced_bt_dev_status_t wiced_ble_periodic_adv_transfer_set_info(wiced_bt_device_a
  * <b> WICED_BT_SUCCESS </b>       : If successful\n
  *
  */
-wiced_bt_dev_status_t
-wiced_ble_periodic_adv_set_sync_transfer_param( wiced_bt_device_address_t peer_bda,
-                                                wiced_ble_periodic_adv_sync_transfer_param_t *p_st);
+wiced_bt_dev_status_t wiced_ble_padv_set_sync_transfer_params(wiced_bt_device_address_t peer_bda,
+                                                              wiced_ble_padv_sync_transfer_param_t *p_st);
 
 
 /**
@@ -522,71 +523,40 @@ wiced_ble_periodic_adv_set_sync_transfer_param( wiced_bt_device_address_t peer_b
  *
  */
 wiced_bt_dev_status_t
-wiced_ble_periodic_adv_set_default_sync_transfer_param( wiced_ble_periodic_adv_sync_transfer_param_t *p_st);
-
-
-/* @cond PAWR_API
-   APIs for Periodic Advertising with Response*/
+wiced_ble_padv_set_default_sync_transfer_params( wiced_ble_padv_sync_transfer_param_t *p_st);
 
 /**
-* Function         wiced_ble_periodic_adv_set_subevent_data
+* API allocates an object which can reassemble a periodic adv packet on the periodic adv scanner.
+* upto a length of \p max_adv_len
+* Application can invoke this API in the #WICED_BLE_PERIODIC_ADV_SYNC_ESTABLISHED_EVENT event on successful
+* sync establishment. The object created can be reused for subsequent calls to append the periodic adv reports.
+* The object is freed by the stack in case the periodic sync is lost or terminated.
+* @note This API allocates the reassembly buffer + header from the application default heap created using a call
+* to \ref wiced_bt_create_heap (b_make_default =1)
 *
-*                  This API is used by the Host to set the data for one or more subevents of PAwR in reply to an
-*                  HCI_LE_Periodic_Advertising_Subevent_Data_Request event. The data for a subevent shall be transmitted only once.
+* @param [in] sync_handle Handle of the synchronized periodic ADV train
+* @param [in] max_adv_len Max length to reassemble
 *
-* @param[in] adv_handle        Handle of the Advertising Set
-* @param[in] num_subevents     Number of subevent data in the command
-* @param[in] p_se_data         Pointer to the subevent data
-* @param[in] max_response_len  max expected response length in # WICED_BT_BLE_PAWR_RSP_REPORT_EVENT
-* @note:
-* @return          wiced_result_t
-*                  WICED_BT_SUCCESS contents of features are valid
-*                  WICED_BT_ERROR   otherwise.
+* @return a valid pointer of type \ref wiced_ble_padv_partial_pkt_t, else NULL
+*
 */
-wiced_bt_dev_status_t wiced_ble_periodic_adv_set_subevent_data(wiced_ble_ext_adv_handle_t adv_handle,
-                                                               uint8_t num_subevents,
-                                                               wiced_ble_periodic_adv_subevent_data_t *p_se_data,
-                                                               uint16_t max_response_len);
-
 /**
-* Function         wiced_ble_periodic_adv_set_subevent_rsp_data
+* API allocates an object which can reassemble a periodic adv packet on the periodic adv scanner.
+* upto a length of \p max_adv_len
+* Application can invoke this API in the #WICED_BLE_PERIODIC_ADV_SYNC_ESTABLISHED_EVENT event on successful
+* sync establishment. The object created can be reused for subsequent calls to append the periodic adv reports.
+* The object is freed by the stack in case the periodic sync is lost or terminated.
+* @note This API allocates the reassembly buffer + header from the application default heap created using a call
+* to \ref wiced_bt_create_heap (b_make_default =1)
 *
-*                  This API is used by the Host to set the data for a response slot in a specific subevent of the PAwR
-*                  identified by the \p sync_handle. The data for a response slot shall be transmitted only once.
+* @param [in] sync_handle Handle of the synchronized periodic ADV train
+* @param [in] max_adv_len Max length to reassemble
 *
-* @param[in]  sync_handle    Handle of the synchronized advertising train
-* @param[out] p_rsp_data  Pointer to p_rsp_data
-* @return          wiced_result_t
-*                  WICED_BT_SUCCESS contents of features are valid
-*                  WICED_BT_ERROR   otherwise.
+* @return wiced_result_t
+*
 */
-wiced_bt_dev_status_t
-wiced_ble_periodic_adv_set_subevent_rsp_data( uint16_t sync_handle,
-                                              wiced_ble_periodic_adv_subevent_rsp_data_t *p_rsp_data);
-
-/**
-* Function         wiced_ble_periodic_adv_set_sync_subevent
-*
-*                  This API is called to instruct the Controller to synchronize with a subset of the subevents
-*                  within a PAwR train identified by the \p sync_handle, listen for packets sent by the peer device
-*                  and pass any received data up to the Host
-*
-* @param[in]  sync_handle     Handle of the synchronized periodic ADV train
-* @param[in]  properties      Properties of the synchronized periodic ADV train
-* @param[in]  num_subevents   Number of subevents
-* @param[in]  p_subevents     Pointer to an array of subevents
-*
-* @return          wiced_result_t
-*                  WICED_BT_SUCCESS contents of features are valid
-*                  WICED_BT_ERROR   otherwise.
-*/
-wiced_bt_dev_status_t wiced_ble_periodic_adv_set_sync_subevent(uint16_t sync_handle,
-                                                                   uint16_t properties,
-                                                                   uint8_t num_subevents,
-                                                                   uint8_t *p_subevents);
-
-/* @endcond */
+wiced_result_t wiced_ble_padv_alloc_segment_assembler(wiced_ble_padv_sync_handle_t sync_handle, uint16_t max_adv_len);
 
 /**@} wicedbt */
-
+#endif // WICED_BLE_ENABLE_EXTENDED_ADV_API
 #endif // __WICED_BT_ADV_SCAN_PERIODIC_H__

@@ -219,4 +219,3 @@ UINT _nx_crypto_method_ecjpake_operation(UINT op,
 #endif
 
 #endif /* NX_CRYPTO_ECJPAKE_H */
-

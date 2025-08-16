@@ -70,7 +70,7 @@ extern   "C" {
 
 #endif
 
-/* Default to disabling standalone use of nx_crypto. To use nx_crypto in 
+/* Default to disabling standalone use of nx_crypto. To use nx_crypto in
    standalone define NX_CRYPTO_STANDALONE_ENABLE*/
 /*
 #define NX_CRYPTO_STANDALONE_ENABLE
@@ -391,4 +391,3 @@ UINT _nx_crypto_module_state_get(VOID);
 
 
 #endif /* _NX_CRYPTO_H_ */
-

@@ -344,7 +344,7 @@ cy_en_adccomp_status_t Cy_ADCCOMP_LPCOMP_Init ( CyADCCOMP_Type *base,
 * it take a while for comparator to settle down depending on DC blocking capacitor and MIC output common-mode (DC output),
 * both are application configurable. During this time comparator may latch if the voltage difference between comparator
 * +ve and -ve terminal exceed configured hysterisis limit. Application needs to poll for every 10 ms
-* for comparator latched status using /ref Cy_ADCCOMP_GetStatusRegisterVal and clear latch 
+* for comparator latched status using /ref Cy_ADCCOMP_GetStatusRegisterVal and clear latch
 * using /ref Cy_ADCCOMP_GetStatusRegisterVal. Once application does not see comparator latch, few 10 ms intervals
 * continuously then application configure comparator as wake source using /ref Cy_ADCCOMP_LPCOMP_EnableWakeConfig
 * and then only allow device to enter to low power mode.
@@ -374,7 +374,7 @@ cy_en_adccomp_status_t Cy_ADCCOMP_LPCOMP_Disable (CyADCCOMP_Type *base, cy_en_ad
 ****************************************************************************//**
 *
 * Disable comparator and resets configuration to default values, i.e.
-* input to comparator is open, Resets comparator o/p, Clears NTD mode and 
+* input to comparator is open, Resets comparator o/p, Clears NTD mode and
 * Set Hysterisis to CY_LPCOMP_HYST_LIMIT_0MV_NONE
 *
 * \param base
@@ -643,7 +643,7 @@ __STATIC_INLINE void Cy_ADCCOMP_DisableTimer(CyADCCOMP_Type * base)
 *
 * Sets the timer period.
 * Timer control APIs allows the user to give extra time to ADC LDO to become stable.
-* By default driver bypass the timer and relay on ADC's GMLDO OK signal to generate 
+* By default driver bypass the timer and relay on ADC's GMLDO OK signal to generate
 * CY_ADCCOMP_INTR_ADC_READY \ref group_adccomp_macros_interrupt.
 * For examle, at 2.048Mhz default value(= 0xCD) count will be programmed to generate
 * CY_ADCCOMP_INTR_ADC_READY interrupt based on ADC GM LDO OK signal to indicate
@@ -1039,4 +1039,3 @@ cy_en_adccomp_status_t Cy_ADCCOMP_RegisterIntrCallback ( CY_ADCCOMP_IRQ_THREAD_C
 #endif // _CY_ADCCOMP_H_
 
 /* [] END OF FILE */
-

@@ -1063,4 +1063,3 @@ UINT nx_secure_x509_key_usage_extension_parse(NX_SECURE_X509_CERT *certificate, 
 #endif
 
 #endif /* SRC_NX_SECURE_X509_H_ */
-

@@ -366,4 +366,3 @@ UINT _nx_crypto_method_ec_secp521r1_operation(UINT op,
 #endif
 
 #endif /* NX_CRYPTO_EC_H */
-

@@ -36,7 +36,7 @@ typedef struct
     UINT8 subSeqBoundEn;          /* SMIF SUBSEQ_BOUND_EN: Enable subsequent page boundary latency cycles. 0 to disable, 1 to enable */
     UINT8 presentFirst;           /* SMIF PRESENT: Presence of first page boundary latency cycles. 0- not present, 1- present */
 } cy_smif_psram_cfg_params_t;
- 
+
 /**
 *
 * This structure specifies configuration of PSRAM device
@@ -49,8 +49,8 @@ typedef struct
     UINT8 knownGoodDie;           /* Known good die value, as per APS6404L- 0x5D */
     UINT8 quadReadCmd;            /* Memory read command in Quad mode, as per APS6404L- 0xEB */
     UINT8 quadWriteCmd;           /* Memory write command in Quad mode, as per APS6404L- 0x38 */
-    UINT8 resetEnableCmd;         /* Reset enable command, as per APS6404L- 0x66 */ 
-    UINT8 resetCmd;               /* Reset command, as per APS6404L- 0x99 */ 
+    UINT8 resetEnableCmd;         /* Reset enable command, as per APS6404L- 0x66 */
+    UINT8 resetCmd;               /* Reset command, as per APS6404L- 0x99 */
     UINT8 halfSleepEntryEnable;   /* Half sleep entry enable, 0x01 to enable; 0x00 to disable */
     UINT8 halfSleepEntryCmd;      /* Half sleep entry command, as per APS6404L- 0xC0 */
     cy_smif_psram_cfg_params_t smifParams;

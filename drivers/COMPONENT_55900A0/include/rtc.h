@@ -191,4 +191,3 @@ void rtc_RtcTime2Sec(RTC_TIME_t *rtctime, UINT32 *second);
 #endif //__RTC_H__
 
 /* [] END OF FILE */
-

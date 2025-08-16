@@ -282,8 +282,11 @@ typedef struct
      * Host for all the CISes in the CIG.
      */
     uint32_t sdu_interval_p_to_c;
-    /** Sleep Clock Accuracy */
-    uint8_t sleep_clock_accuracy;
+    /**
+     * The Worst_Case_SCA parameter shall be the worst-case sleep clock accuracy of all
+     * the Peripherals that will participate in the CIG.
+     */
+    uint8_t worst_case_sca;
     /** Maximum time, in microseconds, for an SDU to be transported from the central Controller
      * to peripheral Controller
      */

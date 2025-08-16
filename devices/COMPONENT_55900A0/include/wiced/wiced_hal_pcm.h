@@ -137,4 +137,3 @@ void wiced_hal_pcm_select_pads( uint8_t pcm_clk, uint8_t pcm_sync,
                             uint8_t pcm_out, uint8_t pcm_in );
 
 #endif // _WICED_HAL_PCM_H_
-

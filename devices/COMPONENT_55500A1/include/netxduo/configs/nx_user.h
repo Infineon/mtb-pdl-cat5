@@ -784,4 +784,3 @@ typedef unsigned long                           ULONG;
 #define NX_DNS_CLIENT_USER_CREATE_PACKET_POOL
 
 #endif
-

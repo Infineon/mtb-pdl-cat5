@@ -102,6 +102,9 @@
 #define APP_CFG_BR_AUDIO_CFG                        NULL
 
 #endif
+#ifndef APP_CFG_BR_AUDIO_CFG_AA_POOL_SIZE
+#define APP_CFG_BR_AUDIO_CFG_AA_POOL_SIZE          0
+#endif
 
 /*  Enable Maximum Frequency 192 MHz Support for H1A1 */
 #ifndef APP_CFG_ENABLE_MAX_SYS_FREQ_192MHz

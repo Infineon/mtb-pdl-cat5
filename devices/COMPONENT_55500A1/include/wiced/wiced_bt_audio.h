@@ -38,7 +38,7 @@ enum
     WICED_HF_ROLE           = 1 << 3,   /**< Handsfree */
 #ifdef FIX_CYW55500A1_766
     WICED_LE_AUDIO_ROLE     = 1 << 4,   /**< LE Audio Source */
-#endif         
+#endif
 };
 typedef uint8_t wiced_device_role_t;
 

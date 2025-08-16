@@ -89,4 +89,3 @@ UINT _nx_crypto_phash(NX_CRYPTO_PHASH *phash, UCHAR *output, UINT desired_length
 #endif
 
 #endif
-

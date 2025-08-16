@@ -138,4 +138,3 @@ UINT _nx_crypto_method_ecdh_operation(UINT op,
 #endif
 
 #endif /* NX_CRYPTO_ECDH_H */
-

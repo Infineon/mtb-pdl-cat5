@@ -1228,7 +1228,7 @@ typedef struct NX_IPV6_DEFAULT_ROUTER_ENTRY_STRUCT
 #define NX_HTTP_PROXY_MAX_PASSWORD                 20
 #endif
 
-/* NX_HTTP_PROXY_MAX_AUTHENTICATION is the max length of base64 of "name:password", 
+/* NX_HTTP_PROXY_MAX_AUTHENTICATION is the max length of base64 of "name:password",
    1 bytes for an extra conversion if needed, 2 bytes for pad if needed, 1 byte for null terminator and four byte alignment. */
 #define NX_HTTP_PROXY_MAX_AUTHENTICATION           (((((NX_HTTP_PROXY_MAX_USERNAME + NX_HTTP_PROXY_MAX_PASSWORD  + 1 ) * 4 / 3) + 1 + 2 + 1) / 4 + 1) * 4)
 
@@ -1402,7 +1402,7 @@ typedef struct NX_IPV6_DEFAULT_ROUTER_ENTRY_STRUCT
                                                     NX_INTERFACE_CAPABILITY_ICMPV6_RX_CHECKSUM | \
                                                     NX_INTERFACE_CAPABILITY_ICMPV6_TX_CHECKSUM | \
                                                     NX_INTERFACE_CAPABILITY_IGMP_TX_CHECKSUM | \
-                                                    NX_INTERFACE_CAPABILITY_IGMP_RX_CHECKSUM)     
+                                                    NX_INTERFACE_CAPABILITY_IGMP_RX_CHECKSUM)
 #endif /* NX_ENABLE_INTERFACE_CAPABILITY */
 
 #define NX_IP_VERSION_V4                           0x4
@@ -1761,7 +1761,7 @@ typedef struct NX_ARP_STRUCT
 #endif /* NX_DISABLE_IPV4 */
 
 
-/* Determine if the UDP control block has an extension defined. If not, 
+/* Determine if the UDP control block has an extension defined. If not,
    define the extension to whitespace.  */
 
 #ifndef NX_UDP_SOCKET_MODULE_EXTENSION
@@ -1861,14 +1861,14 @@ typedef struct NX_UDP_SOCKET_STRUCT
     VOID        *nx_udp_socket_tcpip_offload_context;
 #endif /* NX_ENABLE_TCPIP_OFFLOAD */
 
-    /* Define the port extension in the UDP socket control block. This 
+    /* Define the port extension in the UDP socket control block. This
        is typically defined to whitespace in nx_port.h.  */
     NX_UDP_SOCKET_MODULE_EXTENSION
-    
+
 } NX_UDP_SOCKET;
 
 
-/* Determine if the TCP control block has an extension defined. If not, 
+/* Determine if the TCP control block has an extension defined. If not,
    define the extension to whitespace.  */
 
 #ifndef NX_TCP_SOCKET_MODULE_EXTENSION
@@ -2154,10 +2154,10 @@ typedef struct NX_TCP_SOCKET_STRUCT
     VOID *nx_tcp_socket_tcpip_offload_context;
 #endif /* NX_ENABLE_TCPIP_OFFLOAD */
 
-    /* Define the port extension in the TCP socket control block. This 
+    /* Define the port extension in the TCP socket control block. This
        is typically defined to whitespace in nx_port.h.  */
     NX_TCP_SOCKET_MODULE_EXTENSION
-    
+
 } NX_TCP_SOCKET;
 
 
@@ -2426,7 +2426,7 @@ typedef struct NX_IPV6_MULTICAST_STRUCT
 #endif /* NX_ENABLE_IPV6_MULTICAST  */
 
 
-/* Determine if the IP control block has an extension defined. If not, 
+/* Determine if the IP control block has an extension defined. If not,
    define the extension to whitespace.  */
 
 #ifndef NX_IP_MODULE_EXTENSION
@@ -3063,10 +3063,10 @@ typedef struct NX_IP_STRUCT
     UINT        (*nx_ip_packet_filter_extended)(struct NX_IP_STRUCT *ip_ptr, NX_PACKET *packet_ptr, UINT direction);
 #endif /* NX_ENABLE_IP_PACKET_FILTER */
 
-    /* Define the port extension in the IP control block. This 
+    /* Define the port extension in the IP control block. This
        is typically defined to whitespace in nx_port.h.  */
     NX_IP_MODULE_EXTENSION
-    
+
 } NX_IP;
 
 
@@ -3998,4 +3998,3 @@ UINT _nx_utility_base64_decode(UCHAR *base64name, UINT base64name_size, UCHAR *n
 #endif
 
 #endif
-

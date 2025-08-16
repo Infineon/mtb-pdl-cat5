@@ -437,4 +437,3 @@ TCP_DECLARE ULONG           _nx_tcp_2MSL_timer_rate;
 
 
 #endif
-

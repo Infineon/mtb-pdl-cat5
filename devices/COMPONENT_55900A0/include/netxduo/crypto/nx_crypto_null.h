@@ -87,4 +87,3 @@ UINT _nx_crypto_method_null_cleanup(VOID *crypto_metadata);
 #endif
 
 #endif /* NX_CRYPTO_NULL_H */
-

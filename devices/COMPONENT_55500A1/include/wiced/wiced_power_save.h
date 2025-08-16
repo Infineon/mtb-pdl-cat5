@@ -26,7 +26,7 @@ typedef enum
  *
  * Callback to the application on entering to power save mode or if entering to the power save
  * mode is aborted
- * Registered using wiced_power_save_register_enter_cback() and 
+ * Registered using wiced_power_save_register_enter_cback() and
  * wiced_power_save_register_abort_cback()
  *
  * @return void
@@ -55,21 +55,21 @@ typedef uint32_t wiced_power_save_approve_cback_t ( void );
  * To start the power save mode of operation. This is the most efficient power save option available.
  * Be cautious on using this power save mode. Application will be restarted on exiting out of the
  * power save mode. If the application desires to save any state before going to power save it
- * can do so by using wiced_power_save_store_state() and retrieve the state on coming back 
+ * can do so by using wiced_power_save_store_state() and retrieve the state on coming back
  * from power save by using wiced_power_save_retrieve_state()
  *
- * @param[in]      wake_source        : Bit mask of sources to wake the device from power save 
+ * @param[in]      wake_source        : Bit mask of sources to wake the device from power save
  *                                                     mode
  *
- * @param[in]      timeout_ms        : Timeout in milliseconds  to wake the device from power 
+ * @param[in]      timeout_ms        : Timeout in milliseconds  to wake the device from power
  *                                                   save mode. Used  when WICED_WAKE_SOURCE_TIMEOUT
  *                                                   is specified as wake source
  *
  *
  * @return          void
  *
- */ 
-void wiced_power_save_start( wiced_wake_source_t wake_source, 
+ */
+void wiced_power_save_start( wiced_wake_source_t wake_source,
                                    uint32_t timeout_ms );
 
 /**
@@ -78,35 +78,35 @@ void wiced_power_save_start( wiced_wake_source_t wake_source,
  * Registers the callback function which will be invoked to check if the application approves
  * the device to go to power save mode
  *
- * @param[in]      p_cback        : Callback function which will be invoked to check if the 
+ * @param[in]      p_cback        : Callback function which will be invoked to check if the
  *                                              application approves  the device to go to power save mode
  *
  * @return          void
  *
- */ 
+ */
 void wiced_power_save_register_approve_cback(
                                    wiced_power_save_approve_cback_t* p_cback );
 
 /**
  * Function         wiced_power_save_register_enter_cback
  *
- * Registers the callback function which will be invoked just before device entering the 
+ * Registers the callback function which will be invoked just before device entering the
  * power save mode
  *
- * @param[in]      p_cback        : callback function which will be invoked just before device 
+ * @param[in]      p_cback        : callback function which will be invoked just before device
  *                                              entering the power save mode
  *
  * @return          void
  *
  */
 
-void wiced_power_save_register_enter_cback( 
+void wiced_power_save_register_enter_cback(
                                   wiced_power_save_cback_t* p_cback );
 
 /**
  * Function         wiced_power_save_register_abort_cback
  *
- * Registers the callback function which will be invoked if entering to the power save mode 
+ * Registers the callback function which will be invoked if entering to the power save mode
  *is aborted
  *
  * @param[in]      p_cback        : callback function which will be invoked if entering to the
@@ -115,7 +115,7 @@ void wiced_power_save_register_enter_cback(
  * @return          void
  *
  */
-void wiced_power_save_register_abort_cback( 
+void wiced_power_save_register_abort_cback(
                                   wiced_power_save_cback_t* p_cback );
 
 /**
@@ -134,7 +134,7 @@ void wiced_power_save_store_state( uint16_t value );
 /**
  * Function         wiced_power_save_retrieve_state
  *
- * Application can invoke this function to retrieve any saved state values on waking from power 
+ * Application can invoke this function to retrieve any saved state values on waking from power
  * save mode
  *
  * @return         the saved value
@@ -145,11 +145,11 @@ uint16_t wiced_power_save_retrieve_state( void );
 /**
  * Function         wiced_sleep_config
  *
- * Application can invoke this function to enable/disbale low power mode of operation. Application 
+ * Application can invoke this function to enable/disbale low power mode of operation. Application
  * resumes  on waking from sleep. Application can also configure the active modes of the Bluetooth WAKE GPIO
- * and the HOST WAKE GPIO using this function. 
+ * and the HOST WAKE GPIO using this function.
  * Bluetooth WAKE GPIO -Host can wake the device from sleep by setting the Bluetooth wake pin, active if the device is in sleep mode
- * HOST WAKE GPIO - Device can wake the host from sleep by setting the HOST wake pin, active 
+ * HOST WAKE GPIO - Device can wake the host from sleep by setting the HOST wake pin, active
  *
  * @param[in]      enable        : Enable or disable the sleep mode
  *
